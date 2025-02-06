@@ -1,10 +1,12 @@
 <template>
     <div>
-      <h1>主页</h1>
+<navComponent></navComponent> 
     </div>
 </template>
 
 <script setup lang="ts">
+import navComponent from '@/components/navComponent.vue';
+
 
 </script>
 

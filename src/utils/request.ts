@@ -1,6 +1,7 @@
 //axios的二次封装,使用请求拦截器和响应拦截器
 import axios from 'axios'
 import { ElMessage } from 'element-plus'
+import { useUserStore } from '@/store/modules/user'
 //用axios的create方法来创建axios(可以写其他配置比如,基础路径,超时时间等)
 const request=axios.create({
     baseURL:'/api',//路径上都会带/api
@@ -8,6 +9,13 @@ const request=axios.create({
 })
 //添加请求与响应拦截器
 request.interceptors.request.use((config)=>{
+//登录后拿到仓库里面的token
+const token=useUserStore().storeToken
+//console.log(token);
+//如果有token我们就把token作为服务器的公共参数,每次请求都给他带上,不然请求不到数据
+if(token){
+    config.headers.token=token
+}
 //返回配置对象
 //config他有个请求头,给服务器端携带公共参数
 //config.header.token='wc'

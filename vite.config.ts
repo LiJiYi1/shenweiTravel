@@ -16,7 +16,17 @@ export default defineConfig(({command})=>{
         '@': path.resolve(__dirname, './src')
       }
       
-    }
+    },
+    //less全局变量配置
+    css: {
+      preprocessorOptions: {
+        less: {
+          javascriptEnabled: true,
+          additionalData: '@import "./src/style/variable.less";',
+        },
+      },
+    },
+  
     
   } 
 })

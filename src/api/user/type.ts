@@ -5,7 +5,8 @@ export interface loginForm{
 }
 //get的data的数据类型
 interface dataType{
-    token: string
+    token?: string,
+    message?:string
 }
 //登录接口get返回的数据类型
 export interface loginResponseData{
@@ -23,13 +24,14 @@ interface userinfo{
     buttons: string[],
     routes: string[],
     token: string,
+    userName:string
 }
 //Data的数据类型
 interface user {
-    checkuser:userinfo
+    checkUser:userinfo
 }
 //服务器返回用户数据的类型
 export interface userResponseData{
     code:number,
-    data:user
+    data:user,
 }
