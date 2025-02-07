@@ -3,13 +3,14 @@ import App from './App.vue'
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 import router from './router/index.ts'
-
 import '@/style/index.less'
 //全局引入这个路由鉴权文件
 import '@/router/permission.ts'
 //引入element-plus的所有图标
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 import pinia from './store/index.ts'
+//引入暗黑模式
+import 'element-plus/theme-chalk/dark/css-vars.css'
 const app = createApp(App)
 app.use(router)
 app.use(ElementPlus)

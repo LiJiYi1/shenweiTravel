@@ -5,7 +5,7 @@ const notFound = () => import('@/views/404/404Component.vue')
 //主页和大屏
 const homeBigScreen=()=>import('@/views/bigScreen&home/indexComponent.vue')
 const home=()=>import('@/views/bigScreen&home/home/homeComponet.vue')
-const bigScreen =()=>import('@/views/bigScreen&home/bigScreen/bigScreen.vue')
+const bigScreen =()=>import('@/views/bigScreen/bigScreen.vue')
 //权限管理
 const permission=()=>import('@/views/permission/permissionCharge.vue')
 const userCharge=()=>import('@/views/permission/uersCharge.vue')
@@ -39,19 +39,20 @@ const route=[
         }
     },
     {
+        path: '/bigScreen',
+        component: bigScreen,
+        name: 'bigScreen',//其他路由
+        meta: {
+            icon: 'Monitor',
+            title: '大屏'
+        }
+    },
+    {
         path:'/home&bigScreen',
         name:"home&bigScreen",
         component:homeBigScreen,
         children:[
-            {
-                path: '/bigScreen',
-                component: bigScreen,
-                name: 'bigScreen',//其他路由
-                meta: {
-                    icon: 'Monitor',
-                    title: '大屏'
-                }
-            },
+      
             {
                 path: '/home',
                 component: home,

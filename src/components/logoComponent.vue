@@ -15,7 +15,7 @@ cursor: pointer;
 user-select: none;
 width:@left_bar_width;
 height:@left_logo_height;
-background-color: #0d012d;
+
 display: flex;
 justify-content: space-between;
 align-items: start;
@@ -28,7 +28,7 @@ align-items: start;
     margin-top: 10px;
     margin-right: 20px;
     margin-left:20px;
-    color: rgb(255, 255, 255);
+
   }
 }
   

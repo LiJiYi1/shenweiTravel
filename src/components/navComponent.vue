@@ -5,11 +5,10 @@
         <logoComponent class="logo" :class="{fold:isCollapse}"></logoComponent>
        <el-row class="tac">
      <el-menu
-        active-text-color="#ffd04b"
-        background-color="#0d012d"
+     
         class="el-menu-vertical-demo"
+        :class="{fold:isCollapse}"
         :default-active="$route.path"
-        text-color="#fff"
         :router="true"
         :collapse="isCollapse"
       >
@@ -55,10 +54,26 @@
              <component :is="Component" />
          </transition>
       </RouterView> 
+
      <!-- 暗黑模式控制的抽屉 -->
-     <el-drawer v-model="drawer" title="I am the title" :with-header="false">
-    <span>Hi there!</span>
+  <el-drawer v-model="drawer"  :with-header="false">
+    <h4>主题设置</h4>
+      <div class="innerBox">
+         <div class="dark">
+        <div class="title">暗黑模式</div>
+        <el-switch
+    v-model="dark"
+    :active-icon="Moon" 
+    :inactive-icon="Sunny"
+    @change="changeDark"
+    inline-prompt
+    style="--el-switch-on-color:#000000 ; --el-switch-off-color: #b2afb5;height:5vh;width:50px;"
+         />
+      </div> 
+      
+    </div>
      </el-drawer>
+ 
 </template>
 
 <script setup lang="ts">
@@ -66,8 +81,39 @@
 import logoComponent from '@/components/logoComponent.vue';
 import topBar from '@/components/topBar/topBar.vue';
 import { useRoute,RouterView  } from 'vue-router';
-import {ref,provide, type Ref,watch,nextTick} from 'vue';
+import {ref,provide, type Ref,watch,nextTick,onMounted} from 'vue';
 import { useRefreshStore } from '@/store/modules/refresh';
+import { Moon, Sunny } from '@element-plus/icons-vue'
+//暗黑模式开关
+let dark:Ref<boolean>=ref(JSON.parse(localStorage.getItem('dark') as string)||false)
+onMounted(()=>{
+//刷新时我们要从本地拿到黑暗模式的状态,实现一个黑暗持久化
+let html=document.documentElement
+let darkStyle=JSON.parse(localStorage.getItem('dark') as string)
+//根据本地存储的状态来判断
+if(darkStyle){
+html.className='dark'
+}
+else{
+  html.className=''
+}
+})
+//Switch开关切换黑暗模式
+const changeDark=()=>{
+//点击时如果有上次存储的状态,我们先给他清除
+if(localStorage.getItem('dark'))localStorage.removeItem('dark')
+//没有存储状态之后我们再存储当前状态
+const isDark=JSON.stringify(dark.value)
+localStorage.setItem('dark',isDark)
+//判断是不是暗黑状态
+let html=document.documentElement
+if(dark.value){
+html.className='dark'
+}
+else{
+  html.className=''
+}
+}
 //拿到路由相关数据
 let $route=useRoute()
 //暗黑模式控制抽屉是否打开
@@ -102,16 +148,17 @@ watch(()=>useRefreshStore().refresh,()=>{
 <style lang="less" scoped>
 div{
   width: 100%;
-  height: 100vh;
+  
   .left_bar{
     width:@left_bar_width;
-    height: 100vh;
     .logo{
       width:@left_bar_width;
       transition: all 0.6s;
       white-space: nowrap;
+      overflow: hidden;
       &.fold{
       width: @fold_length;
+      overflow: hidden;
     }
     }
     .tac{
@@ -121,9 +168,14 @@ div{
       height: calc(100vh - @left_logo_height);
       width:@left_bar_width ;
       z-index: 0;
-    .el-menu-vertical-demo{
+      .el-menu-vertical-demo{
       border-right: none;
-      width: 260px;
+      width: @left_bar_width ;
+      transition: all 0.6s;
+     overflow: hidden;
+      &.fold{
+        width: 50px;
+      }
     }
     }
   }
@@ -134,7 +186,6 @@ div{
     left: @left_bar_width;
     width: calc(100% - @left_bar_width);
     height: @top_bar_height;
-    background: linear-gradient(#0d012d, #ffffff);
     transition: all 0.6s;
     &.fold{
     left:@fold_length;
@@ -145,7 +196,6 @@ div{
     position: absolute;
     top:@top_bar_height;
     left:@left_bar_width;
-    background-color: #ffffff;
     width: calc(100% - @left_bar_width - 40px );
     height:calc(100vh - @top_bar_height - 40px) ;
     padding:20px;
@@ -158,7 +208,17 @@ div{
     }
   }
 }
-
+.innerBox{
+  margin-top: 20px;
+  height: 5vh;
+  .dark{
+  display: flex;
+  justify-content: space-between;
+  height: 5vh;
+  line-height: 5vh;
+  }
+ 
+}
 .v-enter-active,
 .v-leave-active {
   transition: opacity 0.6s ease;
