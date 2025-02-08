@@ -54,4 +54,25 @@ export default [
             return { code: 200, data: { checkUser } }
         },
     },
+    //用户退出登录
+    {
+        url: '/api/user/logout', // 接口的请求路径
+        method: 'post', // 请求方法
+        response: ({ body }) => {
+            const { token } = body;
+            // 简单的 token 验证逻辑（根据实际情况调整）
+            if (!token) {
+                return {
+                    success: false,
+                    message:'未提供 token，退出登录失败。',
+                };
+            }
+            // 模拟 token 验证通过，退出登录
+            // 在实际应用中，这里可能需要清除 token 或进行其他清理操作
+            return {
+                success: true,
+                message: '退出登录成功。',
+            };
+        },
+    },
 ]

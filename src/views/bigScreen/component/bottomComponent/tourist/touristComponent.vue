@@ -50,16 +50,20 @@ function initEchart(){
                     borderColor: '#294D99',
                     borderWidth: 1,
                     shadowBlur: 2,
-                    shadowColor: 'rgba(0, 0, 0, 0.25)'
+                    shadowColor: 'rgba(0, 0, 0, 0.25)',
+                    
                 }
             },
          label: {
                         formatter: '21.7%',
-                        textStyle: {
+                         textStyle: {
                             fontSize: 35,
                             fontFamily: 'Lobster Two'
                         }
-                    }
+                       
+                    },
+  
+         
                
     }],
  

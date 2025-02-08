@@ -7,14 +7,14 @@
             <!-- 头像 -->
            <img :src="useUserStore().avator" style=" margin-right: 10px;border-radius:40px;width:40px;height:40px;margin-left: 10px;"/>
            <!-- 下拉退出登录 -->
-   <el-dropdown @command="handleCommand">
+   <el-dropdown>
     <span class="el-dropdown-link">
       {{useUserStore().userName}}
     <el-icon class="el-icon--right"><arrow-down /></el-icon>
     </span>
     <template #dropdown>
       <el-dropdown-menu>
-        <el-dropdown-item command="已退出登录！" divide>
+        <el-dropdown-item>
           <div @click="logout">退出登录</div>
         </el-dropdown-item>
       </el-dropdown-menu>
@@ -27,7 +27,6 @@
 </template>
 
 <script setup lang="ts">
-  import { ElMessage } from 'element-plus';
   import { useRefreshStore } from '@/store/modules/refresh';
   import {Setting, FullScreen, Refresh,ArrowDown}from '@element-plus/icons-vue'
   import { useUserStore } from '@/store/modules/user';
@@ -39,9 +38,6 @@
  
   const $router=useRouter()
   const $route=useRoute()
-const handleCommand = (command: string | number | object) => {
-  ElMessage(`${command}`)
-}
 //刷新的回调
 const refresh=()=>{
 //事件触发以后取反,改变仓库里的数据
@@ -65,13 +61,16 @@ document.exitFullscreen()
 const logout=()=>{
   //第一步往服务器发请求,把token注销掉
   //第二步把pina仓库里面的token与用户相关的数据通通删掉
+  //我们通过调用pina仓库里的layOut方法来实现这两步
   useUserStore().logOut()
+  //清空token方便路由跳转
+  useUserStore().storeToken=''
   //第三步路由跳转
   $router.push({path:'/login',query:{
     redirect:$route.path
   }})
+  console.log(useUserStore().storeToken);
   
-
 }
 //根据token请求头像,用户名
 let userHead=ref()

@@ -18,9 +18,8 @@ const token = userStore.storeToken
 //根据token判断登录状态
 //如果有token说明我们已经登录了,那么只要不是登录页面我们都有权利访问
 if(token){
-//登录成功不让他访问login
+//登录成功不让他访问login,退出登录让他访问
 if(to.path=='/login'){
-
     next('/home')
 }
 else{
@@ -41,10 +40,14 @@ else{
 console.log(from);
 
 })
-// //全局后置路由守卫
+//全局后置路由守卫
 router.afterEach((to,from)=>{
 //进度条结束
 nprogress.done()
 document.title=`神威管理-${to.meta.title}`
-console.log(from);
+//如果是从大屏这个组件来的我们就要刷新来清除浏览器缓存
+if(from.path==='/bigScreen'){
+        window.location.reload();
+    
+}
 })

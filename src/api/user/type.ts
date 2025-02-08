@@ -35,3 +35,8 @@ export interface userResponseData{
     code:number,
     data:user,
 }
+//退出登录返回的数据类型
+export interface logOutResponse{
+    success:boolean,
+    message:string
+}
