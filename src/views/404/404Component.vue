@@ -23,7 +23,7 @@ const back=()=>{
     .container{
     width: 60%;
     height:100vh;
-    background: url('@/assets/404.gif') no-repeat;
+    background: url('@/assets/404/404.gif') no-repeat;
     background-size: contain;
     }
     .button{
