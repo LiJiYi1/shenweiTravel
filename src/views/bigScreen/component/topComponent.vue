@@ -5,7 +5,7 @@
             <div class="home" @click="$router.push('/home')">首页</div>
         </div>
         <div class="center">
-            <div class="title">神威物流管理大屏可视化</div>
+            <div class="title">神威管理大屏可视化</div>
         </div>
         <div class="right">
           <slot class="fullScreen"></slot>
@@ -75,7 +75,7 @@ clearInterval(timer.value)
             height: 90px;
             text-align: center;
             line-height: 90px;
-            font-size:30px;
+            font-size:40px;
             color:#29fcff;
             background: url('@/assets/bigScreen/images/dataScreen-header-center-bg.png') no-repeat;
             background-size: cover;

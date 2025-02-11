@@ -1,24 +1,30 @@
 
 
+//引入能切换语言的文字
 const login=()=>import('@/views/login/loginComponent.vue')
 const notFound = () => import('@/views/404/404Component.vue')
 //主页和大屏
 const homeBigScreen=()=>import('@/views/bigScreen&home/indexComponent.vue')
 const home=()=>import('@/views/bigScreen&home/home/homeComponet.vue')
 const bigScreen =()=>import('@/views/bigScreen/bigScreen.vue')
-//权限管理
-const permission=()=>import('@/views/permission/permissionCharge.vue')
-const userCharge=()=>import('@/views/permission/uersCharge.vue')
-const roleCharge = () => import('@/views/permission/roleCharge.vue')
-const menuCharge = () => import('@/views/permission/menuCharge.vue')
-//商品管理
-//一级路由
-const goodsCharge=()=>import('@/views/goods/goodsCharge.vue')
-//二级路由
-const SKUCharge=()=>import('@/views/goods/SKUCharge.vue')
-const attributeCharge = () => import('@/views/goods/attributeCharge.vue')
-const SPUCharge = () => import('@/views/goods/SPUCharge.vue')
-const brandCharge =()=>import('@/views/goods/brandCharge.vue')
+//酒店路由
+const Hotel = () => import('@/views/Hotel/hotelComponent.vue')
+//飞机票路由
+const airTicket=()=>import('@/views/Air ticket/AirTicket.vue')
+//火车票路由
+const trainTicket = () => import('@/views/Train ticket/TrainTicket.vue')
+//汽车船票
+const busBoat = () => import('@/views/busBoat/busBoat.vue')
+//门票活动
+const ticket = () => import('@/views/ticket/ticketComponent.vue')
+//租车
+const RentCar = () => import('@/views/RentCar/RentCar.vue')
+//旅游
+const travel = () => import('@/views/travel/travelComponent.vue')
+//全球购
+const Global = () => import('@/views/global Shopping/globalShopping.vue')
+//关于
+const about=()=>import('@/views/about/aboutComponent.vue')
 const route=[
     {
         path: '/login',
@@ -52,107 +58,99 @@ const route=[
         name:"home&bigScreen",
         component:homeBigScreen,
         children:[
-      
             {
                 path: '/home',
                 component: home,
                 name: 'home',//主页的路由
                 meta: {
                     icon: 'HomeFilled',
-                    title: '首页'
+                    title: '首页',
+                    Entitle:'Home'
                 },
 
             },
         ]
     },
     {
-        path:"/permission",
-        component:permission,
-        name:'permission',
+     path:'/hotel',
+     name:"hotel",
+     component:Hotel,
         meta: {
-            icon: 'Lock',
-            title: '权限管理'
-        },
-        redirect:'/permission/userCharge',
-        children:[
-        {
-        path:'/permission/userCharge',
-        component:userCharge,
-        name:'用户管理',
-                meta: {
-                    icon: 'User',
-                    title: '用户管理'
-                }
-        },
-        {
-        path: '/permission/roleCharge',
-        component: roleCharge,
-        name:'角色管理',
-            meta: {
-                icon: 'UserFilled',
-                title: '角色管理'
-            }
-        },
-        {
-        path: '/permission/menuCharge',
-        component: menuCharge,
-        name:"菜单管理",
-            meta: {
-                icon: 'Menu',
-                title: '菜单管理'
-            }
-        },
-      
-    ]
+         icon: 'OfficeBuilding',
+         title: '酒店',
+     }
     },
     {
-        path: "/goodsCharge",
-        component: goodsCharge,
-        name: 'goodsCharge',
+        path: '/airTicket',
+        name: "airTicket",
+        component: airTicket,
         meta: {
-            icon: 'ShoppingBag',
-            title: '商品管理'
-        },
-        redirect:'/goodsCharge/brandCharge',
-        children: [
-        
-            {
-                path: '/goodsCharge/attributeCharge',
-                component: attributeCharge,
-                name: '属性管理',
-                meta: {
-                    icon: 'QuestionFilled',
-                    title: '属性管理'
-                }
-            },
-            {
-                path: '/goodsCharge/SKUCharge',
-                component: SKUCharge,
-                name: 'SKU管理',
-                meta: {
-                    icon: 'Menu',
-                    title: 'SKU管理'
-                }
-            },
-            {
-                path: '/goodsCharge/SPUCharge',
-                component:SPUCharge,
-                name: "SPU管理",
-                meta: {
-                    icon: 'Menu',
-                    title: 'SPU管理'
-                }
-            },
-            {
-                path: '/goodsCharge/brandCharge',
-                component: brandCharge,
-                name: "品牌管理",
-                meta: {
-                    icon: 'ShoppingCart',
-                    title: '品牌管理'
-                }
-            },
-        ]
+            icon: 'Promotion',
+            title: '飞机票',
+        }
+    },
+    {
+        path: '/trainTicket',
+        name: "trainTicket",
+        component: trainTicket,
+        meta: {
+            icon: 'Van',
+            title: '火车票',
+        }
+    },
+    {
+        path: '/busBoat',
+        name: "busBoat",
+        component: busBoat,
+        meta: {
+            icon: 'Ship',
+            title: '汽车.船票',
+        }
+    },
+    {
+        path: '/ticket',
+        name: "ticket",
+        component: ticket,
+        meta: {
+            icon: 'Ticket',
+            title: '门票.活动',
+        }
+    },
+    {
+        path: '/RentCar',
+        name: "RentCar",
+        component: RentCar,
+        meta: {
+            icon: 'Bicycle',
+            title: '用车',
+        }
+    },
+    {
+        path: '/travel',
+        name: "travel",
+        component: travel,
+        meta: {
+            icon: 'Flag',
+            title: '旅游',
+        }
+    },
+    {
+        path: '/Global',
+        name: "Global",
+        component: Global,
+        meta: {
+            icon: 'Shopping',
+            title: '全球购',
+        }
+    },
+    {
+        path: '/about',
+        name: "about",
+        component: about,
+        meta: {
+            icon: 'Menu',
+            title: '关于神威',
+        }
     },
     {
         path: '/:pathMatch(.*)*',

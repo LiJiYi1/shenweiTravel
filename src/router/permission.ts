@@ -44,7 +44,7 @@ console.log(from);
 router.afterEach((to,from)=>{
 //进度条结束
 nprogress.done()
-document.title=`神威管理-${to.meta.title}`
+document.title=`神威旅行-${to.meta.title}`
 //如果是从大屏这个组件来的我们就要刷新来清除浏览器缓存
 if(from.path==='/bigScreen'){
         window.location.reload();

@@ -4,7 +4,7 @@ function createUserList() {
         {
             userId: 1,
             avatar:'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
-            username: 'admin',
+            username: 'shenweiBoy',
             password: '666666',
             userName:'神威难藏泪',
             desc: '平台管理员',

@@ -4,12 +4,14 @@
         <el-icon size="40" style="margin-right:10px;" v-show="isFold" @click="toExpand()"><Fold/></el-icon>
         <el-icon size="40" style="margin-right:10px;" v-show="!isFold" @click="toFold()"><Expand/></el-icon>
         <el-breadcrumb :separator-icon="ArrowRight"  style="user-select: none;font-size:20px">
-        
         <el-breadcrumb-item v-for="(item,index) in $route.matched" :key="index" :to="{path:item.path}" v-show="item.meta.title">  
             <el-icon  style="vertical-align:bottom;">
                 <component :is="item.meta.icon" ></component>
             </el-icon>
-            {{item.meta.title}}</el-breadcrumb-item>
+            <!-- 语言不同用v-show处理 -->
+            <span v-show="lang==='zh-cn'">  {{item.meta.title}}</span>
+            <span v-show="lang==='en'">  {{item.meta.Entitle}}</span>
+        </el-breadcrumb-item>
         </el-breadcrumb>
         </div>  
 </template>
@@ -17,8 +19,18 @@
 <script setup lang="ts"> 
 
 import { ArrowRight } from '@element-plus/icons-vue';
-import { ref,inject, type Ref} from 'vue';
+import { ref,inject, type Ref,watch} from 'vue';
 import {useRoute} from 'vue-router'
+//引入能切换语言的文字
+import { useI18n } from 'vue-i18n'
+const { locale } = useI18n();
+let lang=ref(locale.value)
+//用侦听器侦听这玩意value的变化,他一变化就把变量lang给变了,方便进行切换
+watch(()=>locale.value,()=>{
+lang.value=locale.value
+
+})
+
 const $route=useRoute()
 //console.log($route.matched);
 
@@ -40,6 +52,8 @@ const toFold=()=>{
  isCollapse.value=false
 
 }
+
+
 
 </script>
 

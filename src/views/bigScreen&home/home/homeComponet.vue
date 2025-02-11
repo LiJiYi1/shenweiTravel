@@ -4,27 +4,48 @@
             <div class="card">
                     <img :src="useUserStore().avator" class="avator">
                     <div class="text">
-            <h1>{{time}}好,{{useUserStore().userName}}!</h1>
-            <p>欢迎来到神威管理平台!</p>
+            <h1>{{language.time}}！{{useUserStore().userName}}!</h1>
+            <p>{{language.welcome}}</p>
                     </div>
           
          </div>
         </el-card>
-        <img src="@/assets/home/weblcom.svg" alt="" class="welcom">
+        <WeatherComponent></WeatherComponent>
+     
     </div>
 </template>
 
 <script setup lang="ts">
 import { useUserStore } from '@/store/modules/user';
 import { getTime } from '@/utils/time';
-
-
-
-
-
-
-//当前事件
+import { computed } from 'vue'
+//引入能切换语言的文字
+import { useI18n } from 'vue-i18n'
+import WeatherComponent from '../weather/weatherComponent.vue';
+//当前时间
 const time=getTime()
+console.log(time);
+
+//使用语言切换
+const { t } = useI18n({
+legacy: false,
+locale:'zh-cn',
+messages:{
+    en: {
+        time:time.message1,
+        welcome:"Welcome to the Shengwei Travel Platform!",
+    },
+    'zh-cn': {
+        time:time.message,
+        welcome:"欢迎来到神威旅行平台!",
+    }
+}
+})
+const language={
+  welcome:computed(() => t('welcome')),
+  time:computed(() => t('time')),
+}
+
 </script>
 
 <style lang="less" scoped>

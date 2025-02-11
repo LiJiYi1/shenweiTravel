@@ -15,7 +15,7 @@
     <template #dropdown>
       <el-dropdown-menu>
         <el-dropdown-item>
-          <div @click="logout">退出登录</div>
+          <div @click="logout">{{language.logout}}</div>
         </el-dropdown-item>
       </el-dropdown-menu>
     </template>
@@ -32,10 +32,15 @@
   import { useUserStore } from '@/store/modules/user';
   import { onMounted,ref,inject} from 'vue';
   import { useRouter,useRoute } from 'vue-router';
+  //引入能切换语言的文字
+  import { useI18n } from 'vue-i18n'
+  const { t } = useI18n()
+  import { computed } from 'vue'
+  const language={
+  logout:computed(() => t('logout')),
+  }
   //从爷爷组件navComponent里拿到抽屉是否被拉开
   const drawer=inject('drawer')
-
- 
   const $router=useRouter()
   const $route=useRoute()
 //刷新的回调
@@ -69,8 +74,6 @@ const logout=()=>{
   $router.push({path:'/login',query:{
     redirect:$route.path
   }})
-  console.log(useUserStore().storeToken);
-  
 }
 //根据token请求头像,用户名
 let userHead=ref()

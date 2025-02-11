@@ -8,7 +8,7 @@
     <el-col :span="12" :xs=24>
       <el-form class="login_form" :model="login" :rules="rules" ref="logins">
         <h1>Hellow!</h1>
-        <h2>欢迎来到,智慧物流管理系统。</h2>
+        <h2>{{language.sayHellow}}</h2>
         <el-form-item prop="username">
         <el-input :prefix-icon="User" v-model="login.username"/>
         </el-form-item>
@@ -16,7 +16,7 @@
       <el-input type="password" class="login_password" :prefix-icon="Lock" v-model="login.password" :show-password="true"/>
         </el-form-item>
         <el-form-item>
-            <el-button :loading="loading" size="large" color="#ff9300" class="login" @click="userLogin">登录</el-button>
+            <el-button :loading="loading" size="large" color="#ff9300" class="login" @click="userLogin">{{language.login}}</el-button>
         </el-form-item>
       </el-form>
     </el-col>
@@ -33,17 +33,43 @@ import { reactive } from 'vue';
 import { useUserStore } from '@/store/modules/user';
 import { useRouter,useRoute} from 'vue-router';
 import { ElNotification } from 'element-plus';
-import { ref } from 'vue';
+import { ref,computed } from 'vue';
 import { getTime } from '@/utils/time';
+//引入能切换语言的文字
+import { useI18n } from 'vue-i18n'
+//当前时间
+const time=getTime()
+//使用语言切换
+const { t } = useI18n({
+legacy: false,
+locale:'zh-cn',
+messages:{
+    en: {
+        time:time.message1,
+        login:'login',
+        sayHellow:'Welcome to the Shengwei Travel Platform!'
+    },
+    'zh-cn': {
+        time:time.message,
+        login:'登录',
+        sayHellow:'欢迎来到神威旅行平台!'
+    }
+}
+})
+const language={
+  time:computed(() => t('time')),
+  login:computed(() => t('login')),
+  sayHellow:computed(() => t('sayHellow')),
+}
 //获取路由
 const $route:string=useRoute().query.redirect  as string
 //表单信息收集
-const login=reactive({username:'admin',password:'666666'})
+const login=reactive({username:'shenweiBoy',password:'666666'})
 //表单校验
 const rules = reactive({
   username: [
    { required: true, message: '用户名不能为空!', trigger: 'change' },
-   { min: 3, max: 5, message: '用户名长度要在3-5位之间!', trigger: 'change' },
+   { min: 3, max: 11, message: '用户名长度要在3-5位之间!', trigger: 'change' },
   ],
   password:[
    { required: true, message: '密码不能为空!', trigger: 'change' },
@@ -66,10 +92,23 @@ loading.value=true
 const result=store.loginPost(login)
 result.then(()=>{
 $router.push({path:$route||'home'})
+
+//根据状态实现路由里面标题的语言切换
+const languageType=localStorage.getItem('language')||'zh-cn'
+const welcome=ref();
+const welcome1=ref('欢迎回来!');
+if (languageType === 'en') {
+    welcome.value = getTime().message1
+    welcome1.value='Welcome back!'
+}
+else {
+    welcome.value = getTime().message
+    welcome1.value='欢迎回来!'
+}
 ElNotification({
     type: 'success',
-    title:`${getTime()}好,神威难藏泪!`,
-    message:`欢迎回来!`,
+    title:`${welcome.value||getTime()},神威难藏泪!`,
+    message:welcome1.value,
   })
 //登录成功,加载效果消失
 loading.value=false

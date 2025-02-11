@@ -3,47 +3,106 @@
       <div class="left_bar">
            <!-- logo -->
         <logoComponent class="logo" :class="{fold:isCollapse}"></logoComponent>
-       <el-row class="tac">
-     <el-menu
-     
+    
+          <el-row class="tac">
+         <el-menu
         class="el-menu-vertical-demo"
         :class="{fold:isCollapse}"
         :default-active="$route.path"
         :router="true"
         :collapse="isCollapse"
-      >
+      >     <!-- 滚动条防止超出页面 -->
+        <el-scrollbar height="91vh">
+        <!-- 主页导航 -->
         <el-menu-item index="/home">
           <el-icon><HomeFilled /></el-icon>
-          <span>首页</span>
+          <span>{{language.home}}</span>
         </el-menu-item>
+        <!-- 大屏导航 -->
         <el-menu-item index="/bigScreen">
           <el-icon><Monitor /></el-icon>
-          <span>大屏可视化</span>
+          <span>{{language.BigScreen}}</span>
         </el-menu-item>
-        <el-sub-menu index="/permission">
+        <!-- 酒店导航 -->
+        <el-sub-menu index="/hotel">
           <template #title>
-            <el-icon><Lock /></el-icon>
-            <span>权限管理</span>
+            <el-icon><OfficeBuilding/></el-icon>
+            <span>{{language.hotel}}</span>
           </template>
-            <el-menu-item index="/permission/userCharge"><el-icon><User/></el-icon>用户管理</el-menu-item>
-            <el-menu-item index="/permission/roleCharge"><el-icon><UserFilled /></el-icon>角色管理</el-menu-item>
-            <el-menu-item index="/permission/menuCharge"><el-icon><Menu/></el-icon>菜单管理</el-menu-item>
-     
+            <el-menu-item index="/hotel"><el-icon><User/></el-icon>国内酒店</el-menu-item>
+            <el-menu-item index="/hotel"><el-icon><User/></el-icon>海外酒店</el-menu-item>
         </el-sub-menu>
-        <el-sub-menu index="/goodsCharge">
+        <!-- 机票导航 -->
+        <el-sub-menu index="/airTicket">
           <template #title>
-            <el-icon><ShoppingBag /></el-icon>
-            <span>商品管理</span>
+            <el-icon><Promotion /></el-icon>
+            <span>{{language.air}}</span>
           </template>
             <el-menu-item index="/goodsCharge/brandCharge"><el-icon><ShoppingCart /></el-icon>品牌管理</el-menu-item>
-            <el-menu-item index="/goodsCharge/attributeCharge"><el-icon><QuestionFilled /></el-icon>属性管理</el-menu-item>
-            <el-menu-item index="/goodsCharge/SPUCharge"><el-icon><Menu /></el-icon>SPU</el-menu-item>
-            <el-menu-item index="/goodsCharge/SKUCharge"><el-icon><Menu /></el-icon>SKU</el-menu-item>
         </el-sub-menu>
-      
+        <!-- 火车票导航 -->
+        <el-sub-menu index="/trainTicket">
+          <template #title>
+            <el-icon><Van /></el-icon>
+            <span>{{language.train}}</span>
+          </template>
+            <el-menu-item index="/goodsCharge/brandCharge"><el-icon><ShoppingCart /></el-icon>国内火车票</el-menu-item>
+            <el-menu-item index="/goodsCharge/brandCharge"><el-icon><ShoppingCart /></el-icon>国际/中国港澳台</el-menu-item>
+        </el-sub-menu>
+        <!-- 汽车和船票导航 -->
+        <el-sub-menu index="/busBoat">
+          <template #title>
+           <el-icon><Ship /></el-icon>
+            <span>{{language.carShip}}</span>
+          </template>
+            <el-menu-item index="/goodsCharge/brandCharge"><el-icon><ShoppingCart /></el-icon>汽车票</el-menu-item>
+            <el-menu-item index="/goodsCharge/brandCharge"><el-icon><ShoppingCart /></el-icon>船票</el-menu-item>
+        </el-sub-menu>
+        <!-- 门票.活动 -->
+        <el-sub-menu index="/ticket">
+          <template #title>
+            <el-icon><Ticket /></el-icon>
+            <span>{{language.ticket}}</span>
+          </template>
+            <el-menu-item index="/goodsCharge/brandCharge"><el-icon><ShoppingCart /></el-icon>品牌管理</el-menu-item>
+        </el-sub-menu>
+        <!-- 租车 -->
+        <el-sub-menu index="/RentCar">
+          <template #title>
+            <el-icon><Bicycle /></el-icon>
+            <span>{{language.RentCar}}</span>
+          </template>
+            <el-menu-item index="/goodsCharge/brandCharge"><el-icon><ShoppingCart /></el-icon>品牌管理</el-menu-item>
+        </el-sub-menu>
+        <!-- 旅游 -->
+        <el-sub-menu index="/travel">
+          <template #title>
+            <el-icon><Flag /></el-icon>
+            <span>{{language.Travel}}</span>
+          </template>
+            <el-menu-item index="/goodsCharge/brandCharge"><el-icon><ShoppingCart /></el-icon>品牌管理</el-menu-item>
+        </el-sub-menu>
+        <!-- 全球购 -->
+        <el-sub-menu index="/Global">
+          <template #title>
+            <el-icon><ShoppingBag /></el-icon>
+            <span>{{language.shopping}}</span>
+          </template>
+            <el-menu-item index="/goodsCharge/brandCharge"><el-icon><ShoppingCart /></el-icon>名店购</el-menu-item>
+            <el-menu-item index="/goodsCharge/brandCharge"><el-icon><ShoppingCart /></el-icon>银联特惠</el-menu-item>
+            <el-menu-item index="/goodsCharge/brandCharge"><el-icon><ShoppingCart /></el-icon>外币兑换</el-menu-item>
+        </el-sub-menu>
+        <!-- 关于神威 -->
+        <el-menu-item index="/about">
+          <el-icon><Menu /></el-icon>
+          <span>{{language.about}}</span>
+        </el-menu-item>
+        </el-scrollbar>
       </el-menu>
-        </el-row>
-         </div>
+          </el-row>
+       
+       
+      </div>
       <!-- 顶部栏 -->
      <div class="top_bar" :class="{fold:isCollapse}"> 
       <topBar></topBar>
@@ -55,12 +114,13 @@
          </transition>
       </RouterView> 
 
-     <!-- 暗黑模式控制的抽屉 -->
-  <el-drawer v-model="drawer"  :with-header="false">
-    <h4>主题设置</h4>
+     <!-- 主题设置抽屉 -->
+     <el-drawer v-model="drawer"  :with-header="false">
+    <h4>{{language.themes}}</h4>
       <div class="innerBox">
-         <div class="dark">
-        <div class="title">暗黑模式</div>
+        <!-- 暗黑模式控制 -->
+        <div class="dark">
+        <div class="title">{{language.dark}}</div>
         <el-switch
     v-model="dark"
     :active-icon="Moon" 
@@ -69,7 +129,11 @@
     inline-prompt
     style="--el-switch-on-color:#000000 ; --el-switch-off-color: #b2afb5;height:5vh;width:50px;"
          />
-      </div> 
+        </div> 
+        <!-- 语言设置 -->
+        <h4>{{language.language}}</h4>
+        <LanguageComponent class="language"></LanguageComponent>
+       
       
     </div>
      </el-drawer>
@@ -84,6 +148,28 @@ import { useRoute,RouterView  } from 'vue-router';
 import {ref,provide, type Ref,watch,nextTick,onMounted} from 'vue';
 import { useRefreshStore } from '@/store/modules/refresh';
 import { Moon, Sunny } from '@element-plus/icons-vue'
+import LanguageComponent from './languageComponent.vue';
+//引入能切换语言的文字
+import { useI18n } from 'vue-i18n'
+const { t } = useI18n()
+import { computed } from 'vue'
+const language={
+  home:computed(() => t('home')),
+  BigScreen:computed(() => t('BigScreen')),
+  dark:computed(() => t('dark')),
+  themes: computed(() => t('themes')),
+  language: computed(() => t('language')),
+  hotel:computed(() => t('hotel')),
+  air:computed(() => t('air')),
+  train:computed(() => t('train')),
+  carShip:computed(() => t('carShip')),
+  ticket:computed(() => t('ticket')),
+  RentCar:computed(() => t('RentCar')),
+  Travel:computed(() => t('Travel')),
+  about:computed(() => t('about')),
+  shopping:computed(() => t('shopping')),
+}
+
 //暗黑模式开关
 let dark:Ref<boolean>=ref(JSON.parse(localStorage.getItem('dark') as string)||false)
 onMounted(()=>{
@@ -217,8 +303,14 @@ div{
   height: 5vh;
   line-height: 5vh;
   }
- 
+  h4{
+    margin-top:20px;
+  }
+  .language{
+    margin-top: 30px;
+  }
 }
+
 .v-enter-active,
 .v-leave-active {
   transition: opacity 0.6s ease;

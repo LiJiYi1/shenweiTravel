@@ -37,12 +37,25 @@ const useUserStore = defineStore('UserStore', () => {
     //退出登录的方法
     async function logOut(){
         try {
-            const response =await reqLogOut(storeToken.value as string)
+            const response = await reqLogOut(storeToken.value as string)
             console.log(response)
+            //根据状态实现退出登录里面标题的语言切换
+            const languageType = localStorage.getItem('language') || 'zh-cn'
+            const logged = ref('已退出登录');
+            const LogoutFailed = ref('退出登录失败!')
+            if (languageType === 'en') {
+                logged.value = 'Logged out!'
+                LogoutFailed.value ='Logout failed!'
+            }
+            else {
+                logged.value = '已退出登录!'
+                LogoutFailed.value='退出登录失败'
+            }
             if (response.success) {
+             
                 ElNotification({
                     type: 'warning',
-                    title: `已退出登录!`,
+                    title: logged.value,
                 })
                 // 执行相应的退出登录逻辑，如清除本地存储的 token 等
                 storeToken.value = ''
@@ -51,10 +64,10 @@ const useUserStore = defineStore('UserStore', () => {
                 //存储的头像去掉
                 avator.value = ''
                 localStorage.removeItem('token')
-            } else {
+                } else {
                 ElNotification({
                     type: 'error',
-                    title: `退出登录失败!`,
+                    title: LogoutFailed.value,
                     message: `${response.message}`,
                 })
                 console.error(response.message);
