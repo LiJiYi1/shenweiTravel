@@ -9,8 +9,8 @@
                 <component :is="item.meta.icon" ></component>
             </el-icon>
             <!-- 语言不同用v-show处理 -->
-            <span v-show="lang==='zh-cn'">  {{item.meta.title}}</span>
-            <span v-show="lang==='en'">  {{item.meta.Entitle}}</span>
+            <span v-show="lang==='zh-cn'">&nbsp;{{item.meta.title}}</span>
+            <span v-show="lang==='en'">&nbsp;{{item.meta.Entitle}}</span>
         </el-breadcrumb-item>
         </el-breadcrumb>
         </div>  

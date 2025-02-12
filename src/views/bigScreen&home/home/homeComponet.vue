@@ -11,7 +11,7 @@
          </div>
         </el-card>
         <WeatherComponent></WeatherComponent>
-     
+        <BottomComponent></BottomComponent>
     </div>
 </template>
 
@@ -22,6 +22,7 @@ import { computed } from 'vue'
 //引入能切换语言的文字
 import { useI18n } from 'vue-i18n'
 import WeatherComponent from '../weather/weatherComponent.vue';
+import BottomComponent from '@/components/bottomComponent.vue';
 //当前时间
 const time=getTime()
 console.log(time);

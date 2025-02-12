@@ -2,13 +2,29 @@
     <div >
     <div  ref="containerRef" style="height:100vh;overflow-y: auto;">
        <div class="top" id="神威旅行简介">
-             <div style="margin-left:11%;display:flex" flex="1" >
+             <div style="display:flex" flex="1" >
             <img src="@/assets/home/logo.webp" alt="" style="width: 60px;" >
             <h1 style="font-size: 30px;margin-top:15px;color:burlywood">神威旅行</h1>
              </div>
-            
-            <div flex="1" style="margin-left: 20%;" @click="back">
-                <el-button style="margin-top: 12px;height:40px;">
+              
+            <div flex="1" style="margin-left: 20%;display:flex;">
+                <el-popover
+                placement="top-start"
+                title="访问客服中心"
+                :width="200"
+                trigger="hover"
+                content="境内：95010&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp或 400-830-6666&nbsp
+                    中国香港：+852-3008-3295&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                    中国澳门：+86-21 3406-4888&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                    中国台湾：+86-21 3406-4888&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                    其他国家和地区：+86-21-3406-4888"
+                >
+                <template #reference>
+                <div class="m-2" style="margin-top: 12px;padding-right:22px;line-height:38px;height:38px;margin-left: 120px;border-right:1px solid"><el-icon><PhoneFilled /></el-icon>联系客服</div>
+                </template>
+                </el-popover>
+                <el-button  @click="back" style="margin-top: 12px;height:40px;margin-left: 40px;">
                     <el-icon size="20"><HomeFilled/></el-icon>
                     <p style="line-height:20px;font-size:20px">返回首页</p>
                 </el-button>
@@ -78,8 +94,9 @@
         </div>
        </div>
        <img src="@/assets/about/env1.png" alt="" style="width: 100%;margin-top:80px">
+       <BottomComponent></BottomComponent>
     </div>
-       
+    
   
     
     </div>
@@ -97,6 +114,7 @@
           <el-anchor-link href="#家庭友好" title="家庭友好" />
     </el-anchor>
     </el-card>
+    
    
       
 </template>
@@ -105,6 +123,7 @@
 import { HomeFilled } from '@element-plus/icons-vue';
 import { useRouter } from 'vue-router';
 import { ref } from 'vue'
+import BottomComponent from '@/components/bottomComponent.vue';
 
 const containerRef = ref<HTMLElement | null>(null)
 
@@ -122,11 +141,12 @@ $router.push('/home')
 <style lang="less" scoped>
    div{
     user-select: none;
-   
     .top{
         width: 80%;
         display: flex;
         justify-content: space-between;
+        margin-left: 11%;
+       
     }
     .header{
         width: 100%;

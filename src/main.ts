@@ -36,7 +36,8 @@ messages:{
         RentCar:"Rent a car",
         Travel:'Travel',
         about: "About Us",
-        shopping: "Global shopping"
+        shopping: "Global shopping",
+        money:"Foreign exchange"
     },
     'zh-cn': {
         name:'神威旅行',
@@ -55,6 +56,7 @@ messages:{
         Travel:"旅游",
         about:"关于神威",
         shopping: "全球购",
+        money:"外币兑换"
     }
 }
 })

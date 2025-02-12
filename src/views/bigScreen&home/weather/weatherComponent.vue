@@ -6,7 +6,8 @@
         <el-select
         v-model="Region"
         placeholder="山东省"
-        style="width: 100px;margin-top:20px"
+        style="width: 100px;margin-top:20px;"
+
         >
         <el-option @click="set()" :label="item.name" :value="item.name" v-for="(item,index) in city" :key="index"/>
         </el-select>
@@ -14,14 +15,12 @@
         <div v-for="(item,index) in city" :key="index" >
             <el-select
             v-model="region"
-            style="width: 100px;margin-top:20px"
+            style="width: 100px;margin-top:20px;margin-left:20px"
             v-if="item.name===Region">
                <el-option @click="getData(item1.name)" :label="item1.name" :value="item1.name" v-for="(item1,index1) in item.city" :key="index1"/> 
             </el-select>
         </div>
-     
-     
-        <h1>天气预报</h1>
+        <h1 style="margin-left:20px">天气预报</h1>
     </div>
    
        <div class="box">

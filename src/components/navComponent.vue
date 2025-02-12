@@ -89,8 +89,8 @@
             <span>{{language.shopping}}</span>
           </template>
             <el-menu-item index="/goodsCharge/brandCharge"><el-icon><ShoppingCart /></el-icon>名店购</el-menu-item>
-            <el-menu-item index="/goodsCharge/brandCharge"><el-icon><ShoppingCart /></el-icon>银联特惠</el-menu-item>
-            <el-menu-item index="/goodsCharge/brandCharge"><el-icon><ShoppingCart /></el-icon>外币兑换</el-menu-item>
+            <el-menu-item index="/goodsCharge/brandCharge"><el-icon><WalletFilled /></el-icon>银联特惠</el-menu-item>
+            <el-menu-item index="/Global/exchangeMoney"><el-icon><Wallet /></el-icon>{{language.money}}</el-menu-item>
         </el-sub-menu>
         <!-- 关于神威 -->
         <el-menu-item index="/about">
@@ -168,6 +168,7 @@ const language={
   Travel:computed(() => t('Travel')),
   about:computed(() => t('about')),
   shopping:computed(() => t('shopping')),
+  money:computed(()=>t('money'))
 }
 
 //暗黑模式开关
@@ -260,7 +261,7 @@ div{
       transition: all 0.6s;
      overflow: hidden;
       &.fold{
-        width: 50px;
+        width: 49.1px;
       }
     }
     }

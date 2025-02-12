@@ -1,5 +1,3 @@
-
-
 //引入能切换语言的文字
 const login=()=>import('@/views/login/loginComponent.vue')
 const notFound = () => import('@/views/404/404Component.vue')
@@ -23,6 +21,7 @@ const RentCar = () => import('@/views/RentCar/RentCar.vue')
 const travel = () => import('@/views/travel/travelComponent.vue')
 //全球购
 const Global = () => import('@/views/global Shopping/globalShopping.vue')
+const exchange=()=>import('@/views/global Shopping/exchangeMoney/exchangeMoney.vue')
 //关于
 const about=()=>import('@/views/about/aboutComponent.vue')
 const route=[
@@ -139,9 +138,22 @@ const route=[
         name: "Global",
         component: Global,
         meta: {
-            icon: 'Shopping',
+            icon: 'ShoppingBag',
             title: '全球购',
-        }
+            Entitle:'Global shopping'
+        },
+        children: [
+            {
+                path: '/Global/exchangeMoney',
+                name: "exchangeMoney",
+                component: exchange,
+                meta: {
+                    icon: 'Wallet',
+                    title: '外币兑换',
+                    Entitle:'Foreign exchange'
+                }
+            }
+        ],
     },
     {
         path: '/about',
