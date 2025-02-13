@@ -29,8 +29,8 @@
             <el-icon><OfficeBuilding/></el-icon>
             <span>{{language.hotel}}</span>
           </template>
-            <el-menu-item index="/hotel"><el-icon><User/></el-icon>国内酒店</el-menu-item>
-            <el-menu-item index="/hotel"><el-icon><User/></el-icon>海外酒店</el-menu-item>
+            <el-menu-item index="/hotel/Demostic"><el-icon><MapLocation /></el-icon>{{language.Domestic}}</el-menu-item>
+            <el-menu-item index="/hotel/Overseas"><el-icon><Location /></el-icon>{{language.Overseas}}</el-menu-item>
         </el-sub-menu>
         <!-- 机票导航 -->
         <el-sub-menu index="/airTicket">
@@ -88,8 +88,8 @@
             <el-icon><ShoppingBag /></el-icon>
             <span>{{language.shopping}}</span>
           </template>
-            <el-menu-item index="/goodsCharge/brandCharge"><el-icon><ShoppingCart /></el-icon>名店购</el-menu-item>
-            <el-menu-item index="/goodsCharge/brandCharge"><el-icon><WalletFilled /></el-icon>银联特惠</el-menu-item>
+            <el-menu-item index="/Global/purChase"><el-icon><ShoppingCart /></el-icon>{{language.purchase}}</el-menu-item>
+            <el-menu-item index="/Global/UnionPay"><el-icon><WalletFilled /></el-icon>{{language.UnionPay}}</el-menu-item>
             <el-menu-item index="/Global/exchangeMoney"><el-icon><Wallet /></el-icon>{{language.money}}</el-menu-item>
         </el-sub-menu>
         <!-- 关于神威 -->
@@ -168,7 +168,11 @@ const language={
   Travel:computed(() => t('Travel')),
   about:computed(() => t('about')),
   shopping:computed(() => t('shopping')),
-  money:computed(()=>t('money'))
+  money:computed(()=>t('money')),
+  UnionPay:computed(()=>t('UnionPay')),
+  purchase:computed(()=>t('purchase')),
+  Domestic:computed(()=>t('Domestic')),
+  Overseas:computed(()=>t('Overseas')),
 }
 
 //暗黑模式开关
@@ -249,6 +253,7 @@ div{
     }
     }
     .tac{
+      user-select: none;
         position: absolute;
       top:@left_logo_height;
       color: white;

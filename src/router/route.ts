@@ -1,3 +1,5 @@
+
+
 //引入能切换语言的文字
 const login=()=>import('@/views/login/loginComponent.vue')
 const notFound = () => import('@/views/404/404Component.vue')
@@ -7,6 +9,8 @@ const home=()=>import('@/views/bigScreen&home/home/homeComponet.vue')
 const bigScreen =()=>import('@/views/bigScreen/bigScreen.vue')
 //酒店路由
 const Hotel = () => import('@/views/Hotel/hotelComponent.vue')
+const Domestic = () => import('@/views/Hotel/Domestic/DomesticHotel.vue')
+const Overseas= () => import('@/views/Hotel/Overseas/OverseasHotel.vue')
 //飞机票路由
 const airTicket=()=>import('@/views/Air ticket/AirTicket.vue')
 //火车票路由
@@ -22,6 +26,8 @@ const travel = () => import('@/views/travel/travelComponent.vue')
 //全球购
 const Global = () => import('@/views/global Shopping/globalShopping.vue')
 const exchange=()=>import('@/views/global Shopping/exchangeMoney/exchangeMoney.vue')
+const UnionPay=()=>import('@/views/global Shopping/UnionPay/UnionPay.vue')
+const purChase=()=>import('@/views/global Shopping/Purchase/PurchaseComponent.vue')
 //关于
 const about=()=>import('@/views/about/aboutComponent.vue')
 const route=[
@@ -74,9 +80,35 @@ const route=[
      path:'/hotel',
      name:"hotel",
      component:Hotel,
-        meta: {
+     redirect:"/hotel/Demostic",
+     children:[
+      {
+             path: '/hotel/Demostic',
+             name: "Demostic",
+             component: Domestic ,
+             meta: {
+                 icon: 'MapLocation',
+                 title: '国内酒店',
+                 Entitle: "Domestic hotels"
+             }
+      },
+      {
+         path: '/hotel/Overseas',
+         name: "Overseas",
+          component: Overseas,
+          meta: {
+              icon: 'Location',
+              title: '海外酒店',
+              Entitle: " Overseas hotels"
+          }
+         },
+         
+
+     ],
+     meta: {
          icon: 'OfficeBuilding',
          title: '酒店',
+         Entitle:"Hotel"
      }
     },
     {
@@ -137,6 +169,7 @@ const route=[
         path: '/Global',
         name: "Global",
         component: Global,
+        redirect:'/Global/purChase',
         meta: {
             icon: 'ShoppingBag',
             title: '全球购',
@@ -152,7 +185,27 @@ const route=[
                     title: '外币兑换',
                     Entitle:'Foreign exchange'
                 }
-            }
+            },
+            {
+                path: '/Global/UnionPay',
+                name: "UnionPay",
+                component: UnionPay,
+                meta: {
+                    icon: 'WalletFilled',
+                    title: '银联特惠',
+                    Entitle: 'UnionPay special offers'
+                }
+            },
+            {
+                path: '/Global/purChase',
+                name: "purChase",
+                component: purChase,
+                meta: {
+                    icon: 'WalletFilled',
+                    title: '名店购',
+                    Entitle: 'Famous store purchase'
+                }
+            },
         ],
     },
     {

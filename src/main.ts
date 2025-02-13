@@ -37,7 +37,11 @@ messages:{
         Travel:'Travel',
         about: "About Us",
         shopping: "Global shopping",
-        money:"Foreign exchange"
+        money:"Foreign exchange",
+        UnionPay:"UnionPay special offers",
+        purchase:"Famous store purchase",
+        Domestic:"Domestic hotel",
+        Overseas:"Overseas hotel"
     },
     'zh-cn': {
         name:'神威旅行',
@@ -56,7 +60,11 @@ messages:{
         Travel:"旅游",
         about:"关于神威",
         shopping: "全球购",
-        money:"外币兑换"
+        money:"外币兑换",
+        UnionPay:"银联特惠",
+        purchase:"名店购",
+        Domestic:"国内酒店",
+        Overseas:"海外酒店"
     }
 }
 })
