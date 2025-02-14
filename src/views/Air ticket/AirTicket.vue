@@ -1,10 +1,12 @@
 <template>
     <div>
-       www
+       <NavComponent></NavComponent>
     </div>
 </template>
 
 <script setup lang="ts">
+import NavComponent from '@/components/navComponent.vue';
+
   
 </script>
 

@@ -11,7 +11,8 @@
         :default-active="$route.path"
         :router="true"
         :collapse="isCollapse"
-      >     <!-- 滚动条防止超出页面 -->
+        :unique-opened="true"
+         >     <!-- 滚动条防止超出页面 -->
         <el-scrollbar height="91vh">
         <!-- 主页导航 -->
         <el-menu-item index="/home">
@@ -38,7 +39,8 @@
             <el-icon><Promotion /></el-icon>
             <span>{{language.air}}</span>
           </template>
-            <el-menu-item index="/goodsCharge/brandCharge"><el-icon><ShoppingCart /></el-icon>品牌管理</el-menu-item>
+            <el-menu-item index="/airTicket/DomesticAir"><el-icon><MapLocation /></el-icon>{{language.DomesticAir}}</el-menu-item>
+            <el-menu-item index="/airTicket/InternationalAir"><el-icon><Location/></el-icon><p style="white-space: nowrap;overflow:hidden;text-overflow:ellipsis">{{language.International}}</p></el-menu-item>
         </el-sub-menu>
         <!-- 火车票导航 -->
         <el-sub-menu index="/trainTicket">
@@ -147,7 +149,7 @@ import topBar from '@/components/topBar/topBar.vue';
 import { useRoute,RouterView  } from 'vue-router';
 import {ref,provide, type Ref,watch,nextTick,onMounted} from 'vue';
 import { useRefreshStore } from '@/store/modules/refresh';
-import { Moon, Sunny } from '@element-plus/icons-vue'
+import { Location, MapLocation, Moon, Sunny } from '@element-plus/icons-vue'
 import LanguageComponent from './languageComponent.vue';
 //引入能切换语言的文字
 import { useI18n } from 'vue-i18n'
@@ -173,6 +175,8 @@ const language={
   purchase:computed(()=>t('purchase')),
   Domestic:computed(()=>t('Domestic')),
   Overseas:computed(()=>t('Overseas')),
+  DomesticAir:computed(()=>t('DomesticAir')),
+  International:computed(()=>t('International')),
 }
 
 //暗黑模式开关

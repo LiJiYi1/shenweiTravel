@@ -41,7 +41,9 @@ messages:{
         UnionPay:"UnionPay special offers",
         purchase:"Famous store purchase",
         Domestic:"Domestic hotel",
-        Overseas:"Overseas hotel"
+        Overseas:"Overseas hotel",
+        DomesticAir:"Domestic",
+        International:"International/China Hong Kong Macao Taiwan"
     },
     'zh-cn': {
         name:'神威旅行',
@@ -64,7 +66,9 @@ messages:{
         UnionPay:"银联特惠",
         purchase:"名店购",
         Domestic:"国内酒店",
-        Overseas:"海外酒店"
+        Overseas:"海外酒店",
+        DomesticAir:"国内",
+        International:"国际/中国港澳台"
     }
 }
 })

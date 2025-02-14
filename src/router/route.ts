@@ -13,6 +13,8 @@ const Domestic = () => import('@/views/Hotel/Domestic/DomesticHotel.vue')
 const Overseas= () => import('@/views/Hotel/Overseas/OverseasHotel.vue')
 //飞机票路由
 const airTicket=()=>import('@/views/Air ticket/AirTicket.vue')
+const DomesticAir=()=>import('@/views/Air ticket/DomesticAir/DomesticAir.vue')
+const InternationalAir = () => import('@/views/Air ticket/InternationalAir/InternationalAir.vue')
 //火车票路由
 const trainTicket = () => import('@/views/Train ticket/TrainTicket.vue')
 //汽车船票
@@ -115,9 +117,33 @@ const route=[
         path: '/airTicket',
         name: "airTicket",
         component: airTicket,
+        redirect:"/airTicket/DomesticAir",
+        children:[
+            {
+                path: '/airTicket/DomesticAir',
+                name: "DomesticAir",
+                component: DomesticAir,
+                meta:{
+                    title:'国内',
+                    Entitle:"Domestic",
+                    icon: 'MapLocation',
+                }
+            },
+            {
+                path: '/airTicket/InternationalAir',
+                name: "InternationalAir",
+                component: InternationalAir,
+                meta: {
+                    title: '国际/中国港澳台',
+                    Entitle: "International/China Hong Kong Macao Taiwan",
+                    icon: 'Location',
+                }
+            }
+        ],
         meta: {
             icon: 'Promotion',
             title: '飞机票',
+            Entitle:"air Ticket"
         }
     },
     {
