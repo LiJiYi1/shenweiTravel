@@ -5,12 +5,15 @@
        <topBarleft></topBarleft>
         <!-- 右侧 -->
         <topBarRight></topBarRight>
+       
       </div>
-   
+    <!-- 右侧彩蛋 -->
+      <RightestComponent></RightestComponent>
       
 </template>
 
 <script setup lang="ts">
+import RightestComponent from '@/components/topBar/RightestComponent.vue';
 import topBarleft from './topBarleft.vue';
 import topBarRight from './topBarRight.vue';
 

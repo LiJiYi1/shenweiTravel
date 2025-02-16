@@ -43,7 +43,9 @@ messages:{
         Domestic:"Domestic hotel",
         Overseas:"Overseas hotel",
         DomesticAir:"Domestic",
-        International:"International/China Hong Kong Macao Taiwan"
+        International:"International/China Hong Kong Macao Taiwan",
+        color:"Theme color settings",
+        Train:"Domestic train ticket"
     },
     'zh-cn': {
         name:'神威旅行',
@@ -68,7 +70,9 @@ messages:{
         Domestic:"国内酒店",
         Overseas:"海外酒店",
         DomesticAir:"国内",
-        International:"国际/中国港澳台"
+        International:"国际/中国港澳台",
+        color:"主题颜色设置",
+        Train:"国内火车票"
     }
 }
 })

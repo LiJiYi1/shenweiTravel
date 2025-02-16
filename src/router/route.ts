@@ -17,6 +17,8 @@ const DomesticAir=()=>import('@/views/Air ticket/DomesticAir/DomesticAir.vue')
 const InternationalAir = () => import('@/views/Air ticket/InternationalAir/InternationalAir.vue')
 //火车票路由
 const trainTicket = () => import('@/views/Train ticket/TrainTicket.vue')
+const DomesticTrain = () => import('@/views/Train ticket/DomesticTrain/DomesticTrain.vue')
+const InternationalTrain = () => import('@/views/Train ticket/InternationalTrain/InternationalTrain.vue')
 //汽车船票
 const busBoat = () => import('@/views/busBoat/busBoat.vue')
 //门票活动
@@ -143,16 +145,39 @@ const route=[
         meta: {
             icon: 'Promotion',
             title: '飞机票',
-            Entitle:"air Ticket"
+            Entitle:"Air Ticket"
         }
     },
     {
         path: '/trainTicket',
         name: "trainTicket",
         component: trainTicket,
+        children: [
+            {
+                path: '/trainTicket/DomesticTrain',
+                name: "DomesticTrain",
+                component: DomesticTrain,
+                meta: {
+                    title: '国内火车票',
+                    Entitle: "Domestic train ticket",
+                    icon: 'MapLocation',
+                }
+            },
+            {
+                path: '/trainTicket/InternationalTrain',
+                name: "InternationalTrain",
+                component: InternationalTrain,
+                meta: {
+                    title: '国际/中国港澳台',
+                    Entitle: "International/China Hong Kong Macao Taiwan",
+                    icon: 'Location',
+                }
+            }
+        ],
         meta: {
             icon: 'Van',
             title: '火车票',
+            Entitle: "Train Ticket"
         }
     },
     {

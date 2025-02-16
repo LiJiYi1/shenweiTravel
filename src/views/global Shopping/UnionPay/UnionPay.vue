@@ -1,5 +1,5 @@
 <template>
-    <div> 
+    <div style="width:1236px"> 
          <img class="top" src="@/assets/global/UnionPay/advant.png" alt="">
           <img class="center" src="@/assets/global/UnionPay/use.png" alt="">
           <div class="bottom">

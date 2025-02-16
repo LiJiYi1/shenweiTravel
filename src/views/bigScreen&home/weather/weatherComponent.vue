@@ -22,7 +22,6 @@
         </div>
         <h1 style="margin-left:20px">天气预报</h1>
     </div>
-   
        <div class="box">
         <div class="innerBox">
             <div class="topTime">
@@ -46,7 +45,7 @@
                 <p>相对湿度:{{humidity}}%rh</p>
 
             </div>
-            <p>{{location}}{{time}}天气预报,今天{{low1}}℃-{{high1}}℃,{{ weatherNow }}, 风向情况:{{ direction1 }}风,总降水量:{{rainfall}}mm,相对湿度:{{humidity}}%。{{location}}
+            <p>{{location}}{{time1}}天气预报,今天{{low1}}℃-{{high1}}℃,{{ weatherNow }}, 风向情况:{{ direction1 }}风,总降水量:{{rainfall}}mm,相对湿度:{{humidity}}%。{{location}}
             今日生活指数: 交通指数,{{traffic}} ({{trafficDetail}}),运动指数,{{sport}} ({{sportDetail}}),
             未来3天,最低温度{{low2}}℃，最高温度{{high2}}℃,查询{{location}}实时、3天天气预报,上神威天气预报频道。</p>
         </div>
@@ -109,6 +108,7 @@ const Region=ref(localStorage.getItem('province'))||ref('山东省')
 const region=ref(localStorage.getItem('city'))||ref('威海市')
 //当前时间
 let time=ref(moment().format("YYYY年MM月DD日 hh:mm:ss"))
+let time1=ref(moment().format("YYYY年MM月DD日"))
 //计时器
 let timer=ref()
 //天气最后更新时间
@@ -172,6 +172,7 @@ getData(localStorage.getItem('city')||'威海市')
 //页面挂载红请求数据
 timer.value=setInterval(()=>{
     time.value=moment().format("YYYY年MM月DD日 hh:mm:ss")
+    time1.value=moment().format("YYYY年MM月DD日")
 },1000)
 })
 //点击省份选择的时候让市选择变成省会
@@ -243,13 +244,6 @@ weatherNow.value=data.data.results[0].now.text
 onBeforeUnmount(()=>{
 clearInterval(timer.value)
 })
-
-
-
-
-
-
-
 </script>
 
 <style lang="less" scoped>
@@ -264,6 +258,7 @@ div{
         width: 100%;
         height: 460px;
         background: url('@/assets/home/weather.jpg') no-repeat;
+        color:white;
         background-size: cover;
         display: flex;
         justify-content: center;
@@ -285,13 +280,13 @@ div{
                 justify-content: space-between;
                 margin-top: 40px;
                 h1{
-                    font-size: 6vw;
+                    font-size: 80px;
                 }
                 sup{
-                    font-size:5vh
+                    font-size:40px
                 }
                 p{
-                   font-size:4vh
+                   font-size:30px
                 }
             }
             .bottomWeather{
@@ -367,9 +362,13 @@ background-size: cover;
 }
 .img3{
 width: 18%;
-height:18vh;
+height:120px;
 background:url('@/assets/home/weather1.png') no-repeat;
 background-size: cover;
 margin-left: -20px;
 }
 </style>
+
+
+
+

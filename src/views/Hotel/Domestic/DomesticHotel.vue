@@ -1,10 +1,10 @@
 <template>
-    <div>
+<div @click="outSearch" style="width: 1236.3px;">
     <div style="display: flex;">
       <el-card class="search">
         <div class="top">
         <!-- 目的地 -->
-        <div class="to">
+        <div class="to"   @click="stop">
         <p>目的地</p>
           <el-input
           style="width: 180px;margin-top:10px;font-size:25px;height:70px"
@@ -13,11 +13,8 @@
           v-model="position"
           :suffix-icon="CaretBottom"
           @focus="search"
-          @blur="outSearch"
-
         />
-         </div>
-         <!-- 搜索提示 -->
+        <!-- 搜索提示 -->
         <div class="posSearch" v-show="posSearch">
             <el-tabs type="border-card">
                <el-tab-pane label="热门城市" :disabled="true">
@@ -44,8 +41,10 @@
                </el-tab-pane>
             </el-tabs>
         </div>
+         </div>
+         
         <!-- 关键词 -->
-        <div class="importantWord" >
+        <div class="importantWord"  @click="stop">
         <p style="margin-left:20px">关键词</p>
         <el-input
         style="width: 400px;height:70px;margin-left:20px;margin-top:10px;font-size:25px"
@@ -54,9 +53,7 @@
         clearable
         @focus="key"
         v-model="keys"
-        @blur="outkey"
         />
-        </div>
          <!-- 搜索提示 -->
         <div class="keySearch" v-show="keySearch">
             <el-tabs type="border-card">
@@ -71,6 +68,8 @@
             </el-tabs>
         </div>
         </div>
+       
+        </div>
         <div class="bt">
         <el-date-picker
         v-model="CheckInOut"
@@ -81,10 +80,11 @@
         style="font-size:20px;height:60px"
         size="large"
         :clearable="false"
+        :editable="false"
         @change="val"
       />
         </div>
-        <el-button style="width: 200px;height:60px;margin-top:20px;margin-left:225px;border-radius:20px">搜索酒店</el-button>
+        <el-button :color="color" style="width: 200px;height:60px;margin-top:20px;margin-left:225px;border-radius:20px">搜索酒店</el-button>
       </el-card>
       <el-card class="poetry">
         <div class="right">
@@ -103,7 +103,7 @@
     </div>
     <TicketRecommon></TicketRecommon>
      <BottomComponent></BottomComponent>
-    </div>
+ </div>
    
 </template>
 
@@ -113,7 +113,10 @@ import moment from 'moment';
 import { onMounted,onBeforeUnmount,ref } from 'vue';
 import { CaretBottom} from '@element-plus/icons-vue';
 import TicketRecommon from '@/components/ticketRecommon.vue';
-
+import { useColorStore } from '@/store/modules/color';
+import { storeToRefs } from 'pinia';
+//获得一个响应式的颜色
+let {color}=storeToRefs(useColorStore())
 //当前时间
 let time=ref(moment().format("YYYY.MM"))
 let time1=ref(moment().format("DD"))
@@ -140,23 +143,18 @@ function val(){
 //聚焦时搜索框展示
 function search(){
     posSearch.value=true
+    keySearch.value=false
 }
 //搜索提示框消失
 function outSearch(){
-setTimeout(() => {
     //选了之后让选择框消失
-posSearch.value=false
-}, 100);
-}
-function outkey(){
-setTimeout(() => {
-    //选了之后让选择框消失
-keySearch.value=false
-}, 100);
+    posSearch.value=false
+    keySearch.value=false
 }
 //聚焦式关键词显示
 const key=()=>{
     keySearch.value=true
+    posSearch.value=false
 }
 //改变输入框里的值
 const change=(name:string)=>{
@@ -164,19 +162,21 @@ position.value=name
 //选了之后让选择框消失
 posSearch.value=false
 }
-
 //改变关键词输入框的值
 const change1=(name:string)=>{
 keys.value=name
 //选了之后让选择框消失
 keySearch.value=false
 }
-
+//阻止事件委托
+const stop=(e)=>{
+e.stopPropagation()
+}
 onMounted(()=>{
 timer.value=setInterval(()=>{
     time.value=moment().format("YYYY.MM")
     time1.value=moment().format("DD")
-},1000)
+},200)
 })
 onBeforeUnmount(()=>{
 clearInterval(timer.value)

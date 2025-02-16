@@ -1,5 +1,5 @@
 <template>
-    <div> 
+    <div style="width:1236px"> 
         <!-- 搜索 -->
         <el-autocomplete
     v-model="state"
@@ -244,7 +244,7 @@ onMounted(() => {
 <style lang="less" scoped>
 div{
     .demo-tabs{
-        width: 1200px;
+        width: 1218px;
         margin-top: 40px;
     }
     .v-f{

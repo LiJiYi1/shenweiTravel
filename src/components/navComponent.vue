@@ -11,6 +11,7 @@
         :default-active="$route.path"
         :router="true"
         :collapse="isCollapse"
+        :active-text-color="color"
         :unique-opened="true"
          >     <!-- 滚动条防止超出页面 -->
         <el-scrollbar height="91vh">
@@ -48,8 +49,8 @@
             <el-icon><Van /></el-icon>
             <span>{{language.train}}</span>
           </template>
-            <el-menu-item index="/goodsCharge/brandCharge"><el-icon><ShoppingCart /></el-icon>国内火车票</el-menu-item>
-            <el-menu-item index="/goodsCharge/brandCharge"><el-icon><ShoppingCart /></el-icon>国际/中国港澳台</el-menu-item>
+            <el-menu-item index="/trainTicket/DomesticTrain"><el-icon><MapLocation /></el-icon>{{language.Train}}</el-menu-item>
+            <el-menu-item index="/trainTicket/InternationalTrain"><el-icon><Location/></el-icon><p style="white-space: nowrap;overflow:hidden;text-overflow:ellipsis">{{language.International}}</p></el-menu-item>
         </el-sub-menu>
         <!-- 汽车和船票导航 -->
         <el-sub-menu index="/busBoat">
@@ -102,20 +103,19 @@
         </el-scrollbar>
       </el-menu>
           </el-row>
-       
-       
       </div>
       <!-- 顶部栏 -->
      <div class="top_bar" :class="{fold:isCollapse}"> 
       <topBar></topBar>
       </div>
+
       <!-- 内容区加个动画效果,这是一个二级路由的路由出口-->
       <RouterView v-slot="{ Component }" class="main" :class="{fold:isCollapse}" v-if="flag">
          <transition>
              <component :is="Component" />
          </transition>
-      </RouterView> 
-
+      </RouterView>
+      
      <!-- 主题设置抽屉 -->
      <el-drawer v-model="drawer"  :with-header="false">
     <h4>{{language.themes}}</h4>
@@ -124,14 +124,21 @@
         <div class="dark">
         <div class="title">{{language.dark}}</div>
         <el-switch
-    v-model="dark"
-    :active-icon="Moon" 
-    :inactive-icon="Sunny"
-    @change="changeDark"
-    inline-prompt
-    style="--el-switch-on-color:#000000 ; --el-switch-off-color: #b2afb5;height:5vh;width:50px;"
+        v-model="dark"
+        :active-icon="Moon" 
+        :inactive-icon="Sunny"
+        @change="changeDark"
+        inline-prompt
+        style="--el-switch-on-color:#000000 ; --el-switch-off-color: #b2afb5;height:5vh;width:50px;"
          />
         </div> 
+        <div class="searchColor">
+          <div class="title">{{language.color}}</div>
+          <el-color-picker 
+          v-model="color" 
+          @change="changeColor"
+          />
+        </div>
         <!-- 语言设置 -->
         <h4>{{language.language}}</h4>
         <LanguageComponent class="language"></LanguageComponent>
@@ -139,7 +146,7 @@
       
     </div>
      </el-drawer>
- 
+   
 </template>
 
 <script setup lang="ts">
@@ -151,10 +158,19 @@ import {ref,provide, type Ref,watch,nextTick,onMounted} from 'vue';
 import { useRefreshStore } from '@/store/modules/refresh';
 import { Location, MapLocation, Moon, Sunny } from '@element-plus/icons-vue'
 import LanguageComponent from './languageComponent.vue';
+import { useColorStore } from '@/store/modules/color';
+import { storeToRefs } from 'pinia';
+//颜色变量
+let colorStore=useColorStore()
+let {color}=storeToRefs(colorStore)
+const changeColor=()=>{
+ colorStore.change(color.value)
+}
 //引入能切换语言的文字
 import { useI18n } from 'vue-i18n'
 const { t } = useI18n()
 import { computed } from 'vue'
+
 const language={
   home:computed(() => t('home')),
   BigScreen:computed(() => t('BigScreen')),
@@ -177,11 +193,16 @@ const language={
   Overseas:computed(()=>t('Overseas')),
   DomesticAir:computed(()=>t('DomesticAir')),
   International:computed(()=>t('International')),
+  color:computed(()=>t('color')),
+  Train:computed(()=>t('Train')),
 }
 
 //暗黑模式开关
 let dark:Ref<boolean>=ref(JSON.parse(localStorage.getItem('dark') as string)||false)
 onMounted(()=>{
+
+console.log(111);
+
 //刷新时我们要从本地拿到黑暗模式的状态,实现一个黑暗持久化
 let html=document.documentElement
 let darkStyle=JSON.parse(localStorage.getItem('dark') as string)
@@ -241,6 +262,7 @@ watch(()=>useRefreshStore().refresh,()=>{
 </script>
 
 <style lang="less" scoped>
+
 div{
   width: 100%;
   
@@ -258,7 +280,7 @@ div{
     }
     .tac{
       user-select: none;
-        position: absolute;
+      position: absolute;
       top:@left_logo_height;
       color: white;
       height: calc(100vh - @left_logo_height);
@@ -286,6 +308,7 @@ div{
     &.fold{
     left:@fold_length;
     width: calc(100% - @fold_length);
+    z-index: 10
   }
   }
   .main{
@@ -318,6 +341,12 @@ div{
   }
   .language{
     margin-top: 30px;
+  }
+  .searchColor{
+  display: flex;
+  justify-content: space-between;
+  height: 5vh;
+  line-height: 5vh;
   }
 }
 

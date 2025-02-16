@@ -1,9 +1,9 @@
 <template>
         <!-- 右侧 -->
         <div class="right">
-            <el-button :icon="Refresh" size="large" circle @click="refresh"/>
-            <el-button :icon="FullScreen" size="large" circle  @click="fullScreen"/>
-            <el-button :icon="Setting" size="large" @click="drawer=true" circle /> 
+            <el-button :color="color" :icon="Refresh" size="large" circle @click="refresh"/>
+            <el-button :color="color" :icon="FullScreen" size="large" circle  @click="fullScreen"/>
+            <el-button :color="color" :icon="Setting" size="large" @click="drawer=true" circle /> 
             <!-- 头像 -->
            <img :src="useUserStore().avator" style=" margin-right: 10px;border-radius:40px;width:40px;height:40px;margin-left: 10px;"/>
            <!-- 下拉退出登录 -->
@@ -36,6 +36,9 @@
   import { useI18n } from 'vue-i18n'
   const { t } = useI18n()
   import { computed } from 'vue'
+  import { useColorStore } from '@/store/modules/color';
+import { storeToRefs } from 'pinia';
+let {color}=storeToRefs(useColorStore())
   const language={
   logout:computed(() => t('logout')),
   }

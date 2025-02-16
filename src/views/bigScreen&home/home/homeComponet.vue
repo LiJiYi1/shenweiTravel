@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <el-card shadow="always">
+    <div style="width: 1236px;" >
+        <el-card shadow="always" >
             <div class="card">
                     <img :src="useUserStore().avator" class="avator">
                     <div class="text">
@@ -10,7 +10,7 @@
           
          </div>
         </el-card>
-        <WeatherComponent></WeatherComponent>
+        <WeatherComponent style="width: 1218px;"></WeatherComponent>
         <BottomComponent></BottomComponent>
     </div>
 </template>

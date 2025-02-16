@@ -24,10 +24,10 @@
                 <div class="m-2" style="margin-top: 12px;padding-right:22px;line-height:38px;height:38px;margin-left: 120px;border-right:1px solid"><el-icon><PhoneFilled /></el-icon>联系客服</div>
                 </template>
                 </el-popover>
-                <el-button  @click="back" style="margin-top: 12px;height:40px;margin-left: 40px;">
+                <div  @click="back" style="margin-top: 20px;height:40px;margin-left: 18px;display:flex;cursor:pointer">
                     <el-icon size="20"><HomeFilled/></el-icon>
                     <p style="line-height:20px;font-size:20px">返回首页</p>
-                </el-button>
+                </div>
             </div>
        </div>
        <div class="header">
@@ -94,7 +94,8 @@
         </div>
        </div>
        <img src="@/assets/about/env1.png" alt="" style="width: 100%;margin-top:80px">
-       <BottomComponent></BottomComponent>
+       <div style="display: flex;justify-content:center"><BottomComponent></BottomComponent></div>
+       
     </div>
     
   

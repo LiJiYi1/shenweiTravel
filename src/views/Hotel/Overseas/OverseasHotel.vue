@@ -1,10 +1,10 @@
 <template>
-    <div>
+    <div @click="outSearch" style="width: 1236.3px;">
     <div style="display: flex;">
       <el-card class="search">
         <div class="top">
         <!-- 目的地 -->
-        <div class="to">
+        <div class="to" @click="stop">
         <p>目的地</p>
           <el-input
           style="width: 160px;margin-top:10px;font-size:20px;height:70px"
@@ -13,11 +13,8 @@
           v-model="position"
           :suffix-icon="CaretBottom"
           @focus="search"
-          @blur="outSearch"
-        />
-         </div>
-         <!-- 搜索提示 -->
-        <div class="posSearch" v-show="posSearch">
+        /> <!-- 搜索提示 -->
+         <div class="posSearch" v-show="posSearch">
             <el-tabs type="border-card">
                <el-tab-pane label="热门城市" :disabled="true">
                 <span @click="change('马尔代夫')">马尔代夫</span>
@@ -34,6 +31,7 @@
                </el-tab-pane>
             </el-tabs>
         </div>
+         </div>
         <!-- 每间入住人数 -->
         <div class="number">
         <p>每间入住人数</p>
@@ -83,10 +81,11 @@
         style="font-size:20px;height:60px"
         size="large"
         :clearable="false"
+        :editable="false"
         @change="val"
       />
         </div>
-        <el-button style="width: 200px;height:60px;margin-top:20px;margin-left:225px;border-radius:20px">搜索酒店</el-button>
+        <el-button :color="color" style="width: 200px;height:60px;margin-top:20px;margin-left:225px;border-radius:20px">搜索酒店</el-button>
       </el-card>
       <el-card class="poetry">
         <div class="right">
@@ -116,7 +115,9 @@ import moment from 'moment';
 import { onMounted,onBeforeUnmount,ref } from 'vue';
 import { CaretBottom} from '@element-plus/icons-vue';
 import TicketRecommon from '@/components/ticketRecommon.vue';
-
+import { useColorStore } from '@/store/modules/color';
+import { storeToRefs } from 'pinia';
+let {color}=storeToRefs(useColorStore())
 //当前时间
 let time=ref(moment().format("YYYY.MM"))
 let time1=ref(moment().format("DD"))
@@ -155,12 +156,14 @@ posSearch.value=false
 }
 //提示消失
 function outSearch(){
-setTimeout(() => {
-    //选了之后让选择框消失
+//选了之后让选择框消失
 posSearch.value=false
-}, 100);
-}
 
+}
+//阻止事件委托
+const stop=(e)=>{
+e.stopPropagation()
+}
 
 onMounted(()=>{
 timer.value=setInterval(()=>{

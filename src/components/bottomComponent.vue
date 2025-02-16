@@ -1,5 +1,6 @@
 <template>
-    <div style="display:flex;justify-content:center">
+
+          <div style="display:flex;justify-content:center;width:1218px;">
         <el-card class="container">
             <div class="top">
                 <div class="first">
@@ -84,6 +85,8 @@
             
         </el-card>
     </div>
+
+  
 </template>
 
 <script lang="ts" setup>
