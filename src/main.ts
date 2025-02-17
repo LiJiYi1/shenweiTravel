@@ -31,7 +31,7 @@ messages:{
         hotel: "Hotel",
         air:'Air ticket',
         train:"Train ticket",
-        carShip: "Bus ticket.boat ticket",
+        carShip: "Bus ticket/Boat ticket",
         ticket:"Tickets.Events",
         RentCar:"Rent a car",
         Travel:'Travel',
@@ -45,7 +45,11 @@ messages:{
         DomesticAir:"Domestic",
         International:"International/China Hong Kong Macao Taiwan",
         color:"Theme color settings",
-        Train:"Domestic train ticket"
+        Train:"Domestic train ticket",
+        OverseasTrain:"Overseas train ticket",
+        bus:"Bus ticket",
+        boat:"Boat ticket"
+
     },
     'zh-cn': {
         name:'神威旅行',
@@ -58,7 +62,7 @@ messages:{
         hotel:"酒店",
         air:'机票',
         train:"火车票",
-        carShip:"汽车票船票",
+        carShip:"汽车票/船票",
         ticket:"门票.活动",
         RentCar:"用车",
         Travel:"旅游",
@@ -72,7 +76,10 @@ messages:{
         DomesticAir:"国内",
         International:"国际/中国港澳台",
         color:"主题颜色设置",
-        Train:"国内火车票"
+        Train:"国内火车票",
+        OverseasTrain:"境外火车票",
+        bus:"汽车票",
+        boat:"船票"
     }
 }
 })

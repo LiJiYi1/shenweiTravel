@@ -22,10 +22,12 @@
         </div>
         <h1 style="margin-left:20px">天气预报</h1>
     </div>
+
+
        <div class="box">
         <div class="innerBox">
             <div class="topTime">
-                <p>{{time}}</p>
+                <p>{{time}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{Day1}}</p>
                 <p>最近更新:{{lastUpdate}}</p>
             </div>
             <div class="centerWeather">
@@ -109,6 +111,8 @@ const region=ref(localStorage.getItem('city'))||ref('威海市')
 //当前时间
 let time=ref(moment().format("YYYY年MM月DD日 hh:mm:ss"))
 let time1=ref(moment().format("YYYY年MM月DD日"))
+//星期几
+let Day1=ref(moment().format("YYYY.MM.DD"))
 //计时器
 let timer=ref()
 //天气最后更新时间
@@ -168,6 +172,13 @@ let trafficDetail=ref()
 let sport=ref()
 let sportDetail=ref()
 onMounted(()=>{
+//获取星期几
+const date=new Date(moment().format("YYYY.MM.DD"));
+const dayNum=date.getDay()
+const dayOfWeek=['星期日','星期一','星期二','星期三','星期四','星期五','星期六']
+const dayl=dayOfWeek[dayNum]
+Day1.value=dayl
+//请求城市数据
 getData(localStorage.getItem('city')||'威海市')
 //页面挂载红请求数据
 timer.value=setInterval(()=>{

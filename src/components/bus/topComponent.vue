@@ -1,18 +1,9 @@
 <template>
-    <div @click="outSearch" style="width: 1236.3px;">
-    <div style="display: flex;">
-      <el-card class="search">
-    <!-- 单程还是往返 -->
-    <el-radio-group v-model="oneOrTwo" :fill="color">
-      <el-radio value="1" size="large" @change="isOne" :style="{color:color,borderColor:color,}">单程</el-radio>
-      <el-radio value="2" size="large" @change="isTwo" :style="{color:color,borderColor:color}">往返</el-radio>
-    </el-radio-group>
-    <!-- 对出发城市和目的城市的提示 -->
-    <div class="alert"><p>出发城市</p><p>到达城市</p></div>
-    <!-- 城市选择 -->
-    <div class="city"  @click="stop">
-        <el-input v-model="city1"  style="width: 240px;height:60px;font-size:25px;" placeholder="Please input" @focus="posSearch=true;posSearch1=false;"/>
-        <!-- 搜索提示 -->
+    <div>
+   <!-- 城市选择 -->
+    <div class="city"  >
+        <el-input v-model="city1"  style="width: 300px;height:60px;font-size:25px;" placeholder="出发城市" @focus="posSearch=true;posSearch1=false;"/>
+           <!-- 搜索提示 -->
         <div class="posSearch" v-show="posSearch">
         <div style="background: gray;padding:10px">热门城市/国家（支持汉字/拼音/英文字母</div>
             <el-tabs type="border-card">
@@ -297,9 +288,9 @@
                </el-tab-pane>
             </el-tabs>
         </div>
-        <img src="@/assets/air/fly.png" alt="" style="width: 60px;height:60px" @click="change" >
-        <el-input v-model="city2" style="width: 240px; height:60px;font-size:25px;direction:rtl" placeholder="Please input" @focus="posSearch1=true;posSearch=false;"/>
-        <!-- 搜索提示 -->
+        <el-icon style="font-size: 52px;" @click="change"><Switch /></el-icon>
+        <el-input v-model="city2" style="width: 300px; height:60px;font-size:25px;direction:rtl" placeholder="到达城市" @focus="posSearch1=true;posSearch=false;"/>
+          <!-- 搜索提示 -->
          <div class="posSearch1" v-show="posSearch1">
         <div style="background: gray;padding:10px">热门城市/国家（支持汉字/拼音/英文字母</div>
             <el-tabs type="border-card">
@@ -583,100 +574,30 @@
                </el-tab-pane>
             </el-tabs>
         </div>
-        <!-- 箭头 -->
-    <div  v-show="posSearch" style="border-left:12px solid transparent;border-right:12px solid transparent;border-top:12px solid transparent;border-bottom:12px solid;position:absolute;left:66px;top:200px"></div>
-    <div  v-show="posSearch1" style="border-left:12px solid transparent;border-right:12px solid transparent;border-top:12px solid transparent;border-bottom:12px solid;position:absolute;left:642px;top:200px"></div>
+    <div  v-show="posSearch" style="
+    border-left:12px solid transparent;
+    border-right:12px solid transparent;
+    border-top:12px solid transparent;
+    border-bottom:12px solid;
+    position:absolute;left:66px;top:90px"></div>
+    <div  v-show="posSearch1" style="
+    border-left:12px solid transparent;
+    border-right:12px solid transparent;
+    border-top:12px solid transparent;
+    border-bottom:12px solid;
+    position:absolute;left:642px;top:90px"></div>
     </div>
-    <!-- 对底部日期的提示 -->
-    <div class="alert"><p>出发日期</p><p>返程日期</p></div>
-    <!-- 底部的日期选择 -->
-    <div class="bt">
-        <el-date-picker
-        v-model="day1"
-        type="date"
-        size="large"
-        style="width: 300px; height:60px;font-size:32px"
-        :clearable="false"
-        :editable="false"
-        />
-         <el-date-picker
-        v-model="day2"
-        type="date"
-        placeholder="添加返程"
-        size="large"
-        style="width: 300px; height:60px;font-size:32px"
-        @change="notOne"
-        :clearable="false"
-        :editable="false"
-      />
-        </div>
-        <el-button :color="color" style="width: 200px;height:60px;margin-top:20px;margin-left:225px;border-radius:20px">搜索机票</el-button>
-      </el-card>
-    <el-card class="poetry">
-        <div class="right">
-        <div class="r-t"> 
-            <h1 style="font-size:80px">{{time1}}</h1>
-            <div style="border: 6px solid white;padding:10px;width:80px;font-size:20px">{{time}}</div>
-        </div>
-        <div class="r-b"> 
-            <div>自来自去梁上燕,相亲相近水中鸥</div>
-            <div style="font-size: 12px;"><el-icon><Location /></el-icon>中国.丽江.泸沽湖</div>
-         </div>
-         <div class="cover"></div>
-        </div>
-      
-    </el-card>
     </div>
-    <TicketRecommon></TicketRecommon>
-     <BottomComponent></BottomComponent>
-    </div>
-   
 </template>
 
-<script setup lang="ts">
-import BottomComponent from '@/components/bottomComponent.vue';
-import moment from 'moment';
-import { onMounted,onBeforeUnmount,ref } from 'vue';
-import TicketRecommon from '@/components/ticketRecommon.vue';
-import { useColorStore } from '@/store/modules/color';
-import { storeToRefs } from 'pinia';
-let {color}=storeToRefs(useColorStore())
+<script lang="ts" setup>
+import { ref } from 'vue';
 //出发城市和返回城市
 let city1=ref('北京')
-let city2=ref('杭州')
-//搜索提示
+let city2=ref('')
+//搜索提示1搜索提示2
 let posSearch=ref()
 let posSearch1=ref()
-
-//当前时间
-let time=ref(moment().format("YYYY.MM"))
-let time1=ref(moment().format("DD"))
-let timer=ref()
-//单程还是往返
-let oneOrTwo=ref('1')
-//往返程时间
-let day1=ref(moment().format("YYYY.MM.DD"))
-let day2=ref('')
-
-//单程模式下添加了返程就是返程模式
-function notOne(){   
-//如果有返程票就不再是单程旅行了
-if(day2.value)oneOrTwo.value='2'
-}
-//切换到往返模式后要把返程时间填上
-function isTwo(){
-    day2.value=moment().format("YYYY.MM.DD")
-}
-//切换到单程要把返程时间置空
-function isOne(){
-    day2.value=''
-}
-//出发城市和返回城市互换
-const change=()=>{
-    const between=city1.value
-    city1.value=city2.value
-    city2.value=between
-}
 //点击搜索提示改名
 function changeNames(name:string){
 city1.value=name
@@ -687,102 +608,32 @@ function changeNames1(name:string){
 city2.value=name
 posSearch1.value=false;
 }
-//取消事件委托防止点输入框时他也消失
-const stop=(e)=>{
-e.stopPropagation()
+//出发城市和返回城市互换
+const change=()=>{
+    if(city1.value&&city2.value){
+ const between=city1.value
+    city1.value=city2.value
+    city2.value=between
+    }
+   
 }
-//点击其他地方提示消失
-const outSearch=()=>{
-    posSearch1.value=false
-    posSearch.value=false
-}
-onMounted(()=>{
-timer.value=setInterval(()=>{
-    time.value=moment().format("YYYY.MM")
-    time1.value=moment().format("DD")
-},1000)
-})
-onBeforeUnmount(()=>{
-clearInterval(timer.value)
-})
-  
 </script>
 
 <style lang="less" scoped>
-.search{
-    width: 700px;
-    height: 400px;
-    border-radius: 18px;
-    .top{
-        display: flex;
-        justify-content: space-between;
-    }
-    .alert{
-        margin-top: 40px;
-            width: 650px;
-            height: 30px;
-            display: flex;
-            justify-content: space-between;
-        }
-    .city{
+div{
+.city{
             width: 650px;
             height: 30px;
             display: flex;
             justify-content: space-between;
     }
-    .bt{
-        display: flex;
-        justify-content: space-between;
-        
-    }
-}
-.poetry{
-    user-select: none;
-    margin-left: 20px;
-    width: 500px;
-    height: 400px;
-    background: url('@/assets/air/luguhu.png') no-repeat;
-    background-position-y: -230px;
-    background-size:cover;
-    border-radius: 18px;
-    .right{
-        color: white;
-        margin-left:300px;
-        .r-t{
-             position: absolute;
-            top: 40px;
-            right: 80px;
-            z-index: 2;
-            color: rgb(255, 255, 255);
-        }
-        .r-b{
-             position: absolute;
-             top: 270px;
-             right: 60px;
-              z-index: 2;
-            margin-top: 65px;
-            line-height: 25px;
-        }
-        .cover{     
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    z-index: 1;
-    width: 298px;
-    height: 402px;
-    border-radius: 18px;
-    opacity: 1;
-    background: linear-gradient(270deg, rgba(0, 0, 0, .8), transparent 100%);
-        }
-    }
-}
 .posSearch{
     width: 550px;
     height: 300px;
     position: absolute;
     left: 40px;
     cursor: pointer;
-    top: 224px;
+    top: 114px;
     z-index: 10;
     .hot{  
         span{
@@ -804,7 +655,7 @@ clearInterval(timer.value)
     position: absolute;
     left: 142px;
     cursor: pointer;
-    top: 224px;
+    top: 114px;
     z-index: 10;
     .hot{  
         span{
@@ -817,7 +668,7 @@ clearInterval(timer.value)
         float: left;
         margin-right: 25px;
      
-       
     }
+}
 }
 </style>

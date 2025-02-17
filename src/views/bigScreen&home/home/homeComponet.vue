@@ -1,5 +1,5 @@
 <template>
-    <div style="width: 1236px;" >
+    <div style="width: 1236px;">
         <el-card shadow="always" >
             <div class="card">
                     <img :src="useUserStore().avator" class="avator">

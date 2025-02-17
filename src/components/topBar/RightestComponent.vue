@@ -1,7 +1,20 @@
 <template>
     <div class="right">
-    <canvas   ref="webgl"  wdith="800" hight="450"></canvas>
-    <div class="rb"></div>
+    <div>  <canvas style="border-radius: 6px;width:196.5px;"   ref="webgl"  wdith="800" hight="450"></canvas></div>
+  
+    <div class="rb">
+        <img class="cloud" src="@/assets/rightest/落日的云.png">
+        <p style="font-size: 17px;font-style:italic">落日熔金,暮云合璧,海天一色间,夕阳的余晖化作万千金缕,织就一幅无边的锦绣,铺展在无垠的波涛之上。海天交接处,夕阳如一位迟暮的诗人,缓缓吟诵着最后的诗篇,金色的诗句洒满海面,字字句句皆是无尽的遐想。</p>
+        <p style="font-size: 8px;line-height:10px;margin-top:56px;color:#8DFFFF">作者QQ:2488894095</p>
+        <p style="font-size: 8px;line-height:10px;color:#8DFFFF">项目github地址:
+            git@github.com:LiJiYi1/shenweiTraval.git</p>
+        <p></p>
+    <img class="sea" src="@/assets/rightest/海浪.png">
+    <img class="sea" src="@/assets/rightest/海浪.png">
+    <img class="sea" src="@/assets/rightest/海浪.png">
+    <img class="sea" src="@/assets/rightest/海浪.png">
+    </div>
+    
     </div>
   
 </template>
@@ -220,7 +233,7 @@ gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
 gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
 //设置纹理贴图填充方式(纹理贴图像素尺寸小于顶点绘制区域像素尺寸)
 gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
-//设置纹素格式，jpg格式对应gl.RGB
+//设置纹素格式,jpg格式对应gl.RGB
 gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, gl.RGB, gl.UNSIGNED_BYTE, img);
 gl.uniform1i(iChannel0, 0);//纹理缓冲区单元TEXTURE0中的颜色数据传入片元着色器
 // gl.getProgramInfoLog(program);
@@ -239,7 +252,7 @@ gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
 gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
 //设置纹理贴图填充方式(纹理贴图像素尺寸小于顶点绘制区域像素尺寸)
 gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
-//设置纹素格式，jpg格式对应gl.RGB
+//设置纹素格式,jpg格式对应gl.RGB
 gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, gl.RGB, gl.UNSIGNED_BYTE, img);
 gl.uniform1i(iChannel1, 1);//纹理缓冲区单元TEXTURE0中的颜色数据传入片元着色器
 // gl.getProgramInfoLog(program);
@@ -249,7 +262,7 @@ gl.drawArrays(gl.TRIANGLES,0,6)
 }
 //把画布坐标传给他
 const xy=gl.getUniformLocation(gl.program,'st')
-gl.uniform2f(xy,180,140)
+gl.uniform2f(xy,290,180)
 //鼠标位置
 webgl.value.addEventListener('mousemove',(e)=>{
 const X=e.offsetX
@@ -290,12 +303,29 @@ return program
 
 <style lang="less" scoped>
 .right{
-  margin-left: 1277px;
-}
-.rb{
-    width: 200px;
-    height: 498px;
+  left: 1275px;
+  position: relative;
+  .rb{
+     position: absolute;
+    padding: 20px;
+    border-radius: 6px;
+    color: #F9E9D9;
+    width: 156.5px;
+    height: calc(100vh - 221.5px);
     background: linear-gradient(0.25turn, #002141, #2A937E, #002141);
-    margin-top:-1px
+    h3{
+       padding-top: 20px;
+    }
+    .sea{
+        position: absolute;
+        bottom: 0px;
+        width: 196.5px;
+        margin-left: -20px;
+    }
+    p{
+        line-height: 25px;
+    }
 }
+}
+
 </style>

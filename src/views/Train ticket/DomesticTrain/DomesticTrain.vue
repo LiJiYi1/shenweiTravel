@@ -630,7 +630,7 @@
         :editable="false"
         :clearable="false"
          />
-         <div v-if="oneOrTwo!=='3'" style="font-size:28px;margin-top:14px;width:90px;margin-left:6px">{{ Day1 }}</div>
+         <div v-if="oneOrTwo!=='3'&&Day1" style="font-size:28px;margin-top:14px;width:90px;margin-left:6px">{{ Day1 }}</div>
          <!-- 中转城市 -->
          <div @click="stop">
              <el-input v-model="city3"  v-show="oneOrTwo==='3'" style="direction:rtl;width: 300px;height:60px;font-size:25px;" placeholder="中转城市" @focus="posSearch2=true;posSearch1=false;posSearch=false;"/>
@@ -965,7 +965,7 @@ let time1=ref(moment().format("DD"))
 let timer=ref()
 //星期几
 let Day=ref()
-let Day1=ref('星期数')
+let Day1=ref('')
 //单程还是往返
 let oneOrTwo=ref('1')
 //往返程时间
@@ -1003,10 +1003,18 @@ const date=new Date(day2.value);
 //切换到往返模式后要把返程时间填上
 function isTwo(){
     day2.value=moment().format("YYYY.MM.DD")
+    //切到往返模式时把星期数给他
+    const date=new Date(day2.value);
+    const dayNum=date.getDay()
+    const dayOfWeek=['星期日','星期一','星期二','星期三','星期四','星期五','星期六']
+    const dayl=dayOfWeek[dayNum]
+    Day1.value=dayl
 }
 //切换到单程要把返程时间置空
 function isOne(){
     day2.value=''
+    //切到单程模式时把星期数置空
+    Day1.value=''
 }
 //点击搜索提示改名
 function changeNames(name:string){

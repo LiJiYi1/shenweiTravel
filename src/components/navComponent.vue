@@ -12,7 +12,6 @@
         :router="true"
         :collapse="isCollapse"
         :active-text-color="color"
-        :unique-opened="true"
          >     <!-- 滚动条防止超出页面 -->
         <el-scrollbar height="91vh">
         <!-- 主页导航 -->
@@ -50,7 +49,7 @@
             <span>{{language.train}}</span>
           </template>
             <el-menu-item index="/trainTicket/DomesticTrain"><el-icon><MapLocation /></el-icon>{{language.Train}}</el-menu-item>
-            <el-menu-item index="/trainTicket/InternationalTrain"><el-icon><Location/></el-icon><p style="white-space: nowrap;overflow:hidden;text-overflow:ellipsis">{{language.International}}</p></el-menu-item>
+            <el-menu-item index="/trainTicket/InternationalTrain"><el-icon><Location/></el-icon><p style="white-space: nowrap;overflow:hidden;text-overflow:ellipsis">{{language.OverseasTrain}}</p></el-menu-item>
         </el-sub-menu>
         <!-- 汽车和船票导航 -->
         <el-sub-menu index="/busBoat">
@@ -58,22 +57,22 @@
            <el-icon><Ship /></el-icon>
             <span>{{language.carShip}}</span>
           </template>
-            <el-menu-item index="/goodsCharge/brandCharge"><el-icon><ShoppingCart /></el-icon>汽车票</el-menu-item>
-            <el-menu-item index="/goodsCharge/brandCharge"><el-icon><ShoppingCart /></el-icon>船票</el-menu-item>
-        </el-sub-menu>
-        <!-- 门票.活动 -->
-        <el-sub-menu index="/ticket">
-          <template #title>
-            <el-icon><Ticket /></el-icon>
-            <span>{{language.ticket}}</span>
-          </template>
-            <el-menu-item index="/goodsCharge/brandCharge"><el-icon><ShoppingCart /></el-icon>品牌管理</el-menu-item>
+            <el-menu-item index="/busBoat/bus"><el-icon><Guide /></el-icon>{{language.bus}}</el-menu-item>
+            <el-menu-item index="/busBoat/boat"><el-icon><Ship /></el-icon>{{language.boat}}</el-menu-item>
         </el-sub-menu>
         <!-- 租车 -->
         <el-sub-menu index="/RentCar">
           <template #title>
             <el-icon><Bicycle /></el-icon>
             <span>{{language.RentCar}}</span>
+          </template>
+            <el-menu-item index="/goodsCharge/brandCharge"><el-icon><ShoppingCart /></el-icon>品牌管理</el-menu-item>
+        </el-sub-menu>
+        <!-- 门票.活动 -->
+        <el-sub-menu index="/ticket">
+          <template #title>
+            <el-icon><Ticket /></el-icon>
+            <span>{{language.ticket}}</span>
           </template>
             <el-menu-item index="/goodsCharge/brandCharge"><el-icon><ShoppingCart /></el-icon>品牌管理</el-menu-item>
         </el-sub-menu>
@@ -117,7 +116,7 @@
       </RouterView>
       
      <!-- 主题设置抽屉 -->
-     <el-drawer v-model="drawer"  :with-header="false">
+     <el-drawer  v-model="drawer"  :with-header="false">
     <h4>{{language.themes}}</h4>
       <div class="innerBox">
         <!-- 暗黑模式控制 -->
@@ -195,6 +194,9 @@ const language={
   International:computed(()=>t('International')),
   color:computed(()=>t('color')),
   Train:computed(()=>t('Train')),
+  OverseasTrain:computed(()=>t('OverseasTrain')),
+  bus:computed(()=>t('bus')),
+  boat:computed(()=>t('boat')),
 }
 
 //暗黑模式开关
@@ -264,8 +266,7 @@ watch(()=>useRefreshStore().refresh,()=>{
 <style lang="less" scoped>
 
 div{
-  width: 100%;
-  
+
   .left_bar{
     width:@left_bar_width;
     .logo{
@@ -290,7 +291,7 @@ div{
       border-right: none;
       width: @left_bar_width ;
       transition: all 0.6s;
-     overflow: hidden;
+       
       &.fold{
         width: 49.1px;
       }
@@ -323,7 +324,6 @@ div{
     &.fold{
       left:@fold_length;
       width: calc(100% - @fold_length - 40px);
-     
     }
   }
 }

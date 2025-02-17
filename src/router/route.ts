@@ -1,5 +1,3 @@
-
-
 //引入能切换语言的文字
 const login=()=>import('@/views/login/loginComponent.vue')
 const notFound = () => import('@/views/404/404Component.vue')
@@ -21,6 +19,8 @@ const DomesticTrain = () => import('@/views/Train ticket/DomesticTrain/DomesticT
 const InternationalTrain = () => import('@/views/Train ticket/InternationalTrain/InternationalTrain.vue')
 //汽车船票
 const busBoat = () => import('@/views/busBoat/busBoat.vue')
+const bus = () => import('@/views/busBoat/bus/busTicket.vue')
+const boat = () => import('@/views/busBoat/boat/boatTicket.vue')
 //门票活动
 const ticket = () => import('@/views/ticket/ticketComponent.vue')
 //租车
@@ -152,6 +152,7 @@ const route=[
         path: '/trainTicket',
         name: "trainTicket",
         component: trainTicket,
+        redirect:"/trainTicket/DomesticTrain",
         children: [
             {
                 path: '/trainTicket/DomesticTrain',
@@ -168,8 +169,8 @@ const route=[
                 name: "InternationalTrain",
                 component: InternationalTrain,
                 meta: {
-                    title: '国际/中国港澳台',
-                    Entitle: "International/China Hong Kong Macao Taiwan",
+                    title: '境外火车票',
+                    Entitle: "Overseas train ticket",
                     icon: 'Location',
                 }
             }
@@ -184,9 +185,33 @@ const route=[
         path: '/busBoat',
         name: "busBoat",
         component: busBoat,
+        redirect:"/busBoat/bus",
+        children: [
+            {
+                path: '/busBoat/bus',
+                name: "bus",
+                component: bus,
+                meta: {
+                    title: '汽车票',
+                    Entitle: "Bus ticket",
+                    icon: 'Guide',
+                }
+            },
+            {
+                path: '/busBoat/boat',
+                name: "boat",
+                component: boat,
+                meta: {
+                    title: '船票',
+                    Entitle: "Boat ticket",
+                    icon: 'Ship',
+                }
+            }
+        ],
         meta: {
             icon: 'Ship',
-            title: '汽车.船票',
+            title: '汽车/船票',
+            Entitle:"Bus ticket/Boat ticket"
         }
     },
     {
