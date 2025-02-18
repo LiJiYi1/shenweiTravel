@@ -1,5 +1,5 @@
 <template>
-<div @click="outSearch" style="width: 1236.3px;">
+<div @click="outSearch">
     <div style="display: flex;">
       <el-card class="search">
         <div class="top">
@@ -101,8 +101,9 @@
       
       </el-card>
     </div>
+    <RightestComponent style="position: absolute;right:20px;top:20px;z-index:-1;"></RightestComponent>
     <TicketRecommon></TicketRecommon>
-     <BottomComponent></BottomComponent>
+    <BottomComponent></BottomComponent>
  </div>
    
 </template>
@@ -115,6 +116,7 @@ import { CaretBottom} from '@element-plus/icons-vue';
 import TicketRecommon from '@/components/ticketRecommon.vue';
 import { useColorStore } from '@/store/modules/color';
 import { storeToRefs } from 'pinia';
+import RightestComponent from '@/components/topBar/RightestComponent.vue';
 //获得一个响应式的颜色
 let {color}=storeToRefs(useColorStore())
 //当前时间
@@ -202,6 +204,9 @@ clearInterval(timer.value)
 .poetry{
     user-select: none;
     margin-left: 20px;
+    position: absolute;
+    left: 720px;
+    top: 20px;
     width: 500px;
     height: 300px;
     background: url('@/assets/hotel/changbaishan.jpg') no-repeat;
@@ -228,8 +233,8 @@ clearInterval(timer.value)
         }
         .cover{     
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: -1px;
+    right: 0px;
     z-index: 1;
     width: 298px;
     height: 302px;

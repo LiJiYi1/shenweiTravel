@@ -1,5 +1,5 @@
 <template>
-    <div style="width: 1236px;">
+    <div>
         <el-card shadow="always" >
             <div class="card">
                     <img :src="useUserStore().avator" class="avator">
@@ -10,7 +10,7 @@
           
          </div>
         </el-card>
-        <WeatherComponent style="width: 1218px;"></WeatherComponent>
+        <WeatherComponent></WeatherComponent>
         <BottomComponent></BottomComponent>
     </div>
 </template>
@@ -66,9 +66,5 @@ display: flex;
 }
 
 }
-.welcom{
-    
-    height: calc(90vh - @top_bar_height);
-    width: calc(100%);
-}
+
 </style>

@@ -1,7 +1,7 @@
 <template>
-    <div @click="outSearch" style="width: 1236.3px;">
-    <div style="display: flex;">
-      <el-card class="search">
+    <div @click="outSearch">
+    <div>
+      <el-card class="search" body-style=" width: 668px;height:220px">
     <!-- 单程还是往返 -->
     <el-radio-group v-model="oneOrTwo" :fill="color">
       <el-radio value="1" size="large" @change="isOne" :style="{color:color,borderColor:color,}">单程</el-radio>
@@ -928,7 +928,7 @@
     </div>
         <el-button :color="color" style="width: 200px;height:60px;margin-left:225px;border-radius:20px">搜索火车票</el-button>
       </el-card>
-      <el-card class="poetry">
+      <el-card class="poetry" body-style=" width: 220px;height:220px">
         <div class="right">
         <div class="r-t"> 
             <h1 style="font-size:80px">{{time1}}</h1>
@@ -944,7 +944,7 @@
       </el-card>
     </div>
  
-   
+   <RightestComponent style="position: absolute;right:20px;top:20px;z-index:-1;"></RightestComponent>
     <TicketRecommon></TicketRecommon>
      <BottomComponent></BottomComponent>
     </div>
@@ -953,6 +953,7 @@
 
 <script setup lang="ts">
 import BottomComponent from '@/components/bottomComponent.vue';
+import RightestComponent from '@/components/topBar/RightestComponent.vue';
 import moment from 'moment';
 import { onMounted,onBeforeUnmount,ref } from 'vue';
 import TicketRecommon from '@/components/ticketRecommon.vue';
@@ -1094,6 +1095,9 @@ clearInterval(timer.value)
 .poetry{
     user-select: none;
     margin-left: 20px;
+    position: absolute;
+    left:720px;
+    top:20px;
     width: 500px;
     height: 400px;
     background: url('@/assets/train/snow.png') no-repeat;
@@ -1120,8 +1124,8 @@ clearInterval(timer.value)
         }
         .cover{     
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: -1px;
+    right: 0px;
     z-index: 1;
     width: 298px;
     height: 402px;

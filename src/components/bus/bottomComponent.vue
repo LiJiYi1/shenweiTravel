@@ -1,6 +1,7 @@
 <template>
     <div>
-    <el-date-picker
+      <div>
+      <el-date-picker
         v-model="date1"
         type="date"
         placeholder="选择日期"
@@ -8,16 +9,25 @@
         style="width: 220px;height:55px;font-size:25px"
         :clearable="false"
         :editable="false"
+        @change="changeDate"
       />
-    <el-date-picker
+      <h6 style="margin-top: 10px;margin-left:18px;font-size:32px;margin-right:10px">{{ Day }}</h6>
+      </div>
+
+   <div>
+     <el-date-picker
         v-model="date2"
         type="date"
         placeholder="返程日期"
         size="large"
-        style="width: 220px;height:55px;font-size:25px"
+        style="width: 220px;height:55px;font-size:25px;"
         :clearable="false"
         :editable="false"
+         @change="changeDate1"
       />
+    <h6 style="margin-top: 10px;margin-left:18px;font-size:32px">{{ Day1 }}</h6>
+   </div>
+   
     </div>
 </template>
 
@@ -28,7 +38,30 @@ import moment from 'moment';
 let date1=ref(moment().format("YYYY.MM.DD"))
 //返程日期
 let date2=ref('')
+//星期几
+let Day=ref('')
+let Day1=ref('')
+//改变日期函数
+const changeDate=()=>{
+    const date=new Date(date1.value);
+    const dayNum=date.getDay()
+    const dayOfWeek=['周日','周一','周二','周三','周四','周五','周六']
+    const dayl=dayOfWeek[dayNum]
+    Day.value=dayl
+}
+const changeDate1=()=>{
+    const date=new Date(date2.value);
+    const dayNum=date.getDay()
+    const dayOfWeek=['周日','周一','周二','周三','周四','周五','周六']
+    const dayl=dayOfWeek[dayNum]
+    Day1.value=dayl
+}
 onMounted(()=>{
+    const date=new Date(moment().format("YYYY.MM.DD"));
+    const dayNum=date.getDay()
+    const dayOfWeek=['周日','周一','周二','周三','周四','周五','周六']
+    const dayl=dayOfWeek[dayNum]
+    Day.value=dayl
     date1.value=moment().format("YYYY.MM.DD")
 })
    

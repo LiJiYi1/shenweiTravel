@@ -1,5 +1,5 @@
 <template>
-    <div @click="outSearch" style="width: 1236.3px;">
+    <div @click="outSearch">
     <div style="display: flex;">
       <el-card class="search">
         <div class="top">
@@ -102,7 +102,7 @@
       
       </el-card>
     </div>
-     
+     <RightestComponent style="position: absolute;right:20px;top:20px;z-index:-1;"></RightestComponent>
      <TicketRecommon></TicketRecommon>
      <BottomComponent></BottomComponent>
     </div>
@@ -111,6 +111,7 @@
 
 <script setup lang="ts">
 import BottomComponent from '@/components/bottomComponent.vue';
+import RightestComponent from '@/components/topBar/RightestComponent.vue';
 import moment from 'moment';
 import { onMounted,onBeforeUnmount,ref } from 'vue';
 import { CaretBottom} from '@element-plus/icons-vue';
@@ -193,6 +194,9 @@ clearInterval(timer.value)
     }
 }
 .poetry{
+    position: absolute;
+    left: 720px;
+    top:20px;
     user-select: none;
     margin-left: 20px;
     width: 500px;
@@ -221,8 +225,8 @@ clearInterval(timer.value)
         }
         .cover{     
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: -1px;
+    right: 0px;
     z-index: 1;
     width: 298px;
     height: 302px;

@@ -1,5 +1,5 @@
 <template>
-    <div style="width:1236px"> 
+    <div> 
         <!-- 搜索 -->
         <el-autocomplete
     v-model="state"

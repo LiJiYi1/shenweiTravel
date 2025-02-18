@@ -1,8 +1,9 @@
 <template>
 
-          <div style="display:flex;justify-content:center;width:1218px;">
-        <el-card class="container">
-            <div class="top">
+          <div style="display:flex;justify-content:center;">
+        <el-card  class="container">
+            <div style="width:1160px;margin:0 auto">
+                            <div class="top">
                 <div class="first">
                     <dl>
                         <dt class="title">旅游资讯</dt>
@@ -82,6 +83,8 @@
              <div class="footer">
             <img importance="low" style="margin-right:100px" loading="lazy" src="@/assets/bottom/image1.png" width="96" height="39">
             <img importance="low" loading="lazy" src="@/assets/bottom/image2.png" width="96" height="39"></div>
+            </div>
+
             
         </el-card>
     </div>
@@ -96,7 +99,9 @@
 <style lang="less" scoped>
 .container{
     display: flex;
+    overflow: auto;
     flex-direction: column;
+    justify-content:start ;
     width: 1520px;
     margin-top: 50px;
 

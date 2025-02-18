@@ -1,19 +1,11 @@
 <template>
     <div class="right">
-    <div>  <canvas style="border-radius: 6px;width:196.5px;"   ref="webgl"  wdith="800" hight="450"></canvas></div>
+<div>  
+    <canvas style="border-radius:18px" ref="webgl"  width="180" hight="400"></canvas>
+        <p style="font-family:ZCOOL KuaiLe,cursive; font-size:26.99px;color:#6D224F;width:180px;line-height:40px;margin-top:20px">血染沧海千层浪,红霞映水万点光!</p>
+
+</div>
   
-    <div class="rb">
-        <img class="cloud" src="@/assets/rightest/落日的云.png">
-        <p style="font-size: 17px;font-style:italic">落日熔金,暮云合璧,海天一色间,夕阳的余晖化作万千金缕,织就一幅无边的锦绣,铺展在无垠的波涛之上。海天交接处,夕阳如一位迟暮的诗人,缓缓吟诵着最后的诗篇,金色的诗句洒满海面,字字句句皆是无尽的遐想。</p>
-        <p style="font-size: 8px;line-height:10px;margin-top:56px;color:#8DFFFF">作者QQ:2488894095</p>
-        <p style="font-size: 8px;line-height:10px;color:#8DFFFF">项目github地址:
-            git@github.com:LiJiYi1/shenweiTraval.git</p>
-        <p></p>
-    <img class="sea" src="@/assets/rightest/海浪.png">
-    <img class="sea" src="@/assets/rightest/海浪.png">
-    <img class="sea" src="@/assets/rightest/海浪.png">
-    <img class="sea" src="@/assets/rightest/海浪.png">
-    </div>
     
     </div>
   
@@ -42,158 +34,231 @@ varying vec2 v_coord;
 uniform vec2 st;
 uniform float u_time;
 uniform sampler2D iChannel0;
-uniform sampler2D iChannel1;
 uniform vec2 u_mouse;
-const vec3 sunColor = vec3(1.5,.9,.7);
-const vec3 lightColor = vec3(1.,.8,.7);
-const vec3 darkColor = vec3(.2,.2,.3);
-const vec3 baseSkyColor = vec3(.6,.7,.8);
-const vec3 seaColor = vec3(.1,.3,.5);
-const vec3 seaLight = vec3(.1,.45,.55);
-//---------------------------------------
 
-vec3 gamma( vec3 col, float g){
-    return pow(col,vec3(g));
-}
-    
-    
-//clouds layered noise
-float noiseLayer(vec2 uv){    
-    float t = (u_time+u_mouse.x)/5.;
-    uv.y -= t/60.; // clouds pass by
-    float e = 0.;
-    for(float j=1.; j<9.; j++){
-        // shift each layer in different directions
-        float timeOffset = t*mod(j,2.989)*.02 - t*.015;
-        e += 1.-texture2D(iChannel0, uv * (j*1.789) + j*159.45 + timeOffset).r / j ;
-    }
-    e /= 3.5;
-    return e;
-}
+// Set to 2.0 for AA
+#define AA 2.0
 
-//waves layered noise
-float waterHeight(vec2 uv){
- float t = (u_time+u_mouse.x);
-    float e = 0.;
-    for(float j=1.; j<6.; j++){
-        // shift each layer in different directions
-        float timeOffset = t*mod(j,.789)*.1 - t*.05;
-        e += texture2D(iChannel0, uv * (j*1.789) + j*159.45 + timeOffset).r / j ;
-    }
-    e /= 6.;
-    return e;
-}
+#define STEPS 80.0
+#define MDIST 35.0
+#define pi 3.1415926535
+#define rot(a) mat2(cos(a),sin(a),-sin(a),cos(a))
+#define sat(a) clamp(a,0.0,1.0)
 
-vec3 waterNormals(vec2 uv){
-    uv.x *= .25;
-    float eps = 0.008;    
-    vec3 n=vec3( waterHeight(uv) - waterHeight(uv+vec2(eps,0.)),
-                 1.,
-                 waterHeight(uv) - waterHeight(uv+vec2(0.,eps)));
-   return normalize(n);
-}	
+#define ITERS_TRACE 9
+#define ITERS_NORM 20
+
+#define HOR_SCALE 1.1
+#define OCC_SPEED 1.4
+#define DX_DET 0.65
+
+#define FREQ 0.6
+#define HEIGHT_DIV 2.5
+#define WEIGHT_SCL 0.8
+#define FREQ_SCL 1.2
+#define TIME_SCL 1.095
+#define WAV_ROT 1.21
+#define DRAG 0.9
+#define SCRL_SPEED 1.5
+vec2 scrollDir = vec2(1,1);
 
 
-vec3 drawSky( vec2 uv, vec2 uvInit){ 
-        
-	float clouds = noiseLayer(uv);
-    
-    // clouds normals
-    float eps = 0.1;
-    vec3 n = vec3(	clouds - noiseLayer(uv+vec2(eps,0.)),
-            		-.3,
-             		clouds - noiseLayer(uv+vec2(0.,eps)));
-    n = normalize(n);
-    
-    // fake lighting
-    float l = dot(n, normalize(vec3(uv.x,-.2,uv.y+.5)));
-    l = clamp(l,0.,1.);
-    
-    // clouds color	(color gradient from light)
-    vec3 cloudColor = mix(baseSkyColor, darkColor, length(uvInit)*1.7);
-    cloudColor = mix( cloudColor,sunColor, l );
-    
-    // sky color (color gradient on Y)
-    vec3 skyColor = mix(lightColor , baseSkyColor, clamp(uvInit.y*2.,0.,1.) );
-    skyColor = mix ( skyColor, darkColor, clamp(uvInit.y*3.-.8,0.,1.) );
-    skyColor = mix ( skyColor, sunColor, clamp(-uvInit.y*10.+1.1,0.,1.) );
-    
-	// draw sun
-    if(length(uvInit-vec2(0.,.04) )<.03){
-     	skyColor += vec3(2.,1.,.8);
-    }
-       
-   	// mix clouds and sky
-    float cloudMix = clamp(0.,1.,clouds*4.-8.);
-    vec3 color = mix( cloudColor, skyColor, clamp(cloudMix,0.,1.) );
-    
-    // draw islands on horizon
-    uvInit.y = abs(uvInit.y);
-    float islandHeight = texture2D(iChannel0, uvInit.xx/2.+.97).r/15. - uvInit.y + .978;
-    islandHeight += texture2D(iChannel0, uvInit.xx*2.).r/20.;
-    islandHeight = clamp(floor(islandHeight),0.,1.);    
-    vec3 landColor = mix(baseSkyColor, darkColor, length(uvInit)*1.5);
-    color = mix(color, landColor, islandHeight);
-
-    return color;
-}
-
-void main(){
-    // center uv around horizon and manage ratio
-	  vec2 uvInit = gl_FragCoord.xy / st.xy;
-    uvInit.x -= .5;
-    uvInit.x *= st.x/st.y;	
-    uvInit.y -= 0.35;
-    
-    // perspective deform 
-    vec2 uv = uvInit;
-    uv.y -=.01;
-	uv.y = abs(uv.y);
-    uv.y = log(uv.y)/2.;
-    uv.x *= 1.-uv.y;
-    uv *= .2;
-    
-    vec3 col = vec3(1.,1.,1.);
-    
-     // draw water
-    if(uvInit.y < 0.){       
-       
-         vec3 n = waterNormals(uv);
-        
-         // draw reflection of sky into water
-         vec3 waterReflections = drawSky(uv+n.xz, uvInit+n.xz);
-
-        // mask for fore-ground green light effect in water
-         float transparency = dot(n, vec3(0.,.2,1.5));        
-         transparency -= length ( (uvInit - vec2(0.,-.35)) * vec2(.2,1.) );
-	      	transparency = (transparency*12.+1.5);
-        
-         // add foreground water effect
-         waterReflections = mix( waterReflections, seaColor, clamp(transparency,0.,1.) );
-         waterReflections = mix( waterReflections, seaLight, max(0.,transparency-1.5) );
-
-        	col = waterReflections;
-        
-         // darken sea near horizon
-        	col = mix(col, col*vec3(.6,.8,1.), -uv.y);
-        
-         //sun specular
-         col += max(0.,.02-abs(uv.x+n.x))* 8000. * vec3(1.,.7,.3) * -uv.y * max(0.,-n.z);
-        
-     }else{      
-        
-         // sky
-         col = drawSky(uv, uvInit);
+vec2 wavedx(vec2 wavPos, int iters, float t){
+     vec2 dx = vec2(0);
+     vec2 wavDir = vec2(1,0);
+     float wavWeight = 1.0; 
+    wavPos+= t*SCRL_SPEED*scrollDir;
+    wavPos*= HOR_SCALE;
+    float wavFreq = FREQ;
+    float wavTime = OCC_SPEED*t;
+     for(int i=0;i<20;i++){
+        wavDir*=rot(WAV_ROT);
+        float x = dot(wavDir,wavPos)*wavFreq+wavTime; 
+        float result = exp(sin(x)-1.)*cos(x);
+        // if(result>0.) foam+=result*0.3;
+        result*=wavWeight;
+        dx+= result*wavDir/pow(wavWeight,DX_DET); 
+        wavFreq*= FREQ_SCL; 
+        wavTime*= TIME_SCL;
+        wavPos-= wavDir*result*DRAG; 
+        wavWeight*= WEIGHT_SCL;
      }
+    float wavSum = -(pow(WEIGHT_SCL,float(iters))-1.)*HEIGHT_DIV; 
+    return dx/pow(wavSum,1.-DX_DET);
+}
+
+float wave(vec2 wavPos, int iters, float t){
+    float wav = 0.0;
+    vec2 wavDir = vec2(1,0);
+    float wavWeight = 1.0;
+    wavPos+= t*SCRL_SPEED*scrollDir;
+    wavPos*= HOR_SCALE; 
+    float wavFreq = FREQ;
+    float wavTime = OCC_SPEED*t;
+    for(int i = 0;i<9;i++){
+        wavDir*=rot(WAV_ROT);
+        float x = dot(wavDir,wavPos)*wavFreq+wavTime;
+        float wave = exp(sin(x)-1.0)*wavWeight;
+        wav+= wave;
+        wavFreq*= FREQ_SCL;
+        wavTime*= TIME_SCL;
+        wavPos-= wavDir*wave*DRAG*cos(x);
+        wavWeight*= WEIGHT_SCL;
+    }
+    float wavSum = -(pow(WEIGHT_SCL,float(iters))-1.)*HEIGHT_DIV; 
+    return wav/wavSum;
+}
+
+vec3 norm(vec3 p){
+    vec2 wav = -wavedx(p.xz, ITERS_NORM, u_time);
+    return normalize(vec3(wav.x,1.0,wav.y));
+}
+
+float map(vec3 p){
+    float a = 0.;
+    int steps = ITERS_TRACE;
+    p.y-= wave(p.xz,steps,u_time);
+     a = p.y;
+    return a;
+}
+
+vec3 pal(float t, vec3 a, vec3 b, vec3 c, vec3 d){
+    return a+b*cos(2.0*pi*(c*t+d));
+}
+vec3 spc(float n,float bright){
+    return pal(n,vec3(bright),vec3(0.5),vec3(1.0),vec3(0.0,0.33,0.67));
+}
+ vec2 sunrot = vec2(-0.3,-0.25);
+
+// Change the color of the scene here, it better withs some colors than others
+float spec = 0.13;
+
+vec3 sky(vec3 rd){
+     float px = 1.5/min(st.x,st.y);
+     vec3 rdo = rd;
+     float rad = 0.075;
+     vec3 col = vec3(0);
+
+    //Sun
+    rd.yz*=rot(sunrot.y);
+    rd.xz*=rot(sunrot.x);
+    float sFade = 2.5/min(st.x,st.y);
+    float zFade = rd.z*0.5+0.5;
     
-     // sun flare & vignette
-     col += vec3(1.,.8,.6) * (0.55-length(uvInit)) ;
+    vec3 sc = spc(spec-0.1,0.6)*0.85;
+    float a = length(rd.xy);
+    vec3 sun=smoothstep(a-px-sFade,a+px+sFade,rad)*sc*zFade*2.;
+    col+=sun;
+    col+=rad/(rad+pow(a,1.7))*sc*zFade;
+    col=col+mix(col,spc(spec+0.1,0.8),sat(1.0-length(col)))*0.2;
     
-     // "exposure" adjust
-     col *= .75;
-     col = gamma(col,1.3);
+    // This code provides the implication of clouds :)
+    float e = 0.;
+    vec3 p = rdo;
+    p.xz*=0.4;
+    p.x+=u_time*0.007;
+    for(float s=200.0;s>10.;s-=.8){
+        p.xz*=rot(s);
+        p+=s;
+        e+=abs(dot(sin(p*s+u_time*0.02)/s,vec3(1.65)));
+    }
+    e*=smoothstep(0.5,0.4,e-0.095);
     
-    gl_FragColor = vec4(col,1.);
+    col += (e)*smoothstep(-0.02,0.3,rdo.y)*0.8*(1.0-sun*3.75)*mix(sc,vec3(1),0.4);
+    
+    return (col);
+   
+}
+void render(out vec4 fragColor, in vec2 fragCoord){
+    vec2 uv = (fragCoord.xy-0.5*st.xy)/min(st.y,st.x);
+    vec3 col = vec3(0);
+    vec3 ro = vec3(0,2.25,-3)*1.1;
+    bool click = u_mouse.y>0.;
+    if(click){
+    ro.yz*=rot(2.0*min(u_mouse.y/st.y-0.5,0.15));
+    ro.zx*=rot(-7.0*(u_mouse.x/st.x-0.5));
+    }
+    vec3 lk = vec3(0,2,0);
+    vec3 f = normalize(lk-ro);
+    vec3 r = normalize(cross(vec3(0,1,0),f));
+    vec3 rd = normalize(f*(0.9)+uv.x*r+uv.y*cross(f,r));
+
+    float dO = 0.;
+    bool hit = false;
+    float d = 0.;
+    vec3 p = ro;
+
+    float tPln = -(ro.y-1.86)/rd.y;
+    if(tPln>0.||click){
+        if(!click)dO+=tPln;
+        for(float i = 0.; i<STEPS; i++){
+             p = ro+rd*dO;d = map(p);dO+=d;
+            if(abs(d)<0.005||i>STEPS-2.0){
+                hit = true;
+                break;
+            }
+            if(dO>MDIST){
+                dO = MDIST;
+                break;
+            }
+        }
+    }
+    vec3 skyrd = sky(rd);
+    if(hit){
+    vec3 n = norm(p);
+    vec3 rfl = reflect(rd,n);
+    rfl.y = abs(rfl.y);
+    vec3 rf = refract(rd,n,1./1.33); 
+    vec3 sd = normalize(vec3(0,0.3,-1.0));
+    float fres = clamp((pow(1. - max(0.0, dot(-n, rd)), 5.0)),0.0,1.0);
+
+    vec3 sunDir = vec3(0,0.15,1.0);
+    sunDir.xz*=rot(-sunrot.x);
+    col += sky(rfl)*fres*0.9;
+    float subRefract =pow(max(0.0, dot(rf,sunDir)),35.0);
+    // This effect is exaggerated much more than is realistic because I like it :) 
+    col += pow(spc(spec-0.1,0.5),vec3(2.2))*subRefract*2.5;
+    vec3 rd2 = rd;
+    rd2.xz*=rot(sunrot.x);
+    vec3 waterCol = min(sat(spc(spec-0.1,0.4))*0.05*pow(min(p.y+0.5,1.8),4.0)*length(skyrd)*(rd2.z*0.3+0.7),1.0);
+   
+     waterCol = sat(spc(spec-0.1,0.4))*(0.4*pow(min(p.y*0.7+0.9,1.8),4.)*length(skyrd)*(rd2.z*0.15+0.85));
+     col += waterCol*0.17;
+     col+=smoothstep(0.95,1.55,wave(p.xz,25,u_time))*mix(waterCol*0.3,vec3(1),0.2)*0.2;
+
+     col = mix(col,skyrd,dO/MDIST);
+    }
+     else{
+         col += skyrd;
+     }
+    col = sat(col);
+    col = pow(col,vec3(0.87));
+    col *=1.0-0.8*pow(length(uv*vec2(0.8,1.)),2.7);
+    fragColor = vec4(col,1.0);
+    
+}
+
+#define ZERO min(0.0,u_time)
+void main(){
+     float px = 1.0/AA;
+     vec4 col = vec4(0);
+     vec4 fragColor;
+    //  if(AA==1.0) {
+    //  //render(col,gl_FragCoord.xy); 
+    //  fragColor = col;
+    //  return;
+    //  }
+    
+    for(float i = 0.; i <AA; i++){
+        for(float j = 0.; j <AA; j++){
+             vec4 col2;
+             vec2 coord = vec2(gl_FragCoord.x+px*i,gl_FragCoord.y+px*j);
+             render(col2,coord);
+             col.rgb+=col2.rgb;
+        }
+    }
+    col/=AA*AA;
+    gl_FragColor = vec4(col.xyz,1.);
 }
 
 
@@ -213,7 +278,6 @@ console.log(data.BYTES_PER_ELEMENT);
 const pos=gl.getAttribLocation(program,'a_pos')
 const uv=gl.getAttribLocation(program,'a_coord')
 const iChannel0=gl.getUniformLocation(program,'iChannel0')
-const iChannel1=gl.getUniformLocation(program,'iChannel1')
 const buffer=gl.createBuffer()
 gl.bindBuffer(gl.ARRAY_BUFFER,buffer)
 gl.bufferData(gl.ARRAY_BUFFER,data,gl.STATIC_DRAW)
@@ -241,28 +305,9 @@ gl.uniform1i(iChannel0, 0);//纹理缓冲区单元TEXTURE0中的颜色数据传�
 gl.enable(gl.DEPTH_TEST)
 gl.drawArrays(gl.TRIANGLES,0,6)
 }
-const img1=new Image()
-img1.src='../../../public/canvas/iChannel1.png'
-img1.onload=()=>{
-const texture=gl.createTexture()
-gl.activeTexture(gl.TEXTURE0)
-gl.bindTexture(gl.TEXTURE_2D,texture)
-gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
-//设置纹理贴图填充方式(纹理贴图像素尺寸大于顶点绘制区域像素尺寸)
-gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
-//设置纹理贴图填充方式(纹理贴图像素尺寸小于顶点绘制区域像素尺寸)
-gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
-//设置纹素格式,jpg格式对应gl.RGB
-gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, gl.RGB, gl.UNSIGNED_BYTE, img);
-gl.uniform1i(iChannel1, 1);//纹理缓冲区单元TEXTURE0中的颜色数据传入片元着色器
-// gl.getProgramInfoLog(program);
-//开启深度测试
-gl.enable(gl.DEPTH_TEST)
-gl.drawArrays(gl.TRIANGLES,0,6)
-}
 //把画布坐标传给他
 const xy=gl.getUniformLocation(gl.program,'st')
-gl.uniform2f(xy,290,180)
+gl.uniform2f(xy,125,125)
 //鼠标位置
 webgl.value.addEventListener('mousemove',(e)=>{
 const X=e.offsetX
@@ -302,30 +347,5 @@ return program
 </script>
 
 <style lang="less" scoped>
-.right{
-  left: 1275px;
-  position: relative;
-  .rb{
-     position: absolute;
-    padding: 20px;
-    border-radius: 6px;
-    color: #F9E9D9;
-    width: 156.5px;
-    height: calc(100vh - 221.5px);
-    background: linear-gradient(0.25turn, #002141, #2A937E, #002141);
-    h3{
-       padding-top: 20px;
-    }
-    .sea{
-        position: absolute;
-        bottom: 0px;
-        width: 196.5px;
-        margin-left: -20px;
-    }
-    p{
-        line-height: 25px;
-    }
-}
-}
 
 </style>

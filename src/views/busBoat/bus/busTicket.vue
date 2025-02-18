@@ -1,6 +1,6 @@
 <template>
-    <div style="width: 1236.3px;">
-    <div style="display: flex;">
+    <div>
+        <div>
         <el-card class="search">
         <!-- 城市选择 -->
         <TopComponent @click="stop"></TopComponent>
@@ -9,7 +9,7 @@
         <!-- 搜索按钮 -->
         <el-button :color="color" style="width: 200px;height:60px;margin-left:225px;border-radius:20px;margin-top:20px">汽车票查询</el-button>
       </el-card>
-      <el-card class="poetry">
+      <el-card class="poetry"  body-style=" width: 220px;height:220px;">
         <div class="right">
         <div class="r-t"> 
             <h1 style="font-size:80px">{{time1}}</h1>
@@ -23,15 +23,19 @@
         </div>
       
       </el-card>
-    </div>
+        </div>
+  
+   <RightestComponent style="position: absolute;right:20px;top:20px;z-index:-1;"></RightestComponent>
     <TicketRecommon></TicketRecommon>
-     <BottomComponent></BottomComponent>
+     <bottomComponent></bottomComponent>
     </div>
    
 </template>
 
 <script setup lang="ts">
 import BottomComponent from '@/components/bus/bottomComponent.vue';
+import bottomComponent from '@/components/bottomComponent.vue';
+import RightestComponent from '@/components/topBar/RightestComponent.vue';
 import moment from 'moment';
 import { onMounted,onBeforeUnmount,ref } from 'vue';
 import TicketRecommon from '@/components/ticketRecommon.vue';
@@ -49,18 +53,6 @@ let timer=ref()
 const stop=(e)=>{
 e.stopPropagation()
 }
-
-
-
-
-
-
-
-
-
-
-
-
 onMounted(()=>{
 //加载时调用一下日期
 timer.value=setInterval(()=>{
@@ -77,18 +69,21 @@ clearInterval(timer.value)
 <style lang="less" scoped>
 .search{
     width: 700px;
-    height: 260px;
     border-radius: 18px;
+    
     .demo-tabs{
         justify-self: center;
         width: 600px;
     }
 }
 .poetry{
-    user-select: none;
+    width: 495px;
     margin-left: 20px;
-    width: 500px;
-    height: 260px;
+    user-select: none;
+    position: absolute;
+    left:722px;
+    top:20px;
+
     background: url('@/assets/busBoat/image.png') no-repeat;
     background-position-y: -230px;
     background-size:cover;
@@ -113,8 +108,8 @@ clearInterval(timer.value)
         }
         .cover{     
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: -1px;
+    right: 0px;
     z-index: 1;
     width: 298px;
     height: 262px;

@@ -4,7 +4,7 @@
         <el-icon size="40" style="margin-right:10px;" v-show="isFold" @click="toExpand()"><Fold/></el-icon>
         <el-icon size="40" style="margin-right:10px;" v-show="!isFold" @click="toFold()"><Expand/></el-icon>
         <el-breadcrumb :separator-icon="ArrowRight"  style="user-select: none;font-size:20px">
-        <el-breadcrumb-item v-for="(item,index) in $route.matched" :key="index" :to="{path:item.path}" v-show="item.meta.title">  
+        <el-breadcrumb-item style="white-space:nowrap;" v-for="(item,index) in $route.matched" :key="index" :to="{path:item.path}" v-show="item.meta.title">  
             <el-icon  style="vertical-align:bottom;">
                 <component :is="item.meta.icon" ></component>
             </el-icon>

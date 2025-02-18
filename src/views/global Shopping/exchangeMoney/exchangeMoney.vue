@@ -1,5 +1,5 @@
 <template>
-    <div style="width:1236px">
+    <div>
          <div class="scroll">
     <el-carousel height="300px" motion-blur>
       <el-carousel-item>

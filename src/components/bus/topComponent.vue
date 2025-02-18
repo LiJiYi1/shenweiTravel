@@ -591,13 +591,14 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 //出发城市和返回城市
 let city1=ref('北京')
 let city2=ref('')
 //搜索提示1搜索提示2
 let posSearch=ref()
 let posSearch1=ref()
+
 //点击搜索提示改名
 function changeNames(name:string){
 city1.value=name
@@ -617,12 +618,18 @@ const change=()=>{
     }
    
 }
+onMounted(()=>{
+    document.addEventListener('click',()=>{
+          posSearch.value=false
+          posSearch1.value=false
+    })
+})
 </script>
 
 <style lang="less" scoped>
 div{
 .city{
-            width: 650px;
+            width: 642px;
             height: 30px;
             display: flex;
             justify-content: space-between;
