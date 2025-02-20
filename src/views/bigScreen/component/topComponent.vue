@@ -5,7 +5,7 @@
             <div class="home" @click="$router.push('/home')">首页</div>
         </div>
         <div class="center">
-            <div class="title">神威管理大屏可视化</div>
+            <div class="title">神威旅行大屏可视化</div>
         </div>
         <div class="right">
           <slot class="fullScreen"></slot>

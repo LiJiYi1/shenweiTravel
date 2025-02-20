@@ -1,6 +1,6 @@
 <template>
 <div @click="outSearch">
-    <div style="display: flex;">
+    <div>
       <el-card class="search">
         <div class="top">
         <!-- 目的地 -->

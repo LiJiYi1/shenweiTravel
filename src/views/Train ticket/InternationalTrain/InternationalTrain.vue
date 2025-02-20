@@ -2,29 +2,27 @@
     <div>
     <div>
         <el-card class="search">
-            <!-- 买哪个国家的火车票 -->
+        <!-- 单程还是往返 -->
+        <OnOrTwo @getVal="emit" :num="oneOrtwo"></OnOrTwo>
+        <!-- 买哪个国家的火车票 -->
         <el-tabs class="demo-tabs"  v-model="activeName">
-            <el-tab-pane label="欧洲" name="first">
-                <OnOrTwo @getVal="emit" :num="oneOrtwo"></OnOrTwo>
-                <PosComponent style="margin-top: 20px;"></PosComponent>
+            <el-tab-pane label="欧洲" name="first" >  
+                <PosComponent style="margin-top: 20px;" :country="activeName"></PosComponent>
                 <TimeComponent style="margin-top: 20px;"></TimeComponent>
                 <SelectNum style="margin-top: 20px;"></SelectNum>
              </el-tab-pane>
-            <el-tab-pane label="韩国" name="second">
-                <OnOrTwo :num="oneOrtwo"></OnOrTwo>
-                <PosComponent style="margin-top: 20px;"></PosComponent>
+            <el-tab-pane label="韩国" name="second" >
+                <PosComponent style="margin-top: 20px;" :country="activeName"></PosComponent>
                 <TimeComponent style="margin-top: 20px;"></TimeComponent>
                 <SelectNum style="margin-top: 20px;"></SelectNum>
             </el-tab-pane>
-            <el-tab-pane label="中国港澳台" name="third">
-                <OnOrTwo :num="oneOrtwo"></OnOrTwo>
-                <PosComponent style="margin-top: 20px;"></PosComponent>
+            <el-tab-pane label="中国港澳台" name="third" >
+                <PosComponent style="margin-top: 20px;" :country="activeName"></PosComponent>
                 <TimeComponent style="margin-top: 20px;"></TimeComponent>
                 <SelectNum style="margin-top: 20px;"></SelectNum>
             </el-tab-pane>
-             <el-tab-pane label="日本" name="fourth">
-                <OnOrTwo :num="oneOrtwo"></OnOrTwo>
-                <PosComponent style="margin-top: 20px;"></PosComponent>
+             <el-tab-pane label="日本" name="fourth" >
+                <PosComponent style="margin-top: 20px;" :country="activeName"></PosComponent>
                 <TimeComponent style="margin-top: 20px;"></TimeComponent>
                 <SelectNum style="margin-top: 20px;"></SelectNum>
              </el-tab-pane>
@@ -77,9 +75,11 @@ let timer=ref()
 const activeName = ref('first')
 //单程还是往返
 let oneOrtwo=ref('1')
+
 //从子组件拿数据
 const emit=(e)=>{
-    console.log(e);
+    //console.log(e);
+    oneOrtwo.value=e
 }
 
 
@@ -110,7 +110,7 @@ clearInterval(timer.value)
 <style lang="less" scoped>
 .search{
     width: 700px;
-    height: 400px;
+    
     border-radius: 18px;
     .demo-tabs{
         justify-self: center;
@@ -141,7 +141,7 @@ clearInterval(timer.value)
         }
         .r-b{
              position: absolute;
-             top: 270px;
+             top: 340px;
              right: 60px;
               z-index: 2;
             margin-top: 65px;

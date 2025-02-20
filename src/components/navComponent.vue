@@ -61,13 +61,12 @@
             <el-menu-item index="/busBoat/boat"><el-icon><Ship /></el-icon>{{language.boat}}</el-menu-item>
         </el-sub-menu>
         <!-- 租车 -->
-        <el-sub-menu index="/RentCar">
-          <template #title>
-            <el-icon><Bicycle /></el-icon>
+        <el-menu-item index="/RentCar/RentCar2">
+        
+            <el-icon><Share /></el-icon>
             <span>{{language.RentCar}}</span>
-          </template>
-            <el-menu-item index="/goodsCharge/brandCharge"><el-icon><ShoppingCart /></el-icon>品牌管理</el-menu-item>
-        </el-sub-menu>
+ 
+        </el-menu-item>
         <!-- 门票.活动 -->
         <el-sub-menu index="/ticket">
           <template #title>
@@ -96,7 +95,7 @@
         </el-sub-menu>
         <!-- 关于神威 -->
         <el-menu-item index="/about">
-          <el-icon><Menu /></el-icon>
+          <el-icon><Notebook /></el-icon>
           <span>{{language.about}}</span>
         </el-menu-item>
         </el-scrollbar>

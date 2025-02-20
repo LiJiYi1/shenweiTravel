@@ -60,8 +60,12 @@ display: flex;
 .text{
     margin-left: 20px;
     margin-top: 10px;
+    h1{
+         white-space: nowrap;
+    }
     p{
-        margin-top:30px
+        margin-top:30px;
+        white-space: nowrap;
     }
 }
 

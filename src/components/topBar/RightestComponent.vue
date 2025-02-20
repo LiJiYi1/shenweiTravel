@@ -1,10 +1,14 @@
 <template>
-    <div class="right">
-<div>  
-    <canvas style="border-radius:18px" ref="webgl"  width="180" hight="400"></canvas>
-        <p style="font-family:ZCOOL KuaiLe,cursive; font-size:26.99px;color:#6D224F;width:180px;line-height:40px;margin-top:20px">血染沧海千层浪,红霞映水万点光!</p>
+    <div class="right" v-show=" show">
+<el-card body-style="padding:0;" style="border-radius:0 18px 0 0">  
+    <canvas style="border-radius:0 18px 0 0" ref="webgl"  width="180" hight="400"></canvas>
+    <div style="background:url('@/assets/image.png');background-size:cover">
+         <p style="">
+            血染沧海千层浪,红霞映水万点光!</p>
+    </div>
+       
 
-</div>
+</el-card>
   
     
     </div>
@@ -12,8 +16,8 @@
 </template>
 
 <script setup>
-
 import { onMounted,ref } from 'vue';
+let show=ref(true)
 const webgl=ref(null)
 onMounted(()=>{
 const gl=webgl.value.getContext('webgl')
@@ -343,9 +347,19 @@ gl.useProgram(program)
 gl.program=program
 return program
 }
-
+window.onresize=()=>{
+    if(window.innerWidth<1300)show.value=false
+    else show.value=true
+}
 </script>
 
 <style lang="less" scoped>
-
+p{  padding-top: 20px;
+    font-family:ZCOOL KuaiLe,cursive;
+    background-size:cover;
+    font-size:26.99px;
+    color:#6D224F;
+    width:180px;
+    line-height:40px;
+}
 </style>

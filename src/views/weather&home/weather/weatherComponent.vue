@@ -20,10 +20,10 @@
                <el-option @click="getData(item1.name)" :label="item1.name" :value="item1.name" v-for="(item1,index1) in item.city" :key="index1"/> 
             </el-select>
         </div>
-        <h1 style="margin-left:20px">天气预报</h1>
+        <h1 style="margin-left:20px;white-space:nowrap">天气预报</h1>
     </div>
 
-<el-card body-style="padding:0px;text-align:start" class="box">  
+    <el-card body-style="padding:0px;width:101%" class="box">  
             <!-- 天气预报内容 -->
     <div class="innerBox">
             <div class="topTime">
@@ -50,18 +50,17 @@
             <p>{{location}}{{time1}}天气预报,今天{{low1}}℃-{{high1}}℃,{{ weatherNow }}, 风向情况:{{ direction1 }}风,总降水量:{{rainfall}}mm,相对湿度:{{humidity}}%。{{location}}
             今日生活指数: 交通指数,{{traffic}} ({{trafficDetail}}),运动指数,{{sport}} ({{sportDetail}}),
             未来3天,最低温度{{low2}}℃，最高温度{{high2}}℃,查询{{location}}实时、3天天气预报,上神威天气预报频道。</p>
-        </div> 
+    </div> 
     <!-- canvas画布-->
- 
-    <canvas style="z-index: 1;margin-top:-390px"   ref="webgl"  width="1218" height="430"></canvas>
-   
+    <canvas style="z-index: 1;margin-top:-390px;"   ref="webgl"  width="1218" height="430"></canvas>
 
 
 
-</el-card>
-       <!-- 三天天气预测 -->
-        <h1>三天天气预测</h1>
-        <el-card shadow="always" class="day3">
+
+    </el-card>
+    <!-- 三天天气预测 -->
+    <h1>三天天气预测</h1>
+    <el-card shadow="always" class="day3">
             <div>
             <div class="img"></div>
             <div class="first">
@@ -75,7 +74,7 @@
             </div>
             <div class="img1"></div>
              <div class="second">
-               <div>日期:{{date2}}</div>
+               <p style="margin-top: -20px;">日期:{{date2}}</p>
                 <p>最高温度:{{high2}}<sup>℃</sup></p>
                 <p>最低温度:{{low2}}<sup>℃</sup></p>
                 <p>风向:{{direction2}}</p>
@@ -85,7 +84,7 @@
             </div>
             <div class="img2"></div>
             <div class="third">
-               <div>日期:{{date3}}</div>
+               <p style="margin-top: -20px;">日期:{{date3}}</p>
                 <p>最高温度:{{high3}}<sup>℃</sup></p>
                 <p>最低温度:{{low3}}<sup>℃</sup></p>
                 <p>风向:{{direction3}}</p>
@@ -94,13 +93,24 @@
                 <p>夜晚天气:{{weathernight3}}</p>
             </div>
             </div>
-        </el-card>
-        <!-- 穿衣指数 -->
-        <h1>出行穿衣指数</h1>
-        <el-card shadow="always" class="dressing">
+    </el-card>
+    <!-- 穿衣指数 -->
+    <h1>出行穿衣指数</h1>
+    <el-card shadow="always" class="dressing">
             <h3 >{{ dressing }}</h3>
             <p style="margin-top:30px">{{ suggest }}</p>
-        </el-card>
+    </el-card>
+    <!-- 折叠后显示的隐藏部分 -->
+    <el-card body-style="padding:0px" style="position:absolute;top:234px;right:20px;width:180px;height:430px;z-index:-1;">
+    <template #header><h3 style="text-align: center;">旅游景点推荐</h3></template>
+    <img
+      src="@/assets/home/travel.png"
+      style="width: 100%"
+    />
+    <p style="text-align: center;margin-top:10px">苍山之麓,洱海之畔</p>
+    <p style="text-align: center;font-size:12px;margin-top:10px"><el-icon><Location /></el-icon>中国.大理.崇圣寺</p>
+    <el-icon></el-icon>
+    </el-card>
     </div>
 </template>
 
@@ -549,7 +559,8 @@ div{
           margin-top: 20px;
     }
     .box{
-        position: relative;
+        overflow: auto;
+        width: 1218px;
         color:white;
         display: flex;
         justify-content: center;
@@ -558,9 +569,10 @@ div{
         padding: 0ch;
         border-radius:5px;
         .innerBox{
+            user-select: none;
+            position: relative;
             width: 1160px;
             height: 390px;
-            position: relative;
             z-index: 2;
             .topTime{
                 display: flex;
@@ -610,6 +622,7 @@ div{
             margin-top: -20px;
             p{  
                 padding-top: 20px;
+                white-space: nowrap;
             }
         }
         .second{
@@ -617,6 +630,7 @@ div{
             flex-direction: column;
             p{
                 padding-top: 20px;
+                white-space: nowrap;
             }
         }
         .third{
@@ -624,6 +638,7 @@ div{
             flex-direction: column;
             p{
                 padding-top: 20px;
+                white-space: nowrap;
             }
         }
         }
@@ -655,7 +670,7 @@ background-size: cover;
 .img3{
 width: 18%;
 height:120px;
-background:url('@/assets/home/weather1.png') no-repeat;
+background:url('@/assets/home/weather.png') no-repeat;
 background-size: cover;
 margin-left: -20px;
 }

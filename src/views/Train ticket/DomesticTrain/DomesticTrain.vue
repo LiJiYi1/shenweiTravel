@@ -15,7 +15,7 @@
         <el-input v-model="city1"  style="width: 300px;height:60px;font-size:25px;" placeholder="Please input" @focus="posSearch=true;posSearch1=false;posSearch2=false;"/>
            <!-- 搜索提示 -->
         <div class="posSearch" v-show="posSearch">
-        <div style="background: gray;padding:10px">热门城市/国家（支持汉字/拼音/英文字母</div>
+        <div style="background: gray;padding:10px">热门城市/国家（支持汉字/拼音/英文字母）</div>
             <el-tabs type="border-card">
                <el-tab-pane label="热门城市" class="hot">
                      <span @click="changeNames('北京')">北京</span>
@@ -302,7 +302,7 @@
         <el-input v-model="city2" style="width: 300px; height:60px;font-size:25px;direction:rtl" placeholder="Please input" @focus="posSearch1=true;posSearch=false;posSearch2=false;"/>
           <!-- 搜索提示 -->
          <div class="posSearch1" v-show="posSearch1">
-        <div style="background: gray;padding:10px">热门城市/国家（支持汉字/拼音/英文字母</div>
+        <div style="background: gray;padding:10px">热门城市/国家（支持汉字/拼音/英文字母）</div>
             <el-tabs type="border-card">
                <el-tab-pane label="热门城市" class="hot">
                      <span @click="changeNames1('北京')">北京</span>

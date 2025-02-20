@@ -15,7 +15,7 @@
         <el-input v-model="city1" style="width: 240px;height:60px;font-size:25px" placeholder="Please input" @focus="posSearch=true,posSearch1=false"/>
         <!-- 单程往返左搜索提示 -->
          <div class="posSearch" v-show="posSearch">
-        <div style="background: gray;padding:10px">热门城市/国家（支持汉字/拼音/英文字母</div>
+        <div style="background: gray;padding:10px">热门城市/国家（支持汉字/拼音/英文字母）</div>
             <el-tabs type="border-card">
                <el-tab-pane label="国内" class="hot">
                      <span @click="changeNames('北京')">北京</span>
@@ -320,7 +320,7 @@
         <img src="@/assets/air/fly.png" alt="" style="width: 60px;height:60px" @click="change" >  
          <!--单程往返右搜索提示 -->
          <div class="posSearch1" v-show="posSearch1">
-        <div style="background: gray;padding:10px">热门城市/国家（支持汉字/拼音/英文字母</div>
+        <div style="background: gray;padding:10px">热门城市/国家（支持汉字/拼音/英文字母）</div>
             <el-tabs type="border-card">
                 <el-tab-pane label="国际/中国港澳台" style="line-height: 50px;">
                      <div class="name" @click="changeNames1('中国香港')">中国香港</div>
@@ -520,7 +520,7 @@
     <div class="City" @click="stop">
     <!-- 多程1左搜索 -->
     <div class="posSearch2" v-show="posSearch2">
-        <div style="background: gray;padding:10px">热门城市/国家（支持汉字/拼音/英文字母</div>
+        <div style="background: gray;padding:10px">热门城市/国家（支持汉字/拼音/英文字母）</div>
             <el-tabs type="border-card">
                <el-tab-pane label="国内" class="hot">
                      <span @click="changeNames2('北京')">北京</span>
@@ -824,7 +824,7 @@
     </div>
     <!-- 多程1右搜索 -->
     <div class="posSearch3" v-show="posSearch3">
-        <div style="background: gray;padding:10px">热门城市/国家（支持汉字/拼音/英文字母</div>
+        <div style="background: gray;padding:10px">热门城市/国家（支持汉字/拼音/英文字母）</div>
             <el-tabs type="border-card">
                 <el-tab-pane label="国际/中国港澳台" style="line-height: 50px;">
                      <div class="name" @click="changeNames3('中国香港')">中国香港</div>
@@ -1010,7 +1010,7 @@
     <div class="City" @click="stop">
                            <!-- 多程2左搜索 -->
     <div class="posSearch4" v-show="posSearch4">
-        <div style="background: gray;padding:10px">热门城市/国家（支持汉字/拼音/英文字母</div>
+        <div style="background: gray;padding:10px">热门城市/国家（支持汉字/拼音/英文字母）</div>
             <el-tabs type="border-card">
                <el-tab-pane label="国内" class="hot">
                      <span @click="changeNames4('北京')">北京</span>
@@ -1314,7 +1314,7 @@
     </div>
     <!-- 多程2右搜索 -->
     <div class="posSearch5" v-show="posSearch5">
-        <div style="background: gray;padding:10px">热门城市/国家（支持汉字/拼音/英文字母</div>
+        <div style="background: gray;padding:10px">热门城市/国家（支持汉字/拼音/英文字母）</div>
             <el-tabs type="border-card">
                 <el-tab-pane label="国际/中国港澳台" style="line-height: 50px;">
                      <div class="name" @click="changeNames5('中国香港')">中国香港</div>
@@ -1504,7 +1504,7 @@
     <div class="City" @click="stop">
                     <!-- 多程3左搜索 -->
     <div class="posSearch6" v-show="posSearch6">
-        <div style="background: gray;padding:10px">热门城市/国家（支持汉字/拼音/英文字母</div>
+        <div style="background: gray;padding:10px">热门城市/国家（支持汉字/拼音/英文字母）</div>
             <el-tabs type="border-card">
                <el-tab-pane label="国内" class="hot">
                      <span @click="changeNames6('北京')">北京</span>
@@ -1808,7 +1808,7 @@
     </div>
     <!-- 多程3右搜索 -->
     <div class="posSearch7" v-show="posSearch7">
-        <div style="background: gray;padding:10px">热门城市/国家（支持汉字/拼音/英文字母</div>
+        <div style="background: gray;padding:10px">热门城市/国家（支持汉字/拼音/英文字母）</div>
             <el-tabs type="border-card">
                 <el-tab-pane label="国际/中国港澳台" style="line-height: 50px;">
                      <div class="name" @click="changeNames7('中国香港')">中国香港</div>

@@ -48,8 +48,7 @@ messages:{
         Train:"Domestic train ticket",
         OverseasTrain:"Overseas train ticket",
         bus:"Bus ticket",
-        boat:"Boat ticket"
-
+        boat:"Boat ticket",
     },
     'zh-cn': {
         name:'神威旅行',

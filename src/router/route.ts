@@ -2,8 +2,8 @@
 const login=()=>import('@/views/login/loginComponent.vue')
 const notFound = () => import('@/views/404/404Component.vue')
 //主页和大屏
-const homeBigScreen=()=>import('@/views/bigScreen&home/indexComponent.vue')
-const home=()=>import('@/views/bigScreen&home/home/homeComponet.vue')
+const homeWeather=()=>import('@/views/weather&home/indexComponent.vue')
+const home=()=>import('@/views/weather&home/home/homeComponet.vue')
 const bigScreen =()=>import('@/views/bigScreen/bigScreen.vue')
 //酒店路由
 const Hotel = () => import('@/views/Hotel/hotelComponent.vue')
@@ -25,6 +25,7 @@ const boat = () => import('@/views/busBoat/boat/boatTicket.vue')
 const ticket = () => import('@/views/ticket/ticketComponent.vue')
 //租车
 const RentCar = () => import('@/views/RentCar/RentCar.vue')
+const RentCar2=()=>import('@/views/RentCar/Rent/RentCar.vue')
 //旅游
 const travel = () => import('@/views/travel/travelComponent.vue')
 //全球购
@@ -65,7 +66,7 @@ const route=[
     {
         path:'/home&bigScreen',
         name:"home&bigScreen",
-        component:homeBigScreen,
+        component:homeWeather,
         children:[
             {
                 path: '/home',
@@ -227,10 +228,18 @@ const route=[
         path: '/RentCar',
         name: "RentCar",
         component: RentCar,
-        meta: {
-            icon: 'Bicycle',
-            title: '用车',
-        }
+        children: [
+            {
+                path: '/RentCar/RentCar2',
+                name: "RentCar2",
+                component: RentCar2,
+                meta: {
+                    icon: 'Share',
+                    title: '用车',
+                    Entitle: "Rent a car"
+                }
+            },
+        ],
     },
     {
         path: '/travel',
@@ -289,7 +298,7 @@ const route=[
         name: "about",
         component: about,
         meta: {
-            icon: 'Menu',
+            icon: 'Notebook',
             title: '关于神威',
         }
     },

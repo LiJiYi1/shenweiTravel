@@ -1,6 +1,6 @@
 <template>
     <div @click="outSearch">
-    <div style="display: flex;">
+    <div>
       <el-card class="search">
         <div class="top">
         <!-- 目的地 -->
@@ -78,7 +78,7 @@
         :range-separator="diff"
         start-placeholder="入住日期"
         end-placeholder="离店日期"
-        style="font-size:20px;height:60px"
+        style="font-size:20px;height:60px;width:600px"
         size="large"
         :clearable="false"
         :editable="false"
