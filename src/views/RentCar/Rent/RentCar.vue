@@ -1,65 +1,18 @@
 <template>
 <div>
     <div>
-        
          <el-card class="search">
+         <!-- 标题 -->
+         <TitleComponent></TitleComponent>
          <!-- 城市地点 -->
-         <div style="display: flex;justify-content:start">
-             <!-- 城市选择 -->
-             <el-select
-             v-model="city"
-             placeholder="Select"
-             size="large"
-             style="width: 240px"
-             >
-             <el-option
-             key="item.value"
-             label="item.label"
-             value="item.value"
-            />
-             </el-select>
-             <!-- 地点选择 -->
-             <el-select
-             v-model="city"
-             placeholder="Select"
-             size="large"
-             style="width: 240px"
-             >
-             <el-option
-             key="item.value"
-             label="item.label"
-             value="item.value"
-            />
-             </el-select>
-             <el-switch
-             style="border-radius:1px;"
-             width="100"
-             />
-         </div>
+         <PositionSelect style="margin-top:10px;"></PositionSelect>
          <!-- 用车日期 -->
-         <div style="margin-top: 20px;">
-            <el-date-picker
-             v-model="timeDate"
-            type="datetimerange"
-            start-placeholder="Start date"
-            end-placeholder="End date"
-            format="YYYY-MM-DD HH:mm:ss"
-            range-separator="---"
-            date-format="YYYY/MM/DD ddd"
-            time-format="A hh:mm:ss"
-            style="width: 600px;height:40px;"
-            :clearable="false"
-            :editable="false"
-        />
-         </div>
+         <DateComponent></DateComponent>
          <!-- 只看站内取还 -->
          <div>
             <el-checkbox fill="#229eff" v-model="checked1" label="只看站内取还" size="large" />
          </div>
-         <!-- 查询按钮 -->
-         <el-button :color="color" style="width: 200px;height:60px;margin-left:225px;border-radius:20px">查询</el-button>
-      </el-card>
-      <el-card class="poetry">
+             <el-card class="poetry">
         <div class="right">
         <div class="r-t"> 
             <h1 style="font-size:80px">{{time1}}</h1>
@@ -72,7 +25,11 @@
          <div class="cover"></div>
         </div>
       
+             </el-card>
+         <!-- 查询按钮 -->
+         <el-button :color="color" style="width: 200px;height:60px;margin-left:225px;border-radius:20px">查询</el-button>
       </el-card>
+  
     </div>
     <RightestComponent style="position: absolute;right:20px;top:20px;z-index:-1;"></RightestComponent>
     <TicketRecommon></TicketRecommon>
@@ -89,6 +46,9 @@ import TicketRecommon from '@/components/ticketRecommon.vue';
 import { useColorStore } from '@/store/modules/color';
 import { storeToRefs } from 'pinia';
 import RightestComponent from '@/components/topBar/RightestComponent.vue';
+import DateComponent from '@/components/RentCar/dateComponent.vue';
+import PositionSelect from '@/components/RentCar/positionSelect.vue';
+import TitleComponent from '@/components/RentCar/titleComponent.vue';
 //获得一个响应式的颜色
 let {color}=storeToRefs(useColorStore())
 //当前时间
@@ -97,12 +57,6 @@ let time1=ref(moment().format("DD"))
 let timer=ref()
 //只看站内取还
 let checked1=ref('')
-//时间和日期
-let timeDate=ref('')
-//城市选择
-let city=ref('')
-
-
 
 onMounted(()=>{
 timer.value=setInterval(()=>{
@@ -119,10 +73,11 @@ clearInterval(timer.value)
 <style lang="less" scoped>
 .search{
     width: 700px;
-    height: 300px;
+    overflow: visible;
     border-radius: 18px;
     display: flex;
     justify-content: center;
+    position: relative;
     .top{
         display: flex;
         justify-content: space-between;
@@ -132,15 +87,14 @@ clearInterval(timer.value)
         display: flex;
         justify-content: space-between;
     }
-}
-.poetry{
+    .poetry{
     user-select: none;
     margin-left: 20px;
     position: absolute;
-    left: 720px;
-    top: 20px;
+    left:700px;
+    top: 0px;
     width: 500px;
-    height: 300px;
+    height: 100%;
     background: url('@/assets/rentCar/image.png') no-repeat;
     background-position-y: -280px;
     background-size:cover;
@@ -157,7 +111,7 @@ clearInterval(timer.value)
         }
         .r-b{
              position: absolute;
-             top: 170px;
+             bottom: 20px;
              right: 60px;
               z-index: 2;
             margin-top: 65px;
@@ -165,17 +119,19 @@ clearInterval(timer.value)
         }
         .cover{     
     position: absolute;
-    top: -1px;
+    top: 0px;
     right: 0px;
     z-index: 1;
     width: 298px;
-    height: 302px;
+    height: 100%;
     border-radius: 18px;
     opacity: 1;
     background: linear-gradient(270deg, rgba(0, 0, 0, .8), transparent 100%);
         }
     }
 }
+}
+
 
 .posSearch{
     position: absolute;

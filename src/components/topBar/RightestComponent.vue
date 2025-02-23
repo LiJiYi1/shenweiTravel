@@ -1,8 +1,8 @@
 <template>
     <div class="right" v-show=" show">
-<el-card body-style="padding:0;" style="border-radius:0 18px 0 0">  
+    <el-card body-style="padding:0px;" style="border-radius:18px">  
     <canvas style="border-radius:0 18px 0 0" ref="webgl"  width="180" hight="400"></canvas>
-    <div style="background:url('@/assets/image.png');background-size:cover">
+    <div>
          <p style="">
             血染沧海千层浪,红霞映水万点光!</p>
     </div>
@@ -291,7 +291,7 @@ gl.vertexAttribPointer(uv,2,gl.FLOAT,false,4*5,4*3)
 gl.enableVertexAttribArray(uv)
 //创建纹理图片
 const img=new Image()
-img.src='../../../public/canvas/iChannel0.png'
+img.src='/canvas/iChannel0.png'
 img.onload=()=>{
 const texture=gl.createTexture()
 gl.activeTexture(gl.TEXTURE0)

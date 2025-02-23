@@ -43,6 +43,7 @@ const time=getTime()
 const { t } = useI18n({
 legacy: false,
 locale:'zh-cn',
+fallbackLocale:"zh-cn",
 messages:{
     en: {
         time:time.message1,

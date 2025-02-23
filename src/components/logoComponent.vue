@@ -1,18 +1,22 @@
 <template>
     <div>
         <img src="@/assets/home/logo.webp" alt="">
-        <h3>{{language.name}}</h3>
+        <h3>{{t('name')}}</h3>
     </div>
 </template>
 
 <script setup lang="ts">
 //引入能切换语言的文字
 import { useI18n } from 'vue-i18n'
-const { t } = useI18n()
-import { computed } from 'vue'
-const language={
-  name:computed(() => t('name'))
-}
+const { t,locale } = useI18n()
+locale.value='zh-cn'
+//import { computed } from 'vue'
+// console.log(computed(() => t('name')));
+
+// const language={
+//   name:computed(() => t('name'))
+// }
+
 </script>
 
 <style lang="less" scoped>

@@ -67,14 +67,12 @@
             <span>{{language.RentCar}}</span>
  
         </el-menu-item>
-        <!-- 门票.活动 -->
-        <el-sub-menu index="/ticket">
-          <template #title>
+        <!-- 景点门票 -->
+        <el-menu-item index="/ticket/ticket1">
             <el-icon><Ticket /></el-icon>
             <span>{{language.ticket}}</span>
-          </template>
-            <el-menu-item index="/goodsCharge/brandCharge"><el-icon><ShoppingCart /></el-icon>品牌管理</el-menu-item>
-        </el-sub-menu>
+ 
+        </el-menu-item>
         <!-- 旅游 -->
         <el-sub-menu index="/travel">
           <template #title>

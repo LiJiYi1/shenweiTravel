@@ -6,8 +6,7 @@
         <el-select
         v-model="Region"
         placeholder="山东省"
-        style="width: 100px;margin-top:20px;"
-
+        :style="{width:'100px',marginTop:'20px',color:'red'}"
         >
         <el-option @click="set()" :label="item.name" :value="item.name" v-for="(item,index) in city" :key="index"/>
         </el-select>
@@ -15,8 +14,10 @@
         <div v-for="(item,index) in city" :key="index" >
             <el-select
             v-model="region"
+            placeholder="威海市"
             style="width: 100px;margin-top:20px;margin-left:20px"
-            v-if="item.name===Region">
+            v-if="item.name===Region"
+            >
                <el-option @click="getData(item1.name)" :label="item1.name" :value="item1.name" v-for="(item1,index1) in item.city" :key="index1"/> 
             </el-select>
         </div>
@@ -122,7 +123,7 @@ import data from '@/assets/home/china.json'
 import { citys } from '@/assets/home/name';
 const city=data
 //持久化数据
-const Region=ref(localStorage.getItem('province'))||ref('山东省')
+const Region=ref(localStorage.getItem('province')||ref('山东省'))
 //持久化数据
 const region=ref(localStorage.getItem('city'))||ref('威海市')
 //当前时间
@@ -274,6 +275,8 @@ clearInterval(timer.value)
 })
 const webgl=ref(null)
 onMounted(()=>{
+
+
 const gl=webgl.value.getContext('webgl')
 //顶点着色器
 const vertexSource=`
@@ -473,7 +476,7 @@ gl.vertexAttribPointer(uv,2,gl.FLOAT,false,4*5,4*3)
 gl.enableVertexAttribArray(uv)
 //创建纹理图片
 const img=new Image()
-img.src='../../../public/canvas/iChannel0.png'
+img.src='/canvas/iChannel0.png'
 img.onload=()=>{
 const texture=gl.createTexture()
 gl.activeTexture(gl.TEXTURE0)
@@ -492,7 +495,7 @@ gl.enable(gl.DEPTH_TEST)
 gl.drawArrays(gl.TRIANGLES,0,6)
 }
 const img1=new Image()
-img1.src='../../../public/canvas/iChannel1.png'
+img1.src='/canvas/iChannel1.png'
 img1.onload=()=>{
 const texture=gl.createTexture()
 gl.activeTexture(gl.TEXTURE0)
@@ -674,6 +677,7 @@ background:url('@/assets/home/weather.png') no-repeat;
 background-size: cover;
 margin-left: -20px;
 }
+
 
 </style>
 

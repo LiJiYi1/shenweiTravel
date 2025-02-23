@@ -825,4 +825,14 @@ clearInterval(timer.value)
        
     }
 }
+:deep(.el-radio__input.is-checked .el-radio__inner) {
+    background: rgb(255, 234, 0);
+    border-color: rgb(255, 234, 0);
+}
+:deep(.el-radio__label){
+    color:rgb(255, 234, 0)
+}
+:deep(.el-radio__input.is-checked+.el-radio__label) {
+    color: rgb(255, 234, 0);
+}
 </style>

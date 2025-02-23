@@ -489,7 +489,7 @@
         <el-input v-model="city2" style="width: 240px; height:60px;font-size:25px;direction:rtl" placeholder="Please input" @focus="posSearch1=true,posSearch=false"/>
     </div>
     <!-- 对底部日期的提示 -->
-    <div class="alert" v-show='(oneOrTwo!=="3")'><p>出发日期</p><p>返程日期</p></div>
+    <div class="alert1" v-show='(oneOrTwo!=="3")'><p>出发日期</p><p>返程日期</p></div>
     <!-- 底部的日期选择 -->
     <div class="bt" v-show='(oneOrTwo!=="3")'>
         <el-date-picker
@@ -2022,9 +2022,6 @@
 
      
         </div>
-    <!-- 搜索按钮 -->
-    <el-button :color="color" style="width: 200px;height:60px;margin-left:225px;border-radius:20px">搜索机票</el-button>
-      </el-card>
       <el-card class="poetry">
         <div class="right">
         <div class="r-t"> 
@@ -2039,6 +2036,10 @@
         </div>
       
       </el-card>
+    <!-- 搜索按钮 -->
+    <el-button :color="color" style="width: 200px;height:60px;margin-left:225px;border-radius:20px">搜索机票</el-button>
+      </el-card>
+     
     </div>
 
   
@@ -2218,13 +2219,21 @@ clearInterval(timer.value)
 <style lang="less" scoped>
 .search{
     width: 700px;
-    height: 460px;
     border-radius: 18px; 
+    position: relative;
+    overflow: visible;
     .top{
         display: flex;
         justify-content: space-between;
     }
     .alert{
+        margin-top: 20px;
+            width: 650px;
+            height: 30px;
+            display: flex;
+            justify-content: space-between;
+        }
+    .alert1{
         margin-top: 40px;
             width: 650px;
             height: 30px;
@@ -2289,14 +2298,14 @@ clearInterval(timer.value)
     user-select: none;
     margin-left: 20px;
     width: 500px;
-    height: 460px;
+    height: 100%;
     background: url('@/assets/air/luguhu.png') no-repeat;
     background-position-y: -230px;
     background-size:cover;
     border-radius: 18px;
     position: absolute;
-    left: 720px;
-    top:20px;
+    left: 700px;
+    top:0px;
     .right{
         color: white;
         margin-left:300px;
@@ -2309,7 +2318,7 @@ clearInterval(timer.value)
         }
         .r-b{
              position: absolute;
-             top: 320px;
+             bottom: 20px;
              right: 60px;
               z-index: 2;
             margin-top: 80px;
@@ -2317,11 +2326,11 @@ clearInterval(timer.value)
         }
         .cover{     
     position: absolute;
-    top: -1px;
+    top: 0px;
     right: 0px;
     z-index: 1;
     width: 298px;
-    height: 462px;
+    height: 100%;
     border-radius: 18px;
     opacity: 1;
     background: linear-gradient(270deg, rgba(0, 0, 0, .8), transparent 100%);
@@ -2334,7 +2343,7 @@ clearInterval(timer.value)
     position: absolute;
     left: 40px;
     cursor: pointer;
-    top: 224px;
+    top: 203.5px;
     z-index: 10;
     .hot{  
         span{
@@ -2356,7 +2365,7 @@ clearInterval(timer.value)
     position: absolute;
     left: 110px;
     cursor: pointer;
-    top: 224px;
+    top: 203.5px;
     z-index: 10;
     .hot{  
         span{
@@ -2503,5 +2512,15 @@ clearInterval(timer.value)
      
        
     }
+}
+::v-deep .el-radio__input.is-checked .el-radio__inner {
+    background: rgb(255, 234, 0);
+    border-color: rgb(255, 234, 0);
+}
+::v-deep .el-radio__label{
+    color:rgb(255, 234, 0)
+}
+::v-deep .el-radio__input.is-checked+.el-radio__label {
+    color: rgb(255, 234, 0);
 }
 </style>

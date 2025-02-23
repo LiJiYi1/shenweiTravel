@@ -100,7 +100,7 @@ clearInterval(timer.value)
         }
         .r-b{
              position: absolute;
-             top: 145px;
+             top: 130px;
              right: 60px;
               z-index: 2;
             margin-top: 65px;

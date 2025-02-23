@@ -27,11 +27,8 @@
                 <SelectNum style="margin-top: 20px;"></SelectNum>
              </el-tab-pane>
         </el-tabs>
-
-  
-        <el-button :color="color" style="width: 200px;height:60px;margin-left:225px;border-radius:20px;margin-top:20px">搜索火车票</el-button>
-      </el-card>
-      <el-card class="poetry">
+        <!-- 诗句 -->
+        <el-card class="poetry">
         <div class="right">
         <div class="r-t"> 
             <h1 style="font-size:80px">{{time1}}</h1>
@@ -44,7 +41,10 @@
          <div class="cover"></div>
         </div>
       
+        </el-card>
+        <el-button :color="color" style="width: 200px;height:60px;margin-left:225px;border-radius:20px;margin-top:20px">搜索火车票</el-button>
       </el-card>
+      
     </div>
  
     <RightestComponent style="position: absolute;right:20px;top:20px;z-index:-1;"></RightestComponent>
@@ -110,7 +110,8 @@ clearInterval(timer.value)
 <style lang="less" scoped>
 .search{
     width: 700px;
-    
+    position: relative;
+    overflow: visible;
     border-radius: 18px;
     .demo-tabs{
         justify-self: center;
@@ -121,10 +122,10 @@ clearInterval(timer.value)
     user-select: none;
     margin-left: 20px;
     position: absolute;
-    left:720px;
-    top:20px;
+    left:700px;
+    top:0px;
     width: 500px;
-    height: 400px;
+    height: 100%;
     background: url('@/assets/train/snow.png') no-repeat;
     background-position-y: -230px;
     background-size:cover;
@@ -141,7 +142,7 @@ clearInterval(timer.value)
         }
         .r-b{
              position: absolute;
-             top: 340px;
+             bottom: 20px;
              right: 60px;
               z-index: 2;
             margin-top: 65px;
@@ -149,15 +150,28 @@ clearInterval(timer.value)
         }
         .cover{     
     position: absolute;
-    top: -1px;
+    top: 0px;
     right: 0px;
     z-index: 1;
     width: 298px;
-    height: 402px;
+    height: 100%;
     border-radius: 18px;
     opacity: 1;
     background: linear-gradient(270deg, rgba(0, 0, 0, .8), transparent 100%);
         }
     }
+}
+:deep(.el-radio.is-bordered.is-checked) {
+    border-color:rgb(255, 234, 0);
+}
+:deep(.el-radio__input.is-checked .el-radio__inner) {
+    background: rgb(255, 234, 0);
+    border-color: rgb(255, 234, 0);
+}
+:deep(.el-radio__label){
+    color:rgb(255, 234, 0)
+}
+:deep(.el-radio__input.is-checked+.el-radio__label) {
+    color: rgb(255, 234, 0);
 }
 </style>

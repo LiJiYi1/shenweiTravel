@@ -23,6 +23,7 @@ const bus = () => import('@/views/busBoat/bus/busTicket.vue')
 const boat = () => import('@/views/busBoat/boat/boatTicket.vue')
 //门票活动
 const ticket = () => import('@/views/ticket/ticketComponent.vue')
+const attractionTicket=()=>import('@/views/ticket/ticket/AttractionTcket.vue')
 //租车
 const RentCar = () => import('@/views/RentCar/RentCar.vue')
 const RentCar2=()=>import('@/views/RentCar/Rent/RentCar.vue')
@@ -219,10 +220,17 @@ const route=[
         path: '/ticket',
         name: "ticket",
         component: ticket,
-        meta: {
-            icon: 'Ticket',
-            title: '门票.活动',
-        }
+        children: [
+            {
+                path: '/ticket/ticket1',
+                component: attractionTicket,
+                meta: {
+                    Entitle: 'Attraction Ticket',
+                    title: '景点门票',
+                    icon: 'Ticket'
+                }
+            }
+        ],
     },
     {
         path: '/RentCar',
