@@ -1,6 +1,6 @@
 <template>
 <div @click="outSearch">
-    <div>
+    <div style="display: flex;">
       <el-card class="search">
         <div class="top">
         <!-- 目的地 -->
@@ -101,7 +101,6 @@
       
       </el-card>
     </div>
-    <RightestComponent style="position: absolute;right:20px;top:20px;z-index:-1;"></RightestComponent>
     <TicketRecommon></TicketRecommon>
     <BottomComponent></BottomComponent>
  </div>
@@ -116,7 +115,6 @@ import { CaretBottom} from '@element-plus/icons-vue';
 import TicketRecommon from '@/components/ticketRecommon.vue';
 import { useColorStore } from '@/store/modules/color';
 import { storeToRefs } from 'pinia';
-import RightestComponent from '@/components/topBar/RightestComponent.vue';
 //获得一个响应式的颜色
 let {color}=storeToRefs(useColorStore())
 //当前时间
@@ -188,7 +186,8 @@ clearInterval(timer.value)
 
 <style lang="less" scoped>
 .search{
-    width: 700px;
+    width: 60%;
+    min-width: 700px;
     height: 300px;
     border-radius: 18px;
     .top{
@@ -200,17 +199,19 @@ clearInterval(timer.value)
         display: flex;
         justify-content: space-between;
     }
+    .importantWord{
+        position: relative;
+      
+    }
 }
 .poetry{
     user-select: none;
     margin-left: 20px;
-    position: absolute;
-    left: 720px;
-    top: 20px;
-    width: 500px;
-    height: 300px;
+    width: 545px;
+    min-width: 495px;
+    position: relative;
     background: url('@/assets/hotel/changbaishan.jpg') no-repeat;
-    background-position-y: -280px;
+    background-position-y: -380px;
     background-size:cover;
     border-radius: 18px;
     .right{
@@ -233,7 +234,7 @@ clearInterval(timer.value)
         }
         .cover{     
     position: absolute;
-    top: -1px;
+    top: 1px;
     right: 0px;
     z-index: 1;
     width: 298px;
@@ -262,9 +263,9 @@ clearInterval(timer.value)
 }
 .keySearch{
     position: absolute;
-    left: 300px;
-    top: 140px;
-    width: 450px;
+    left: 20px;
+    top: 96px;
+    width: 410px;
     z-index: 3;
     span{
         display: block;

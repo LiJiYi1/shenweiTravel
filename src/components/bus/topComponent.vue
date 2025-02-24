@@ -579,13 +579,13 @@
     border-right:12px solid transparent;
     border-top:12px solid transparent;
     border-bottom:12px solid;
-    position:absolute;left:66px;top:90px"></div>
+    position:absolute;left:20px;top:50px"></div>
     <div  v-show="posSearch1" style="
     border-left:12px solid transparent;
     border-right:12px solid transparent;
     border-top:12px solid transparent;
     border-bottom:12px solid;
-    position:absolute;left:642px;top:90px"></div>
+    position:absolute;right:20px;top:50px"></div>
     </div>
     </div>
 </template>
@@ -628,8 +628,8 @@ onMounted(()=>{
 
 <style lang="less" scoped>
 div{
-.city{
-            width: 642px;
+.city{      position: relative;
+            width: 100%;
             height: 30px;
             display: flex;
             justify-content: space-between;
@@ -638,9 +638,9 @@ div{
     width: 550px;
     height: 300px;
     position: absolute;
-    left: 40px;
+    left: 0px;
     cursor: pointer;
-    top: 114px;
+    top: 74px;
     z-index: 10;
     .hot{  
         span{
@@ -660,9 +660,9 @@ div{
     width: 550px;
     height: 300px;
     position: absolute;
-    left: 142px;
+    right: 0px;
     cursor: pointer;
-    top: 114px;
+    top: 74px;
     z-index: 10;
     .hot{  
         span{

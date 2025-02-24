@@ -1,6 +1,6 @@
 <template>
 
-          <div style="display:flex;justify-content:center;">
+    <div>
         <el-card  class="container">
             <div style="width:1160px;margin:0 auto">
                             <div class="top">
@@ -99,12 +99,11 @@
 <style lang="less" scoped>
 .container{
     display: flex;
-    overflow: auto;
     flex-direction: column;
     justify-content:start ;
-    width: 1520px;
+    min-width: 1218px;
+    width: 100%;
     margin-top: 50px;
-
    .top{ 
     width: 100%;
     display: flex;

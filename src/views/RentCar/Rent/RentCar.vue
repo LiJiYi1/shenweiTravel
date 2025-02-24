@@ -1,6 +1,5 @@
 <template>
 <div>
-    <div>
          <el-card class="search">
          <!-- 标题 -->
          <TitleComponent></TitleComponent>
@@ -29,9 +28,6 @@
          <!-- 查询按钮 -->
          <el-button :color="color" style="width: 200px;height:60px;margin-left:225px;border-radius:20px">查询</el-button>
       </el-card>
-  
-    </div>
-    <RightestComponent style="position: absolute;right:20px;top:20px;z-index:-1;"></RightestComponent>
     <TicketRecommon></TicketRecommon>
     <BottomComponent></BottomComponent>
  </div>
@@ -45,7 +41,6 @@ import { onMounted,onBeforeUnmount,ref } from 'vue';
 import TicketRecommon from '@/components/ticketRecommon.vue';
 import { useColorStore } from '@/store/modules/color';
 import { storeToRefs } from 'pinia';
-import RightestComponent from '@/components/topBar/RightestComponent.vue';
 import DateComponent from '@/components/RentCar/dateComponent.vue';
 import PositionSelect from '@/components/RentCar/positionSelect.vue';
 import TitleComponent from '@/components/RentCar/titleComponent.vue';
@@ -72,7 +67,8 @@ clearInterval(timer.value)
 
 <style lang="less" scoped>
 .search{
-    width: 700px;
+    width: 60%;
+    min-width: 700px;
     overflow: visible;
     border-radius: 18px;
     display: flex;
@@ -91,9 +87,10 @@ clearInterval(timer.value)
     user-select: none;
     margin-left: 20px;
     position: absolute;
-    left:700px;
+    left:100%;
     top: 0px;
-    width: 500px;
+    min-width: 450px;
+    width: 64%;
     height: 100%;
     background: url('@/assets/rentCar/image.png') no-repeat;
     background-position-y: -280px;

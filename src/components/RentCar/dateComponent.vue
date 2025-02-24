@@ -1,9 +1,9 @@
 <template>
 
 <div style="margin-top: 20px;position:relative">
-<div style="position:absolute;left:210px;top:18px;font-size:12px">{{week1}}</div> 
-<div style="position:absolute;left:550px;top:18px;font-size:12px">{{week2}}</div> 
-<div style="position:absolute;left:297px;top:25px;font-size:28px">→</div> 
+<div style="position:absolute;left:210px;top:18px;font-size:12px;z-index:10">{{week1}}</div> 
+<div style="position:absolute;left:550px;top:18px;font-size:12px;z-index:10">{{week2}}</div> 
+<div style="position:absolute;left:297px;top:25px;font-size:28px;z-index:10">→</div> 
             <el-date-picker
              v-model="timeDate"
             type="datetimerange"

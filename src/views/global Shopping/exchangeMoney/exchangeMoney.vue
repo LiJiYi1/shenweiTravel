@@ -15,8 +15,8 @@
    <img src="@/assets/global/exchangeMoney/ma.png" alt="" style="position: fixed;top:96px;width:300px;">
   
          </div>
-         <el-card >
-        <ul class="recommond">
+         <el-card style="min-width: 1217px;">
+        <ul class="recommond" style="min-width: 1210px;">
         <li style="display: flex;">
                 <div class="pic1"></div>
                 <div class="advant-word">
@@ -89,7 +89,7 @@
                     </li>
                 </ul>
            </el-card>
-           <el-card style="margin-top: 20px;width:636px;height:200px">
+           <el-card style="margin-top: 20px;width:100%;height:200px">
             <img src="@/assets/global/exchangeMoney/exchange.png" alt="" >
             </el-card>
               </div>
@@ -175,6 +175,7 @@ const data=reactive([
 
 <style lang="less" scoped>
 .scroll{
+    min-width: 1217px;
     .first{
         width: 100%;
         height: 250px;
@@ -195,6 +196,7 @@ const data=reactive([
     }
 }
 .recommond{
+    min-width: 1210px;
     display: flex;
    width: 100%;
    height: 100px;
@@ -236,7 +238,8 @@ const data=reactive([
       
 }
 .ex-steps{
-    width: 600px;
+    min-width: 560px;
+    width: 70%;
     margin-top: 20px;
     padding: 16px 18px 18px;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
@@ -279,7 +282,8 @@ const data=reactive([
 }
 .huilv{
     margin-top: 20px;
-    width: 600px;
+    min-width: 600px;
+    width: 60%;
     .list{
     display: flex;
     margin-top: 38px;
@@ -301,6 +305,7 @@ const data=reactive([
 }
 }
 .bottom-r{
+
 display: flex;
 flex-direction:column;
 margin-left:20px

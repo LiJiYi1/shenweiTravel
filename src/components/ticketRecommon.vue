@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div style="width: 100%; min-width:1218px">
      <el-card class="bottom">
         <div>
             <h1>地图导航</h1>

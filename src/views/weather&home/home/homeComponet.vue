@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div style="min-width: 1218px;">
         <el-card shadow="always" >
             <div class="card">
                     <img :src="useUserStore().avator" class="avator">
@@ -51,6 +51,7 @@ const language={
 
 <style lang="less" scoped>
 .card{
+
 display: flex;
 .avator{
     width: 100px;

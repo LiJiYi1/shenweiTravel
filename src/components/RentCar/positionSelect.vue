@@ -120,10 +120,10 @@ onMounted(()=>{
 </script>
 
 <style lang="less" scoped>
- ::v-deep .el-switch .el-switch__core{
+ :deep(.el-switch .el-switch__core){
     border-radius: 2px !important;
    }
- ::v-deep .el-switch .el-switch__core .el-switch__action{
+ :deep(.el-switch .el-switch__core .el-switch__action){
     border-radius: 2px !important;
    }
 </style>

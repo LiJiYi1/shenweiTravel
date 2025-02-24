@@ -1,6 +1,6 @@
 <template>
     <div @click="outSearch">
-    <div>
+    <div style="display: flex;">
       <el-card class="search">
         <div class="top">
         <!-- 目的地 -->
@@ -102,7 +102,6 @@
       
       </el-card>
     </div>
-     <RightestComponent style="position: absolute;right:20px;top:20px;z-index:-1;"></RightestComponent>
      <TicketRecommon></TicketRecommon>
      <BottomComponent></BottomComponent>
     </div>
@@ -111,7 +110,6 @@
 
 <script setup lang="ts">
 import BottomComponent from '@/components/bottomComponent.vue';
-import RightestComponent from '@/components/topBar/RightestComponent.vue';
 import moment from 'moment';
 import { onMounted,onBeforeUnmount,ref } from 'vue';
 import { CaretBottom} from '@element-plus/icons-vue';
@@ -180,7 +178,8 @@ clearInterval(timer.value)
 
 <style lang="less" scoped>
 .search{
-    width: 700px;
+    width: 60%;
+    min-width: 700px;
     height: 300px;
     border-radius: 18px;
     .top{
@@ -194,15 +193,15 @@ clearInterval(timer.value)
     }
 }
 .poetry{
-    position: absolute;
-    left: 720px;
-    top:20px;
+    position: relative;
+   
     user-select: none;
     margin-left: 20px;
-    width: 500px;
+    width: 600px;
+     min-width: 495px;
     height: 300px;
     background: url('@/assets/hotel/changbaishan.jpg') no-repeat;
-    background-position-y: -280px;
+    background-position-y: -380px;
     background-size:cover;
     border-radius: 18px;
     .right{

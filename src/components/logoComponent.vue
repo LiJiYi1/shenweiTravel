@@ -9,7 +9,7 @@
 //引入能切换语言的文字
 import { useI18n } from 'vue-i18n'
 const { t,locale } = useI18n()
-locale.value='zh-cn'
+locale.value = localStorage.getItem('language') as string;
 //import { computed } from 'vue'
 // console.log(computed(() => t('name')));
 

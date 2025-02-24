@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div>
+        <div style="display: flex;">
         <el-card class="search">
         <!-- 城市选择 -->
         <TopComponent @click="stop"></TopComponent>
@@ -25,7 +25,6 @@
       </el-card>
         </div>
   
-     <RightestComponent style="position: absolute;right:20px;top:20px;z-index:-1;"></RightestComponent>
      <TicketRecommon></TicketRecommon>
      <bottomComponent></bottomComponent>
     </div>
@@ -35,7 +34,6 @@
 <script setup lang="ts">
 import BottomComponent from '@/components/boat/bottomComponent.vue';
 import bottomComponent from '@/components/bottomComponent.vue';
-import RightestComponent from '@/components/topBar/RightestComponent.vue';
 import moment from 'moment';
 import { onMounted,onBeforeUnmount,ref } from 'vue';
 import TicketRecommon from '@/components/ticketRecommon.vue';
@@ -68,7 +66,9 @@ clearInterval(timer.value)
 
 <style lang="less" scoped>
 .search{
-    width: 700px;
+    overflow: visible;
+    min-width: 700px;
+    width: 70%;
     border-radius: 18px;
     
     .demo-tabs{
@@ -77,12 +77,11 @@ clearInterval(timer.value)
     }
 }
 .poetry{
-    width: 495px;
+    min-width: 500px;
     margin-left: 20px;
     user-select: none;
-    position: absolute;
-    left:722px;
-    top:20px;
+  
+position: relative;
 
     background: url('@/assets/busBoat/image.png') no-repeat;
     background-position-y: -230px;

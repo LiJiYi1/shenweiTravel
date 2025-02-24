@@ -47,7 +47,6 @@
       
     </div>
  
-    <RightestComponent style="position: absolute;right:20px;top:20px;z-index:-1;"></RightestComponent>
     <TicketRecommon></TicketRecommon>
      <BottomComponent></BottomComponent>
     </div>
@@ -56,7 +55,6 @@
 
 <script setup lang="ts">
 import BottomComponent from '@/components/bottomComponent.vue';
-import RightestComponent from '@/components/topBar/RightestComponent.vue';
 import moment from 'moment';
 import { onMounted,onBeforeUnmount,ref } from 'vue';
 import TicketRecommon from '@/components/ticketRecommon.vue';
@@ -82,18 +80,6 @@ const emit=(e)=>{
     oneOrtwo.value=e
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
 onMounted(()=>{
 //加载时调用一下日期
 timer.value=setInterval(()=>{
@@ -109,22 +95,24 @@ clearInterval(timer.value)
 
 <style lang="less" scoped>
 .search{
-    width: 700px;
+    min-width: 700px;
+    width: 60%;
     position: relative;
     overflow: visible;
     border-radius: 18px;
     .demo-tabs{
         justify-self: center;
-        width: 600px;
+        width: 90%;
     }
 }
 .poetry{
     user-select: none;
     margin-left: 20px;
     position: absolute;
-    left:700px;
+    right:-66%;
     top:0px;
-    width: 500px;
+    width: 20%;
+    min-width: 450px;
     height: 100%;
     background: url('@/assets/train/snow.png') no-repeat;
     background-position-y: -230px;

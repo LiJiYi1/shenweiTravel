@@ -2,6 +2,18 @@
     <div @click="outSearch">
     <div>
       <el-card class="search">
+          <div  v-show="posSearch" style="
+    border-left:12px solid transparent;
+    border-right:12px solid transparent;
+    border-top:12px solid transparent;
+    border-bottom:12px solid;
+    position:absolute;left:36px;top:160px"></div>
+    <div  v-show="posSearch1" style="
+    border-left:12px solid transparent;
+    border-right:12px solid transparent;
+    border-top:12px solid transparent;
+    border-bottom:12px solid;
+    position:absolute;right:36px;top:160px"></div>
     <!-- 单程还是往返 -->
     <el-radio-group v-model="oneOrTwo">
       <el-radio value="1" size="large" :style="{color:color}" @change="isOne">单程</el-radio>
@@ -2000,7 +2012,7 @@
     <el-checkbox v-model="checked2" label="携带婴儿(14天-2岁)" size="large" style="margin-right:180px"/>
     <!-- 携带儿童说明 -->
     <el-popover
-    style="padding:40px;"
+    style="position:absolute;top:0px"
     placement="top-start"
     title="儿童票/婴儿票预订说明"
     :width="300"
@@ -2016,7 +2028,7 @@
 6. 婴儿票无座。"
   >
     <template #reference >
-      <el-icon style="width: 200px;float:right;margin-top:-28px"><Warning />携带婴儿/儿童预定说明</el-icon>
+      <el-icon style="width: 200px;float:right;margin-top:15px"><Warning />携带婴儿/儿童预定说明</el-icon>
     </template>
      </el-popover>
 
@@ -2045,19 +2057,7 @@
   
 
 
-    <div  v-show="posSearch" style="
-    border-left:12px solid transparent;
-    border-right:12px solid transparent;
-    border-top:12px solid transparent;
-    border-bottom:12px solid;
-    position:absolute;left:66px;top:200px"></div>
-    <div  v-show="posSearch1" style="
-    border-left:12px solid transparent;
-    border-right:12px solid transparent;
-    border-top:12px solid transparent;
-    border-bottom:12px solid;
-    position:absolute;left:643px;top:200px"></div>
-    <RightestComponent style="position: absolute;right:20px;top:20px;z-index:-1;"></RightestComponent>
+  
     <TicketRecommon></TicketRecommon>
     <BottomComponent></BottomComponent>
     </div>
@@ -2066,7 +2066,7 @@
 
 <script setup lang="ts">
 import BottomComponent from '@/components/bottomComponent.vue';
-import RightestComponent from '@/components/topBar/RightestComponent.vue';
+
 import moment from 'moment';
 import { onMounted,onBeforeUnmount,ref } from 'vue';
 import TicketRecommon from '@/components/ticketRecommon.vue';
@@ -2218,7 +2218,10 @@ clearInterval(timer.value)
 
 <style lang="less" scoped>
 .search{
-    width: 700px;
+    position: relative;
+    overflow:visible;
+    width: 63%;
+    min-width: 750px;
     border-radius: 18px; 
     position: relative;
     overflow: visible;
@@ -2228,20 +2231,20 @@ clearInterval(timer.value)
     }
     .alert{
         margin-top: 20px;
-            width: 650px;
+            width: 100%;
             height: 30px;
             display: flex;
             justify-content: space-between;
         }
     .alert1{
         margin-top: 40px;
-            width: 650px;
+            width: 100%;
             height: 30px;
             display: flex;
             justify-content: space-between;
         }
-    .city{
-            width: 650px;
+    .city{  
+            width: 100%;
             height: 30px;
             display: flex;
             justify-content: space-between;
@@ -2296,15 +2299,15 @@ clearInterval(timer.value)
 }
 .poetry{
     user-select: none;
-    margin-left: 20px;
-    width: 500px;
+    width: 52%;
+    min-width: 420px;
     height: 100%;
     background: url('@/assets/air/luguhu.png') no-repeat;
     background-position-y: -230px;
     background-size:cover;
     border-radius: 18px;
     position: absolute;
-    left: 700px;
+    right: -59%;
     top:0px;
     .right{
         color: white;
@@ -2341,9 +2344,9 @@ clearInterval(timer.value)
     width: 650px;
     height: 300px;
     position: absolute;
-    left: 40px;
+    left: 20px;
     cursor: pointer;
-    top: 203.5px;
+    top: 184px;
     z-index: 10;
     .hot{  
         span{
@@ -2363,9 +2366,9 @@ clearInterval(timer.value)
     width: 580px;
     height: 300px;
     position: absolute;
-    left: 110px;
+    right:20px;
     cursor: pointer;
-    top: 203.5px;
+    top: 184px;
     z-index: 10;
     .hot{  
         span{
@@ -2385,9 +2388,9 @@ clearInterval(timer.value)
     width: 650px;
     height: 300px;
     position: absolute;
-    left: 114px;
+    left: 188px;
     cursor: pointer;
-    top:170px;
+    top:152px;
     z-index: 1;
     .hot{  
         span{
@@ -2407,9 +2410,9 @@ clearInterval(timer.value)
     width: 580px;
     height: 300px;
     position: absolute;
-    left: 353px;
+    left: 430px;
     cursor: pointer;
-    top: 170px;
+    top: 152px;
     z-index: 10;
     .hot{  
         span{
@@ -2429,9 +2432,9 @@ clearInterval(timer.value)
     width: 630px;
     height: 300px;
     position: absolute;
-    left: 115px;
+    left: 188px;
     cursor: pointer;
-    top: 270px;
+    top: 252px;
     z-index: 10;
     .hot{  
         span{
@@ -2451,9 +2454,9 @@ clearInterval(timer.value)
     width: 580px;
     height: 300px;
     position: absolute;
-    left: 353px;
+    left: 430px;
     cursor: pointer;
-    top: 270px;
+    top: 252px;
     z-index: 10;
     .hot{  
         span{
@@ -2473,9 +2476,9 @@ clearInterval(timer.value)
     width: 630px;
     height: 300px;
     position: absolute;
-    left: 115px;
+    left: 188px;
     cursor: pointer;
-    top: 370px;
+    top: 343px;
     z-index: 10;
     .hot{  
         span{
@@ -2495,9 +2498,9 @@ clearInterval(timer.value)
     width: 580px;
     height: 270px;
     position: absolute;
-    left: 353px;
+    left: 430px;
     cursor: pointer;
-    top: 370px;
+    top: 343px;
     z-index: 10;
     .hot{  
         span{
@@ -2513,14 +2516,14 @@ clearInterval(timer.value)
        
     }
 }
-::v-deep .el-radio__input.is-checked .el-radio__inner {
+:deep(.el-radio__input.is-checked .el-radio__inner) {
     background: rgb(255, 234, 0);
     border-color: rgb(255, 234, 0);
 }
-::v-deep .el-radio__label{
+:deep(.el-radio__label){
     color:rgb(255, 234, 0)
 }
-::v-deep .el-radio__input.is-checked+.el-radio__label {
+:deep(.el-radio__input.is-checked+.el-radio__label) {
     color: rgb(255, 234, 0);
 }
 </style>

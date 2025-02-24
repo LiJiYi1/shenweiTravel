@@ -1,7 +1,7 @@
 <template>
     <div @click="outSearch">
-    <div>
-      <el-card class="search" body-style=" width: 668px;height:220px">
+    <div style="display: flex;">
+      <el-card class="search">
     <!-- 单程还是往返 -->
     <el-radio-group v-model="oneOrTwo" :fill="color">
       <el-radio value="1" size="large" @change="isOne" :style="{color:color,borderColor:color,}">单程</el-radio>
@@ -589,20 +589,20 @@
     border-right:12px solid transparent;
     border-top:12px solid transparent;
     border-bottom:12px solid;
-    position:absolute;left:66px;top:200px"></div>
+    position:absolute;left:45px;top:180px"></div>
     <div  v-show="posSearch1" style="
     border-left:12px solid transparent;
     border-right:12px solid transparent;
     border-top:12px solid transparent;
     border-bottom:12px solid;
-    position:absolute;left:642px;top:200px"></div>
+    position:absolute;right:50px;top:180px"></div>
      <div  v-show="posSearch2" style="
     border-left:12px solid transparent;
     border-right:12px solid transparent;
     border-top:12px solid transparent;
     z-index:10;
     border-bottom:12px solid;
-    position:absolute;left:642px;top:300px"></div>
+    position:absolute;right:50px;top:280px"></div>
     </div>
     <!-- 对底部日期的提示 -->
     <div class="alert"><p>出发日期</p><p v-if="oneOrTwo!=='3'">返程日期</p>
@@ -944,7 +944,6 @@
       </el-card>
     </div>
  
-   <RightestComponent style="position: absolute;right:20px;top:20px;z-index:-1;"></RightestComponent>
     <TicketRecommon></TicketRecommon>
      <BottomComponent></BottomComponent>
     </div>
@@ -953,7 +952,6 @@
 
 <script setup lang="ts">
 import BottomComponent from '@/components/bottomComponent.vue';
-import RightestComponent from '@/components/topBar/RightestComponent.vue';
 import moment from 'moment';
 import { onMounted,onBeforeUnmount,ref } from 'vue';
 import TicketRecommon from '@/components/ticketRecommon.vue';
@@ -1066,8 +1064,10 @@ clearInterval(timer.value)
 
 <style lang="less" scoped>
 .search{
-    width: 700px;
-    height: 400px;
+    position: relative;
+    overflow: visible;
+    width: 70%;
+    min-width: 700px;
     border-radius: 18px;
     .top{
         display: flex;
@@ -1075,18 +1075,19 @@ clearInterval(timer.value)
     }
     .alert{
         margin-top: 40px;
-            width: 650px;
+            width: 100%;
             height: 30px;
             display: flex;
             justify-content: space-between;
         }
-    .city{
-            width: 650px;
+    .city{ 
+            width: 100%;
             height: 30px;
             display: flex;
             justify-content: space-between;
     }
     .bt{
+        width: 100%;
         display: flex;
         justify-content: space-between;
         
@@ -1095,10 +1096,8 @@ clearInterval(timer.value)
 .poetry{
     user-select: none;
     margin-left: 20px;
-    position: absolute;
-    left:720px;
-    top:20px;
-    width: 500px;
+    position: relative;
+    min-width: 500px;
     height: 400px;
     background: url('@/assets/train/snow.png') no-repeat;
     background-position-y: -230px;
@@ -1139,9 +1138,9 @@ clearInterval(timer.value)
     width: 550px;
     height: 300px;
     position: absolute;
-    left: 40px;
+    left: 20px;
     cursor: pointer;
-    top: 224px;
+    top: 204px;
     z-index: 10;
     .hot{  
         span{
@@ -1161,9 +1160,9 @@ clearInterval(timer.value)
     width: 550px;
     height: 300px;
     position: absolute;
-    left: 142px;
+    right: 20px;
     cursor: pointer;
-    top: 224px;
+    top: 204px;
     z-index: 10;
     .hot{  
         span{
@@ -1183,9 +1182,9 @@ clearInterval(timer.value)
     width: 550px;
     height: 300px;
     position: absolute;
-    left: 148px;
+    right: 28px;
     cursor: pointer;
-    top: 324px;
+    top: 304px;
     z-index: 10;
     .hot{  
         span{

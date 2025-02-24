@@ -29,6 +29,7 @@ const RentCar = () => import('@/views/RentCar/RentCar.vue')
 const RentCar2=()=>import('@/views/RentCar/Rent/RentCar.vue')
 //旅游
 const travel = () => import('@/views/travel/travelComponent.vue')
+const travelHome = () => import('@/views/travel/travelHome/travelHome.vue')
 //全球购
 const Global = () => import('@/views/global Shopping/globalShopping.vue')
 const exchange=()=>import('@/views/global Shopping/exchangeMoney/exchangeMoney.vue')
@@ -253,10 +254,17 @@ const route=[
         path: '/travel',
         name: "travel",
         component: travel,
-        meta: {
-            icon: 'Flag',
-            title: '旅游',
-        }
+        children: [
+            {
+                path: '/travel/travelHome',
+                component: travelHome,
+                meta: {
+                    Entitle: 'Travel homepage',
+                    title: '旅游首页',
+                    icon: 'House'
+                }
+            }
+        ],
     },
     {
         path: '/Global',

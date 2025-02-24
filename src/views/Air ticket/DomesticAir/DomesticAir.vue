@@ -1,6 +1,6 @@
 <template>
     <div @click="outSearch">
-    <div>
+    <div style="display: flex;">
       <el-card class="search">
     <!-- 单程还是往返 -->
     <el-radio-group v-model="oneOrTwo" :fill="color">
@@ -10,12 +10,12 @@
     <!-- 对出发城市和目的城市的提示 -->
     <div class="alert"><p>出发城市</p><p>到达城市</p></div>
     <!-- 城市选择 -->
-    <div class="city"  @click="stop">
+    <div class="city" @click="stop">
         <el-input v-model="city1"  style="width: 240px;height:60px;font-size:25px;" placeholder="Please input" @focus="posSearch=true;posSearch1=false;"/>
         <!-- 搜索提示 -->
-        <div class="posSearch" v-show="posSearch">
-        <div style="background: gray;padding:10px">热门城市/国家（支持汉字/拼音/英文字母）</div>
-            <el-tabs type="border-card">
+        <div class="posSearch" v-show="posSearch" >
+        <div style="background: gray;padding:10px" >热门城市/国家（支持汉字/拼音/英文字母）</div>
+            <el-tabs type="border-card" >
                <el-tab-pane label="热门城市" class="hot">
                      <span @click="changeNames('北京')">北京</span>
                      <span @click="changeNames('上海')">上海</span>
@@ -584,8 +584,8 @@
             </el-tabs>
         </div>
         <!-- 箭头 -->
-    <div  v-show="posSearch" style="border-left:12px solid transparent;border-right:12px solid transparent;border-top:12px solid transparent;border-bottom:12px solid;position:absolute;left:66px;top:200px"></div>
-    <div  v-show="posSearch1" style="border-left:12px solid transparent;border-right:12px solid transparent;border-top:12px solid transparent;border-bottom:12px solid;position:absolute;left:642px;top:200px"></div>
+    <div  v-show="posSearch" style="border-left:12px solid transparent;border-right:12px solid transparent;border-top:12px solid transparent;border-bottom:12px solid;position:absolute;left:30px;top:180px"></div>
+    <div  v-show="posSearch1" style="border-left:12px solid transparent;border-right:12px solid transparent;border-top:12px solid transparent;border-bottom:12px solid;position:absolute;right:30px;top:180px"></div>
     </div>
     <!-- 对底部日期的提示 -->
     <div class="alert"><p>出发日期</p><p>返程日期</p></div>
@@ -627,7 +627,6 @@
       
     </el-card>
     </div>
-    <RightestComponent style="position: absolute;right:20px;top:20px;z-index:-1;"></RightestComponent>
     <TicketRecommon></TicketRecommon>
      <BottomComponent></BottomComponent>
     </div>
@@ -636,7 +635,6 @@
 
 <script setup lang="ts">
 import BottomComponent from '@/components/bottomComponent.vue';
-import RightestComponent from '@/components/topBar/RightestComponent.vue';
 import moment from 'moment';
 import { onMounted,onBeforeUnmount,ref } from 'vue';
 import TicketRecommon from '@/components/ticketRecommon.vue';
@@ -712,7 +710,10 @@ clearInterval(timer.value)
 
 <style lang="less" scoped>
 .search{
-    width: 700px;
+    overflow: visible;
+    width: 70%;
+    min-width: 700px;
+    position: relative;
     height: 400px;
     border-radius: 18px;
     .top{
@@ -721,13 +722,14 @@ clearInterval(timer.value)
     }
     .alert{
         margin-top: 40px;
-            width: 650px;
+            width:100%;
             height: 30px;
             display: flex;
             justify-content: space-between;
         }
-    .city{
-            width: 650px;
+    .city{ 
+          
+            width:100%;
             height: 30px;
             display: flex;
             justify-content: space-between;
@@ -742,14 +744,13 @@ clearInterval(timer.value)
     user-select: none;
     margin-left: 20px;
     width: 500px;
+    min-width: 496px;
     height: 400px;
     background: url('@/assets/air/luguhu.png') no-repeat;
     background-position-y: -230px;
     background-size:cover;
     border-radius: 18px;
-    position: absolute;
-    left: 720px;
-    top:20px;
+    position: relative;
     .right{
         color: white;
         margin-left:300px;
@@ -785,9 +786,9 @@ clearInterval(timer.value)
     width: 550px;
     height: 300px;
     position: absolute;
-    left: 40px;
+    left: 20px;
     cursor: pointer;
-    top: 224px;
+    top: 204px;
     z-index: 10;
     .hot{  
         span{
@@ -807,9 +808,9 @@ clearInterval(timer.value)
     width: 550px;
     height: 300px;
     position: absolute;
-    left: 142px;
+    right:20px;
     cursor: pointer;
-    top: 224px;
+    top: 204px;
     z-index: 10;
     .hot{  
         span{

@@ -32,7 +32,7 @@ messages:{
         air:'Air ticket',
         train:"Train ticket",
         carShip: "Bus ticket/Boat ticket",
-        ticket:"Tickets.Events",
+        ticket:"Attraction Tickets",
         RentCar:"Rent a car",
         Travel:'Travel',
         about: "About Us",
@@ -49,6 +49,7 @@ messages:{
         OverseasTrain:"Overseas train ticket",
         bus:"Bus ticket",
         boat:"Boat ticket",
+        TravelHome:"Travel homepage"
     },
     'zh-cn': {
         name:'神威旅行',
@@ -62,7 +63,7 @@ messages:{
         air:'机票',
         train:"火车票",
         carShip:"汽车票/船票",
-        ticket:"门票.活动",
+        ticket:"景点门票",
         RentCar:"用车",
         Travel:"旅游",
         about:"关于神威",
@@ -78,7 +79,8 @@ messages:{
         Train:"国内火车票",
         OverseasTrain:"境外火车票",
         bus:"汽车票",
-        boat:"船票"
+        boat:"船票",
+        TravelHome:"旅游首页"
     }
 }
 })

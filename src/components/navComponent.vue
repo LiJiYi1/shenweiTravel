@@ -79,7 +79,7 @@
             <el-icon><Flag /></el-icon>
             <span>{{language.Travel}}</span>
           </template>
-            <el-menu-item index="/goodsCharge/brandCharge"><el-icon><ShoppingCart /></el-icon>品牌管理</el-menu-item>
+            <el-menu-item index="/travel/travelHome"><el-icon><House /></el-icon>{{language.TravelHoem}}</el-menu-item>
         </el-sub-menu>
         <!-- 全球购 -->
         <el-sub-menu index="/Global">
@@ -194,6 +194,7 @@ const language={
   OverseasTrain:computed(()=>t('OverseasTrain')),
   bus:computed(()=>t('bus')),
   boat:computed(()=>t('boat')),
+  TravelHoem:computed(()=>t('TravelHoem')),
 }
 
 //暗黑模式开关
