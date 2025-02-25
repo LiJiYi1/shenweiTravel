@@ -1,9 +1,9 @@
 <template>
         <div style="display: flex;height:298px">
-      <el-card style="width: 235px;border-radius:16px;height:298px" body-style="padding:0px">
-        <img style="width: 235px;height:298px"  src="@/assets/ticket/recommon.png" alt="">
+      <el-card style="width: 245px;border-radius:16px;height:340px" body-style="padding:0px">
+        <img style="width: 245px;height:340px"  src="@/assets/ticket/recommon.png" alt="">
       </el-card>
-      <el-card class="poetry"  body-style="padding:0px; width:220px;height:298px;">
+      <el-card class="poetry"  body-style="padding:0px; width:220px;height:340px;">
         <div class="right">
         <div class="r-t"> 
             <h1 style="font-size:80px">{{time1}}</h1>
@@ -45,7 +45,8 @@ clearInterval(timer.value)
 
 .poetry{
     width: 495px;
-    margin-left: 20px;
+    height: 340px;
+    margin-left: 10px;
     user-select: none;
     left:722px;
     top:20px;
@@ -58,13 +59,14 @@ clearInterval(timer.value)
         position: relative;
         .r-t{
              position: absolute;
+             top:20px;
             z-index: 2;
             color: rgb(255, 255, 255);
         }
         .r-b{
              position: absolute;
              width: 200px;
-             
+             bottom: -300px;
             z-index: 2;
             margin-top: 220px;
             line-height: 25px;
@@ -75,7 +77,7 @@ clearInterval(timer.value)
     left: 0px;
     z-index: 1;
     width: 298px;
-    height: 298px;
+    height: 340px;
     border-radius: 18px;
     opacity: 1;
     background: linear-gradient(270deg, rgba(0, 0, 0, .8), transparent 100%);

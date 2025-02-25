@@ -17,7 +17,7 @@
                 </div>
                 <div style="margin-top: 10px;">
                      <div v-for="(item,index) in data1" :key="index" style="width:100%;display: flex;justify-content:space-between;margin-top:10px">
-                        <div style="width: 80px;margin-top:6px;color:gray">{{item.province}}</div>
+                        <div style="width: 80px;margin-top:6px;color:#ffe033">{{item.province}}</div>
                         <div style="width: 99%;"><span style="display: inline-block;width:64px;line-height:30px" v-for="(item1,index) in item.pos" :key="index">{{item1}}</span></div>
                      </div>
                 </div>
@@ -29,7 +29,7 @@
                    </div>
                     <div style="margin-top: 10px;">
                      <div v-for="(item,index) in data2" :key="index" style="width:100%;display: flex;justify-content:space-between;margin-top:10px">
-                        <div style="width: 80px;margin-top:6px;color:gray">{{item.province}}</div>
+                        <div style="width: 80px;margin-top:6px;color:#ffe033">{{item.province}}</div>
                         <div style="width: 99%;"><span style="display: inline-block;width:64px;line-height:30px" v-for="(item1,index) in item.pos" :key="index">{{item1}}</span></div>
                      </div>
                 </div>
@@ -82,12 +82,14 @@ let data2=ref(
 <style lang="less" scoped>
 .hot{
     user-select: none;
+    cursor: pointer;
     width: calc(100%);
     border-radius: 16px;
     span{
         display: inline-block;
-        width: 50px;
-        margin-right: 50px;
+        width: 40px;
+        font-size: 13px;
+        margin-right: 20px;
         line-height: 40px;
     }
     .Hot{
@@ -96,7 +98,7 @@ let data2=ref(
     }
     .Hot:hover{
         padding:20px;
-        background-color: rgb(186, 186, 186);
+         background-color: rgb(138, 136, 136);
         padding-bottom: 0;
     }
     .Domestic{
@@ -105,15 +107,17 @@ let data2=ref(
     }
     .Domestic:hover{
         padding:20px;
-        background-color: rgb(186, 186, 186);
+         background-color: rgb(138, 136, 136);
         padding-bottom: 0;
     }
     .overseas{
         padding:20px;
+        padding-bottom: 30px;
     }
     .overseas:hover{
         padding:20px;
-         background-color: rgb(186, 186, 186);
+          background-color: rgb(138, 136, 136);
+          padding-bottom: 30px;
     }
 
 }

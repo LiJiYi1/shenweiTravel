@@ -1,5 +1,5 @@
 <template>
-    <div style="position: relative;">
+    <div style="position: relative;cursor:pointer">
          <el-card class="hot" body-style="padding:0px" min="200">
             <div class="Hot" style="position: relative;" @mouseover="show" @mouseleave="noShow">
                 <div style="display: flex;">
@@ -93,7 +93,7 @@ const noShow=()=>{
     }
     .Hot:hover{
         padding:20px;
-        background-color: rgb(186, 186, 186);
+        background-color: rgb(138, 136, 136);
         padding-bottom: 0;
     }
     .Domestic{

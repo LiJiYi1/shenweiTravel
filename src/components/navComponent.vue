@@ -79,7 +79,11 @@
             <el-icon><Flag /></el-icon>
             <span>{{language.Travel}}</span>
           </template>
-            <el-menu-item index="/travel/travelHome"><el-icon><House /></el-icon>{{language.TravelHoem}}</el-menu-item>
+            <el-menu-item index="/travel/travelHome"><el-icon><House /></el-icon>{{language.TravelHome}}</el-menu-item>
+            <el-menu-item index="/travel/travelHome"><el-icon><House /></el-icon>跟团游</el-menu-item>
+            <el-menu-item index="/travel/travelHome"><el-icon><House /></el-icon>私家团</el-menu-item>
+            <el-menu-item index="/travel/travelHome"><el-icon><House /></el-icon>自由行</el-menu-item>
+            <el-menu-item index="/travel/travelHome"><el-icon><House /></el-icon>定制旅行</el-menu-item>
         </el-sub-menu>
         <!-- 全球购 -->
         <el-sub-menu index="/Global">
@@ -194,7 +198,7 @@ const language={
   OverseasTrain:computed(()=>t('OverseasTrain')),
   bus:computed(()=>t('bus')),
   boat:computed(()=>t('boat')),
-  TravelHoem:computed(()=>t('TravelHoem')),
+  TravelHome:computed(()=>t('TravelHome')),
 }
 
 //暗黑模式开关

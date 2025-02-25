@@ -234,7 +234,7 @@ clearInterval(timer.value)
         }
         .cover{     
     position: absolute;
-    top: 1px;
+    top: -1px;
     right: 0px;
     z-index: 1;
     width: 298px;

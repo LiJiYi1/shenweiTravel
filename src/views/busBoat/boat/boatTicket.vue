@@ -80,9 +80,7 @@ clearInterval(timer.value)
     min-width: 500px;
     margin-left: 20px;
     user-select: none;
-  
-position: relative;
-
+    position: relative;
     background: url('@/assets/busBoat/image.png') no-repeat;
     background-position-y: -230px;
     background-size:cover;
@@ -91,7 +89,7 @@ position: relative;
         color: white;
         margin-left:300px;
         .r-t{
-             position: absolute;
+            position: absolute;
             top: 40px;
             right: 80px;
             z-index: 2;
@@ -107,11 +105,11 @@ position: relative;
         }
         .cover{     
     position: absolute;
-    top: -1px;
+    top: 0px;
     right: 0px;
     z-index: 1;
     width: 298px;
-    height: 262px;
+    height: 266px;
     border-radius: 18px;
     opacity: 1;
     background: linear-gradient(270deg, rgba(0, 0, 0, .8), transparent 100%);

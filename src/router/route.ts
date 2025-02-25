@@ -254,6 +254,11 @@ const route=[
         path: '/travel',
         name: "travel",
         component: travel,
+        meta: {
+            Entitle: 'Travel',
+            title: '旅游',
+            icon: 'Flag'
+        },
         children: [
             {
                 path: '/travel/travelHome',

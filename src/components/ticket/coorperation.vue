@@ -1,6 +1,6 @@
 <template>
-    <div>
-   <p style="font-size: 30px;margin-top:20px">码上游合作景区</p>
+    <el-card style="margin-top:80px;min-width:1218px" body-style="padding-left:10px">
+   <p style="font-size: 30px;">码上游合作景区</p>
                             <ul class="new-cop-wrap clearfix">
                               <li class="cop-item">
                                 <a><img src="https://gw.alicdn.com/tfs/TB1j1RwbNTpK1RjSZFMXXbG_VXa-142-80.png" alt="乌镇" title="乌镇"></a>
@@ -58,7 +58,7 @@
                                 <a><img src="//img.alicdn.com/tps/i3/TB1npWrFVXXXXaRXFXXLNPeFpXX-142-80.png" alt="玉龙雪山" title="玉龙雪山"></a>
                               </li>
                             </ul>
-    </div>
+    </el-card>
                       
    
 </template>
@@ -76,9 +76,11 @@
 .new-cop-wrap li{
 height: 80px;
 width: 160px;
-padding: 19px;
-  border: 0.5px solid;
- float: left;
+padding: 18px;
+border: 0.5px solid;
+float: left;
+display: flex;
+justify-content: center;
 }
 .clearfix::after{
     content: "";
