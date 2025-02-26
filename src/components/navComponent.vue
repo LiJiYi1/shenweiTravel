@@ -79,11 +79,11 @@
             <el-icon><Flag /></el-icon>
             <span>{{language.Travel}}</span>
           </template>
-            <el-menu-item index="/travel/travelHome"><el-icon><House /></el-icon>{{language.TravelHome}}</el-menu-item>
-            <el-menu-item index="/travel/travelHome"><el-icon><House /></el-icon>跟团游</el-menu-item>
-            <el-menu-item index="/travel/travelHome"><el-icon><House /></el-icon>私家团</el-menu-item>
-            <el-menu-item index="/travel/travelHome"><el-icon><House /></el-icon>自由行</el-menu-item>
-            <el-menu-item index="/travel/travelHome"><el-icon><House /></el-icon>定制旅行</el-menu-item>
+            <el-menu-item index="/travel/travelHome"><el-icon><HomeFilled /></el-icon>{{language.TravelHome}}</el-menu-item>
+            <el-menu-item index="/travel/groupTravel"><el-icon><Camera /></el-icon>{{language.Group}}</el-menu-item>
+            <el-menu-item index="/travel/travelHome"><el-icon><VideoCamera /></el-icon>{{language.Private}}</el-menu-item>
+            <el-menu-item index="/travel/travelHome"><el-icon><Bicycle/></el-icon>{{language.Free}}</el-menu-item>
+            <el-menu-item index="/travel/travelHome"><el-icon><Calendar /></el-icon>{{language.Customized}}</el-menu-item>
         </el-sub-menu>
         <!-- 全球购 -->
         <el-sub-menu index="/Global">
@@ -199,6 +199,10 @@ const language={
   bus:computed(()=>t('bus')),
   boat:computed(()=>t('boat')),
   TravelHome:computed(()=>t('TravelHome')),
+  Group:computed(()=>t('Group')),
+  Private:computed(()=>t('Private')),
+  Free:computed(()=>t('Free')),
+  Customized:computed(()=>t('Customized'))
 }
 
 //暗黑模式开关

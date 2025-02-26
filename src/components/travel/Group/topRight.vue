@@ -1,0 +1,28 @@
+<template>
+           <div class="container">
+            <div class="top">
+                <img src="@/assets/travel/Group/rt.png" alt="">
+            </div>
+            <div class="bottom">
+                <img src="@/assets/travel/Group/rb1.png" alt="">
+                <img src="@/assets/travel/Group/rb2.png" alt="">
+                <img src="@/assets/travel/Group/rb3.png" alt="" style="margin-right: 0;">
+            </div>
+            </div>
+</template>
+
+<script lang="ts" setup>
+  
+</script>
+
+<style lang="less" scoped>
+.container{
+.bottom{
+    margin-top:20px;
+    display: flex;
+    img{
+        margin-right: 10px;
+    }
+}
+}
+</style>

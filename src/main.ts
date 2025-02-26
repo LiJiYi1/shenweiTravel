@@ -49,7 +49,11 @@ messages:{
         OverseasTrain:"Overseas train ticket",
         bus:"Bus ticket",
         boat:"Boat ticket",
-        TravelHome:"Travel homepage"
+        TravelHome:"Travel homepage",
+        Group:"Group tour",
+        Private:"Private group",
+        Free:"Free travel",
+        Customized:"Customized travel"
     },
     'zh-cn': {
         name:'神威旅行',
@@ -80,7 +84,11 @@ messages:{
         OverseasTrain:"境外火车票",
         bus:"汽车票",
         boat:"船票",
-        TravelHome:"旅游首页"
+        TravelHome:"旅游首页",
+        Group:"跟团游",
+        Private:"私家游",
+        Free:"自由行",
+        Customized:"定制旅行"
     }
 }
 })

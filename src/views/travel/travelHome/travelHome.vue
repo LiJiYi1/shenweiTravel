@@ -20,12 +20,12 @@
 
 <script setup lang="ts">
 import bottomComponent from '@/components/bottomComponent.vue';
-import BottomRight from '@/components/travel/bottomRight.vue';
-import Coorparate from '@/components/travel/coorparate.vue';
-import DomesticTravel from '@/components/travel/DomesticTravel/DomesticTravel.vue';
-import OverseaTravel from '@/components/travel/oversea/overseaTravel.vue';
-import TopLeft from '@/components/travel/topLeft.vue';
-import TopRight from '@/components/travel/topRight.vue';
+import BottomRight from '@/components/travel/Home/bottomRight.vue';
+import Coorparate from '@/components/travel/Home/coorparate.vue';
+import DomesticTravel from '@/components/travel/Home/DomesticTravel/DomesticTravel.vue';
+import OverseaTravel from '@/components/travel/Home/oversea/overseaTravel.vue';
+import TopLeft from '@/components/travel/Home/topLeft.vue';
+import TopRight from '@/components/travel/Home/topRight.vue';
 
 </script>
 
