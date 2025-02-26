@@ -107,11 +107,11 @@ clearInterval(timer.value)
         }
         .cover{     
     position: absolute;
-    top: -1px;
+    top: 0px;
     right: 0px;
     z-index: 1;
     width: 298px;
-    height: 262px;
+    height: 265px;
     border-radius: 18px;
     opacity: 1;
     background: linear-gradient(270deg, rgba(0, 0, 0, .8), transparent 100%);

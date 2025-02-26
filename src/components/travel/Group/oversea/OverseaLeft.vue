@@ -1,7 +1,7 @@
 <template>
     <div class="container">
        <h2>境内跟团游</h2>
-       <img src="@/assets/travel/Group/Domestic/l.png" alt="">
+       <img src="@/assets/travel/Group/Oversea/l.png" alt="">
     </div>
 </template>
 
@@ -17,7 +17,7 @@
         padding: 10px;
         text-align: center;
         color: white;
-        background-color: #3893E4;
+        background-color: #3FC624;
     }
 }
 </style>

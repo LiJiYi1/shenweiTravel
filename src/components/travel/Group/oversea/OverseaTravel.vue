@@ -1,8 +1,8 @@
 <template>
     <el-card style="min-width: 1200px;">
-        <div style="display: flex;">
+        <div style="display: flex;justify-content:space-between">
             <OverseaLeft></OverseaLeft>
-            <OverseaRight></OverseaRight>
+            <OverseaRight style="width: 100%;"></OverseaRight>
         </div>
         
     </el-card>

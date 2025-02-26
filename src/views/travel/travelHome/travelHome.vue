@@ -6,9 +6,6 @@
             <TopRight></TopRight>
             <BottomRight></BottomRight>
         </div>
-            
-        
-        
         </div>
      <DomesticTravel></DomesticTravel>
      <OverseaTravel></OverseaTravel>
@@ -31,6 +28,8 @@ import TopRight from '@/components/travel/Home/topRight.vue';
 
 <style lang="less" scoped>
 .top{
+    width: 100%;
     display: flex;
+    justify-content: space-between;
 }
 </style>

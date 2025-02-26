@@ -1,7 +1,7 @@
 <template>
            <div class="container">
             <div class="top">
-                <img src="@/assets/travel/Group/rt.png" alt="">
+                <img src="@/assets/travel/Group/rt.png" alt="" style="width: 880px;">
             </div>
             <div class="bottom">
                 <img src="@/assets/travel/Group/rb1.png" alt="">
@@ -22,6 +22,7 @@
     display: flex;
     img{
         margin-right: 10px;
+        width: 287px;
     }
 }
 }
