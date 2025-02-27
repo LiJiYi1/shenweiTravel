@@ -33,22 +33,42 @@ let show1=ref(false)
 let show2=ref(false)
 let show3=ref(false)
 let show4=ref(false)
+let show5=ref(false)
+let show6=ref(false)
+let show7=ref(false)
+let show8=ref(false)
 const isShow=(name:string)=>{
 if((name==='热门推荐')&&!show1.value) {
     show1.value=true
-    emit('show',[show1,show2,show3,show4])
+    emit('show',[show1,show2,show3,show4,show5,show6,show7,show8])
 }
-if((name==='澳新/中东非')&&!show1.value) {
+else if((name==='澳新/中东非')&&!show2.value) {
     show2.value=true
-    emit('show',[show1,show2,show3,show4])
+    emit('show',[show1,show2,show3,show4,show5,show6,show7,show8])
 }
-if((name==='欧洲/美洲')&&!show1.value) {
+else if((name==='欧洲/美洲')&&!show3.value) {
     show3.value=true
-    emit('show',[show1,show2,show3,show4])
+    emit('show',[show1,show2,show3,show4,show5,show6,show7,show8])
 }
-if((name==='东南亚/日韩')&&!show1.value) {
+else if((name==='东南亚/日韩')&&!show4.value) {
     show4.value=true
-    emit('show',[show1,show2,show3,show4])
+    emit('show',[show1,show2,show3,show4,show5,show6,show7,show8])
+}
+else if((name==='黑龙江/吉林/辽宁')&&!show5.value) {
+    show5.value=true
+    emit('show',[show1,show2,show3,show4,show5,show6,show7,show8])
+}
+else if((name==='云南/四川')&&!show6.value) {
+    show6.value=true
+    emit('show',[show1,show2,show3,show4,show5,show6,show7,show8])
+}
+else if((name==='海南/北京')&&!show7.value) {
+    show7.value=true
+    emit('show',[show1,show2,show3,show4,show5,show6,show7,show8])
+}
+else if((name==='广东/广西')&&!show8.value) {
+    show8.value=true
+    emit('show',[show1,show2,show3,show4,show5,show6,show7,show8])
 }
 }
 const notShow=()=>{ 
@@ -56,7 +76,11 @@ show1.value=false
 show2.value=false
 show3.value=false
 show4.value=false
-emit('show',[show1,show2,show3,show4])
+show5.value=false
+show6.value=false
+show7.value=false
+show8.value=false
+emit('show',[show1,show2,show3,show4,show5,show6,show7,show8])
 }
 </script>
 

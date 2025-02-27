@@ -83,13 +83,13 @@ let data2=ref(
 .hot{
     user-select: none;
     cursor: pointer;
-    width: calc(100%);
+    width: 630px;
     border-radius: 16px;
     span{
         display: inline-block;
         width: 40px;
         font-size: 13px;
-        margin-right: 20px;
+        margin-right: 0px;
         line-height: 40px;
     }
     .Hot{
@@ -107,7 +107,7 @@ let data2=ref(
     }
     .Domestic:hover{
         padding:20px;
-         background-color: rgb(138, 136, 136);
+        background-color: rgb(138, 136, 136);
         padding-bottom: 0;
     }
     .overseas{

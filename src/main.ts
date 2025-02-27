@@ -86,7 +86,7 @@ messages:{
         boat:"船票",
         TravelHome:"旅游首页",
         Group:"跟团游",
-        Private:"私家游",
+        Private:"私家团",
         Free:"自由行",
         Customized:"定制旅行"
     }

@@ -1,7 +1,7 @@
 <template>
            <div class="container">
             <div class="top">
-                <img src="@/assets/travel/Group/rt.png" alt="" style="width: 880px;">
+                <img src="@/assets/travel/Group/rt.png" alt="" style="width: 860px;height:400px">
             </div>
             <div class="bottom">
                 <img src="@/assets/travel/Group/rb1.png" alt="">
@@ -18,11 +18,12 @@
 <style lang="less" scoped>
 .container{
 .bottom{
-    margin-top:20px;
+    margin-top:10px;
     display: flex;
     img{
         margin-right: 10px;
-        width: 287px;
+        width: 280px;
+        height: 150px;
     }
 }
 }

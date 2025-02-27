@@ -1,5 +1,5 @@
 <template>
-    <el-card style="margin-top:80px;min-width:1218px" body-style="padding-left:10px">
+    <el-card style="margin-top:80px;width:99.9%;min-width:1217px" body-style="padding-left:10px">
    <p style="font-size: 30px;">码上游合作景区</p>
                             <ul class="new-cop-wrap clearfix">
                               <li class="cop-item">

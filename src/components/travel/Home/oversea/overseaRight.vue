@@ -125,7 +125,7 @@ import { ref } from 'vue'
 const activeName = ref('first')
 //精选数据
 let jingxuanBig=ref(
-{img:new URL("@/assets/travel/oversea/jingxuan/image1.png",import.meta.url).href,include:'香港+澳门6日5晚跟团游·【携程自营·登澳门塔品鱼翅】升级45人+线路玩法A：火爆推荐热卖港澳游 B：亲子畅游双园（海洋公园+迪士尼）C：升悦享20人小团+米其林推荐餐 【下单两重好礼：流量卡+洗漱包】',price:"¥3320起"},
+{img:new URL("@/assets/travel/oversea/jingxuan/image1.png",import.meta.url).href,include:'香港+澳门6日5晚跟团游·【神威自营·登澳门塔品鱼翅】升级45人+线路玩法A：火爆推荐热卖港澳游 B：亲子畅游双园（海洋公园+迪士尼）C：升悦享20人小团+米其林推荐餐 【下单两重好礼：流量卡+洗漱包】',price:"¥3320起"},
 )
 let jingxuanSmall=ref([
 {img:new URL("@/assets/travel/oversea/jingxuan/image2.png",import.meta.url).href,include:'日本金泽+京都+大阪+奈良+箱根+伊豆+东京+富山8日7晚跟团游·老友会|5鉆标杆|全程导游|纯',price:"¥10419起"},
@@ -135,7 +135,7 @@ let jingxuanSmall=ref([
 {img:new URL("@/assets/travel/oversea/jingxuan/image6.png",import.meta.url).href,include:'香港+澳门6日5晚跟团游·【港澳大社自营*好评榜冠*赠双船游维港】纯玩0购+轻奢酒店+24H接送机｜C线直飞香港·F线升级入住喜来登｜港澳珠畅游【尖沙咀+太平山顶+大三巴等】亲子游『梦幻迪士尼·广州/珠海长隆』蜜月',price:"¥2359起"},
 {img:new URL("@/assets/travel/oversea/jingxuan/image7.png",import.meta.url).href,include:'香港+维多利亚港+澳门+港珠澳大桥游3日2晚跟团游·318 大促+福袋『C升45人团&澳门品鱼翅餐&登巴黎塔｜福袋御守+流量卡』B线特色之旅香港澳门珠海三城同游｜D线升级含送迪士尼乐园｜可选自选酒店套餐/20人团/9人小团',price:"¥2419起"},
 {img:new URL("@/assets/travel/oversea/jingxuan/image8.png",import.meta.url).href,include:'韩国首尔4日3晚跟团游·【2-8人精奢小团】标杆纯玩*0自费丨升级东大门/明洞附近酒店&24H专车接送机+可代办签证+可升级包车服务『赠：不限量流量卡』豪华商务出行丨热门景点全含：景福宫+青瓦台+北村韩屋村+南山公园',price:"¥3612起"},
-{img:new URL("@/assets/travel/oversea/jingxuan/image9.png",import.meta.url).href,include:'香港+澳门+港珠澳大桥游5日4晚跟团游·【携程·自营·品质】升级45人团+登澳门巴黎塔品鱼翅可选小团/迪士尼/油麻地/赤柱/大屿山+24H接送机+行程宽松+拒绝暴走+纯玩0套路丨乘天星+观维港丨港珠澳大桥+2人赠流量卡福袋1份',price:"¥2427起"},
+{img:new URL("@/assets/travel/oversea/jingxuan/image9.png",import.meta.url).href,include:'香港+澳门+港珠澳大桥游5日4晚跟团游·【神威·自营·品质】升级45人团+登澳门巴黎塔品鱼翅可选小团/迪士尼/油麻地/赤柱/大屿山+24H接送机+行程宽松+拒绝暴走+纯玩0套路丨乘天星+观维港丨港珠澳大桥+2人赠流量卡福袋1份',price:"¥2427起"},
 ])
 //日本数据
 let JapanBig=ref(
@@ -167,7 +167,7 @@ let KoreaSmall=ref([
 ])
 //香港数据
 let HongKongBig=ref(
-{img:new URL("@/assets/travel/oversea/HongKong/image1.png",import.meta.url).href,include:'香港+澳门6日5晚跟团游·【携程自营·登澳门塔品鱼翅】升级45人+线路玩法A：火爆推荐热卖港澳游 B：亲子畅游双园（海洋公园+迪士尼）C：升悦享20人小团+米其林推荐餐 【下单两重好礼：流量卡+洗漱包】',price:"¥3220起"},
+{img:new URL("@/assets/travel/oversea/HongKong/image1.png",import.meta.url).href,include:'香港+澳门6日5晚跟团游·【神威自营·登澳门塔品鱼翅】升级45人+线路玩法A：火爆推荐热卖港澳游 B：亲子畅游双园（海洋公园+迪士尼）C：升悦享20人小团+米其林推荐餐 【下单两重好礼：流量卡+洗漱包】',price:"¥3220起"},
 )
 let HongKongSmall=ref([
 {img:new URL("@/assets/travel/oversea/HongKong/image2.png",import.meta.url).href,include:'香港+澳门6日5晚跟团游·【港澳大社自营*好评榜冠*赠双船游维港】纯玩0购+轻奢酒店+24H接送机｜C线直飞香港·F线升级入住喜来登｜港澳珠畅游【尖沙咀+太平山顶+大三巴等】亲子游『梦幻迪士尼·广州/珠海长隆』蜜月',price:"¥2359起"},

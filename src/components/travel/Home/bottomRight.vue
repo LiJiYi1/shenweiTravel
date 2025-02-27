@@ -4,7 +4,7 @@
     <img src="@/assets/travel/travelType/image2.png" alt="">
     <img src="@/assets/travel/travelType/image3.png" alt="">
     <img src="@/assets/travel/travelType/image4.png" alt="" style="margin-right: 0;">
-    <img src="@/assets/travel/alert.png" alt="" style="margin-top:30px;width:755px">
+    <img src="@/assets/travel/alert.png" alt="" style="margin-top:10px;width:830px; height: 73.78px;">
   </div>
 </template>
 
@@ -16,10 +16,11 @@
 
 <style lang="less" scoped>
 div{
-margin-top:60px;
+margin-top:20px;
 img{
   cursor: pointer;
-    width: 181px;
+    width: 200px;
+    height: 290px;
     margin-right:10px
 }
 }

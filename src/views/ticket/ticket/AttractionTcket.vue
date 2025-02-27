@@ -17,9 +17,6 @@ import Coorperation from '@/components/ticket/coorperation.vue';
 import DomesticTick from '@/components/ticket/DomesticTicket/DomesticTick.vue';
 import TopLeft from '@/components/ticket/topLeft.vue';
 import TopRight from '@/components/ticket/topRight.vue';
-import { onMounted,onBeforeUnmount,ref } from 'vue';
-
-
 
 
 </script>

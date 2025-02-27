@@ -1,15 +1,15 @@
 <template>
     <div>
         <div class="top">
-        <TopLeft style="margin-right: 14px;min-width:450px"></TopLeft>
+        <TopLeft style="margin-right: 14px;min-width:370px"></TopLeft>
         <div>
             <TopRight></TopRight>
             <BottomRight></BottomRight>
         </div>
         </div>
-     <DomesticTravel></DomesticTravel>
+     <DomesticTravel></DomesticTravel> 
      <OverseaTravel></OverseaTravel>
-     <Coorparate></Coorparate>
+     <Coorparate></Coorparate> 
      <bottomComponent></bottomComponent>
     </div>
    

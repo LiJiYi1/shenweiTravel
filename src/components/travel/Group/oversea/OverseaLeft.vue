@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-       <h2>境内跟团游</h2>
+       <p>境内跟团游</p>
        <img src="@/assets/travel/Group/Oversea/l.png" alt="">
     </div>
 </template>
@@ -12,8 +12,9 @@
 <style lang="less" scoped>
 .container{
     margin-right: 20px;
-    h2{
+    p{
         width: 190px;
+        font-size: 25px;
         padding: 10px;
         text-align: center;
         color: white;

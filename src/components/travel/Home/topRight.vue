@@ -1,17 +1,17 @@
 <template>
         <div style="display: flex;height:298px">
-      <el-card style="width: 245px;border-radius:16px;height:340px" body-style="padding:0px">
-        <img style="width: 245px;height:340px"  src="@/assets/ticket/recommon.png" alt="">
+      <el-card style="width: 220px;border-radius:16px;height:300px" body-style="padding:0px">
+        <img style="width: 220px;height:300px"  src="@/assets/ticket/recommon.png" alt="">
       </el-card>
-      <el-card class="poetry"  body-style="padding:0px; width:220px;height:340px;">
+      <el-card class="poetry"  body-style="padding:0px; width:220px;height:250px;">
         <div class="right">
         <div class="r-t"> 
             <h1 style="font-size:80px">{{time1}}</h1>
             <div style="border: 6px solid white;padding:10px;width:80px;font-size:20px">{{time}}</div>
         </div>
         <div class="r-b"> 
-            <div>不入拙政园,怎知春色如许</div>
-            <div style="font-size: 12px;"><el-icon><Location /></el-icon>中国.苏州.拙政园</div>
+            <div>一湖栖日月,双塔共生辉</div>
+            <div style="font-size: 12px;"><el-icon><Location /></el-icon>中国.桂林.日月双塔</div>
          </div>
          <div class="cover"></div>
         </div>
@@ -44,13 +44,13 @@ clearInterval(timer.value)
 <style lang="less" scoped>
 
 .poetry{
-    width: 495px;
-    height: 340px;
+    width: 598px;
+    height: 300px;
     margin-left: 10px;
     user-select: none;
     left:722px;
     top:20px;
-    background: url('@/assets/ticket/poetry.png') no-repeat;
+    background: url('@/assets/travel/image.png') no-repeat;
     background-size: cover;
     border-radius: 18px;
     .right{
@@ -60,13 +60,15 @@ clearInterval(timer.value)
         .r-t{
              position: absolute;
              top:20px;
+             left: 140px;
             z-index: 2;
             color: rgb(255, 255, 255);
         }
         .r-b{
              position: absolute;
+             left: 100px;;
              width: 200px;
-             bottom: -300px;
+             bottom: -280px;
             z-index: 2;
             margin-top: 220px;
             line-height: 25px;

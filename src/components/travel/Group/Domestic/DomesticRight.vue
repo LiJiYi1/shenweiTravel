@@ -70,7 +70,7 @@ import { ref } from 'vue';
 const activeName = ref('first')
 //精选数据
 let jingxuan=ref([
-{img:new URL("@/assets/travel/Group/Domestic/jingxuan/image1.png",import.meta.url).href,include:'香港+澳门6日5晚跟团游·【携程自营·登澳门...',price:"¥3220起"},
+{img:new URL("@/assets/travel/Group/Domestic/jingxuan/image1.png",import.meta.url).href,include:'香港+澳门6日5晚跟团游·【神威自营·登澳门...',price:"¥3220起"},
 {img:new URL("@/assets/travel/Group/Domestic/jingxuan/image2.png",import.meta.url).href,include:'日本金泽+京都+大阪+奈良+箱根+伊豆+东京+富...',price:"¥10419起"},
 {img:new URL("@/assets/travel/Group/Domestic/jingxuan/image3.png",import.meta.url).href,include:'香港+澳门5日4晚跟团游·【春季大促@A/B线升...',price:"¥3100起"},
 {img:new URL("@/assets/travel/Group/Domestic/jingxuan/image4.png",import.meta.url).href,include:'香港+澳门5日4晚跟团游·含往返机票/动车丨赠...',price:"¥2897起"},
@@ -94,7 +94,7 @@ let dibai=ref([
 {img:new URL("@/assets/travel/Group/Domestic/dibai/image1.png",import.meta.url).href,include:'阿联酋迪拜+阿布扎比6日5晚跟团游·只选对•不买...',price:"5615起"},
 {img:new URL("@/assets/travel/Group/Domestic/dibai/image2.png",import.meta.url).href,include:'迪拜+阿布扎比7日6晚跟团游·周2/5/7特价 | 3大...',price:"¥9721起"},
 {img:new URL("@/assets/travel/Group/Domestic/dibai/image3.png",import.meta.url).href,include:'阿联酋迪拜+阿布扎比6日5晚跟团游· 【五星甄选*...',price:"¥8071起"},
-{img:new URL("@/assets/travel/Group/Domestic/dibai/image4.png",import.meta.url).href,include:'阿联酋迪拜+阿布扎比6日5晚跟团游·【携程年度...',price:"¥5548起"},
+{img:new URL("@/assets/travel/Group/Domestic/dibai/image4.png",import.meta.url).href,include:'阿联酋迪拜+阿布扎比6日5晚跟团游·【神威年度...',price:"¥5548起"},
 ])
 //巴黎数据
 let bali=ref([

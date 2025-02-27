@@ -98,18 +98,18 @@ let xian=ref([
 {img:new URL("@/assets/travel/Group/Oversea/xian/image1.png",import.meta.url).href,include:'西安兵马俑+华清宫+华山+大雁塔+大唐不夜城...',price:"¥1540起"},
 {img:new URL("@/assets/travel/Group/Oversea/xian/image2.png",import.meta.url).href,include:'西安3日2晚跟团游·赠《西安千古情》演出+园区参观...',price:"¥1390起"},
 {img:new URL("@/assets/travel/Group/Oversea/xian/image3.png",import.meta.url).href,include:'西安兵马俑+华清池+华山4日3晚跟团游·20人小团...',price:"¥1536起"},
-{img:new URL("@/assets/travel/Group/Oversea/xian/image4.png",import.meta.url).href,include:'西安5日4晚跟团游·【携程自营·陪你旅行】16人封...',price:"¥3902起"},
+{img:new URL("@/assets/travel/Group/Oversea/xian/image4.png",import.meta.url).href,include:'西安5日4晚跟团游·【神威自营·陪你旅行】16人封...',price:"¥3902起"},
 ])
 //南京数据
 let nanjing=ref([
 {img:new URL("@/assets/travel/Group/Oversea/nanjing/image1.png",import.meta.url).href,include:'南京3日2晚跟团游·升『金牌导游』+赠『秦淮河游...',price:"¥805起"},
 {img:new URL("@/assets/travel/Group/Oversea/nanjing/image2.png",import.meta.url).href,include:'上海+苏州+杭州+无锡+南京+乌镇5日4晚跟团游...',price:"¥1165起"},
 {img:new URL("@/assets/travel/Group/Oversea/nanjing/image3.png",import.meta.url).href,include:'南京3日2晚跟团游·『错峰惠游』古都南京 品南京...',price:"¥797起"},
-{img:new URL("@/assets/travel/Group/Oversea/nanjing/image4.png",import.meta.url).href,include:'华东5市+乌镇6日5晚跟团游·【携程自营·枕水江南】<...',price:"¥1665起"},
+{img:new URL("@/assets/travel/Group/Oversea/nanjing/image4.png",import.meta.url).href,include:'华东5市+乌镇6日5晚跟团游·【神威自营·枕水江南】<...',price:"¥1665起"},
 ])
 //香港数据
 let xianggang=ref([
-{img:new URL("@/assets/travel/Group/Oversea/xianggang/image1.png",import.meta.url).href,include:'香港+澳门6日5晚跟团游·【携程自营·登澳门...',price:"¥3222起"},
+{img:new URL("@/assets/travel/Group/Oversea/xianggang/image1.png",import.meta.url).href,include:'香港+澳门6日5晚跟团游·【神威自营·登澳门...',price:"¥3222起"},
 {img:new URL("@/assets/travel/Group/Oversea/xianggang/image2.png",import.meta.url).href,include:'香港+澳门6日5晚跟团游·【港澳大社自营*好评...',price:"¥2361起"},
 {img:new URL("@/assets/travel/Group/Oversea/xianggang/image3.png",import.meta.url).href,include:'香港+澳门+珠海6日5晚跟团游·好评榜冠〓纯玩...',price:"¥2828起"},
 {img:new URL("@/assets/travel/Group/Oversea/xianggang/image4.png",import.meta.url).href,include:'香港+澳门5日4晚跟团游·【春季大促@A/B线升...',price:"¥3100起"},

@@ -1,11 +1,11 @@
 <template>
         <div style="display: flex;height:298px">
             <div>
-                 <el-card style="width: 200px;border-radius:16px;height:215px" body-style="padding:0px">
-        <img style="width: 200px;height:215px"  src="@/assets/ticket/recommon.png" alt="">
+                 <el-card style="width: 220px;border-radius:16px;height:200px" body-style="padding:0px">
+        <img style="width: 220px;height:200px"  src="@/assets/ticket/recommon.png" alt="">
                  </el-card>
-                 <el-card style="width: 200px;border-radius:16px;height:215px;margin-top:18px" body-style="padding:0px">
-        <img style="width: 200px;height:215px"  src="@/assets/ticket/newChoose.png" alt="">
+                 <el-card style="width: 220px;border-radius:16px;height:190px;margin-top:8px" body-style="padding:0px">
+        <img style="width: 220px;height:190px"  src="@/assets/ticket/newChoose.png" alt="">
                  </el-card>
             </div>
      
@@ -50,8 +50,8 @@ clearInterval(timer.value)
 <style lang="less" scoped>
 
 .poetry{
-    width: 495px;
-    height: 450px;
+    width: 668px;
+    height: 400px;
     margin-left: 20px;
     user-select: none;
     left:722px;
@@ -66,14 +66,15 @@ clearInterval(timer.value)
         .r-t{
              position: absolute;
              top:40px;
+             left: 200px;
             z-index: 2;
             color: rgb(255, 255, 255);
         }
         .r-b{
              position: absolute;
              width: 200px;
-             top:150px;
-             right: -150px;
+             top:100px;
+             right: -350px;
             z-index: 2;
             margin-top: 220px;
             line-height: 25px;
@@ -83,8 +84,8 @@ clearInterval(timer.value)
     top: 0px;
     left: -100px;
     z-index: 1;
-    width: 298px;
-    height: 458px;
+    width: 668px;
+    height: 400px;
     border-radius: 18px;
     opacity: 1;
     background: linear-gradient(270deg, rgba(0, 0, 0, .8), transparent 100%);

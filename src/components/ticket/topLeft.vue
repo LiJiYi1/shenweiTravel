@@ -4,8 +4,8 @@
             <div class="Hot" style="position: relative;" @mouseover="show" @mouseleave="noShow">
                 <div style="display: flex;">
                 <i class="nav-section-h3-i" data-spm-anchor-id="181.15077045.1398723350.i6.7f1d620dQJ5y9d"></i>
-                <h2>热门目的地</h2>
-                <el-icon style="width:200px;margin-top:5px;position:absolute;right:-30px"><ArrowRight /></el-icon>
+                <p>热门目的地</p>
+                <el-icon style="width:200px;margin-top:5px;position:absolute;right:-60px"><ArrowRight /></el-icon>
             
                 </div>
                 <div style="margin-top: 10px;">
@@ -15,19 +15,19 @@
             <div class="Domestic">
                 <div style="display: flex;">
                 <i class="nav-section-h3-i" data-spm-anchor-id="181.15077045.1398723350.i6.7f1d620dQJ5y9d"></i>
-                <h2>旅游主题</h2>
+                <p>旅游主题</p>
                 </div>
                 <div style="margin-top: 10px;">
-                    <span v-for="(item,index) in data1" :key="index">{{item}}</span>
+                    <span style="width: 80px;" v-for="(item,index) in data1" :key="index">{{item}}</span>
                 </div>
             </div>
             <div class="overseas">
                    <div style="display: flex;">
                 <i class="nav-section-h3-i" data-spm-anchor-id="181.15077045.1398723350.i6.7f1d620dQJ5y9d"></i>
-                <h2>热门景点</h2>
+                <p>热门景点</p>
                    </div>
                    <div style="margin-top: 10px;">
-                    <span style="width: 100px;"  v-for="(item,index) in data2" :key="index">{{item}}</span>
+                    <span style="width: 120px;"  v-for="(item,index) in data2" :key="index">{{item}}</span>
                     </div>
             </div>
           </el-card>
@@ -77,14 +77,17 @@ const noShow=()=>{
 <style lang="less" scoped>
 .hot{
     user-select: none;
-    width: calc(100%);
-    min-width:350px;
-    height: 450px;
+    width: 290px;
+    min-width:290px;
+    height: 400px;
     border-radius: 16px;
+    p{
+        font-size: 20px;
+    }
     span{
+        font-size: 14px;
         display: inline-block;
-        width: 86px;
-        margin-right: 50px;
+        width: 60px;
         line-height: 40px;
     }
     .Hot{
@@ -92,7 +95,7 @@ const noShow=()=>{
         padding-bottom: 0;
     }
     .Hot:hover{
-        padding:20px;
+      
         background-color: rgb(138, 136, 136);
         padding-bottom: 0;
     }
@@ -109,10 +112,9 @@ const noShow=()=>{
     display: block;
     line-height: 0;
     margin-top: 2px;
-    width: 3px;
-    height: 22px;
+    width: 12px;
+    height: 12px;
     margin-right: 6px;
-    border-radius: 103px;
     opacity: 1;
     background: #ffe033;
 }

@@ -1,5 +1,5 @@
 <template>
-    <el-card class="card">
+    <el-card class="card" style="margin-top:80px;width:99.9%;min-width:1217px">
         <div>
             <overseaLeft></overseaLeft>
          <overseaRight></overseaRight>

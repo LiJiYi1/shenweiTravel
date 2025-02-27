@@ -1,5 +1,5 @@
 <template>
-    <el-card class="card">
+    <el-card class="card" style="margin-top:80px;width:99.9%;min-width:1217px">
         <div>
             <DomesticLeft></DomesticLeft>
          <DomesticRight></DomesticRight>
@@ -17,8 +17,9 @@ import DomesticRight from './DomesticRight.vue';
 .card{
 margin-top: 60px;
 width: 100%;
-min-width: 1218px;
-div{display: flex;
+min-width: 1217px;
+div{
+display: flex;
 justify-content: space-between;
 }
 }

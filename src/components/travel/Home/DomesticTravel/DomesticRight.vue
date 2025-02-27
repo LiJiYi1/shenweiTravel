@@ -167,10 +167,10 @@ let beijingSmall=ref([
 ])
 //杭州数据
 let hangzhouBig=ref(
-{img:new URL("@/assets/travel/Domestic/hangzhou/image1.png",import.meta.url).href,include:'上海+苏州+杭州+乌镇5日4晚跟团游·仲春盛典·下单立减【携程自营·漫游江南Classic】25人精致小团<318大促|踏青赏花>外滩集散免费寄存<5钻酒店> 好导游伴游5A<留园精讲+VIP入西塘•赠汉服+西栅+西湖+50元餐>交通任选',price:"¥1222起"},
+{img:new URL("@/assets/travel/Domestic/hangzhou/image1.png",import.meta.url).href,include:'上海+苏州+杭州+乌镇5日4晚跟团游·仲春盛典·下单立减【神威自营·漫游江南Classic】25人精致小团<318大促|踏青赏花>外滩集散免费寄存<5钻酒店> 好导游伴游5A<留园精讲+VIP入西塘•赠汉服+西栅+西湖+50元餐>交通任选',price:"¥1222起"},
 )
 let hangzhouSmall=ref([
-{img:new URL("@/assets/travel/Domestic/hangzhou/image2.png",import.meta.url).href,include:'上海迪士尼（Disney）+苏州+杭州+乌镇6日5晚跟团游·踏青早定优惠【携程自营·明星漫游Classic】25人精致小团<赠迪士尼旅拍>外滩集散免费寄存<5钻酒店>好导游伴游5A<留园精讲+VIP入西塘•赠汉服+西栅+西湖赏花>50元餐',price:"¥2204起"},
+{img:new URL("@/assets/travel/Domestic/hangzhou/image2.png",import.meta.url).href,include:'上海迪士尼（Disney）+苏州+杭州+乌镇6日5晚跟团游·踏青早定优惠【神威自营·明星漫游Classic】25人精致小团<赠迪士尼旅拍>外滩集散免费寄存<5钻酒店>好导游伴游5A<留园精讲+VIP入西塘•赠汉服+西栅+西湖赏花>50元餐',price:"¥2204起"},
 {img:new URL("@/assets/travel/Domestic/hangzhou/image3.png",import.meta.url).href,include:'杭州+西塘+乌镇3日2晚跟团游·纯玩0购物 | 精讲导游+1车到底『赠』值300元 | 双摇橹船+汉服游园『宿』全5钻酒店『游』5A景区 | 西栅+西塘+南浔+西湖 | 可选宋城『食』2早1正 | 5星自助早+御茶宴<老友会>可选航班/车次',price:"¥1279起"},
 {img:new URL("@/assets/travel/Domestic/hangzhou/image4.png",import.meta.url).href,include:'上海+苏州+杭州+无锡+南京+乌镇5日4晚跟团游·春季赏花 纯玩【金牌导游服务 升级2晚5钻&网红拈花湾客栈+夜宿乌镇】精华『灵隐飞来峰 登雷峰塔 船游西湖』美食~【湖鲜餐+自助素斋+乾隆御茶宴】留园 禅光夜秀 多交通',price:"¥1378起"},
 {img:new URL("@/assets/travel/Domestic/hangzhou/image5.png",import.meta.url).href,include:'杭州4日3晚私家团·【杭城深度游】私享一单一团=不拼不凑【宿】3晚杭州市区内 #精选3/4/5钻榜单酒店@精品出游 | 品宋城千古情演出+西湖游船+雷峰塔 · 苏堤漫步+飞来峰 · 灵隐祈愿+云栖竹径+龙井村+九溪烟树 |',price:"¥3849起"},
@@ -181,12 +181,12 @@ let hangzhouSmall=ref([
 ])
 //上海数据
 let shanghaiBig=ref(
-{img:new URL("@/assets/travel/Domestic/shanghai/image1.png",import.meta.url).href,include:'上海+苏州+杭州+乌镇5日4晚跟团游·仲春盛典·下单立减【携程自营·漫游江南Classic】25人精致小团<318大促|踏青赏花>外滩集散免费寄存<5钻酒店> 好导游伴游5A<留园精讲+VIP入西塘•赠汉服+西栅+西湖+50元餐>交通任选',price:"¥1222起"},
+{img:new URL("@/assets/travel/Domestic/shanghai/image1.png",import.meta.url).href,include:'上海+苏州+杭州+乌镇5日4晚跟团游·仲春盛典·下单立减【神威自营·漫游江南Classic】25人精致小团<318大促|踏青赏花>外滩集散免费寄存<5钻酒店> 好导游伴游5A<留园精讲+VIP入西塘•赠汉服+西栅+西湖+50元餐>交通任选',price:"¥1222起"},
 )
 let shanghaiSmall=ref([
-{img:new URL("@/assets/travel/Domestic/shanghai/image2.png",import.meta.url).href,include:'上海迪士尼（Disney）+苏州+杭州+乌镇6日5晚跟团游·踏青早定优惠【携程自营·明星漫游Classic】25人精致小团<赠迪士尼旅拍>外滩集散免费寄存<5钻酒店>好导游伴游5A<留园精讲+VIP入西塘•赠汉服+西栅+西湖赏花>50元餐',price:"¥2204起"},
+{img:new URL("@/assets/travel/Domestic/shanghai/image2.png",import.meta.url).href,include:'上海迪士尼（Disney）+苏州+杭州+乌镇6日5晚跟团游·踏青早定优惠【神威自营·明星漫游Classic】25人精致小团<赠迪士尼旅拍>外滩集散免费寄存<5钻酒店>好导游伴游5A<留园精讲+VIP入西塘•赠汉服+西栅+西湖赏花>50元餐',price:"¥2204起"},
 {img:new URL("@/assets/travel/Domestic/shanghai/image3.png",import.meta.url).href,include:'上海迪士尼（Disney）+杭州+苏州+乌镇5日4晚跟团游·『早订享立减&赠取消险·出行无',price:"¥2037起"},
-{img:new URL("@/assets/travel/Domestic/shanghai/image4.png",import.meta.url).href,include:'上海迪士尼（Disney）+杭州+苏州+乌镇4日3晚跟团游·25人精致小团【携程自营·明星漫游Classic】<赠迪士尼园区旅拍>>外滩专属集散免费寄存，<全5钻>1晚乌镇，好导游伴游5A<留园VIP精讲+西塘赠汉服+西湖错峰>交通任选',price:"¥1938起"},
+{img:new URL("@/assets/travel/Domestic/shanghai/image4.png",import.meta.url).href,include:'上海迪士尼（Disney）+杭州+苏州+乌镇4日3晚跟团游·25人精致小团【神威自营·明星漫游Classic】<赠迪士尼园区旅拍>>外滩专属集散免费寄存，<全5钻>1晚乌镇，好导游伴游5A<留园VIP精讲+西塘赠汉服+西湖错峰>交通任选',price:"¥1938起"},
 {img:new URL("@/assets/travel/Domestic/shanghai/image5.png",import.meta.url).href,include:'上海+上海迪士尼度假区5日4晚私家团·【魔都往事&童话城堡&】宿4钻舒适酒店【游】魔旅深度',price:"¥4699起"},
 {img:new URL("@/assets/travel/Domestic/shanghai/image6.png",import.meta.url).href,include:'上海+东方明珠+外滩2日1晚跟团游·『特惠纯玩·深度游魔都』【上',price:"¥828起"},
 {img:new URL("@/assets/travel/Domestic/shanghai/image7.png",import.meta.url).href,include:'上海+苏州+杭州+无锡+南京+乌镇6日5晚跟团游·纯玩 金牌导游服务【升级2晚5钻&网红',price:"¥1368起"},
@@ -199,11 +199,11 @@ let xianBig=ref(
 )
 let xianSmall=ref([
 {img:new URL("@/assets/travel/Domestic/xian/image2.png",import.meta.url).href,include:'西安3日2晚跟团游·赠《西安千古情》演出+园区参观·6-12人封顶·4钻酒店连宿·一车一导·秦兵',price:"¥1459起"},
-{img:new URL("@/assets/travel/Domestic/xian/image3.png",import.meta.url).href,include:'西安5日4晚跟团游·【携程自营·陪你旅行】16人封顶&慢旅行,无自费无购物！兵马俑+',price:"¥3902起"},
+{img:new URL("@/assets/travel/Domestic/xian/image3.png",import.meta.url).href,include:'西安5日4晚跟团游·【神威自营·陪你旅行】16人封顶&慢旅行,无自费无购物！兵马俑+',price:"¥3902起"},
 {img:new URL("@/assets/travel/Domestic/xian/image4.png",import.meta.url).href,include:'西安兵马俑+华清池+华山4日3晚跟团游·20人小团 赠大唐芙蓉园门票（3月29前出行，每间房2张）赠《西安千古情》演出贵宾票 赠西安博物院+讲解+耳机 夜宿华山早登峰【可选5钻套餐含华山温泉酒店】24小时接送机/站',price:"¥1605起"},
 {img:new URL("@/assets/travel/Domestic/xian/image5.png",import.meta.url).href,include:'西安7日跟团游·『西安年·长相思来长安·专车接送·含儿童门票』『壶口升VIP2+1头等舱+壶口黄陵必坐景交』四钻住宿&大唐不夜城&送回+全程耳麦【全程5大5A景区：兵马俑+壶口+法门寺+黄帝陵+华清宫】',price:"¥3337起"},
 {img:new URL("@/assets/travel/Domestic/xian/image6.png",import.meta.url).href,include:'西安兵马俑+华清宫+大唐不夜城+大雁塔+钟鼓楼广场+永兴坊+回民街3日2晚跟团游·赠',price:"¥1396起"},
-{img:new URL("@/assets/travel/Domestic/xian/image7.png",import.meta.url).href,include:'西安兵马俑+华山4日3晚跟团游·【携程自营·夜宿华山】满13人升头等舱大巴，金牌导游一车到底，2/7-2/28班期送秦俑情表演，西安博物院预(预约+讲解)，1晚宿华山下·早入园多游玩+24H专车接送，可加购长恨歌·交通任选',price:"¥1668起"},
+{img:new URL("@/assets/travel/Domestic/xian/image7.png",import.meta.url).href,include:'西安兵马俑+华山4日3晚跟团游·【神威自营·夜宿华山】满13人升头等舱大巴，金牌导游一车到底，2/7-2/28班期送秦俑情表演，西安博物院预(预约+讲解)，1晚宿华山下·早入园多游玩+24H专车接送，可加购长恨歌·交通任选',price:"¥1668起"},
 {img:new URL("@/assets/travel/Domestic/xian/image8.png",import.meta.url).href,include:'西安5日4晚私家团·【冰蛋推荐-手绘长安 | 春光作序·可定制】乙巳中国年·灯映长安春 专业讲解拒绝到此一游 深度游兵马俑 NPC伴游观光车 西影博物馆 汉服&妆造体验 DIY秦小俑 可加购长恨歌【可选订冰蛋趣讲兵马俑】',price:"¥4429起"},
 {img:new URL("@/assets/travel/Domestic/xian/image9.png",import.meta.url).href,include:'西安兵马俑+大唐不夜城+西安城墙+大雁塔+永兴坊3日2晚跟团',price:"¥1426起"},
 ])
