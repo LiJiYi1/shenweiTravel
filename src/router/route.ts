@@ -32,6 +32,7 @@ const travel = () => import('@/views/travel/travelComponent.vue')
 const travelHome = () => import('@/views/travel/travelHome/travelHome.vue')
 const groupTravel=()=>import('@/views/travel/GroupTravel/GroupTravel.vue')
 const PrivateTravel=()=>import('@/views/travel/PrivateTravel/PrivateTravel.vue')
+const FreeTravel=()=>import('@/views/travel/FreeTravel/FreeTravel.vue')
 //全球购
 const Global = () => import('@/views/global Shopping/globalShopping.vue')
 const exchange=()=>import('@/views/global Shopping/exchangeMoney/exchangeMoney.vue')
@@ -287,6 +288,15 @@ const route=[
                     Entitle: 'Private group',
                     title: '私家游',
                     icon: 'Camera'
+                }
+            },
+            {
+                path: '/travel/FreeTravel',
+                component: FreeTravel,
+                meta: {
+                    Entitle: 'Free travel',
+                    title: '自由行',
+                    icon: 'Bicycle'
                 }
             }
         ],

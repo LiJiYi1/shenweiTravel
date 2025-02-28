@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div ref="DOM" @scroll="Scroll">
         <div style="display: flex;justify-content:space-between">
             <div style="display: flex;">
             <TopLeft style="min-width:320px;margin-right:20px" @show="isShow"></TopLeft>
@@ -16,7 +16,11 @@
         </div>
         <DomesticTravel style="margin-top:60px"></DomesticTravel>
         <OverseaTravel style="margin-top:60px"></OverseaTravel>
+        <bottom></bottom>
         <BottomComponent></BottomComponent>
+        <Transition>
+        <BackToTop @click="toTop" v-show="dis" style="transition: all 0.3s ease;"></BackToTop>
+        </Transition> 
     </div>
 </template>
 
@@ -35,6 +39,24 @@ import Heilongjiang from '@/components/travel/leftBar/Detail/Heilongjiang.vue';
 import Yunnan from '@/components/travel/leftBar/Detail/Yunnan.vue';
 import Hainan from '@/components/travel/leftBar/Detail/Hainan.vue';
 import Guangdong from '@/components/travel/leftBar/Detail/Guangdong.vue';
+import bottom from '@/components/travel/bottom.vue';
+import BackToTop from '@/components/travel/backToTop.vue';
+//二级路由的Dom元素
+let DOM=ref()
+const toTop=()=>{
+  DOM.value.scrollTo({
+    top:0,
+    behavior:'smooth'
+  })
+}
+
+
+//距离顶部的距离
+let dis=ref()
+const Scroll=()=>{
+dis.value=DOM.value.scrollTop
+    
+}
 //是否展示
 let show1=ref(false)
 let show2=ref(false)
@@ -108,5 +130,12 @@ show8.value=false
 </script>
 
 <style lang="less" scoped>
-
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.6s ease;
+}
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
 </style>

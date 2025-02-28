@@ -133,7 +133,7 @@ let yuenan=ref([
          height:160px;
     }
     .boxInclude{
-      margin-top: 40px;
+      margin-top: 12px;
             width:180px;
             display: -webkit-box;
             -webkit-box-orient: vertical;

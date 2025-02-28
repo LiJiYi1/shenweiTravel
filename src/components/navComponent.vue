@@ -82,7 +82,7 @@
             <el-menu-item index="/travel/travelHome"><el-icon><HomeFilled /></el-icon>{{language.TravelHome}}</el-menu-item>
             <el-menu-item index="/travel/groupTravel"><el-icon><Camera /></el-icon>{{language.Group}}</el-menu-item>
             <el-menu-item index="/travel/PrivateTravel"><el-icon><VideoCamera /></el-icon>{{language.Private}}</el-menu-item>
-            <el-menu-item index="/travel/travelHome"><el-icon><Bicycle/></el-icon>{{language.Free}}</el-menu-item>
+            <el-menu-item index="/travel/FreeTravel"><el-icon><Bicycle/></el-icon>{{language.Free}}</el-menu-item>
             <el-menu-item index="/travel/travelHome"><el-icon><Calendar /></el-icon>{{language.Customized}}</el-menu-item>
         </el-sub-menu>
         <!-- 全球购 -->
@@ -208,9 +208,7 @@ const language={
 //暗黑模式开关
 let dark:Ref<boolean>=ref(JSON.parse(localStorage.getItem('dark') as string)||false)
 onMounted(()=>{
-
-console.log(111);
-
+// console.log(111);
 //刷新时我们要从本地拿到黑暗模式的状态,实现一个黑暗持久化
 let html=document.documentElement
 let darkStyle=JSON.parse(localStorage.getItem('dark') as string)

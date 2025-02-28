@@ -127,7 +127,7 @@ let gansu=ref([
          height:160px;
     }
     .boxInclude{
-      margin-top: 15px;
+      margin-top: 12px;
             width:180px;
             display: -webkit-box;
             -webkit-box-orient: vertical;
