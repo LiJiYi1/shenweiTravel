@@ -6,14 +6,14 @@
                 <img :src="jingxuanBig.img" alt="">
             </div>
            
-            <p class="bigInclude">{{jingxuanBig.include}}</p>
+            <p class="bigInclude">{{jingxuanBig.include}}<p class="diamond_3"></p></p>
             <p class="bigPrice">{{jingxuanBig.price}}</p>
         </div>
         <div class="small" v-for="(item,index) in jingxuanSmall" :key="index">
             <div style="width: 200px;height:120px;overflow:hidden">
                 <img :src="item.img" alt="">
             </div>    
-            <p class="smallInclude">{{item.include}}</p>
+            <p class="smallInclude">{{item.include}}<p class="diamond_3"></p></p>
             <p class="smallPrice">{{item.price}}</p>
         </div>
     </el-tab-pane>
@@ -230,7 +230,8 @@ let chengduSmall=ref([
     margin-top: 10px;
   
     .bigInclude{
-        width: 440px;
+        position: relative;
+        width: 432px;
             display: -webkit-box;
             -webkit-box-orient: vertical;
             -webkit-line-clamp: 2;
@@ -281,6 +282,7 @@ let chengduSmall=ref([
         color: rgb(255, 115, 0);
         font-size:20px}
         .smallInclude{
+            position: relative;
             width: 200px;
             display: -webkit-box;
             -webkit-box-orient: vertical;
@@ -313,5 +315,17 @@ let chengduSmall=ref([
             text-overflow: ellipsis;
         }
     }
+}
+.diamond_3{
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    width: 78px;
+    height: 20px;
+    padding-left: 14px;
+    background-image: url('@/assets/travel/sprite.png');
+    background-repeat: no-repeat;
+    background-position: -211px -296px;
+ 
 }
 </style>

@@ -33,6 +33,7 @@ const travelHome = () => import('@/views/travel/travelHome/travelHome.vue')
 const groupTravel=()=>import('@/views/travel/GroupTravel/GroupTravel.vue')
 const PrivateTravel=()=>import('@/views/travel/PrivateTravel/PrivateTravel.vue')
 const FreeTravel=()=>import('@/views/travel/FreeTravel/FreeTravel.vue')
+const CustomizedTravel=()=>import('@/views/travel/customizedTravel/customizedTravel.vue')
 //全球购
 const Global = () => import('@/views/global Shopping/globalShopping.vue')
 const exchange=()=>import('@/views/global Shopping/exchangeMoney/exchangeMoney.vue')
@@ -286,8 +287,8 @@ const route=[
                 component: PrivateTravel,
                 meta: {
                     Entitle: 'Private group',
-                    title: '私家游',
-                    icon: 'Camera'
+                    title: '私家团',
+                    icon: 'VideoCamera'
                 }
             },
             {
@@ -298,7 +299,17 @@ const route=[
                     title: '自由行',
                     icon: 'Bicycle'
                 }
-            }
+            },
+            {
+                path: '/travel/CustomizedTravel',
+                component: CustomizedTravel,
+                meta: {
+                    Entitle:'Customized travel',
+                    title: '定制旅行',
+                    icon: 'Calendar'
+                }
+            },
+
         ],
     },
     {

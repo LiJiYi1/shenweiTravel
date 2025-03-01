@@ -4,7 +4,7 @@
        <div v-for="(item,index) in data" :key="index" style="width: 280px;padding:20px;border-bottom:0.5px solid gray">
         <h3>{{item.title}}</h3>
         <ul style="margin-top:15px">
-            <li style="display:inline-block;font-size:14px;line-height:25px;margin-right:5px" v-for="(item1,index) in item.cities" :key="index">{{item1}}&nbsp;|</li>
+            <li style="display:inline-block;font-size:14px;line-height:25px;padding-right:20px;" v-for="(item1,index) in item.cities" :key="index">{{item1}}&nbsp;|</li>
         </ul>
        </div>
     </el-card>
@@ -12,7 +12,7 @@
        <div v-for="(item,index) in data1" :key="index" style="width: 280px;padding:20px;border-bottom:0.5px solid gray">
         <h3>{{item.title}}</h3>
         <ul style="margin-top:15px">
-            <li style="display:inline-block;font-size:14px;line-height:25px;margin-right:5px" v-for="(item1,index) in item.cities" :key="index">{{item1}}&nbsp;|</li>
+            <li style="display:inline-block;font-size:14px;line-height:25px;padding-right:9px" v-for="(item1,index) in item.cities" :key="index">{{item1}}&nbsp;|</li>
         </ul>
        </div>
     </el-card>
@@ -42,7 +42,7 @@ import { ref } from 'vue';
 <style lang="less" scoped>
 .search{
 border-radius:0px;
- border-right: 1px dotted gray;
+
    
 }
 .search1{

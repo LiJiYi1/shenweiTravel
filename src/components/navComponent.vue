@@ -83,7 +83,7 @@
             <el-menu-item index="/travel/groupTravel"><el-icon><Camera /></el-icon>{{language.Group}}</el-menu-item>
             <el-menu-item index="/travel/PrivateTravel"><el-icon><VideoCamera /></el-icon>{{language.Private}}</el-menu-item>
             <el-menu-item index="/travel/FreeTravel"><el-icon><Bicycle/></el-icon>{{language.Free}}</el-menu-item>
-            <el-menu-item index="/travel/travelHome"><el-icon><Calendar /></el-icon>{{language.Customized}}</el-menu-item>
+            <el-menu-item index="/travel/CustomizedTravel"><el-icon><Calendar /></el-icon>{{language.Customized}}</el-menu-item>
         </el-sub-menu>
         <!-- 全球购 -->
         <el-sub-menu index="/Global">
