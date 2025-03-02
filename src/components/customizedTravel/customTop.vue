@@ -12,8 +12,8 @@
 div{
     width: 100%;
     min-width: 1217px;
-    height: 160px;
+    height: 150px;
     background: url('@/assets/travel/customizedTravel/top.png') no-repeat;
-    background-size: contain;
+    background-size: cover;
 }
 </style>

@@ -13,7 +13,6 @@
 
 <style lang="less" scoped>
 div{
-    margin-top: 20px;
     min-width: 960px;
     p{
         display: inline-block;
