@@ -1,14 +1,20 @@
 <template>
-    <el-input style="width: 160px;" placeholder="选择想去的目的地" @focus="Show" @blur="notShow"></el-input>
+<el-input v-model="pos" style="width: 160px;" placeholder="选择想去的目的地" @focus="isShow=true" @click="stop"></el-input>
     <span style="font-size: 12px;"><i class="tip"></i>最多选择5个目的地</span>
-<div style="position:relative;z-index:10;margin-left:120px">
-<el-card style="width: 400px;height:240px;" body-style="padding:8px" v-if="isShow">
+<div class="underPos">
+    <span v-for="(item,index) in underData" :key="index">
+       <p>{{item}}</p>
+      <el-icon @click="del(item)" style="position:absolute;top:9.6px;right:3px;cursor:pointer"><Close /></el-icon>
+    </span>
+</div>
+<div style="position:absolute;z-index:10;margin-left:120px">
+<el-card style="width: 400px;height:240px;" body-style="padding:8px" v-if="isShow" @click="stop">
   <el-tabs v-model="activeName"  style="width: 380px;" class="demo-tabs" >
     <el-tab-pane label="热门推荐" style="height:180px;overflow:auto" name="first" >
         <div v-for="(item,index) in data1" :key="index" >
             <h3>{{item.title}}</h3>
             <div style="margin-top: 6px;margin-bottom:8px;">
-                <span class="city" v-for="(item1,index) in item.cities"  :key="index">{{item1}}</span>
+                <span class="city" v-for="(item1,index) in item.cities"  :key="index" @click="getCity(item1)">{{item1}}</span>
             </div>
         </div>
     </el-tab-pane>
@@ -16,7 +22,7 @@
         <div v-for="(item,index) in data2" :key="index" >
             <h3>{{item.title}}</h3>
             <div style="margin-top: 6px;margin-bottom:8px;">
-                <span class="city" v-for="(item1,index) in item.cities"  :key="index">{{item1}}</span>
+                <span class="city" v-for="(item1,index) in item.cities"  :key="index" @click="getCity(item1)">{{item1}}</span>
             </div>
         </div>
     </el-tab-pane>
@@ -24,7 +30,7 @@
         <div v-for="(item,index) in data3" :key="index" >
             <h3>{{item.title}}</h3>
             <div style="margin-top: 6px;margin-bottom:8px;">
-                <span class="city" v-for="(item1,index) in item.cities"  :key="index">{{item1}}</span>
+                <span class="city" v-for="(item1,index) in item.cities"  :key="index" @click="getCity(item1)">{{item1}}</span>
             </div>
         </div>
     </el-tab-pane>
@@ -32,7 +38,7 @@
         <div v-for="(item,index) in data4" :key="index" >
             <h3>{{item.title}}</h3>
             <div style="margin-top: 6px;margin-bottom:8px;">
-                <span class="city" v-for="(item1,index) in item.cities"  :key="index">{{item1}}</span>
+                <span class="city" v-for="(item1,index) in item.cities"  :key="index" @click="getCity(item1)">{{item1}}</span>
             </div>
         </div>
     </el-tab-pane>
@@ -40,7 +46,7 @@
          <div v-for="(item,index) in data5" :key="index" >
             <h3>{{item.title}}</h3>
             <div style="margin-top: 6px;margin-bottom:8px;">
-                <span class="city" v-for="(item1,index) in item.cities"  :key="index">{{item1}}</span>
+                <span class="city" v-for="(item1,index) in item.cities"  :key="index" @click="getCity(item1)">{{item1}}</span>
             </div>
         </div>
     </el-tab-pane>
@@ -48,7 +54,7 @@
          <div v-for="(item,index) in data6" :key="index" >
             <h3>{{item.title}}</h3>
             <div style="margin-top: 6px;margin-bottom:8px;">
-                <span class="city" v-for="(item1,index) in item.cities"  :key="index">{{item1}}</span>
+                <span class="city" v-for="(item1,index) in item.cities"  :key="index" @click="getCity(item1)">{{item1}}</span>
             </div>
         </div>
     </el-tab-pane>
@@ -56,7 +62,7 @@
          <div v-for="(item,index) in data7" :key="index" >
             <h3>{{item.title}}</h3>
             <div style="margin-top: 6px;margin-bottom:8px;">
-                <span class="city" v-for="(item1,index) in item.cities"  :key="index">{{item1}}</span>
+                <span class="city" v-for="(item1,index) in item.cities"  :key="index" @click="getCity(item1)">{{item1}}</span>
             </div>
         </div>
     </el-tab-pane>
@@ -64,7 +70,7 @@
         <div v-for="(item,index) in data8" :key="index" >
             <h3>{{item.title}}</h3>
             <div style="margin-top: 6px;margin-bottom:8px;">
-                <span class="city" v-for="(item1,index) in item.cities"  :key="index">{{item1}}</span>
+                <span class="city" v-for="(item1,index) in item.cities"  :key="index" @click="getCity(item1)">{{item1}}</span>
             </div>
         </div>
     </el-tab-pane>
@@ -72,7 +78,7 @@
            <div v-for="(item,index) in data9" :key="index" >
             <h3>{{item.title}}</h3>
             <div style="margin-top: 6px;margin-bottom:8px;">
-                <span class="city" v-for="(item1,index) in item.cities"  :key="index">{{item1}}</span>
+                <span class="city" v-for="(item1,index) in item.cities"  :key="index" @click="getCity(item1)">{{item1}}</span>
             </div>
         </div>
     </el-tab-pane>
@@ -80,7 +86,7 @@
         <div v-for="(item,index) in data10" :key="index" >
             <h3>{{item.title}}</h3>
             <div style="margin-top: 6px;margin-bottom:8px;">
-                <span class="city" v-for="(item1,index) in item.cities"  :key="index">{{item1}}</span>
+                <span class="city" v-for="(item1,index) in item.cities"  :key="index" @click="getCity(item1)">{{item1}}</span>
             </div>
         </div>
     </el-tab-pane>
@@ -88,7 +94,7 @@
          <div v-for="(item,index) in data11" :key="index" >
             <h3>{{item.title}}</h3>
             <div style="margin-top: 6px;margin-bottom:8px;">
-                <span class="city" v-for="(item1,index) in item.cities"  :key="index">{{item1}}</span>
+                <span class="city" v-for="(item1,index) in item.cities"  :key="index" @click="getCity(item1)">{{item1}}</span>
             </div>
         </div>
     </el-tab-pane>
@@ -96,7 +102,7 @@
          <div v-for="(item,index) in data12" :key="index" >
             <h3>{{item.title}}</h3>
             <div style="margin-top: 6px;margin-bottom:8px;">
-                <span class="city" v-for="(item1,index) in item.cities"  :key="index">{{item1}}</span>
+                <span class="city" v-for="(item1,index) in item.cities"  :key="index" @click="getCity(item1)">{{item1}}</span>
             </div>
         </div>
     </el-tab-pane>
@@ -104,7 +110,7 @@
          <div v-for="(item,index) in data13" :key="index" >
             <h3>{{item.title}}</h3>
             <div style="margin-top: 6px;margin-bottom:8px;">
-                <span class="city" v-for="(item1,index) in item.cities"  :key="index">{{item1}}</span>
+                <span class="city" v-for="(item1,index) in item.cities"  :key="index" @click="getCity(item1)">{{item1}}</span>
             </div>
         </div>
     </el-tab-pane>
@@ -112,7 +118,7 @@
          <div v-for="(item,index) in data14" :key="index" >
             <h3>{{item.title}}</h3>
             <div style="margin-top: 6px;margin-bottom:8px;">
-                <span class="city" v-for="(item1,index) in item.cities"  :key="index">{{item1}}</span>
+                <span class="city" v-for="(item1,index) in item.cities"  :key="index" @click="getCity(item1)">{{item1}}</span>
             </div>
         </div>
     </el-tab-pane>
@@ -127,8 +133,15 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
+import { onMounted, ref, type Ref} from 'vue'
+import bus from '@/bus/bus'
 const activeName = ref('first')
+//控制选择表单显示
+let isShow=ref(false)
+//目的地
+let pos=ref()
+//表单下面显示目的地的数据
+let underData:Ref<string[]>=ref([])
 let data1=ref([
     {title:"国内热门",cities:['丽江','北京','三亚','重庆','成都','九寨沟','上海','西安','大理市']},
     {title:"海外热门",cities:['马尔代夫','日本','泰国','马来西亚','印度尼西亚']},
@@ -214,14 +227,33 @@ let data14=ref([
     {title:"大洋洲",cities:['新西兰','澳大利亚','斐济']},
     {title:"中东非/南极洲",cities:['土耳其','埃及','肯尼亚','毛里求斯','阿联酋','南极洲']},
 ])
-//控制选择表单显示
-let isShow=ref(false)
-const Show=()=>{
-    isShow.value=true
+const stop=(e:any)=>{
+e.stopPropagation()
 }
-const notShow=()=>{
-    isShow.value=false
+const getCity=(city:string)=>{
+    if(underData.value.length<5&&!underData.value.includes(city)){
+        underData.value.push(city)
+        bus.emit('position',{
+         position:underData.value
+        })
+        isShow.value=false
+    }
 }
+const del=(del:string)=>{
+if(underData.value.includes(del)){
+        const index=underData.value.indexOf(del)
+        underData.value.splice(index,1)
+        bus.emit('position',{
+         position:underData.value
+        })
+        isShow.value=false
+    }
+}
+onMounted(()=>{
+    document.addEventListener('click',()=>{
+       isShow.value=false
+    })
+})
 </script>
 
 <style lang="less" scoped>
@@ -252,5 +284,28 @@ h3{
     cursor: pointer;
     line-height: 25px;
 }
-
+.underPos{
+    margin-left: 120px;
+    margin-top: 20px;
+    span{
+        font-size: 12px;
+        position: relative;
+        display: inline-block;
+        text-align: center;
+        line-height: 30px;
+        width: 66px;
+        height: 30px;
+        border: 1px solid #19a0f0;
+        color:#19a0f0;
+        margin-right: 8px;
+    }
+    p{  
+        padding-left: 5px;
+        width: 46px;
+        text-align: center;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+}
 </style>

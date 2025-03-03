@@ -44,6 +44,9 @@
    import { onMounted, ref } from 'vue';
    import bus from '@/bus/bus'
 import SearchAlert from './searchAlert.vue';
+   //通过emit来拿到数组数据
+   let $emit=defineEmits(['getVal'])
+
    //拿到出游性质的两个DOM
    let type1=ref()
    let type2=ref()
@@ -84,16 +87,17 @@ import SearchAlert from './searchAlert.vue';
        })
    }
    const Dates=()=>{
-   console.log(new Date(date.value[0]));
    let start=new Date(date.value[0])
    let end=new Date(date.value[1])
    //开始的年月日
    let [startYear,startMonth,startDay]=[start.getFullYear(),start.getMonth()+1,start.getDate()]
    //结束的年月日
    let [endYear,endMonth,endDay]=[end.getFullYear(),end.getMonth()+1,end.getDate()]
-    bus.emit('Date',{
+   bus.emit('Date',{
          date:startYear+'/'+startMonth+'/'+startDay+'-'+endYear+'/'+endMonth+'/'+endDay
        })
+   //传给父组件表单数据
+   $emit('getVal',{date:date.value,budget:yusuan.value})
    }
    //成人
    const adult=()=>{
@@ -110,6 +114,8 @@ import SearchAlert from './searchAlert.vue';
    //预算
    const budget=()=>{
     bus.emit('budget',{budget:yusuan.value})
+    //传给父组件表单数据
+    $emit('getVal',{date:date.value,budget:yusuan.value})
    }
    //限制数字
    const Formatter=(value:string)=>{
@@ -133,7 +139,7 @@ import SearchAlert from './searchAlert.vue';
         ul{
             margin-top: 20px;
           li{
-            height: 60px;
+            margin-bottom: 20px;
           i{
             display: inline-block;
             margin-right: 2px;
