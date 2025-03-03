@@ -2,7 +2,7 @@
   <div class="right">
             <h1>我的需求单</h1>
             <hr style="margin-top: 25px;">
-            <div>
+            <div style="height: 450px;overflow:auto">
                 <ul>
                     <li><span>出游性质：</span>{{types}}</li>
                     <li><span>目的地：</span></li>
@@ -11,7 +11,7 @@
                     <li><span>预估人均预算：</span>{{budgets}}</li>
                     <li><span>需要提供什么：</span></li>
                     <li><span>几位定制师联系：	</span></li>
-                    <li><span>其他需求：</span></li>
+                    <li><span>其他需求：</span>{{Needs}}</li>
                     <li><span>姓名：</span></li>
                     <li><span>手机号：	</span></li>
                     <li v-show="types==='公司定制'"><span>公司名称：	</span></li>
@@ -19,7 +19,7 @@
                     <li v-show="types==='公司定制'"><span>微信号：	</span></li>
                 </ul>
             </div>
-              <div class="trangle"></div>
+            <div class="trangle"></div>
     </div>
      
 </template>
@@ -33,6 +33,7 @@ let adults=ref('1')
 let childrens=ref('0')
 let babies=ref('0')
 const budgets=ref()
+let Needs=ref('')
 onMounted(()=>{
 //定制类型
 bus.on('type',(type:any)=>{
@@ -59,6 +60,11 @@ bus.on('baby',(baby:any)=>{
 //预算
 bus.on('budget',(budget:any)=>{
        budgets.value=budget.budget
+})
+//其他需求
+//预算
+bus.on('needs',(needs:any)=>{
+       Needs.value=needs.needs
 })
    })
 </script>

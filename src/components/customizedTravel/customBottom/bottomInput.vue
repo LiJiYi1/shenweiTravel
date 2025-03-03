@@ -14,6 +14,7 @@
             <hr>
             <Step1Left v-show="active===0"></Step1Left>
             <Step2Left v-show="active===1"></Step2Left>
+            <el-button style="width:140px;border-radius:18px" @click="pre" v-show="active!==0">上一步</el-button>
             <el-button style="width:140px;border-radius:18px" @click="next">下一步</el-button>
          </div>
         <StepRight></StepRight>
@@ -33,6 +34,10 @@ const active = ref(0)
 
 const next = () => {
   if (active.value++ > 2) active.value = 0
+}
+const pre=()=>{
+    active.value--
+    if (active.value<=0) active.value = 0
 }
 </script>
 
