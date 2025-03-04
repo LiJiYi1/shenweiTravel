@@ -24,7 +24,7 @@
                         <p style="overflow: hidden;display:inline-block;width:160px;" v-show="props.Active!==0">{{Needs}}</p>
                     </li>
                     <li><span>姓名：</span><p style="display: inline-block;" v-show="props.Active===2">{{Name}}</p></li>
-                    <li><span>手机号：</span></li>
+                    <li><span>手机号：</span>{{prePhoneNum}}-{{phoneNum}}</li>
                     <li v-show="types==='公司定制'"><span>公司名称：</span><p style="display: inline-block;" v-show="props.Active===2">{{Company}}</p></li>
                     <li><span>邮箱：</span>
                      <p style="overflow: hidden;display:inline-block;width:160px;" v-show="props.Active===2">{{ Email }}</p> </li>
@@ -55,7 +55,8 @@ let Company=ref('')
 let Email=ref('')
 let weChat=ref('')
 let props=defineProps(['Active'])
-
+let phoneNum=ref()
+let prePhoneNum=ref('86 中国')
 bus.on('needProvide',(need:any)=>{
        needProvide.value=need.provide
 })
@@ -126,6 +127,14 @@ bus.on('weChat',(wechat:any)=>{
  
     
        weChat.value=wechat.wechat
+})
+//手机号前
+bus.on('prePhoneNum',(PrePhoneNum:any)=>{
+       prePhoneNum.value=PrePhoneNum.PrePhoneNum
+})
+//手机号
+bus.on('phone',(phone:any)=>{
+       phoneNum.value=phone.phone
 })
    })
 </script>

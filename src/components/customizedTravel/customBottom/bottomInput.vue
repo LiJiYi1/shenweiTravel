@@ -17,7 +17,7 @@
             <Step3Left v-show="active===2"></Step3Left>
             <el-button :color="color" style="width:140px;border-radius:18px;margin-left:120px" @click="pre" v-show="active!==0">上一步</el-button>
             <el-button :color="color" style="width:140px;height:40px;border-radius:18px;margin-left:120px" @click="next" v-show="active!==2">下一步</el-button>
-            <el-button :color="color" style="width:140px;border-radius:18px" v-show="active===2">马上为我定制</el-button>
+            <el-button :color="color" style="width:140px;border-radius:18px;margin-left:120px" v-show="active===2">马上为我定制</el-button>
          </div>
         <StepRight :Active="active"></StepRight>
     </div>

@@ -7,7 +7,7 @@
         <div class="to"   @click="stop">
         <p>目的地</p>
           <el-input
-          style="width: 180px;margin-top:10px;font-size:25px;height:70px"
+          style="width: 180px;margin-top:10px;font-size:25px;height:70px;"
           size="large"
           placeholder="北京"
           v-model="position"

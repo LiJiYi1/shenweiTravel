@@ -1,5 +1,16 @@
 <template>
-<el-input v-model="pos" style="width: 160px;" placeholder="选择想去的目的地" @focus="isShow=true" @click="stop"></el-input>
+    <el-autocomplete
+    @focus="isShow=true"
+    @input="Show"
+    style="width: 180px;"
+    :trigger-on-focus="false"
+    :fetch-suggestions="querySearch"
+    popper-class="my-autocomplete"
+    placeholder="搜索或选择想去的目的地"
+    @select="handleSelect"
+    @click="stop"
+    v-model="pos"
+  ></el-autocomplete>
     <span style="font-size: 12px;"><i class="tip"></i>最多选择5个目的地</span>
 <div class="underPos">
     <span v-for="(item,index) in underData" :key="index">
@@ -7,8 +18,8 @@
       <el-icon @click="del(item)" style="position:absolute;top:9.6px;right:3px;cursor:pointer"><Close /></el-icon>
     </span>
 </div>
-<div style="position:absolute;z-index:10;margin-left:120px">
-<el-card style="width: 400px;height:240px;" body-style="padding:8px" v-if="isShow" @click="stop">
+<div style="position:absolute;z-index:10;margin-left:120px;">
+<el-card style="width: 400px;height:240px;margin-top:0px" body-style="padding:8px" v-if="isShow" @click="stop">
   <el-tabs v-model="activeName"  style="width: 380px;" class="demo-tabs" >
     <el-tab-pane label="热门推荐" style="height:180px;overflow:auto" name="first" >
         <div v-for="(item,index) in data1" :key="index" >
@@ -135,6 +146,7 @@
 <script lang="ts" setup>
 import { onMounted, ref, type Ref} from 'vue'
 import bus from '@/bus/bus'
+import city from '@/assets/travel/city'
 const activeName = ref('first')
 //控制选择表单显示
 let isShow=ref(false)
@@ -249,6 +261,48 @@ if(underData.value.includes(del)){
         isShow.value=false
     }
 }
+//控制提示表单是否显示
+const Show=()=>{
+    if(!pos.value) isShow.value=false
+    else isShow.value=true
+}
+//自动补全输入框
+interface LinkItem {
+  value: string
+}
+const links = ref<LinkItem[]>([])
+const querySearch = (queryString: string, cb:any) => {
+  const results = queryString
+    ? links.value.filter(createFilter(queryString))
+    : links.value
+  // call callback function to return suggestion objects
+  cb(results)
+}
+const createFilter = (queryString: string) => {
+  return (restaurant: LinkItem) => {
+    return (
+      restaurant.value.toLowerCase().indexOf(queryString.toLowerCase()) === 0
+    )
+  }
+}
+const loadAll = () => {
+  return city
+}
+const handleSelect = (item: Record<string, any>) => {
+        pos.value=item.value
+        if(underData.value.length<5&&!underData.value.includes(pos.value)){
+        underData.value.push(pos.value)
+        bus.emit('position',{
+         position:underData.value
+        })
+    }
+ 
+
+}
+
+onMounted(() => {
+  links.value = loadAll()
+})
 onMounted(()=>{
     document.addEventListener('click',()=>{
        isShow.value=false
