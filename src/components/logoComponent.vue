@@ -1,21 +1,21 @@
 <template>
     <div>
         <img src="@/assets/home/logo.webp" alt="">
-        <h3>{{t('name')}}</h3>
+        <h3>{{language.name}}</h3>
     </div>
 </template>
 
 <script setup lang="ts">
 //引入能切换语言的文字
 import { useI18n } from 'vue-i18n'
+import { computed } from 'vue';
 const { t,locale } = useI18n()
-locale.value = localStorage.getItem('language') as string;
-//import { computed } from 'vue'
-// console.log(computed(() => t('name')));
+locale.value = localStorage.getItem('language') as string||'zh-cn';
 
-// const language={
-//   name:computed(() => t('name'))
-// }
+
+const language={
+  name:computed(() => t('name'))
+}
 
 </script>
 

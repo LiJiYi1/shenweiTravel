@@ -97,7 +97,7 @@ import SearchAlert from './searchAlert.vue';
          date:startYear+'/'+startMonth+'/'+startDay+'-'+endYear+'/'+endMonth+'/'+endDay
        })
    //传给父组件表单数据
-   $emit('getVal',{date:date.value,budget:yusuan.value})
+   $emit('getVal',{date:date.value})
    }
    //成人
    const adult=()=>{
@@ -114,8 +114,6 @@ import SearchAlert from './searchAlert.vue';
    //预算
    const budget=()=>{
     bus.emit('budget',{budget:yusuan.value})
-    //传给父组件表单数据
-    $emit('getVal',{date:date.value,budget:yusuan.value})
    }
    //限制数字
    const Formatter=(value:string)=>{

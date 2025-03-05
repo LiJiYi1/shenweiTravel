@@ -7,22 +7,22 @@
         <!-- 买哪个国家的火车票 -->
         <el-tabs class="demo-tabs"  v-model="activeName">
             <el-tab-pane label="欧洲" name="first" >  
-                <PosComponent style="margin-top: 20px;" :country="activeName"></PosComponent>
+                <PosComponent :country="activeName"></PosComponent>
                 <TimeComponent style="margin-top: 20px;"></TimeComponent>
                 <SelectNum style="margin-top: 20px;"></SelectNum>
              </el-tab-pane>
             <el-tab-pane label="韩国" name="second" >
-                <PosComponent style="margin-top: 20px;" :country="activeName"></PosComponent>
+                <PosComponent  :country="activeName"></PosComponent>
                 <TimeComponent style="margin-top: 20px;"></TimeComponent>
                 <SelectNum style="margin-top: 20px;"></SelectNum>
             </el-tab-pane>
             <el-tab-pane label="中国港澳台" name="third" >
-                <PosComponent style="margin-top: 20px;" :country="activeName"></PosComponent>
+                <PosComponent  :country="activeName"></PosComponent>
                 <TimeComponent style="margin-top: 20px;"></TimeComponent>
                 <SelectNum style="margin-top: 20px;"></SelectNum>
             </el-tab-pane>
              <el-tab-pane label="日本" name="fourth" >
-                <PosComponent style="margin-top: 20px;" :country="activeName"></PosComponent>
+                <PosComponent  :country="activeName"></PosComponent>
                 <TimeComponent style="margin-top: 20px;"></TimeComponent>
                 <SelectNum style="margin-top: 20px;"></SelectNum>
              </el-tab-pane>
@@ -42,7 +42,7 @@
         </div>
       
         </el-card>
-        <el-button :color="color" style="width: 200px;height:60px;margin-left:225px;border-radius:20px;margin-top:20px">搜索火车票</el-button>
+        <el-button :color="color" style="width: 200px;height:60px;margin-left:calc(50% - 100px);border-radius:20px;margin-top:20px">搜索火车票</el-button>
       </el-card>
       
     </div>
@@ -75,7 +75,7 @@ const activeName = ref('first')
 let oneOrtwo=ref('1')
 
 //从子组件拿数据
-const emit=(e)=>{
+const emit=(e:any)=>{
     //console.log(e);
     oneOrtwo.value=e
 }
@@ -161,5 +161,15 @@ clearInterval(timer.value)
 }
 :deep(.el-radio__input.is-checked+.el-radio__label) {
     color: rgb(255, 234, 0);
+}
+:deep(.el-input__wrapper) {
+  border: none !important;
+  box-shadow: none !important;
+   background-color: inherit !important;
+}
+:deep(.el-select .el-select__wrapper) {
+  border: none !important;
+   box-shadow: none !important;
+  background-color: inherit !important;
 }
 </style>

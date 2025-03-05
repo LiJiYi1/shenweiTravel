@@ -5,7 +5,7 @@
         <!-- 城市选择 -->
         <TopComponent @click="stop"></TopComponent>
         <!-- 日期选择 -->
-        <BottomComponent style="margin-top:60px;"></BottomComponent>
+        <BottomComponent style="margin-top:20px;"></BottomComponent>
         <!-- 搜索按钮 -->
         <el-button :color="color" style="width: 200px;height:60px;margin-left:225px;border-radius:20px;margin-top:20px">汽车票查询</el-button>
       </el-card>
@@ -48,7 +48,7 @@ let time1=ref(moment().format("DD"))
 let timer=ref()
 
 //取消事件委托防止点输入框时他也消失
-const stop=(e)=>{
+const stop=(e:any)=>{
 e.stopPropagation()
 }
 onMounted(()=>{
@@ -111,11 +111,16 @@ clearInterval(timer.value)
     right: 0px;
     z-index: 1;
     width: 298px;
-    height: 265px;
+    height: 295px;
     border-radius: 18px;
     opacity: 1;
     background: linear-gradient(270deg, rgba(0, 0, 0, .8), transparent 100%);
         }
     }
+}
+:deep(.el-input__wrapper) {
+  border: none !important;
+  box-shadow: none !important;
+  background-color: inherit !important;
 }
 </style>

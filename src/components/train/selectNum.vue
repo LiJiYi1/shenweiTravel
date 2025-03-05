@@ -1,9 +1,10 @@
 <template>
     <el-select
+    :style="{backgroundColor:color,borderRadius:'6px',padding:'10px',}"
       v-model="value"
       placeholder="Select"
       size="large"
-      style="width: 240px"
+      style="width: 180px;"
     >
       <el-option
         key="1"
@@ -35,7 +36,9 @@
 
 <script setup>
 import { ref } from 'vue'
-
+import { useColorStore } from '@/store/modules/color';
+import { storeToRefs } from 'pinia';
+let {color}=storeToRefs(useColorStore())
 const value = ref('1成人')
 
 </script>

@@ -32,8 +32,8 @@ let week2=ref('')
 //时间和日期
 let timeDate=ref(moment().format("YYYY.MM.DD.hh.mm.ss"))
 const change=()=>{
-    const date=new Date(timeDate.value[0])
-    const date1=new Date(timeDate.value[1])
+    const date:any=new Date(timeDate.value[0])
+    const date1:any=new Date(timeDate.value[1])
     const sub=Math.abs(date1 - date)
     const diffDays=Math.ceil(sub/(1000*60*60*24))
     num.value=diffDays+'天'

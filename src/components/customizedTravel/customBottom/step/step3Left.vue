@@ -40,21 +40,25 @@ import PrePhoneNum from './prePhoneNum.vue';
    let company=ref()
    let weChat=ref()
    let phoneNum=ref()
-
+   //子组件输入数据通过自定义事件把数据传给父组件
+   const $emit=defineEmits(['getVal1'])
    const Name=()=>{
       bus.emit('Name',{Name:name.value})
+      $emit('getVal1',{name:name.value,phoneNum:phoneNum.value,company:company.value})
    }
    const Email=()=>{
       bus.emit('Email',{Email:email.value})
    }
    const Company=()=>{
     bus.emit('Company',{company:company.value})
+    $emit('getVal1',{name:name.value,phoneNum:phoneNum.value,company:company.value})
    }
     const WeChat=()=>{
     bus.emit('weChat',{wechat:weChat.value})
    }
   const phone=()=>{
     bus.emit('phone',{phone:phoneNum.value})
+    $emit('getVal1',{name:name.value,phoneNum:phoneNum.value,company:company.value})
    }
    onMounted(()=>{
      bus.on('type',(type:any)=>{

@@ -8,11 +8,16 @@
       <el-radio value="2" size="large" @change="isTwo" :style="{color:color,borderColor:color}">往返</el-radio>
       <el-radio value="3" size="large" @change="isTwo" :style="{color:color,borderColor:color}">中转</el-radio>
     </el-radio-group>
-    <!-- 对城市提示 -->
-    <div class="alert"><p>出发城市</p><p>到达城市</p></div>
     <!-- 城市选择 -->
-    <div class="city"  @click="stop">
-        <el-input v-model="city1"  style="width: 300px;height:60px;font-size:25px;" placeholder="Please input" @focus="posSearch=true;posSearch1=false;posSearch2=false;"/>
+    <div :style="{backgroundColor:color,borderRadius:'6px',padding:'10px',height:'55px'}">
+          <!-- 对城市提示 -->
+    <div class="alert">
+        <p style="font-size: 14px;margin-left:12px">出发城市</p>
+        <p style="font-size: 14px;margin-right:12px">到达城市</p>
+    </div>
+   
+    <div class="city"  @click="stop" >
+        <el-input v-model="city1"  style="width: 300px;height:40px;font-size:25px;" placeholder="Please input" @focus="posSearch=true;posSearch1=false;posSearch2=false;"/>
            <!-- 搜索提示 -->
         <div class="posSearch" v-show="posSearch">
         <div style="background: gray;padding:10px">热门城市/国家（支持汉字/拼音/英文字母）</div>
@@ -299,7 +304,7 @@
             </el-tabs>
         </div>
         <el-icon style="font-size: 52px;" @click="change"><Switch /></el-icon>
-        <el-input v-model="city2" style="width: 300px; height:60px;font-size:25px;direction:rtl" placeholder="Please input" @focus="posSearch1=true;posSearch=false;posSearch2=false;"/>
+        <el-input v-model="city2" style="width: 300px; height:40px;font-size:25px;direction:rtl" placeholder="Please input" @focus="posSearch1=true;posSearch=false;posSearch2=false;"/>
           <!-- 搜索提示 -->
          <div class="posSearch1" v-show="posSearch1">
         <div style="background: gray;padding:10px">热门城市/国家（支持汉字/拼音/英文字母）</div>
@@ -589,51 +594,58 @@
     border-right:12px solid transparent;
     border-top:12px solid transparent;
     border-bottom:12px solid;
-    position:absolute;left:45px;top:180px"></div>
+    position:absolute;left:45px;top:111px"></div>
     <div  v-show="posSearch1" style="
     border-left:12px solid transparent;
     border-right:12px solid transparent;
     border-top:12px solid transparent;
     border-bottom:12px solid;
-    position:absolute;right:50px;top:180px"></div>
+    position:absolute;right:50px;top:111px"></div>
      <div  v-show="posSearch2" style="
     border-left:12px solid transparent;
     border-right:12px solid transparent;
     border-top:12px solid transparent;
     z-index:10;
     border-bottom:12px solid;
-    position:absolute;right:50px;top:280px"></div>
+    position:absolute;right:50px;top:207px"></div>
     </div>
-    <!-- 对底部日期的提示 -->
-    <div class="alert"><p>出发日期</p><p v-if="oneOrTwo!=='3'">返程日期</p>
-    <p v-if="oneOrTwo==='3'">指定中转城市</p></div>
+    </div>
     <!-- 底部的日期选择 -->
+   <div :style="{backgroundColor:color,borderRadius:'6px',padding:'10px',height:'55px',marginTop:'20px'}">
+        <!-- 对底部日期的提示 -->
+    <div class="alert">
+        <p style="font-size: 14px;margin-left:12px">出发日期</p>
+        <p style="font-size: 14px;margin-right:12px" v-if="oneOrTwo!=='3'">返程日期</p>
+        <p style="font-size: 14px;margin-right:12px" v-if="oneOrTwo==='3'">指定中转城市</p></div>
+    
     <div class="bt">
         <el-date-picker
         v-model="day1"
         type="date"
         size="large"
-        style="width: 240px; height:60px;font-size:32px;cursor:pointer"
+        style="width: 190px; height:45px;font-size:25px;cursor:pointer"
+         :disabled-date="disablePastDates"
         :clearable="false"
         :editable="false"
         @change="date(day1)"
         />
-        <div  style="font-size:28px;margin-top:14px;width:90px;margin-left:6px">{{ Day }}</div>
+        <div  style="font-size:25px;margin-top:8px;margin-left:-60px">{{ Day }}</div>
          <el-date-picker
         v-if="oneOrTwo!=='3'"
         v-model="day2"
         type="date"
+         :disabled-date="disablePastDates1"
         placeholder="添加返程"
         size="large"
-        style="width: 240px; height:60px;font-size:32px;cursor:pointer"
+        style="width: 190px; height:45px;font-size:25px;cursor:pointer;"
         @change="notOne"
         :editable="false"
         :clearable="false"
          />
-         <div v-if="oneOrTwo!=='3'&&Day1" style="font-size:28px;margin-top:14px;width:90px;margin-left:6px">{{ Day1 }}</div>
+         <div v-if="oneOrTwo!=='3'&&Day1" style="font-size:25px;margin-top:8px;margin-left:-60px">{{ Day1 }}</div>
          <!-- 中转城市 -->
          <div @click="stop">
-             <el-input v-model="city3"  v-show="oneOrTwo==='3'" style="direction:rtl;width: 300px;height:60px;font-size:25px;" placeholder="中转城市" @focus="posSearch2=true;posSearch1=false;posSearch=false;"/>
+             <el-input v-model="city3"  v-show="oneOrTwo==='3'" style="direction:rtl;width: 300px;height:45px;font-size:25px;" placeholder="中转城市" @focus="posSearch2=true;posSearch1=false;posSearch=false;"/>
          <!-- 搜索提示 -->
         <div class="posSearch2" v-show="posSearch2">
         <div style="background: gray;padding:10px">热门城市/国家（支持汉字/拼音/英文字母</div>
@@ -922,11 +934,13 @@
          </div>
         
     </div>
+   </div>
+
     <div>
     <el-checkbox v-model="student" label="学生票" size="large" />
     <el-checkbox v-model="hightWay" label="高铁动车" size="large" />
     </div>
-        <el-button :color="color" style="width: 200px;height:60px;margin-left:225px;border-radius:20px">搜索火车票</el-button>
+        <el-button :color="color" style="width: 200px;height:60px;margin-left:calc(50% - 100px);border-radius:20px">搜索火车票</el-button>
       </el-card>
       <el-card class="poetry" body-style=" width: 220px;height:220px">
         <div class="right">
@@ -1036,8 +1050,16 @@ const outSearch=()=>{
     posSearch.value=false
     posSearch2.value=false
 }
+//禁用过去日期
+const disablePastDates = (date:any) => {
+  return date < new Date(); // 如果日期小于当前日期，返回 true（禁用）
+};
+//第二个禁用开始时间
+const disablePastDates1 = (date:any) => {
+  return date < new Date(day1.value); // 如果日期小于当前日期，返回 true（禁用）
+};
 //取消事件委托防止点输入框时他也消失
-const stop=(e)=>{
+const stop=(e:any)=>{
 e.stopPropagation()
 }
 const date=(day:string)=>{
@@ -1074,9 +1096,7 @@ clearInterval(timer.value)
         justify-content: space-between;
     }
     .alert{
-        margin-top: 40px;
-            width: 100%;
-            height: 30px;
+            width: 100%; 
             display: flex;
             justify-content: space-between;
         }
@@ -1140,7 +1160,7 @@ clearInterval(timer.value)
     position: absolute;
     left: 20px;
     cursor: pointer;
-    top: 204px;
+    top: 136px;
     z-index: 10;
     .hot{  
         span{
@@ -1162,7 +1182,7 @@ clearInterval(timer.value)
     position: absolute;
     right: 20px;
     cursor: pointer;
-    top: 204px;
+    top: 136px;;
     z-index: 10;
     .hot{  
         span{
@@ -1184,7 +1204,7 @@ clearInterval(timer.value)
     position: absolute;
     right: 28px;
     cursor: pointer;
-    top: 304px;
+    top: 232px;
     z-index: 10;
     .hot{  
         span{
@@ -1209,5 +1229,10 @@ clearInterval(timer.value)
 }
 :deep(.el-radio__input.is-checked+.el-radio__label) {
     color: rgb(255, 234, 0);
+}
+:deep(.el-input__wrapper) {
+  border: none !important;
+  box-shadow: none !important;
+  background-color: inherit !important;
 }
 </style>

@@ -1,17 +1,18 @@
 <template>
-    <div>
+    <div  :style="{backgroundColor:color,borderRadius:'6px',padding:'10px',}">
       <div>
       <el-date-picker
         v-model="date1"
         type="date"
         placeholder="选择日期"
         size="large"
-        style="width: 220px;height:55px;font-size:25px"
+        style="width: 220px;height:55px;font-size:30px"
         :clearable="false"
         :editable="false"
         @change="changeDate"
+         :disabled-date="disablePastDates"
       />
-      <h6 style="margin-top: 10px;margin-left:18px;font-size:32px;margin-right:10px">{{ Day }}</h6>
+      <p style="margin-top: 10px;margin-left:18px;font-size:30px;margin-right:10px">{{ Day }}</p>
       </div>
 
    <div>
@@ -20,12 +21,13 @@
         type="date"
         placeholder="返程日期"
         size="large"
-        style="width: 220px;height:55px;font-size:25px;"
+        style="width: 220px;height:55px;font-size:30px;"
         :clearable="false"
         :editable="false"
          @change="changeDate1"
+          :disabled-date="disablePastDates1"
       />
-    <h6 style="margin-top: 10px;margin-left:18px;font-size:32px">{{ Day1 }}</h6>
+    <p style="margin-top: 10px;margin-left:18px;font-size:30px">{{ Day1 }}</p>
    </div>
    
     </div>
@@ -33,6 +35,10 @@
 
 <script lang="ts" setup>
 import { onMounted, ref } from 'vue';
+import { useColorStore } from '@/store/modules/color';
+import { storeToRefs } from 'pinia';
+
+let {color}=storeToRefs(useColorStore())
 import moment from 'moment';
 //出发日期
 let date1=ref(moment().format("YYYY.MM.DD"))
@@ -56,6 +62,14 @@ const changeDate1=()=>{
     const dayl=dayOfWeek[dayNum]
     Day1.value=dayl
 }
+//禁用过去日期
+const disablePastDates = (dates:any) => {
+  return dates < new Date(); // 如果日期小于当前日期，返回 true（禁用）
+};
+//第二个禁用开始时间
+const disablePastDates1 = (dates:any) => {
+  return dates < new Date(date1.value); // 如果日期小于当前日期，返回 true（禁用）
+};
 onMounted(()=>{
     const date=new Date(moment().format("YYYY.MM.DD"));
     const dayNum=date.getDay()

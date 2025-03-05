@@ -2,16 +2,17 @@
 <div @click="outSearch">
     <div style="display: flex;">
       <el-card class="search">
-        <div class="top">
+        <div class="top" :style="{backgroundColor:color,borderRadius:'6px'}">
         <!-- 目的地 -->
         <div class="to"   @click="stop">
-        <p>目的地</p>
-          <el-input
-          style="width: 180px;margin-top:10px;font-size:25px;height:70px;"
+        <p style="margin-left: 14px;margin-top:14px;font-size:14px">目的地</p>
+        <el-input
+          style="width: 180px;font-size:25px;height:35px;"
           size="large"
           placeholder="北京"
           v-model="position"
           :suffix-icon="CaretBottom"
+          :clearable="false"
           @focus="search"
         />
         <!-- 搜索提示 -->
@@ -45,9 +46,9 @@
          
         <!-- 关键词 -->
         <div class="importantWord"  @click="stop">
-        <p style="margin-left:20px">关键词</p>
+        <p style="margin-left: 34px;margin-top:14px;font-size:14px">关键词</p>
         <el-input
-        style="width: 400px;height:70px;margin-left:20px;margin-top:10px;font-size:25px"
+        style="width: 400px;height:35px;margin-left:20px;font-size:25px"
         size="large"
         placeholder="位置/品牌/酒店"
         clearable
@@ -70,7 +71,7 @@
         </div>
        
         </div>
-        <div class="bt">
+        <div class="bt"  :style="{backgroundColor:color,borderRadius:'20px'}">
         <el-date-picker
         v-model="CheckInOut"
         type="daterange"
@@ -84,7 +85,7 @@
         @change="val"
       />
         </div>
-        <el-button :color="color" style="width: 200px;height:60px;margin-top:20px;margin-left:225px;border-radius:20px">搜索酒店</el-button>
+        <el-button :color="color" style="margin-left:calc(50% - 100px);width: 200px;height:60px;margin-top:20px;border-radius:20px">搜索酒店</el-button>
       </el-card>
       <el-card class="poetry">
         <div class="right">
@@ -134,9 +135,9 @@ let posSearch=ref(false)
 let keySearch=ref(false)
 function val(){
     console.log(CheckInOut.value[0],CheckInOut.value[1]);
-    const date=new Date(CheckInOut.value[0])
-    const date1=new Date(CheckInOut.value[1])
-    const sub:number=Math.abs(date1 - date)
+    const date:any=new Date(CheckInOut.value[0])
+    const date1:any=new Date(CheckInOut.value[1])
+    const sub:any=Math.abs(date1 - date)
     const diffDays=Math.ceil(sub/(1000*60*60*24))
     diff.value='——'+diffDays+'晚'+'——'
 }
@@ -169,10 +170,14 @@ keys.value=name
 keySearch.value=false
 }
 //阻止事件委托
-const stop=(e)=>{
+const stop=(e:any)=>{
 e.stopPropagation()
 }
 onMounted(()=>{
+    document.addEventListener('click',()=>{
+        keySearch.value=false
+        posSearch.value=false
+    })
 timer.value=setInterval(()=>{
     time.value=moment().format("YYYY.MM")
     time1.value=moment().format("DD")
@@ -193,6 +198,7 @@ clearInterval(timer.value)
     .top{
         display: flex;
         justify-content: space-between;
+        padding-bottom: 15px;
     }
     .bt{
         margin-top: 20px;
@@ -249,7 +255,7 @@ clearInterval(timer.value)
 .posSearch{
     position: absolute;
     left: 40px;
-    top: 140px;
+    top: 120px;
     width: 450px;
     z-index: 3;
     span{
@@ -263,8 +269,8 @@ clearInterval(timer.value)
 }
 .keySearch{
     position: absolute;
-    left: 20px;
-    top: 96px;
+    left: 35px;
+    top: 80px;
     width: 410px;
     z-index: 3;
     span{
@@ -275,5 +281,10 @@ clearInterval(timer.value)
        line-height: 40px;
        cursor: pointer;
     }
+}
+:deep(.el-input__wrapper) {
+  border: none !important;
+  box-shadow: none !important;
+  background-color: inherit !important;
 }
 </style>

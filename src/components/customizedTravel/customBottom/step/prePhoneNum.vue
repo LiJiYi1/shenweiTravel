@@ -476,6 +476,9 @@ interface val{
 const change=(value:val)=>{
 console.log(value);
 PrePhonenum.value=value.name+' '+value.num
+ bus.emit('prePhoneNum',{
+         PrePhoneNum:PrePhonenum.value
+       })
 show.value=false
 }
  onMounted(()=>{

@@ -2,18 +2,20 @@
     <div @click="outSearch">
     <div style="display: flex;">
       <el-card class="search">
-        <div class="top">
+        <div class="top" >
         <!-- 目的地 -->
-        <div class="to" @click="stop">
-        <p>目的地</p>
+         <div class="to"  :style="{backgroundColor:color,borderRadius:'6px'}">
+           <div  @click="stop">
+        <p style="margin-left:12px;font-size:14px">目的地</p>
           <el-input
-          style="width: 160px;margin-top:10px;font-size:20px;height:70px"
+          style="width: 160px;font-size:20px;height:35px"
           size="large"
           placeholder="城市名"
           v-model="position"
           :suffix-icon="CaretBottom"
           @focus="search"
-        /> <!-- 搜索提示 -->
+        /> 
+        <!-- 搜索提示 -->
          <div class="posSearch" v-show="posSearch">
             <el-tabs type="border-card">
                <el-tab-pane label="热门城市" :disabled="true">
@@ -31,14 +33,16 @@
                </el-tab-pane>
             </el-tabs>
         </div>
+           </div>
          </div>
+        
         <!-- 每间入住人数 -->
-        <div class="number">
-        <p>每间入住人数</p>
+        <div class="number" :style="{backgroundColor:color,borderRadius:'6px'}">
+        <p style="margin-left:10px;font-size:14px">每间入住人数</p>
          <el-select
       v-model="num1"
       placeholder="Select"
-      style="width: 260px;margin-top:10px;"
+      style="width: 120px;"
     >
       <el-option label="成人1位" value="1"/>
       <el-option label="成人2位" value="2"/>
@@ -49,7 +53,7 @@
          <el-select
       v-model="num2"
       placeholder="Select"
-      style="width: 260px;margin-top:10px;"
+      style="width: 120px;margin-left:10px"
     >
       <el-option label="儿童1位" value="1"/>
       <el-option label="儿童2位" value="2"/>
@@ -59,10 +63,10 @@
          </el-select>
          </div>
         <!-- 关键词 -->
-        <div class="importantWord" >
-        <p style="margin-left:20px">关键词</p>
+        <div class="importantWord" :style="{backgroundColor:color,borderRadius:'6px'}">
+        <p style="margin-left:25px;font-size:14px">关键词</p>
         <el-input
-        style="width: 190px;height:70px;margin-left:20px;margin-top:10px;font-size:20px"
+        style="width: 160px;height:35px;margin-left:10px;font-size:20px"
         size="large"
         placeholder="位置/品牌/酒店"
         clearable
@@ -71,7 +75,7 @@
         </div>
          
         </div>
-        <div class="bt">
+        <div class="bt" :style="{backgroundColor:color,borderRadius:'6px'}">
         <el-date-picker
         v-model="CheckInOut"
         type="daterange"
@@ -85,7 +89,7 @@
         @change="val"
       />
         </div>
-        <el-button :color="color" style="width: 200px;height:60px;margin-top:20px;margin-left:225px;border-radius:20px">搜索酒店</el-button>
+        <el-button :color="color" style="margin-left:calc(50% - 100px);width: 200px;height:60px;margin-top:20px;border-radius:20px">搜索酒店</el-button>
       </el-card>
       <el-card class="poetry">
         <div class="right">
@@ -136,8 +140,8 @@ let num1=ref('成人2位')
 let num2=ref('儿童1位')
 function val(){
     console.log(CheckInOut.value[0],CheckInOut.value[1]);
-    const date=new Date(CheckInOut.value[0])
-    const date1=new Date(CheckInOut.value[1])
+    const date:any=new Date(CheckInOut.value[0])
+    const date1:any=new Date(CheckInOut.value[1])
     const sub:number=Math.abs(date1 - date)
     const diffDays=Math.ceil(sub/(1000*60*60*24))
     diff.value='——'+diffDays+'晚'+'——'
@@ -160,11 +164,14 @@ posSearch.value=false
 
 }
 //阻止事件委托
-const stop=(e)=>{
+const stop=(e:any)=>{
 e.stopPropagation()
 }
 
 onMounted(()=>{
+document.addEventListener('click',()=>{
+        posSearch.value=false
+    })
 timer.value=setInterval(()=>{
     time.value=moment().format("YYYY.MM")
     time1.value=moment().format("DD")
@@ -185,6 +192,21 @@ clearInterval(timer.value)
     .top{
         display: flex;
         justify-content: space-between;
+        .to{
+          padding: 10px;
+          height: 45px;
+        }
+        .number{
+          width: 250px;
+          margin-left: -6px;
+           padding: 10px;
+          height: 45px;
+        }
+        .importantWord{
+          padding: 10px;
+          padding-left: 0px;
+          height: 45px;
+        }
     }
     .bt{
         margin-top: 20px;
@@ -241,7 +263,7 @@ margin-top: 40px;
 .posSearch{
     position: absolute;
     left: 40px;
-    top: 140px;
+    top: 108px;
     width: 450px;
     z-index: 3;
     span{
@@ -255,5 +277,15 @@ margin-top: 40px;
 }
 .number{
     margin-left: 25px;
+}
+:deep(.el-input__wrapper) {
+  border: none !important;
+  box-shadow: none !important;
+  background-color: inherit !important;
+}
+:deep(.el-select .el-select__wrapper) {
+  border: none !important;
+   box-shadow: none !important;
+  background-color: inherit !important;
 }
 </style>

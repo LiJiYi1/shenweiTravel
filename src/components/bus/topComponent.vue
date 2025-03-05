@@ -1,8 +1,12 @@
 <template>
-    <div>
+    <div :style="{backgroundColor:color,borderRadius:'6px',padding:'10px',height:'55px'}">
+    <div style="display: flex;justify-content:space-between">
+        <p style="font-size: 14px;margin-left:12px">出发城市</p>
+        <p style="font-size: 14px;margin-right:12px">到达城市</p>
+      </div>
    <!-- 城市选择 -->
     <div class="city"  >
-        <el-input v-model="city1"  style="width: 300px;height:60px;font-size:25px;" placeholder="出发城市" @focus="posSearch=true;posSearch1=false;"/>
+        <el-input v-model="city1"  style="width: 300px;height:40px;font-size:25px;" placeholder="出发城市" @focus="posSearch=true;posSearch1=false;"/>
            <!-- 搜索提示 -->
         <div class="posSearch" v-show="posSearch">
         <div style="background: gray;padding:10px">热门城市/国家（支持汉字/拼音/英文字母）</div>
@@ -288,8 +292,8 @@
                </el-tab-pane>
             </el-tabs>
         </div>
-        <el-icon style="font-size: 52px;" @click="change"><Switch /></el-icon>
-        <el-input v-model="city2" style="width: 300px; height:60px;font-size:25px;direction:rtl" placeholder="到达城市" @focus="posSearch1=true;posSearch=false;"/>
+        <el-icon style="font-size: 40px;" @click="change"><Switch /></el-icon>
+        <el-input v-model="city2" style="width: 300px; height:40px;font-size:25px;direction:rtl" placeholder="到达城市" @focus="posSearch1=true;posSearch=false;"/>
           <!-- 搜索提示 -->
          <div class="posSearch1" v-show="posSearch1">
         <div style="background: gray;padding:10px">热门城市/国家（支持汉字/拼音/英文字母）</div>
@@ -592,6 +596,9 @@
 
 <script lang="ts" setup>
 import { onMounted, ref } from 'vue';
+import { useColorStore } from '@/store/modules/color';
+import { storeToRefs } from 'pinia';
+let {color}=storeToRefs(useColorStore())
 //出发城市和返回城市
 let city1=ref('北京')
 let city2=ref('')

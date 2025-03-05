@@ -7,24 +7,28 @@
     border-right:12px solid transparent;
     border-top:12px solid transparent;
     border-bottom:12px solid;
-    position:absolute;left:36px;top:160px"></div>
+    position:absolute;left:52px;top:108px"></div>
     <div  v-show="posSearch1" style="
     border-left:12px solid transparent;
     border-right:12px solid transparent;
     border-top:12px solid transparent;
     border-bottom:12px solid;
-    position:absolute;right:36px;top:160px"></div>
+    position:absolute;right:52px;top:108px"></div>
     <!-- 单程还是往返 -->
     <el-radio-group v-model="oneOrTwo">
       <el-radio value="1" size="large" :style="{color:color}" @change="isOne">单程</el-radio>
       <el-radio value="2" size="large" :style="{color:color}" @change="isTwo">往返</el-radio>
       <el-radio value="3" size="large" :style="{color:color}" @change="isMore">多程</el-radio>
     </el-radio-group>
-    <!-- 对城市提示 -->
-    <div class="alert" v-show='(oneOrTwo!=="3")'><p>出发城市</p><p>到达城市</p></div>
+    <div v-show='(oneOrTwo!=="3")' :style="{backgroundColor:color,borderRadius:'6px',padding:'10px',height:'50px'}">
+            <!-- 对城市提示 -->
+    <div class="alert" >
+        <p style="font-size: 14px;margin-left:12px">出发城市</p>
+        <p style="font-size: 14px;margin-right:12px">到达城市</p>
+    </div>
     <!-- 城市选择 -->
     <div class="city" v-show='(oneOrTwo!=="3")' @click="stop">
-        <el-input v-model="city1" style="width: 240px;height:60px;font-size:25px" placeholder="Please input" @focus="posSearch=true,posSearch1=false"/>
+        <el-input v-model="city1" style="width: 240px;height:40px;font-size:25px" placeholder="城市" @focus="posSearch=true,posSearch1=false"/>
         <!-- 单程往返左搜索提示 -->
          <div class="posSearch" v-show="posSearch">
         <div style="background: gray;padding:10px">热门城市/国家（支持汉字/拼音/英文字母）</div>
@@ -329,7 +333,7 @@
                </el-tab-pane>
             </el-tabs>
         </div>
-        <img src="@/assets/air/fly.png" alt="" style="width: 60px;height:60px" @click="change" >  
+        <img src="@/assets/air/fly.png" alt="" style="width: 40px;height:40px" @click="change" >  
          <!--单程往返右搜索提示 -->
          <div class="posSearch1" v-show="posSearch1">
         <div style="background: gray;padding:10px">热门城市/国家（支持汉字/拼音/英文字母）</div>
@@ -498,11 +502,16 @@
                </el-tab-pane>
             </el-tabs>
          </div>
-        <el-input v-model="city2" style="width: 240px; height:60px;font-size:25px;direction:rtl" placeholder="Please input" @focus="posSearch1=true,posSearch=false"/>
+        <el-input v-model="city2" style="width: 240px; height:40px;font-size:25px;direction:rtl" placeholder="城市" @focus="posSearch1=true,posSearch=false"/>
     </div>
-    <!-- 对底部日期的提示 -->
-    <div class="alert1" v-show='(oneOrTwo!=="3")'><p>出发日期</p><p>返程日期</p></div>
+    </div>
     <!-- 底部的日期选择 -->
+    <div  v-show='(oneOrTwo!=="3")' :style="{backgroundColor:color,borderRadius:'6px',padding:'10px',marginTop:'20px'}">
+    <!-- 对底部日期的提示 -->
+    <div class="alert1">
+        <p style="font-size: 14px;margin-left:14px">出发日期</p>
+        <p style="font-size: 14px;margin-right:14px">返程日期</p>
+    </div>
     <div class="bt" v-show='(oneOrTwo!=="3")'>
         <el-date-picker
         v-model="day1"
@@ -510,6 +519,7 @@
         size="large"
         style="width: 300px; height:60px;font-size:32px"
         :editable="false"
+        :disabled-date="disablePastDates"
         :clearable="false"
         />
          <el-date-picker
@@ -517,19 +527,22 @@
         type="date"
         placeholder="添加返程"
         size="large"
-        style="width: 300px; height:60px;font-size:32px"
+        style="width: 240px; height:60px;font-size:32px"
+        :disabled-date="disablePastDates1"
         @change="notOne"
         :editable="false"
         :clearable="false"
       />
         </div>
+    </div>
+
     <!-- 多程 -->
      <div class="multi" v-show='(oneOrTwo==="3")'>
     <!-- 第一程 -->
-    <div class="first">
-        <div style="margin-top:15px;font-size:16px;width:10px;height:16px;padding: 18px;border:1px solid;border-radius:10px">1</div>
+    <div class="first" >
+        <div style="margin-top:8px;font-size:16px;width:10px;height:16px;padding: 18px;border:1px solid;border-radius:10px">1</div>
                 <!-- 城市选择 -->
-    <div class="City" @click="stop">
+    <div class="City" @click="stop" :style="{backgroundColor:color,borderRadius:'6px',padding:'10px'}">
     <!-- 多程1左搜索 -->
     <div class="posSearch2" v-show="posSearch2">
         <div style="background: gray;padding:10px">热门城市/国家（支持汉字/拼音/英文字母）</div>
@@ -1002,24 +1015,26 @@
                </el-tab-pane>
             </el-tabs>
     </div>
-        <div><div>出发城市</div><el-input v-model="city3" style="width: 150px;height:55px;font-size:20px;" placeholder="Please input" @focus="posSearch2=true;posSearch3=false;posSearch4=false;posSearch5=false;posSearch6=false;posSearch7=false;"/></div>
-        <img src="@/assets/air/fly.png" alt="" style="margin-left:20px;margin-right:20px;width: 50px;height:50px;" @click="change1" >
-        <div><div>到达城市</div><el-input v-model="city4" style="width: 150px; height:55px;font-size:20px" placeholder="Please input" @focus="posSearch3=true;posSearch2=false;posSearch4=false;posSearch5=false;posSearch6=false;posSearch7=false;"/></div>
+        <div><div style="margin-left:10px;font-size:14px">出发城市</div><el-input v-model="city3" style="width: 150px;font-size:20px;" placeholder="城市" @focus="posSearch2=true;posSearch3=false;posSearch4=false;posSearch5=false;posSearch6=false;posSearch7=false;"/></div>
+        <img src="@/assets/air/fly.png" alt="" style="margin-left:-20px;margin-right:40px;width: 50px;height:50px;" @click="change1" >
+        <div><div style="margin-left:10px;font-size:14px">到达城市</div><el-input v-model="city4" style="width: 150px; font-size:20px" placeholder="城市" @focus="posSearch3=true;posSearch2=false;posSearch4=false;posSearch5=false;posSearch6=false;posSearch7=false;"/></div>
                </div>
         <el-date-picker
+        :style="{backgroundColor:color,borderRadius:'6px',padding:'10px'}"
+        :disabled-date="disablePastDates"
         v-model="day3"
         type="date"
         size="large"
-        style="width: 170px; height:55px;font-size:20px;margin-top:16px"
+        style="width: 190px; height:75px;font-size:20px;"
         :clearable="false"
         :editable="false"
         />
     </div>
     <!-- 第二程 -->
-    <div class="second">
-         <div style="margin-top:15px;font-size:16px;width:10px;height:16px;padding: 18px;border:1px solid;border-radius:10px">2</div>
-                <!-- 城市选择 -->
-    <div class="City" @click="stop">
+    <div class="second" style="margin-top:20px">
+         <div style="margin-top:8px;font-size:16px;width:10px;height:16px;padding: 18px;border:1px solid;border-radius:10px">2</div>
+    <!-- 城市选择 -->
+    <div class="City" @click="stop" :style="{backgroundColor:color,borderRadius:'6px',padding:'10px',}">
                            <!-- 多程2左搜索 -->
     <div class="posSearch4" v-show="posSearch4">
         <div style="background: gray;padding:10px">热门城市/国家（支持汉字/拼音/英文字母）</div>
@@ -1492,16 +1507,18 @@
                </el-tab-pane>
             </el-tabs>
     </div>
-        <div><div>出发城市</div><el-input v-model="city5" style="width: 150px;height:55px;font-size:20px" placeholder="城市" @focus="posSearch4=true;posSearch5=false;posSearch2=false;posSearch3=false;posSearch6=false;posSearch7=false;"/></div>
-        <img src="@/assets/air/fly.png" alt="" style="margin-left:20px;margin-right:20px;width: 50px;height:50px;" @click="change2" >
-        <div><div>到达城市</div><el-input v-model="city6" style="width: 150px; height:55px;font-size:20px;" placeholder="城市" @focus="posSearch5=true;posSearch4=false;posSearch2=false;posSearch3=false;posSearch6=false;posSearch7=false;"/></div>
+        <div><div style="margin-left:10px;font-size:14px">出发城市</div><el-input v-model="city5" style="width: 150px;font-size:20px" placeholder="城市" @focus="posSearch4=true;posSearch5=false;posSearch2=false;posSearch3=false;posSearch6=false;posSearch7=false;"/></div>
+        <img src="@/assets/air/fly.png" alt="" style="margin-left:-20px;margin-right:40px;width: 50px;height:50px;" @click="change2" >
+        <div><div style="margin-left:10px;font-size:14px">到达城市</div><el-input v-model="city6" style="width: 150px; font-size:20px;" placeholder="城市" @focus="posSearch5=true;posSearch4=false;posSearch2=false;posSearch3=false;posSearch6=false;posSearch7=false;"/></div>
     </div>
-                 <el-date-picker
+    <el-date-picker
+        :style="{backgroundColor:color,borderRadius:'6px',padding:'10px'}"
+        :disabled-date="disablePastDates"
         type="date"
         size="large"
         v-model="day4"
         placeholder="yy-mm-dd"
-        style="width: 170px; height:55px;font-size:20px;margin-top:16px"
+        style="width: 190px; height:75px;font-size:20px;"
         :editable="false"
         :clearable="false"
         />
@@ -1510,10 +1527,10 @@
     <div class="add" v-show="add" @click="add=false">再加一程</div>
     <div v-show="!add">
             <div class="third" >
-                <div style="margin-top:15px;font-size:16px;width:10px;height:16px;padding: 18px;border:1px solid;border-radius:10px">3</div>
-                
-                <!-- 城市选择 -->
-    <div class="City" @click="stop">
+    <div style="margin-top:8px;font-size:16px;width:10px;height:16px;padding: 18px;border:1px solid;border-radius:10px">3</div>
+           
+    <!-- 城市选择 -->
+    <div class="City" @click="stop" :style="{backgroundColor:color,borderRadius:'6px',padding:'10px',}">
                     <!-- 多程3左搜索 -->
     <div class="posSearch6" v-show="posSearch6">
         <div style="background: gray;padding:10px">热门城市/国家（支持汉字/拼音/英文字母）</div>
@@ -1986,20 +2003,22 @@
                </el-tab-pane>
             </el-tabs>
     </div>
-        <div><div>出发城市</div><el-input v-model="city7" style="width: 150px;height:55px;font-size:20px" placeholder="城市" @focus="posSearch6=true;posSearch7=false;posSearch2=false;posSearch3=false;posSearch4=false;posSearch5=false;"/></div>
-        <img src="@/assets/air/fly.png" alt="" style="margin-left:20px;margin-right:20px;width: 50px;height:50px;" @click="change3" >
-        <div><div>到达城市</div><el-input v-model="city8" style="width: 150px; height:55px;font-size:20px" placeholder="城市" @focus="posSearch7=true;posSearch6=false;posSearch2=false;posSearch3=false;posSearch4=false;posSearch5=false;"/></div>
+        <div><div style="font-size:14px;margin-left:12px">出发城市</div><el-input v-model="city7" style="width: 150px;height:45px;font-size:20px" placeholder="城市" @focus="posSearch6=true;posSearch7=false;posSearch2=false;posSearch3=false;posSearch4=false;posSearch5=false;"/></div>
+        <img src="@/assets/air/fly.png" alt="" style="margin-left:-20px;margin-right:40px;width: 50px;height:50px;" @click="change3" >
+        <div><div style="font-size:14px;margin-left:12px">到达城市</div><el-input v-model="city8" style="width: 150px; height:45px;font-size:20px" placeholder="城市" @focus="posSearch7=true;posSearch6=false;posSearch2=false;posSearch3=false;posSearch4=false;posSearch5=false;"/></div>
     </div>
-                 <el-date-picker
+        <el-date-picker
+        :style="{backgroundColor:color,borderRadius:'6px',padding:'10px',}"
+        :disabled-date="disablePastDates"
         type="date"
         size="large"
         v-model="day5"
         placeholder="yy-mm-dd"
-        style="width: 170px; height:55px;font-size:20px;margin-top:16px"
+        style="width: 190px; height:75px;font-size:20px;"
         :editable="false"
         :clearable="false"
         />
-        <el-icon style="position:absolute;left:700px;top:325px;" @click="add=true" v-show="!add"><CircleClose /></el-icon>
+        <el-icon style="position:absolute;right:35px;top:300px;" @click="add=true" v-show="!add"><CircleClose /></el-icon>
 
             </div>
         </div>
@@ -2049,7 +2068,7 @@
       
       </el-card>
     <!-- 搜索按钮 -->
-    <el-button :color="color" style="width: 200px;height:60px;margin-left:225px;border-radius:20px">搜索机票</el-button>
+    <el-button :color="color" style="width: 200px;height:60px;margin-left:calc(50% - 100px);border-radius:20px">搜索机票</el-button>
       </el-card>
      
     </div>
@@ -2200,11 +2219,29 @@ const outSearch=()=>{
     posSearch6.value=false
     posSearch7.value=false
 }
+//禁用过去日期
+const disablePastDates = (date:any) => {
+  return date < new Date(); // 如果日期小于当前日期，返回 true（禁用）
+};
+//第二个禁用开始时间
+const disablePastDates1 = (date:any) => {
+  return date < new Date(day1.value); // 如果日期小于当前日期，返回 true（禁用）
+};
 //取消事件委托防止点输入框时他也消失
-const stop=(e)=>{
+const stop=(e:any)=>{
 e.stopPropagation()
 }
 onMounted(()=>{
+document.addEventListener('click',()=>{
+        posSearch.value=false
+        posSearch1.value=false
+        posSearch2.value=false
+        posSearch3.value=false
+        posSearch4.value=false
+        posSearch5.value=false
+        posSearch6.value=false
+        posSearch7.value=false
+    })
 timer.value=setInterval(()=>{
     time.value=moment().format("YYYY.MM")
     time1.value=moment().format("DD")
@@ -2230,16 +2267,12 @@ clearInterval(timer.value)
         justify-content: space-between;
     }
     .alert{
-        margin-top: 20px;
             width: 100%;
-            height: 30px;
             display: flex;
             justify-content: space-between;
         }
     .alert1{
-        margin-top: 40px;
             width: 100%;
-            height: 30px;
             display: flex;
             justify-content: space-between;
         }
@@ -2259,10 +2292,10 @@ clearInterval(timer.value)
         flex-direction: column;
         margin-top: 20px;
         .first{
-            height: 100px;
             display: flex;
             justify-content: space-between;
             .City{
+                position:relative;
                 margin-top: 0px;
                 display: flex;
             }
@@ -2271,15 +2304,18 @@ clearInterval(timer.value)
             display: flex;
             justify-content: space-between;
            .City{
+            position:relative;
                 margin-top: 0px;
                 display: flex;
             }
         }
         .third{
+            position:relative;
             margin-top:20px;
             display: flex;
             justify-content: space-between;
            .City{
+                position: relative;
                 margin-top: 0px;
                 display: flex;
             }
@@ -2346,7 +2382,7 @@ clearInterval(timer.value)
     position: absolute;
     left: 20px;
     cursor: pointer;
-    top: 184px;
+    top: 132px;
     z-index: 10;
     .hot{  
         span{
@@ -2368,7 +2404,7 @@ clearInterval(timer.value)
     position: absolute;
     right:20px;
     cursor: pointer;
-    top: 184px;
+    top: 132px;
     z-index: 10;
     .hot{  
         span{
@@ -2388,10 +2424,10 @@ clearInterval(timer.value)
     width: 650px;
     height: 300px;
     position: absolute;
-    left: 188px;
+    left: 0px;
     cursor: pointer;
-    top:152px;
-    z-index: 1;
+    top:76px;
+    z-index: 10;
     .hot{  
         span{
            float: left;
@@ -2410,9 +2446,9 @@ clearInterval(timer.value)
     width: 580px;
     height: 300px;
     position: absolute;
-    left: 430px;
+    left: 240px;
     cursor: pointer;
-    top: 152px;
+    top: 76px;
     z-index: 10;
     .hot{  
         span{
@@ -2432,9 +2468,9 @@ clearInterval(timer.value)
     width: 630px;
     height: 300px;
     position: absolute;
-    left: 188px;
+    left: 0px;
     cursor: pointer;
-    top: 252px;
+    top: 76px;
     z-index: 10;
     .hot{  
         span{
@@ -2454,9 +2490,9 @@ clearInterval(timer.value)
     width: 580px;
     height: 300px;
     position: absolute;
-    left: 430px;
+    left: 240px;
     cursor: pointer;
-    top: 252px;
+    top: 76px;
     z-index: 10;
     .hot{  
         span{
@@ -2476,9 +2512,9 @@ clearInterval(timer.value)
     width: 630px;
     height: 300px;
     position: absolute;
-    left: 188px;
+    left: 0px;
     cursor: pointer;
-    top: 343px;
+    top:80px;
     z-index: 10;
     .hot{  
         span{
@@ -2498,9 +2534,9 @@ clearInterval(timer.value)
     width: 580px;
     height: 270px;
     position: absolute;
-    left: 430px;
+    left: 240px;
     cursor: pointer;
-    top: 343px;
+    top: 80px;
     z-index: 10;
     .hot{  
         span{
@@ -2525,5 +2561,10 @@ clearInterval(timer.value)
 }
 :deep(.el-radio__input.is-checked+.el-radio__label) {
     color: rgb(255, 234, 0);
+}
+:deep(.el-input__wrapper) {
+  border: none !important;
+  box-shadow: none !important;
+   background-color: inherit !important;
 }
 </style>

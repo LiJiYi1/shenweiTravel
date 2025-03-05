@@ -2,7 +2,7 @@ import { defineStore } from "pinia"
 export const useColorStore = defineStore('color', {
     state: () => ({ 
        //是否刷新
-        color: localStorage.getItem('color') ||'#0ff'
+        color: localStorage.getItem('color') ||'#ededed'
     }),
     getters: {
        
