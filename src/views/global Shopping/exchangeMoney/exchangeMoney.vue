@@ -12,7 +12,7 @@
             <div class="third"></div>
       </el-carousel-item>
     </el-carousel>
-   <img src="@/assets/global/exchangeMoney/ma.png" alt="" style="position: fixed;top:96px;width:300px;">
+   <img src="@/assets/global/exchangeMoney/ma.png" alt="" style="position: absolute;top:22px;width:280px;">
   
          </div>
          <el-card style="min-width: 1217px;">
@@ -90,7 +90,7 @@
                 </ul>
            </el-card>
            <el-card style="margin-top: 20px;width:100%;height:200px">
-            <img src="@/assets/global/exchangeMoney/exchange.png" alt="" >
+            <img src="@/assets/global/exchangeMoney/exchange.png" style="width: 550px;" alt="" >
             </el-card>
               </div>
          </div>
@@ -113,62 +113,55 @@ const data=reactive([
 {name:"欧元",name1:"EUR",buy:"729.05",out:"801.8",img:"https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/eur.png"},
 {name:"港元",name1:"HKD",buy:"92.86",out:"97.74",img:"	https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/hkd.png"},
 {name:"新加坡元",name1:"SGD",buy:"519.83",out:"575.12",img:"https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/sgd.png"},
-{name:"日元",name1:"JPA",buy:"4.6",out:"5.112",img:"	https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/jpy.png"},
-
-],[
-{name:"美元",name1:"USD",buy:"723.81",out:"763.82",img:"https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/usd.png"},
-{name:"日元",name1:"JPA",buy:"4.6",out:"5.112",img:"	https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/jpy.png"},
-{name:"韩元",name1:"KRW",buy:"4.6",out:"5.112",img:"	https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/krw.png"},
-{name:"泰铢",name1:"THB",buy:"20.2",out:"23.48",img:"	https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/thb.png"},
-{name:"欧元",name1:"EUR",buy:"729.05",out:"801.8",img:"https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/eur.png"},
-{name:"港元",name1:"HKD",buy:"92.86",out:"97.74",img:"	https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/hkd.png"},
-{name:"新加坡元",name1:"SGD",buy:"519.83",out:"575.12",img:"https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/sgd.png"},
-{name:"日元",name1:"JPA",buy:"4.6",out:"5.112",img:"	https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/jpy.png"},
-],[
-{name:"美元",name1:"USD",buy:"723.81",out:"763.82",img:"https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/usd.png"},
-{name:"日元",name1:"JPA",buy:"4.6",out:"5.112",img:"	https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/jpy.png"},
-{name:"韩元",name1:"KRW",buy:"4.6",out:"5.112",img:"	https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/krw.png"},
-{name:"泰铢",name1:"THB",buy:"20.2",out:"23.48",img:"	https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/thb.png"},
-{name:"欧元",name1:"EUR",buy:"729.05",out:"801.8",img:"https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/eur.png"},
-{name:"港元",name1:"HKD",buy:"92.86",out:"97.74",img:"	https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/hkd.png"},
-{name:"新加坡元",name1:"SGD",buy:"519.83",out:"575.12",img:"https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/sgd.png"},
-{name:"日元",name1:"JPA",buy:"4.6",out:"5.112",img:"	https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/jpy.png"},
-],[
-{name:"美元",name1:"USD",buy:"723.81",out:"763.82",img:"https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/usd.png"},
-{name:"日元",name1:"JPA",buy:"4.6",out:"5.112",img:"	https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/jpy.png"},
-{name:"韩元",name1:"KRW",buy:"4.6",out:"5.112",img:"	https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/krw.png"},
-{name:"泰铢",name1:"THB",buy:"20.2",out:"23.48",img:"	https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/thb.png"},
-{name:"欧元",name1:"EUR",buy:"729.05",out:"801.8",img:"https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/eur.png"},
-{name:"港元",name1:"HKD",buy:"92.86",out:"97.74",img:"	https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/hkd.png"},
-{name:"新加坡元",name1:"SGD",buy:"519.83",out:"575.12",img:"https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/sgd.png"},
-{name:"日元",name1:"JPA",buy:"4.6",out:"5.112",img:"	https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/jpy.png"},
-],[
-{name:"美元",name1:"USD",buy:"723.81",out:"763.82",img:"https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/usd.png"},
-{name:"日元",name1:"JPA",buy:"4.6",out:"5.112",img:"	https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/jpy.png"},
-{name:"韩元",name1:"KRW",buy:"4.6",out:"5.112",img:"	https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/krw.png"},
-{name:"泰铢",name1:"THB",buy:"20.2",out:"23.48",img:"	https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/thb.png"},
-{name:"欧元",name1:"EUR",buy:"729.05",out:"801.8",img:"https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/eur.png"},
-{name:"港元",name1:"HKD",buy:"92.86",out:"97.74",img:"	https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/hkd.png"},
-{name:"新加坡元",name1:"SGD",buy:"519.83",out:"575.12",img:"https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/sgd.png"},
-{name:"日元",name1:"JPA",buy:"4.6",out:"5.112",img:"	https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/jpy.png"},
-],[
-{name:"美元",name1:"USD",buy:"723.81",out:"763.82",img:"https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/usd.png"},
-{name:"日元",name1:"JPA",buy:"4.6",out:"5.112",img:"	https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/jpy.png"},
-{name:"韩元",name1:"KRW",buy:"4.6",out:"5.112",img:"	https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/krw.png"},
-{name:"泰铢",name1:"THB",buy:"20.2",out:"23.48",img:"	https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/thb.png"},
-{name:"欧元",name1:"EUR",buy:"729.05",out:"801.8",img:"https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/eur.png"},
-{name:"港元",name1:"HKD",buy:"92.86",out:"97.74",img:"	https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/hkd.png"},
-{name:"新加坡元",name1:"SGD",buy:"519.83",out:"575.12",img:"https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/sgd.png"},
-{name:"日元",name1:"JPA",buy:"4.6",out:"5.112",img:"	https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/jpy.png"},
-],[
-{name:"美元",name1:"USD",buy:"723.81",out:"763.82",img:"https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/usd.png"},
-{name:"日元",name1:"JPA",buy:"4.6",out:"5.112",img:"	https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/jpy.png"},
-{name:"韩元",name1:"KRW",buy:"4.6",out:"5.112",img:"	https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/krw.png"},
-{name:"泰铢",name1:"THB",buy:"20.2",out:"23.48",img:"	https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/thb.png"},
-{name:"欧元",name1:"EUR",buy:"729.05",out:"801.8",img:"https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/eur.png"},
-{name:"港元",name1:"HKD",buy:"92.86",out:"97.74",img:"	https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/hkd.png"},
-{name:"新加坡元",name1:"SGD",buy:"519.83",out:"575.12",img:"https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/sgd.png"},
-{name:"日元",name1:"JPA",buy:"4.6",out:"5.112",img:"	https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/jpy.png"},
+],
+[
+{name:"新台币",name1:"TWD",buy:"21.22",out:"24.18",img:"https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/twd.png"},
+{name:"澳门元",name1:"MOP",buy:"86.57",out:"92.31",img:"https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/mop.png"},
+{name:"澳大利亚元",name1:"AUD",buy:"437.84",out:"488.37",img:"	https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/aud.png"},
+{name:"马来西亚林吉特",name1:"MYR",buy:"156.14",out:"179.15",img:"	https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/myr.png"},
+{name:"英镑",name1:"GBP",buy:"859.67",out:"961.92",img:"https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/gbp.png"},
+{name:"加元",name1:"CAD",buy:"485.08",out:"543.73",img:"	https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/cad.png"},
+{name:"菲律宾比索",name1:"PHP",buy:"11.67",out:"12.98",img:"https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/php.png"},
+],
+[
+{name:"瑞士法郎",name1:"CHF",buy:"787.2",out:"856.9",img:"https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/chf.png"},
+{name:"丹麦克朗",name1:"DKK",buy:"99.3",out:"109.7",img:"	https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/dkk.png"},
+{name:"瑞典克朗",name1:"SEK",buy:"67.95",out:"76.62",img:"	https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/sek.png"},
+{name:"挪威克朗",name1:"NOK",buy:"63.88",out:"72.37",img:"	https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/nok.png"},
+{name:"阿联酋迪拉姆",name1:"AED",buy:"185.52",out:"223.14",img:"https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/aed.png"},
+{name:"巴西雷亚尔",name1:"BRL",buy:"113.5",out:"146.88",img:"	https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/brl.png"},
+{name:"俄罗斯卢布",name1:"RUB",buy:"7.24",out:"8.88",img:"https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/rub.png"},
+],
+[
+{name:"卡塔尔里亚尔",name1:"QAR",buy:"162.15",out:"210.04",img:"https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/qar.png"},
+{name:"南非兰特",name1:"ZAR",buy:"33.69",out:"43.72",img:"	https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/zar.png"},
+{name:"斯里兰卡卢比",name1:"LKR",buy:"2",out:"2.99",img:"	https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/lkr.png"},
+{name:"新西兰元",name1:"NZD",buy:"399.68",out:"439.73",img:"	https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/nzd.png"},
+{name:"印度卢比",name1:"INR",buy:"6.1283",out:"9.3307",img:"https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/inr.png"},
+{name:"印尼盾",name1:"IDR",buy:"0.042",out:"0.051",img:"	https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/idr.png"},
+{name:"越南盾",name1:"VND",buy:"0.0263",out:"0.0312",img:"https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/vnd.png"},
+],
+[
+{name:"老挝基普",name1:"LAK",buy:"0.0303",out:"0.0426",img:"https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/lak.png"},
+{name:"墨西哥比索",name1:"MXN",buy:"31.22",out:"40.43",img:"	https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/mxn.png"},
+{name:"土耳其里拉",name1:"TRY",buy:"17.64",out:"24.82",img:"	https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/try.png"},
+{name:"秘鲁索尔",name1:"PEN",buy:"180.74",out:"234.11",img:"	https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/pen.png"},
+{name:"埃及镑",name1:"EGP",buy:"5",out:"17.25",img:"https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/egp.png"},
+{name:"巴基斯坦卢比",name1:"PKR",buy:"1.8531",out:"3.2259",img:"	https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/pkr.png"},
+{name:"捷克克朗",name1:"CZK",buy:"27.84",out:"36.06",img:"https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/czk.png"},
+],
+[
+{name:"波兰兹罗提",name1:"PLN",buy:"165.61",out:"214.52",img:"https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/pln.png"},
+{name:"匈牙利福林",name1:"HUF",buy:"1.6737",out:"2.168",img:"	https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/huf.png"},
+{name:"沙特里亚尔",name1:"SAR",buy:"184.59",out:"216.48",img:"	https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/sar.png"},
+{name:"尼泊尔卢比",name1:"NPR",buy:"1.7631",out:"6.0776",img:"	https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/npr.png"},
+{name:"缅甸缅元",name1:"MMK",buy:"0.2346",out:"0.2869",img:"https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/mmk.png"},
+{name:"哈萨克斯坦金戈",name1:"KZT",buy:"1.4",out:"1.6735",img:"	https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/kzt.png"},
+{name:"阿曼里亚尔",name1:"OMR",buy:"1703.52",out:"2206.55",img:"https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/omr.png"},
+],
+[
+{name:"柬埔寨瑞尔",name1:"KHR",buy:"0",out:"0.33",img:"https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/khr.png"},
+{name:"以色列谢克尔",name1:"ILS",buy:"182.24",out:"232.86",img:"	https://webresource.c-ctrip.com/ares/FinancialServices/ForexOnline/*/default/images/flags/ils.png"},
 ]])
  
 </script>

@@ -67,15 +67,15 @@
          <div class="place_shoplist_one" v-for="(item1,index1) in item.inner" :key="index1">
                 <div class="place_one_img">
                     <a href="/merchant/detail/8554?gsourcetype=6" target="_blank">
-                                    <img :src='item1.image' :alt="item1.name">                    
+                          <img :src='item1.image' :alt="item1.name">                    
                     </a>
                 </div>
                 <div class="shop_one_word">
                 <div class="list_shop_name">
-                    <p class="ellips  list_shop_top">
+                    <p class="ellips ">
                         <a href="/merchant/detail/8554?gsourcetype=6" target="_blank">{{item1.name}}</a>
                     </p>
-                    <p class="ellips list_shop_under">
+                    <p class="ellips">
                         <a href="/merchant/detail/8554?gsourcetype=6" target="_blank">{{item1.pos}}</a>
                     </p>
                 </div>
@@ -123,74 +123,74 @@ const length=[
 {image:'/hot/xianggang/image7.png',name:'Tiffany & Co. (Elements)',pos:"蒂芙尼（香港圆方店）"}]
 },
 {label:"澳门",name:"second",inner:
-[{image:' /hot/xianggang/image1.png',name:'Tiffany & Co. (One Peking Road)',pos:"蒂芙尼（香港北京道1号旗舰店）"},
-{image:' /hot/xianggang/image2.png',name:'DFS Hong Kong, Canton Road',pos:"DFS迪斐世香港广东道店"},
-{image:' /hot/xianggang/image3.png',name:'Tiffany & Co.(Harbour City)',pos:"蒂芙尼（香港海港城店）"},
-{image:' /hot/xianggang/image4.png',name:'Chopard(Ocean Terminal Boutique)',pos:"萧邦（海运大厦专卖店）"},
-{image:' /hot/xianggang/image5.png',name:'ELEMENTS',pos:"ELEMENTS 圆方"},
-{image:' /hot/xianggang/image6.png',name:'Tiffany & Co. (The Peninsula Hotel)',pos:"蒂芙尼（香港半岛酒店）"},
-{image:' /hot/xianggang/image.png',name:'Tiffany & Co.(Times Square)',pos:"蒂芙尼（香港时代广场店）"},
-{image:' /hot/xianggang/image7.png',name:'Tiffany & Co. (Elements)',pos:"蒂芙尼（香港圆方店）"}]
+[{image:'/hot/aomen/image.jpg',name:'DFS Macau, Shoppes',pos:"DFS迪斐世澳门四季名店"},
+{image:' /hot/aomen/image1.jpg',name:'Tiffany & Co.(Four Seaso',pos:"蒂芙尼（澳门四季名店）"},
+{image:' /hot/aomen/image2.jpg',name:'DFS Macau, City of Dre',pos:"DFS迪斐世澳门新濠天地店"},
+{image:' /hot/aomen/image3.jpg',name:'Chaumet Galaxy',pos:"尚美巴黎（澳门银河店）"},
+{image:' /hot/aomen/image4.jpg',name:'Chaumet (Venetian Macau)',pos:"Macau尚美巴黎（澳门威尼斯"},
+{image:' /hot/aomen/image5.jpg',name:'Tiffany & Co. (The Peninsula Hotel)',pos:"蒂芙尼（香港半岛酒店）"},
+{image:' /hot/aomen/image6.jpg',name:'Jaeger-LeCoultre(Wynn Palace',pos:"积家（永利皇宫）"},
+{image:' /hot/aomen/image7.jpg',name:'Jaeger-LeCoultre (Macau',pos:"积家（澳门银河）"}]
 },
 {label:"东京",name:"third",inner:
-[{image:' /hot/xianggang/image2.png',name:'Tiffany & Co. (One Peking Road)',pos:"蒂芙尼（香港北京道1号旗舰店）"},
-{image:' /hot/xianggang/image.png',name:'DFS Hong Kong, Canton Road',pos:"DFS迪斐世香港广东道店"},
-{image:' /hot/xianggang/image7.png',name:'Tiffany & Co.(Harbour City)',pos:"蒂芙尼（香港海港城店）"},
-{image:' /hot/xianggang/image6.png',name:'Chopard(Ocean Terminal Boutique)',pos:"萧邦（海运大厦专卖店）"},
-{image:' /hot/xianggang/image5.png',name:'ELEMENTS',pos:"ELEMENTS 圆方"},
-{image:' /hot/xianggang/image4.png',name:'Tiffany & Co. (The Peninsula Hotel)',pos:"蒂芙尼（香港半岛酒店）"},
-{image:' /hot/xianggang/image3.png',name:'Tiffany & Co.(Times Square)',pos:"蒂芙尼（香港时代广场店）"},
-{image:' /hot/xianggang/image1.png',name:'Tiffany & Co. (Elements)',pos:"蒂芙尼（香港圆方店）"}]
+[{image:'/hot/dongjing/image.jpg',name:'Takashimaya (Shinjuku Store)',pos:"高岛屋（新宿店）"},
+{image:' /hot/dongjing/image1.jpg',name:'Takashimaya(Nihombashi Store)',pos:"高岛屋（日本桥店）"},
+{image:' /hot/dongjing/image2.jpg',name:'DAIMARU (Tokyo)',pos:"大丸百货（东京店）"},
+{image:' /hot/dongjing/image3.jpg',name:'Tiffany & Co. (Flagship Store Ginza)',pos:"蒂芙尼（银座店）"},
+{image:' /hot/dongjing/image4.jpg',name:'Tiffany & Co. (GINZA SIX)',pos:"蒂芙尼（GINZA SIX店"},
+{image:' /hot/dongjing/image5.jpg',name:'Japan Duty Free GINZA (Ginza Mitsukoshi main billding 8F)',pos:"Japan Duty Free GI"},
+{image:' /hot/dongjing/image6.jpg',name:'KOMEHYO(Ginza store)',pos:"KOMEHYO（银座店）"},
+{image:' /hot/dongjing/image7.jpg',name:'Tiffany & Co. (Omotesando Store)',pos:"蒂芙尼（表参道店）"}]
 },
 {label:"巴黎",name:"fourth",inner:
-[{image:' /hot/xianggang/image4.png',name:'Tiffany & Co. (One Peking Road)',pos:"蒂芙尼（香港北京道1号旗舰店）"},
-{image:' /hot/xianggang/image2.png',name:'DFS Hong Kong, Canton Road',pos:"DFS迪斐世香港广东道店"},
-{image:' /hot/xianggang/image1.png',name:'Tiffany & Co.(Harbour City)',pos:"蒂芙尼（香港海港城店）"},
-{image:' /hot/xianggang/image7.png',name:'Chopard(Ocean Terminal Boutique)',pos:"萧邦（海运大厦专卖店）"},
-{image:' /hot/xianggang/image5.png',name:'ELEMENTS',pos:"ELEMENTS 圆方"},
-{image:' /hot/xianggang/image3.png',name:'Tiffany & Co. (The Peninsula Hotel)',pos:"蒂芙尼（香港半岛酒店）"},
-{image:' /hot/xianggang/image6.png',name:'Tiffany & Co.(Times Square)',pos:"蒂芙尼（香港时代广场店）"},
-{image:' /hot/xianggang/image.png',name:'Tiffany & Co. (Elements)',pos:"蒂芙尼（香港圆方店）"}]
+[{image:'/hot/bali/image.jpg',name:'La Vallée Village',pos:"巴黎河谷购物村"},
+{image:' /hot/bali/image1.jpg',name:'Galeries Lafayette Haussmann',pos:"巴黎老佛爷百货（奥斯曼旗舰"},
+{image:' /hot/bali/image2.jpg',name:'Tiffany & Co. (Galeries Lafayette)）',pos:"蒂芙尼（巴黎老佛爷"},
+{image:' /hot/bali/image3.jpg',name:'BENLUX (Louvre)',pos:"巴黎斑丽丝精品百货"},
+{image:' /hot/bali/image4.jpg',name:'Tiffany & Co. (Champs-Élysées)',pos:"蒂芙尼（香榭丽舍大道"},
+{image:' /hot/bali/image5.jpg',name:'Tiffany & Co. (Printemps Haussmann)',pos:"蒂芙尼（巴黎春天店）"},
+{image:' /hot/bali/image6.jpg',name:'Tiffany & Co.(Le Bon Marché)',pos:"蒂芙尼（乐蓬马歇百货）"},
+{image:' /hot/bali/image7.jpg',name:'KAMS PARIS',pos:"巴黎卢浮KAMS免"}]
 },
 {label:"大阪",name:"fifth",inner:
-[{image:' /hot/xianggang/image1.png',name:'Tiffany & Co. (One Peking Road)',pos:"蒂芙尼（香港北京道1号旗舰店）"},
-{image:' /hot/xianggang/image2.png',name:'DFS Hong Kong, Canton Road',pos:"DFS迪斐世香港广东道店"},
-{image:' /hot/xianggang/image3.png',name:'Tiffany & Co.(Harbour City)',pos:"蒂芙尼（香港海港城店）"},
-{image:' /hot/xianggang/image4.png',name:'Chopard(Ocean Terminal Boutique)',pos:"萧邦（海运大厦专卖店）"},
-{image:' /hot/xianggang/image5.png',name:'ELEMENTS',pos:"ELEMENTS 圆方"},
-{image:' /hot/xianggang/image6.png',name:'Tiffany & Co. (The Peninsula Hotel)',pos:"蒂芙尼（香港半岛酒店）"},
-{image:' /hot/xianggang/image7.png',name:'Tiffany & Co.(Times Square)',pos:"蒂芙尼（香港时代广场店）"},
-{image:' /hot/xianggang/image.png',name:'Tiffany & Co. (Elements)',pos:"蒂芙尼（香港圆方店）"}]
+[{image:' /hot/daban/image.jpg',name:'DAIMARU (Shinsaibashi)',pos:"大丸百货（心斋桥店）"},
+{image:' /hot/daban/image1.jpg',name:'Takashimaya(Osaka Store)',pos:"高岛屋（大阪店）"},
+{image:' /hot/daban/image2.jpg',name:'DAIMARU (Umeda)',pos:"大丸百货（梅田店）"},
+{image:' /hot/daban/image3.jpg',name:'Kintetsu Department Store(Main Store Abeno Haruhas)',pos:"近铁百货（海阔天空总"},
+{image:' /hot/daban/image4.jpg',name:'Tiffany & Co.(Parco Shinsaibashi)',pos:"蒂芙尼（心斋桥PARCO店"},
+{image:' /hot/daban/image5.jpg',name:'Edion Corporation(NAMBA STORE)',pos:"爱电王（难波总店）"},
+{image:' /hot/daban/image6.jpg',name:'Sugi Pharmacy (Takatsukihondori Store)',pos:"SUGI杉药局（ 高槻本通"},
+{image:' /hot/daban/image7.jpg',name:'Yamada Denki LABI1 Namba',pos:"山田电机（LABI1难波店"}]
 },
 {label:"新加坡",name:"sixth",inner:
-[{image:' /hot/xianggang/image4.png',name:'Tiffany & Co. (One Peking Road)',pos:"蒂芙尼（香港北京道1号旗舰店）"},
-{image:' /hot/xianggang/image5.png',name:'DFS Hong Kong, Canton Road',pos:"DFS迪斐世香港广东道店"},
-{image:' /hot/xianggang/image6.png',name:'Tiffany & Co.(Harbour City)',pos:"蒂芙尼（香港海港城店）"},
-{image:' /hot/xianggang/image7.png',name:'Chopard(Ocean Terminal Boutique)',pos:"萧邦（海运大厦专卖店）"},
-{image:' /hot/xianggang/image.png',name:'ELEMENTS',pos:"ELEMENTS 圆方"},
-{image:' /hot/xianggang/image1.png',name:'Tiffany & Co. (The Peninsula Hotel)',pos:"蒂芙尼（香港半岛酒店）"},
-{image:' /hot/xianggang/image2.png',name:'Tiffany & Co.(Times Square)',pos:"蒂芙尼（香港时代广场店）"},
-{image:' /hot/xianggang/image3.png',name:'Tiffany & Co. (Elements)',pos:"蒂芙尼（香港圆方店）"}]
+[{image:' /hot/xinjiapo/image.jpg',name:'Tiffany & Co. (The Shoppes at Marina Bay Sands)',pos:"蒂芙尼（滨海湾金沙购物商城店"},
+{image:' /hot/xinjiapo/image1.jpg',name:'Tiffany & Co. (Changi Airport Terminal 1)',pos:"蒂芙尼（新加坡樟宜机"},
+{image:' /hot/xinjiapo/image2.jpg',name:'Qeelin (Marina Bay Sands)',pos:"Qeelin （滨海湾金沙购"},
+{image:' /hot/xinjiapo/image3.jpg',name:'Tiffany & Co. (Changi Airport Terminal 3)',pos:"蒂芙尼（新加坡樟宜机场"},
+{image:' /hot/xinjiapo/image4.jpg',name:'Tiffany & Co. (ION Orchard)',pos:"蒂芙尼（爱雍·乌节购物"},
+{image:' /hot/xinjiapo/image5.jpg',name:'FRED (Singapore Marina Bay Sands)',pos:"斐登（滨海湾金沙）"},
+{image:' /hot/xinjiapo/image6.jpg',name:'Jimmy Choo (Marina Bay Sands Store)',pos:"Jimmy Choo（滨海湾金"},
+{image:' /hot/xinjiapo/image7.jpg',name:'MARNI (Marina Bay Sands)',pos:"MARNI（滨海湾金沙）"}]
 },
 {label:"洛杉矶",name:"seventh",inner:
-[{image:' /hot/xianggang/image1.png',name:'Tiffany & Co. (One Peking Road)',pos:"蒂芙尼（香港北京道1号旗舰店）"},
-{image:' /hot/xianggang/image7.png',name:'DFS Hong Kong, Canton Road',pos:"DFS迪斐世香港广东道店"},
-{image:' /hot/xianggang/image6.png',name:'Tiffany & Co.(Harbour City)',pos:"蒂芙尼（香港海港城店）"},
-{image:' /hot/xianggang/image5.png',name:'Chopard(Ocean Terminal Boutique)',pos:"萧邦（海运大厦专卖店）"},
-{image:' /hot/xianggang/image.png',name:'ELEMENTS',pos:"ELEMENTS 圆方"},
-{image:' /hot/xianggang/image4.png',name:'Tiffany & Co. (The Peninsula Hotel)',pos:"蒂芙尼（香港半岛酒店）"},
-{image:' /hot/xianggang/image2.png',name:'Tiffany & Co.(Times Square)',pos:"蒂芙尼（香港时代广场店）"},
-{image:' /hot/xianggang/image3.png',name:'Tiffany & Co. (Elements)',pos:"蒂芙尼（香港圆方店）"}]
+[{image:' /hot/luoshanji/image.jpg',name:"Macy's (Downtown LA）",pos:"梅西百货（洛杉矶市中心店）"},
+{image:' /hot/luoshanji/image1.jpg',name:'Bloomingdales (South Coast Plaza)',pos:"博洛茗百货（南海岸店"},
+{image:' /hot/luoshanji/image2.jpg',name:"Bloomingdale's (Beverly Center)",pos:"博洛茗百货（比弗利购物中"},
+{image:' /hot/luoshanji/image3.jpg',name:"Macy's (South Coast Plaza)",pos:"梅西百货（南海岸广场购物中"},
+{image:' /hot/luoshanji/image4.jpg',name:'Bloomingdales(Century City)',pos:"博洛茗百货（世纪之城店）"},
+{image:' /hot/luoshanji/image5.jpg',name:"Macy's (Los Cerritos Center)",pos:"梅西百货（洛杉矶喜瑞都店）"},
+{image:' /hot/luoshanji/image6.jpg',name:"Macy's (Sherman Oaks Fashion Square)梅西百货",pos:"（谢尔曼奥克"},
+{image:' /hot/luoshanji/image7.jpg',name:"Macy's(Puente Hills)",pos:"梅西百货（洛杉矶罗兰岗"}]
 },
 {label:"伦敦",name:"eigth",inner:
-[{image:' /hot/xianggang/image4.png',name:'Tiffany & Co. (One Peking Road)',pos:"蒂芙尼（香港北京道1号旗舰店）"},
-{image:' /hot/xianggang/image5.png',name:'DFS Hong Kong, Canton Road',pos:"DFS迪斐世香港广东道店"},
-{image:' /hot/xianggang/image7.png',name:'Tiffany & Co.(Harbour City)',pos:"蒂芙尼（香港海港城店）"},
-{image:' /hot/xianggang/image1.png',name:'Chopard(Ocean Terminal Boutique)',pos:"萧邦（海运大厦专卖店）"},
-{image:' /hot/xianggang/image2.png',name:'ELEMENTS',pos:"ELEMENTS 圆方"},
-{image:' /hot/xianggang/image3.png',name:'Tiffany & Co. (The Peninsula Hotel)',pos:"蒂芙尼（香港半岛酒店）"},
-{image:' /hot/xianggang/image.png',name:'Tiffany & Co.(Times Square)',pos:"蒂芙尼（香港时代广场店）"},
-{image:' /hot/xianggang/image6.png',name:'Tiffany & Co. (Elements)',pos:"蒂芙尼（香港圆方店）"}]
+[{image:' /hot/lundun/image.jpg',name:'Bicester Village',pos:"伦敦比斯特购物村"},
+{image:' /hot/lundun/image1.jpg',name:'Kiltane (Cambridge)',pos:"Kiltane（剑桥国王大道）"},
+{image:' /hot/lundun/image2.jpg',name:'Tiffany & Co.(Old Bond Street)',pos:"蒂芙尼（老邦德街店）"},
+{image:' /hot/lundun/image3.jpg',name:'Tiffany & Co. (Harrods)',pos:"蒂芙尼（Harrods）"},
+{image:' /hot/lundun/image4.jpg',name:'Tiffany & Co. (Selfridges)',pos:"蒂芙尼（Selfridges）"},
+{image:' /hot/lundun/image5.jpg',name:'Kiltane (London)',pos:"Kiltane（伦敦博物馆街"},
+{image:' /hot/lundun/image6.jpg',name:'Elie Saab (London Mayfair)',pos:"Elie Saab（梅弗尔）"},
+{image:' /hot/lundun/image7.jpg',name:'Kiltane (Covent Garden)',pos:"Kiltane（考文特花园"}]
 },]
 const activeName = ref('first')
 
@@ -327,5 +327,12 @@ div{
    .el-carousel__item:nth-child(2n + 1) {
   background-color: #d3dce6;
     }
+  
 }
+  .ellips{
+      width: 200px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
 </style>
