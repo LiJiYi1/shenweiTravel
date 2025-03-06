@@ -91,8 +91,8 @@ const next = () => {
 const pre=()=>{
      if(active.value===1){
    ElMessageBox.confirm(
-    ' 只差一点就可以提交了，您真的要离开吗？',
-    'Warning',
+    ' ',
+    '只差一点就可以提交了，您真的要离开吗？',
     {
       confirmButtonText: '继续操作',
       cancelButtonText: '去意已决',

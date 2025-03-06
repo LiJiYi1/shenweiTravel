@@ -73,6 +73,7 @@
         </div>
         <div class="bt"  :style="{backgroundColor:color,borderRadius:'20px'}">
         <el-date-picker
+        :disabled-date="disablePastDates"
         v-model="CheckInOut"
         type="daterange"
         :range-separator="diff"
@@ -85,7 +86,7 @@
         @change="val"
       />
         </div>
-        <el-button :color="color" style="margin-left:calc(50% - 100px);width: 200px;height:60px;margin-top:20px;border-radius:20px">搜索酒店</el-button>
+        <el-button @click="searchHotel" :color="color" style="margin-left:calc(50% - 100px);width: 200px;height:60px;margin-top:20px;border-radius:20px">搜索酒店</el-button>
       </el-card>
       <el-card class="poetry">
         <div class="right">
@@ -116,6 +117,7 @@ import { CaretBottom} from '@element-plus/icons-vue';
 import TicketRecommon from '@/components/ticketRecommon.vue';
 import { useColorStore } from '@/store/modules/color';
 import { storeToRefs } from 'pinia';
+import { ElMessage } from 'element-plus';
 //获得一个响应式的颜色
 let {color}=storeToRefs(useColorStore())
 //当前时间
@@ -133,6 +135,10 @@ let diff=ref('——0晚——')
 let posSearch=ref(false)
 //关键词搜索是否展示
 let keySearch=ref(false)
+//禁用过去日期
+const disablePastDates = (date:any) => {
+  return date < new Date(); // 如果日期小于当前日期，返回 true（禁用）
+};
 function val(){
     console.log(CheckInOut.value[0],CheckInOut.value[1]);
     const date:any=new Date(CheckInOut.value[0])
@@ -168,6 +174,32 @@ const change1=(name:string)=>{
 keys.value=name
 //选了之后让选择框消失
 keySearch.value=false
+}
+//查询酒店
+const searchHotel=()=>{
+if(position.value&&CheckInOut.value[1]&&CheckInOut.value[0]){  
+    console.log(CheckInOut.value);
+    
+    const start=new Date(CheckInOut.value[0])
+    let year=start.getFullYear()
+    let month=start.getMonth()+1
+    let date=start.getDate()
+    let startTime=`${year}-${month}-${date}`
+    console.log(startTime);
+    const end=new Date(CheckInOut.value[1])
+    let year1=end.getFullYear()
+    let month1=end.getMonth()+1
+    let date1=end.getDate()
+    let endTime=`${year1}-${month1}-${date1}`
+    window.open(`https://hotel.fliggy.com/hotel_list3.htm?spm=181.11358650.hotelModule.domesticSearch&city=&cityName=${position.value}&checkIn=${startTime}&checkOut=${endTime}&keywords=${keys.value}&_output_charset=utf8`)
+   }
+else{
+     ElMessage({
+    message: '缺少必填表单数据!',
+    type: 'warning',
+  })
+}
+    
 }
 //阻止事件委托
 const stop=(e:any)=>{

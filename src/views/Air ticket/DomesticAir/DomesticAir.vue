@@ -4,8 +4,8 @@
       <el-card class="search">
     <!-- 单程还是往返 -->
     <el-radio-group v-model="oneOrTwo" :fill="color">
-      <el-radio value="1" size="large" @change="isOne" :style="{color:color,borderColor:color,}">单程</el-radio>
-      <el-radio value="2" size="large" @change="isTwo" :style="{color:color,borderColor:color}">往返</el-radio>
+      <el-radio value="0" size="large" @change="isOne" :style="{color:color,borderColor:color,}">单程</el-radio>
+      <el-radio value="1" size="large" @change="isTwo" :style="{color:color,borderColor:color}">往返</el-radio>
     </el-radio-group>
     <!-- 城市选择 -->
     <div  :style="{backgroundColor:color,borderRadius:'6px',padding:'10px'}">     
@@ -625,7 +625,7 @@
     </div>
 
 
-        <el-button :color="color" style="width: 200px;height:60px;margin-top:20px;margin-left:calc(50% - 100px);border-radius:20px">搜索机票</el-button>
+        <el-button @click="searchAirTicket" :color="color" style="width: 200px;height:60px;margin-top:20px;margin-left:calc(50% - 100px);border-radius:20px">搜索机票</el-button>
       </el-card>
     <el-card class="poetry">
         <div class="right">
@@ -655,10 +655,14 @@ import { onMounted,onBeforeUnmount,ref } from 'vue';
 import TicketRecommon from '@/components/ticketRecommon.vue';
 import { useColorStore } from '@/store/modules/color';
 import { storeToRefs } from 'pinia';
+import { ElMessage } from 'element-plus';
 let {color}=storeToRefs(useColorStore())
 //出发城市和返回城市
 let city1=ref('北京')
 let city2=ref('杭州')
+//机场三字代码
+let three1=ref('BJS')
+let three2=ref('HGH')
 //搜索提示
 let posSearch=ref()
 let posSearch1=ref()
@@ -668,7 +672,7 @@ let time=ref(moment().format("YYYY.MM"))
 let time1=ref(moment().format("DD"))
 let timer=ref()
 //单程还是往返
-let oneOrTwo=ref('1')
+let oneOrTwo=ref('0')
 //往返程时间
 let day1=ref(moment().format("YYYY.MM.DD"))
 let day2=ref('')
@@ -683,7 +687,7 @@ const disablePastDates1 = (date:any) => {
 //单程模式下添加了返程就是返程模式
 function notOne(){
 //如果有返程票就不再是单程旅行了
-if(day2.value)oneOrTwo.value='2'
+if(day2.value)oneOrTwo.value='1'
 }
 //切换到往返模式后要把返程时间填上
 function isTwo(){
@@ -708,6 +712,39 @@ posSearch.value=false;
 function changeNames1(name:string){
 city2.value=name
 posSearch1.value=false;
+}
+//查询机票
+const searchAirTicket=()=>{
+if(city1.value&&city2.value&&day1.value&&oneOrTwo.value==='0'){   
+    const start=new Date(day1.value)
+    let year=start.getFullYear()
+    let month=start.getMonth()+1
+    let date=start.getDate()
+    let startTime=`${year}-${month}-${date}`
+    window.open(`https://sjipiao.fliggy.com/flight_search_result.htm?spm=181.11358650.flight.dflightSearch1&tripType=${oneOrTwo.value}&depCity=${three1.value}&arrCity=${three2.value}&depCityName=${city1.value}&arrCityName=${city2.value}&depDate=${startTime}`)
+   }
+else if(city1.value&&city2.value&&day1.value&&oneOrTwo.value==='1'){   
+    const start=new Date(day1.value)
+    let year=start.getFullYear()
+    let month=start.getMonth()+1
+    let date=start.getDate()
+    let startTime=`${year}-${month}-${date}`
+    console.log(startTime);
+    const end=new Date(day2.value)
+    let year1=end.getFullYear()
+    let month1=end.getMonth()+1
+    let date1=end.getDate()
+    let endTime=`${year1}-${month1}-${date1}`
+
+    window.open(`https://sjipiao.fliggy.com/flight_search_result.htm?spm=181.11358650.flight.dflightSearch1&tripType=${oneOrTwo.value}&depCity=${three1.value}&arrCity=${three2.value}&depCityName=${city1.value}&arrCityName=${city2.value}&depDate=${startTime}&arrDate=${endTime}`)
+   }
+else{
+     ElMessage({
+    message: '缺少必填表单数据!',
+    type: 'warning',
+  })
+}
+    
 }
 //取消事件委托防止点输入框时他也消失
 const stop=(e:any)=>{

@@ -89,7 +89,7 @@
         @change="val"
       />
         </div>
-        <el-button :color="color" style="margin-left:calc(50% - 100px);width: 200px;height:60px;margin-top:20px;border-radius:20px">搜索酒店</el-button>
+        <el-button @click="searchHotel" :color="color" style="margin-left:calc(50% - 100px);width: 200px;height:60px;margin-top:20px;border-radius:20px">搜索酒店</el-button>
       </el-card>
       <el-card class="poetry">
         <div class="right">
@@ -120,6 +120,7 @@ import { CaretBottom} from '@element-plus/icons-vue';
 import TicketRecommon from '@/components/ticketRecommon.vue';
 import { useColorStore } from '@/store/modules/color';
 import { storeToRefs } from 'pinia';
+import { ElMessage } from 'element-plus';
 let {color}=storeToRefs(useColorStore())
 //当前时间
 let time=ref(moment().format("YYYY.MM"))
@@ -135,9 +136,9 @@ let diff=ref('——0晚——')
 //位置搜索是否展示
 let posSearch=ref(false)
 //成人数量
-let num1=ref('成人2位')
+let num1=ref('2')
 //儿童数量
-let num2=ref('儿童1位')
+let num2=ref('1')
 function val(){
     console.log(CheckInOut.value[0],CheckInOut.value[1]);
     const date:any=new Date(CheckInOut.value[0])
@@ -162,6 +163,31 @@ function outSearch(){
 //选了之后让选择框消失
 posSearch.value=false
 
+}
+//查询酒店
+const searchHotel=()=>{
+if(position.value&&CheckInOut.value[1]&&CheckInOut.value[0]){  
+    console.log(CheckInOut.value);
+    
+    const start=new Date(CheckInOut.value[0])
+    let year=start.getFullYear()
+    let month=start.getMonth()+1
+    let date=start.getDate()
+    let startTime=`${year}-${month}-${date}`
+    const end=new Date(CheckInOut.value[1])
+    let year1=end.getFullYear()
+    let month1=end.getMonth()+1
+    let date1=end.getDate()
+    let endTime=`${year1}-${month1}-${date1}`
+    window.open(`https://hotel.fliggy.com/hotel_list3.htm?spm=181.11358650.hotelModule.internationalSearch&cityName=${position.value}&checkIn=${startTime}&checkOut=${endTime}&keywords=${keys.value}&aNum_1=${num1.value}&cNum_1=${num2.value}&_output_charset=utf8`)
+   }
+else{
+     ElMessage({
+    message: '缺少必填表单数据!',
+    type: 'warning',
+  })
+}
+    
 }
 //阻止事件委托
 const stop=(e:any)=>{
