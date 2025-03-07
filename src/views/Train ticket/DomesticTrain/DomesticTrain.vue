@@ -4,9 +4,9 @@
       <el-card class="search">
     <!-- 单程还是往返 -->
     <el-radio-group v-model="oneOrTwo" :fill="color">
-      <el-radio value="1" size="large" @change="isOne" :style="{color:color,borderColor:color,}">单程</el-radio>
-      <el-radio value="2" size="large" @change="isTwo" :style="{color:color,borderColor:color}">往返</el-radio>
-      <el-radio value="3" size="large" @change="isTwo" :style="{color:color,borderColor:color}">中转</el-radio>
+      <el-radio value="0" size="large" @change="isOne" :style="{color:color,borderColor:color,}">单程</el-radio>
+      <el-radio value="1" size="large" @change="isTwo" :style="{color:color,borderColor:color}">往返</el-radio>
+      <el-radio value="2" size="large" @change="isTwo" :style="{color:color,borderColor:color}">中转</el-radio>
     </el-radio-group>
     <!-- 城市选择 -->
     <div :style="{backgroundColor:color,borderRadius:'6px',padding:'10px',height:'55px'}">
@@ -631,7 +631,7 @@
         />
         <div  style="font-size:25px;margin-top:8px;margin-left:-60px">{{ Day }}</div>
          <el-date-picker
-        v-if="oneOrTwo!=='3'"
+        v-if="oneOrTwo!=='2'"
         v-model="day2"
         type="date"
          :disabled-date="disablePastDates1"
@@ -642,10 +642,10 @@
         :editable="false"
         :clearable="false"
          />
-         <div v-if="oneOrTwo!=='3'&&Day1" style="font-size:25px;margin-top:8px;margin-left:-60px">{{ Day1 }}</div>
+         <div v-if="oneOrTwo!=='2'&&Day1" style="font-size:25px;margin-top:8px;margin-left:-60px">{{ Day1 }}</div>
          <!-- 中转城市 -->
          <div @click="stop">
-             <el-input v-model="city3"  v-show="oneOrTwo==='3'" style="direction:rtl;width: 300px;height:45px;font-size:25px;" placeholder="中转城市" @focus="posSearch2=true;posSearch1=false;posSearch=false;"/>
+             <el-input v-model="city3"  v-show="oneOrTwo==='2'" style="direction:rtl;width: 300px;height:45px;font-size:25px;" placeholder="中转城市" @focus="posSearch2=true;posSearch1=false;posSearch=false;"/>
          <!-- 搜索提示 -->
         <div class="posSearch2" v-show="posSearch2">
         <div style="background: gray;padding:10px">热门城市/国家（支持汉字/拼音/英文字母</div>
@@ -940,9 +940,9 @@
     <el-checkbox v-model="student" label="学生票" size="large" />
     <el-checkbox v-model="hightWay" label="高铁动车" size="large" />
     </div>
-        <el-button :color="color" style="width: 200px;height:60px;margin-left:calc(50% - 100px);border-radius:20px">搜索火车票</el-button>
+        <el-button @click="searchTrainTicket" :color="color" style="width: 200px;height:60px;margin-left:calc(50% - 100px);border-radius:20px">搜索火车票</el-button>
       </el-card>
-      <el-card class="poetry" body-style=" width: 220px;height:220px">
+      <el-card @click="scene" class="poetry" body-style=" width: 220px;height:220px">
         <div class="right">
         <div class="r-t"> 
             <h1 style="font-size:80px">{{time1}}</h1>
@@ -971,6 +971,7 @@ import { onMounted,onBeforeUnmount,ref } from 'vue';
 import TicketRecommon from '@/components/ticketRecommon.vue';
 import { useColorStore } from '@/store/modules/color';
 import { storeToRefs } from 'pinia';
+import { ElMessage } from 'element-plus';
 let {color}=storeToRefs(useColorStore())
 //当前时间
 let time=ref(moment().format("YYYY.MM"))
@@ -980,7 +981,7 @@ let timer=ref()
 let Day=ref()
 let Day1=ref('')
 //单程还是往返
-let oneOrTwo=ref('1')
+let oneOrTwo=ref('0')
 //往返程时间
 let day1=ref(moment().format("YYYY.MM.DD"))
 let day2=ref('')
@@ -990,8 +991,8 @@ let city2=ref('杭州')
 //中转城市
 let city3=ref('')
 //学生票和高铁动车
-let student=ref()
-let hightWay=ref()
+let student=ref(false)
+let hightWay=ref(false)
 //搜索提示
 let posSearch=ref()
 let posSearch1=ref()
@@ -1005,7 +1006,7 @@ const change=()=>{
 //单程模式下添加了返程就是返程模式
 function notOne(){   
 //如果有返程票就不再是单程旅行了
-if(day2.value)oneOrTwo.value='2'
+if(day2.value)oneOrTwo.value='1'
 //更新一下日期
 const date=new Date(day2.value);
     const dayNum=date.getDay()
@@ -1052,13 +1053,58 @@ const outSearch=()=>{
 }
 //禁用过去日期
 const disablePastDates = (date:any) => {
-  return date < new Date(); // 如果日期小于当前日期，返回 true（禁用）
+  return date < new Date()||date > new Date(day2.value); // 如果日期小于当前日期，返回 true（禁用）
 };
 //第二个禁用开始时间
 const disablePastDates1 = (date:any) => {
   return date < new Date(day1.value); // 如果日期小于当前日期，返回 true（禁用）
 };
-//取消事件委托防止点输入框时他也消失
+const searchTrainTicket=()=>{
+    if(city1.value&&city2.value&&day1.value&&oneOrTwo.value==='0'){  
+  
+    const start=new Date(day1.value)
+    let year=start.getFullYear()
+    let month=start.getMonth()+1
+    let date=start.getDate()
+    let startTime=`${year}-${month}-${date}`
+    window.open(`https://trains.ctrip.com/webapp/train/list?ticketType=0&dStation=${city1.value}&aStation=${city2.value}&dDate=${startTime}&rDate=&trainsType=&hubCityName=&highSpeedOnly=${hightWay.value?1:0}`)
+   }
+   else if(city1.value&&city2.value&&day1.value&&oneOrTwo.value==='1'){
+    const start=new Date(day1.value)
+    let year=start.getFullYear()
+    let month=start.getMonth()+1
+    let date=start.getDate()
+    let startTime=`${year}-${month}-${date}`
+    const end=new Date(day2.value)
+    let year1=end.getFullYear()
+    let month1=end.getMonth()+1
+    let date1=end.getDate()
+    let endTime=`${year1}-${month1}-${date1}`
+    window.open(`https://trains.ctrip.com/webapp/train/list?ticketType=1&dStation=${city1.value}&aStation=${city2.value}&dDate=${startTime}&rDate=${endTime}&trainsType=&hubCityName=&highSpeedOnly=${hightWay.value?1:0}`)
+
+   }
+   else if(city1.value&&city2.value&&day1.value&&city3.value&&oneOrTwo.value==='2'){
+    const start=new Date(day1.value)
+    let year=start.getFullYear()
+    let month=start.getMonth()+1
+    let date=start.getDate()
+    let startTime=`${year}-${month}-${date}`
+    window.open(`https://trains.ctrip.com/webapp/train/list?ticketType=2&dStation=${city1.value}&aStation=${city2.value}&dDate=${startTime}&rDate=&trainsType=gaotie-dongche&hubCityName=${city3.value}&highSpeedOnly=${hightWay.value?1:0}`)
+
+   }
+else{
+     ElMessage({
+    message: '缺少必填表单数据!',
+    type: 'warning',
+  })
+}
+    
+    
+}
+const scene=()=>{
+    window.open('https://travelsearch.fliggy.com/index.htm?spm=181.11358650.beautiful.d0.32cb223e0te9xc&searchType=product&keyword=哈尔滨冰雪大世界')
+}
+    //取消事件委托防止点输入框时他也消失
 const stop=(e:any)=>{
 e.stopPropagation()
 }

@@ -91,7 +91,7 @@
         </div>
         <el-button @click="searchHotel" :color="color" style="margin-left:calc(50% - 100px);width: 200px;height:60px;margin-top:20px;border-radius:20px">搜索酒店</el-button>
       </el-card>
-      <el-card class="poetry">
+      <el-card class="poetry" @click="scene">
         <div class="right">
         <div class="r-t"> 
             <h1 style="font-size:80px">{{time1}}</h1>
@@ -188,6 +188,9 @@ else{
   })
 }
     
+}
+const scene=()=>{
+    window.open('https://travelsearch.fliggy.com/index.htm?spm=181.11358650.beautiful.d0.32cb223e0te9xc&searchType=product&keyword=天山天池')
 }
 //阻止事件委托
 const stop=(e:any)=>{
