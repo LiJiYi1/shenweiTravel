@@ -1,6 +1,7 @@
 <template>
+     
     <div>
-         <!-- 天气预报 -->
+    <!-- 天气预报 -->
     <div class="weatherTitle">
         <!-- 遍历省 -->
         <el-select
@@ -23,13 +24,44 @@
         </div>
         <h1 style="margin-left:20px;white-space:nowrap">天气预报</h1>
     </div>
-
     <el-card body-style="padding:0px;width:101%" class="box">  
-            <!-- 天气预报内容 -->
-    <div class="innerBox">
-            <div class="topTime">
+    <!-- 天气预报内容骨架屏 -->
+     <div class="innerBox">
+      <el-skeleton style="width: 240px;z-index:1000" :loading="loading" animated>
+      <template #template>
+        <div style="padding: 14px;padding-top:6px">
+           
+            <div style="display: flex;width:1160px;justify-content:space-between;margin-left:20px"> 
+                <div style="display: flex;width:660px">
+                        <el-skeleton-item variant="text" style="width:190px;margin-right:28px" />
+                        <el-skeleton-item variant="text" style="width: 47px" />
+                </div>
+         
+               <el-skeleton-item variant="text" style="width: 128px;margin-right:38px" />
+            </div>
+            <div style="display: flex;width:1120px;justify-content:space-between;margin-top:58px;margin-left:20px"> 
+              <el-skeleton-item variant="image" style="width: 122px; height: 90px" />
+              <el-skeleton-item variant="text" style="width: 140px;height:100px;margin-top:-10px" />
+              <el-skeleton-item variant="text" style="width: 120px;height:40px;" />
+              <el-skeleton-item variant="text" style="width: 120px;height:40px;" />
+              <el-skeleton-item variant="text" style="width: 47px;height:45px;" />
+            </div>
+             <div style="display: flex;width:1120px;justify-content:space-between;margin-top:42px;margin-left:20px"> 
+             <el-skeleton-item variant="text" style="width: 120px;height:15px;" />
+              <el-skeleton-item variant="text" style="width: 120px;height:15px;" />
+              <el-skeleton-item variant="text" style="width: 120px;height:15px;" />
+              <el-skeleton-item variant="text" style="width: 120px;height:15px;" />
+            </div>
+              <el-skeleton-item variant="text" style="width: 1120px;height:15px;margin-left:20px;margin-top:30px" />
+              <el-skeleton-item variant="text" style="width: 1120px;height:15px;margin-left:20px;margin-top:10px" />
+              <el-skeleton-item variant="text" style="width: 1120px;height:15px;margin-left:20px;margin-top:10px" />
+              <el-skeleton-item variant="text" style="width: 1120px;height:15px;margin-left:20px;margin-top:10px" />
+        </div>
+      </template>
+      <template #default>
+          <div class="topTime">
                 <p>{{time}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{Day1}}</p>
-                <p>最近更新:{{lastUpdate}}</p>
+                <p>最近更新:{{lastUpdate}} </p>
             </div>
             <div class="centerWeather">
                 <div class="img3"></div>
@@ -51,17 +83,60 @@
             <p>{{location}}{{time1}}天气预报,今天{{low1}}℃-{{high1}}℃,{{ weatherNow }}, 风向情况:{{ direction1 }}风,总降水量:{{rainfall}}mm,相对湿度:{{humidity}}%。{{location}}
             今日生活指数: 交通指数,{{traffic}} ({{trafficDetail}}),运动指数,{{sport}} ({{sportDetail}}),
             未来3天,最低温度{{low2}}℃，最高温度{{high2}}℃,查询{{location}}实时、3天天气预报,上神威天气预报频道。</p>
-    </div> 
-    <!-- canvas画布-->
-    <canvas style="z-index: 1;margin-top:-390px;"   ref="webgl"  width="1218" height="430"></canvas>
-
-
-
-
+      </template>
+    </el-skeleton>
+     </div>
+    <!-- canvas画布,加载完毕显示-->
+    <canvas v-show="!loading" style="z-index: 1;margin-top:-390px;"   ref="webgl"  width="1218" height="430"></canvas>
     </el-card>
     <!-- 三天天气预测 -->
     <h1>三天天气预测</h1>
-    <el-card shadow="always" class="day3">
+    <el-skeleton style="width:99.9%;min-width:1217px" :loading="loading" animated>
+      <template #template>
+        <el-card style="margin-top:20px;width:99.9%;min-width:1217px">
+        <div style="display: flex;">
+            <div style="display:flex;margin-top:20px;width: 33%">
+            <el-skeleton-item variant="image" style="width: 322px; height: 100px;margin-left:60px;margin-top:48px" />
+            <div style="width:200px;margin-left:62px">
+                <el-skeleton-item variant="text" style="margin-right: 16px; width: 120px" />
+                <el-skeleton-item variant="text" style="margin-right: 16px; width: 100px;margin-top:22px" />
+                <el-skeleton-item variant="text" style="margin-right: 16px; width: 90px;margin-top:22px" />
+                <el-skeleton-item variant="text" style="margin-right: 16px; width: 50px;margin-top:22px" />
+                <el-skeleton-item variant="text" style="margin-right: 16px; width: 60px;margin-top:22px" />
+                <el-skeleton-item variant="text" style="margin-right: 16px; width: 86px;margin-top:22px" />
+                <el-skeleton-item variant="text" style="margin-right: 16px; width: 86px;margin-top:22px" />
+            </div>
+            </div>
+            <div style="display:flex;margin-top:20px;width: 33%">
+            <el-skeleton-item variant="image" style="width: 322px; height: 100px;margin-left:60px;margin-top:48px" />
+            <div style="width:200px;margin-left:62px">
+                <el-skeleton-item variant="text" style="margin-right: 16px; width: 120px" />
+                <el-skeleton-item variant="text" style="margin-right: 16px; width: 100px;margin-top:22px" />
+                <el-skeleton-item variant="text" style="margin-right: 16px; width: 90px;margin-top:22px" />
+                <el-skeleton-item variant="text" style="margin-right: 16px; width: 50px;margin-top:22px" />
+                <el-skeleton-item variant="text" style="margin-right: 16px; width: 60px;margin-top:22px" />
+                <el-skeleton-item variant="text" style="margin-right: 16px; width: 86px;margin-top:22px" />
+                <el-skeleton-item variant="text" style="margin-right: 16px; width: 86px;margin-top:22px" />
+            </div>
+            </div>  
+            <div style="display:flex;margin-top:20px;width: 33%">
+            <el-skeleton-item variant="image" style="width: 322px; height: 100px;margin-left:60px;margin-top:48px" />
+            <div style="width:200px;margin-left:62px">
+                <el-skeleton-item variant="text" style="margin-right: 16px; width: 120px" />
+                <el-skeleton-item variant="text" style="margin-right: 16px; width: 100px;margin-top:22px" />
+                <el-skeleton-item variant="text" style="margin-right: 16px; width: 90px;margin-top:22px" />
+                <el-skeleton-item variant="text" style="margin-right: 16px; width: 50px;margin-top:22px" />
+                <el-skeleton-item variant="text" style="margin-right: 16px; width: 60px;margin-top:22px" />
+                <el-skeleton-item variant="text" style="margin-right: 16px; width: 86px;margin-top:22px" />
+                <el-skeleton-item variant="text" style="margin-right: 16px; width: 86px;margin-top:22px" />
+            </div>
+            </div>  
+        </div>
+          
+        </el-card>
+      </template>
+      <template #default>
+          <el-card shadow="always" class="day3">
             <div>
             <div class="img"></div>
             <div class="first">
@@ -94,13 +169,29 @@
                 <p>夜晚天气:{{weathernight3}}</p>
             </div>
             </div>
-    </el-card>
+          </el-card>
+      </template>
+    </el-skeleton>
     <!-- 穿衣指数 -->
     <h1>出行穿衣指数</h1>
-    <el-card shadow="always" class="dressing">
+     <el-skeleton style="width:99.9%;min-width:1217px" :loading="loading" animated>
+      <template #template>
+        <el-card style="padding: 14px;margin-top:20px;">
+            <div style="width: 400px;margin-top:20px">
+                <el-skeleton-item variant="text" style="width: 50px;height:20px;margin-right: 16px "/>
+                <el-skeleton-item variant="text" style="width: 600px;margin-top:25px" />
+            </div>
+           
+        </el-card>
+      </template>
+      <template #default>
+        <el-card shadow="always" class="dressing">
             <h3 >{{ dressing }}</h3>
             <p style="margin-top:30px">{{ suggest }}</p>
     </el-card>
+      </template>
+    </el-skeleton>
+    
     <!-- 折叠后显示的隐藏部分 -->
     <el-card body-style="padding:0px" style="position:absolute;top:234px;right:20px;width:180px;height:430px;z-index:-1;">
     <template #header><h3 style="text-align: center;">旅游景点推荐</h3></template>
@@ -121,6 +212,8 @@ import { onMounted, ref,onBeforeUnmount} from 'vue';
 import moment from 'moment';
 import data from '@/assets/home/china.json'
 import { citys } from '@/assets/home/name';
+//请求是否完毕
+let loading=ref(true)
 const city=data
 //持久化数据
 const Region=ref(localStorage.getItem('province')||ref('山东省'))
@@ -217,6 +310,7 @@ city.forEach((e)=>{
 }
 //封装一个方法请求数据
 async function getData(name:string){
+loading.value=true
 let KEY;
 for(let key in citys){
     let name1:string=citys[key]
@@ -269,6 +363,8 @@ lastUpdate.value=data.data.results[0].last_update.substr(11,8)
 location.value=data.data.results[0].location.name
 temputureNow.value=data.data.results[0].now.temperature
 weatherNow.value=data.data.results[0].now.text
+
+loading.value=false
 }
 onBeforeUnmount(()=>{
 clearInterval(timer.value)
@@ -517,7 +613,7 @@ gl.drawArrays(gl.TRIANGLES,0,6)
 const xy=gl.getUniformLocation(gl.program,'st')
 gl.uniform2f(xy,1218,500)
 //鼠标位置
-webgl.value.addEventListener('mousemove',(e)=>{
+webgl.value.addEventListener('mousemove',(e:any)=>{
 const X=e.offsetX
 const Y=-e.offsetY+670
 //把X,Y坐标传给着色器
@@ -536,7 +632,7 @@ function loop(){
 }
 loop()
 })
-function initShader(gl,vertexSource,fragSource){
+function initShader(gl:any,vertexSource:any,fragSource:any){
 const program=gl.createProgram()
 const vsShader=gl.createShader(gl.VERTEX_SHADER)
 const fsShader=gl.createShader(gl.FRAGMENT_SHADER)
@@ -564,6 +660,7 @@ div{
     .box{
         overflow: auto;
         width: 1218px;
+        height: 432px;
         color:white;
         display: flex;
         justify-content: center;
@@ -675,7 +772,7 @@ width: 18%;
 height:120px;
 background:url('@/assets/home/weather.png') no-repeat;
 background-size: cover;
-margin-left: -20px;
+margin-left: 0px;
 }
 
 

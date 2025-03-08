@@ -9,7 +9,7 @@
         <!-- 搜索按钮 -->
         <el-button :color="color" style="width: 200px;height:60px;margin-left:225px;border-radius:20px;margin-top:20px">船票查询</el-button>
       </el-card>
-      <el-card class="poetry"  body-style=" width: 220px;height:220px;">
+      <el-card class="poetry" @click="scene"  body-style=" width: 220px;height:220px;">
         <div class="right">
         <div class="r-t"> 
             <h1 style="font-size:80px">{{time1}}</h1>
@@ -46,7 +46,9 @@ let {color}=storeToRefs(useColorStore())
 let time=ref(moment().format("YYYY.MM"))
 let time1=ref(moment().format("DD"))
 let timer=ref()
-
+const scene=()=>{
+    window.open('https://travelsearch.fliggy.com/index.htm?spm=181.11358650.beautiful.d0.32cb223e0te9xc&searchType=product&keyword=长白山天池')
+}
 //取消事件委托防止点输入框时他也消失
 const stop=(e:any)=>{
 e.stopPropagation()
@@ -97,8 +99,8 @@ clearInterval(timer.value)
         }
         .r-b{
              position: absolute;
-             top: 130px;
-             right: 60px;
+               top: 160px;
+             right: 20px;
               z-index: 2;
             margin-top: 65px;
             line-height: 25px;

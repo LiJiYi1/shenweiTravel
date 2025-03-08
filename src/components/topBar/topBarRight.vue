@@ -8,7 +8,7 @@
            <img :src="useUserStore().avator" style=" margin-right: 10px;border-radius:40px;width:40px;height:40px;margin-left: 10px;"/>
            <!-- 下拉退出登录 -->
    <el-dropdown>
-    <span class="el-dropdown-link">
+    <span class="el-dropdown-link" style="  white-space: nowrap;">
       {{useUserStore().userName}}
     <el-icon class="el-icon--right"><arrow-down /></el-icon>
     </span>

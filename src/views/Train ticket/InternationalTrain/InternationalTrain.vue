@@ -1,25 +1,25 @@
 <template>
     <div>
-    <div>
-        <el-card class="search">
+    <div >
+        <el-card class="search" >
         <!-- 买哪个国家的火车票 -->
         <el-tabs class="demo-tabs"  v-model="activeName">
-            <el-tab-pane label="欧洲" name="first" >  
-                <PosComponent :country="activeName"></PosComponent>
-                <TimeComponent style="margin-top: 20px;"></TimeComponent>
-                <SelectNum style="margin-top: 20px;"></SelectNum>
+            <el-tab-pane label="欧洲" name="first" lazy="true" >  
+    
+                <PosComponent  @getPos3="pos3" :country="activeName"></PosComponent>
+                <TimeComponent @getTime3="Time3"  style="margin-top: 20px;"></TimeComponent>
+                <SelectNum @getNum="getPersonNum"  style="margin-top: 20px;"></SelectNum>
              </el-tab-pane>
-            <el-tab-pane label="中国台湾" name="second" >
-                <PosComponent  :country="activeName"></PosComponent>
-                <TimeComponent style="margin-top: 20px;"></TimeComponent>
-                <SelectNum style="margin-top: 20px;"></SelectNum>
+            <el-tab-pane label="中国台湾" name="second" lazy="true">
+                <PosComponent @getPos3="pos3"  :country="activeName"></PosComponent>
+                <TimeComponent @getTime3="Time3" style="margin-top: 20px;"></TimeComponent>
             </el-tab-pane>
-             <el-tab-pane label="日本" name="third" >
-                <PosComponent  :country="activeName"></PosComponent>
-                <TimeComponent style="margin-top: 20px;"></TimeComponent>
-                <SelectNum style="margin-top: 20px;"></SelectNum>
+             <el-tab-pane label="日本" name="third" lazy="true">
+                <PosComponent @getPos3="pos3"  :country="activeName"></PosComponent>
+                <TimeComponent @getTime3="Time3" style="margin-top: 20px;"></TimeComponent>
              </el-tab-pane>
         </el-tabs>
+    
         <!-- 诗句 -->
         <el-card @click="scene" class="poetry">
         <div class="right">
@@ -64,16 +64,49 @@ let time1=ref(moment().format("DD"))
 let timer=ref()
 //当前是哪个国家
 const activeName = ref('first')
-
+//出发地与目的地
+//欧洲
+let start1=ref()
+let end1=ref()
+let num=ref('1成人')
+let num1=ref('1青年')
+let num2=ref('1老人')
+//中国台湾
+let start2=ref()
+let end2=ref()
+//日本
+let start3=ref('')
+let end3=ref('')
+//出发日期
+let date1=ref(moment().format("YYYY-MM-DD"))
+let date2=ref(moment().format("YYYY-MM-DD"))
+let date3=ref(moment().format("YYYY-MM-DD"))
 const searchTrainTicket=()=>{
-    if(activeName.value==='first'){
-        window.open(`https://www.klook.cn/zh-CN/rails-4/364891-europe/search/?date_range_count=334&origin_position_name=%E4%BC%A6%E6%95%A6&origin_position=a646d121-29b6-44c0-ac72-67f4a6b487d8&destination_position_name=%E5%B7%B4%E9%BB%8E&destination_position=b8ae1fe5-d786-4efb-9c17-6c78d493fa9a&departure_date=2025-03-22&departure_time=00%3A00&passengers=%5B%7B%22count%22%3A1,%22passenger_type%22%3A%22adult%22,%22name%22%3A%22%E6%88%90%E4%BA%BA%22,%22ages%22%3A%5B%5D%7D%5D&spm=Mobility_Aggregate.SearchBtn&clickId=3ea6115eb4`)
+    if(activeName.value==='first'&&start1.value&&end1.value&&date1.value){
+    console.log(num.value.slice(0,1));
+        
+    const start=new Date(date1.value)
+    let year=start.getFullYear()
+    let month=start.getMonth()+1
+    let date=start.getDate()
+    let startTime=`${year}-${month}-${date}`
+    window.open(`https://www.klook.cn/zh-CN/rails-4/364891-europe/search/?date_range_count=334&origin_position_name=${start1.value}&origin_position=a646d121-29b6-44c0-ac72-67f4a6b487d8&destination_position_name=${end1.value}&destination_position=b8ae1fe5-d786-4efb-9c17-6c78d493fa9a&departure_date=${startTime}&departure_time=00%3A00&passengers=%5B%7B%22count%22%3A${num.value.slice(0,1)},%22passenger_type%22%3A%22adult%22,%22name%22%3A%22%E6%88%90%E4%BA%BA%22,%22ages%22%3A%5B%5D%7D,%7B%22count%22%3A${num1.value.slice(0,1)},%22passenger_type%22%3A%22youth%22,%22name%22%3A%22%E9%9D%92%E5%B9%B4%22,%22ages%22%3A%5B5%5D%7D,%7B%22count%22%3A${num2.value.slice(0,1)},%22passenger_type%22%3A%22senior%22,%22name%22%3A%22%E8%80%81%E5%B9%B4%22,%22ages%22%3A%5B%5D%7D%5D&spm=Mobility_Aggregate.SearchBtn&clickId=3ea6115eb4&return_date=&return_time=`)
     }
-    else if(activeName.value==='second'){
-        window.open(`https://www.klook.cn/zh-CN/rails-24/1014-taiwan/search/?date_range_count=60&origin_position_name=%E5%8F%B0%E5%8C%97%E7%AB%99&origin_position=7dbbbab1-cde7-446d-7899-76cd15156dff&destination_position_name=%E5%B7%A6%E8%90%A5%E7%AB%99&destination_position=b91ce598-b532-4e76-5b23-dcb12e59fb0a&departure_date=2025-03-08&passengers=%5B%5D&spm=Mobility_Aggregate.SearchBtn&clickId=8377c8bd28`)
+    else if(activeName.value==='second'&&start2.value&&end2.value&&date2.value){
+    const start=new Date(date2.value)
+    let year=start.getFullYear()
+    let month=start.getMonth()+1
+    let date=start.getDate()
+    let startTime=`${year}-${month}-${date}`
+    window.open(`https://www.klook.cn/zh-CN/rails-24/1014-taiwan/search/?date_range_count=60&origin_position_name=${start2.value}&origin_position=7dbbbab1-cde7-446d-7899-76cd15156dff&destination_position_name=${end2.value}&destination_position=b91ce598-b532-4e76-5b23-dcb12e59fb0a&departure_date=${startTime}&passengers=%5B%5D&spm=Mobility_Aggregate.SearchBtn&clickId=8377c8bd28`)
     }
-    else if(activeName.value==='third'){
-        window.open(`https://www.klook.cn/zh-CN/rails-32/1012-japan/search/?date_range_count=90&origin_position_name=%E4%B8%9C%E4%BA%AC&origin_position=99be1154-e69d-44cf-8fc4-8affe6e446a6&destination_position_name=%E5%A4%A7%E9%98%AA&destination_position=8b4e5d2e-21ff-4488-b734-d55676a2ec1e&departure_date=2025-03-14&passengers=%5B%5D&spm=Mobility_Aggregate.SearchBtn&clickId=2626f50921`)
+    else if(activeName.value==='third'&&start3.value&&end3.value&&date3.value){
+    const start=new Date(date3.value)
+    let year=start.getFullYear()
+    let month=start.getMonth()+1
+    let date=start.getDate()
+    let startTime=`${year}-${month}-${date}`
+    window.open(`https://www.klook.cn/zh-CN/rails-32/1012-japan/search/?date_range_count=90&origin_position_name=${start3.value}&origin_position=99be1154-e69d-44cf-8fc4-8affe6e446a6&destination_position_name=${end3.value}&destination_position=8b4e5d2e-21ff-4488-b734-d55676a2ec1e&departure_date=${startTime}&passengers=%5B%5D&spm=Mobility_Aggregate.SearchBtn&clickId=2626f50921`)
     }
     else{
            ElMessage({
@@ -81,6 +114,44 @@ const searchTrainTicket=()=>{
     type: 'warning',
   })
     }
+}
+interface input{
+start:string,
+end:string
+}
+const pos3=(pos:input)=>{
+if(activeName.value==='first'){
+start1.value=pos.start
+end1.value=pos.end
+}
+if(activeName.value==='second'){
+    console.log(222);
+    
+start2.value=pos.start
+end2.value=pos.end
+}
+if(activeName.value==='third'){
+start3.value=pos.start
+end3.value=pos.end
+}
+}
+const Time3=(Time:string)=>{
+    if(activeName.value==='first'){
+        date1.value=Time
+    }
+       if(activeName.value==='second'){
+        date2.value=Time
+    }
+    if(activeName.value==='third'){
+        date3.value=Time
+    }
+}
+const getPersonNum=(Num:string[])=>{
+num.value=Num[0]
+num1.value=Num[1]
+num2.value=Num[2]
+console.log(num1.value,num2.value,num.value);
+
 }
 const scene=()=>{
     window.open('https://travelsearch.fliggy.com/index.htm?spm=181.11358650.beautiful.d0.32cb223e0te9xc&searchType=product&keyword=哈尔滨冰雪大世界')
@@ -103,11 +174,12 @@ clearInterval(timer.value)
     min-width: 700px;
     width: 60%;
     position: relative;
-    overflow: visible;
+    overflow:visible;
     border-radius: 18px;
     .demo-tabs{
         justify-self: center;
-        width: 90%;
+        width: 100%;
+        overflow: visible !important;
     }
 }
 .poetry{
@@ -177,4 +249,8 @@ clearInterval(timer.value)
    box-shadow: none !important;
   background-color: inherit !important;
 }
+:deep(.el-tabs__content) {
+overflow: visible;
+}
+
 </style>
