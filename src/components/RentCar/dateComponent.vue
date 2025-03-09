@@ -39,7 +39,9 @@ const change=()=>{
     num.value=diffDays+'天'
     week1.value=getWeek(timeDate.value[0])
     week2.value=getWeek(timeDate.value[1])
+    $emit('getTime',[timeDate.value[0],timeDate.value[1]])
 }
+const $emit=defineEmits(['getTime'])
 
 </script>
 

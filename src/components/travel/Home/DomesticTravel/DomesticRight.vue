@@ -6,14 +6,14 @@
                 <img :src="jingxuanBig.img" alt="">
             </div>
            
-            <p class="bigInclude">{{jingxuanBig.include}}<p class="diamond_3"></p></p>
+            <p class="bigInclude">{{jingxuanBig.include}}<span class="diamond_3"></span></p>
             <p class="bigPrice">{{jingxuanBig.price}}</p>
         </div>
         <div class="small" v-for="(item,index) in jingxuanSmall" :key="index">
             <div style="width: 200px;height:120px;overflow:hidden">
                 <img :src="item.img" alt="">
             </div>    
-            <p class="smallInclude">{{item.include}}<p class="diamond_3"></p></p>
+            <p class="smallInclude">{{item.include}}<span class="diamond_3"></span></p>
             <p class="smallPrice">{{item.price}}</p>
         </div>
     </el-tab-pane>

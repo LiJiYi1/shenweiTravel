@@ -3,11 +3,11 @@
         <div style="display: flex;">
         <el-card class="search">
         <!-- 城市选择 -->
-        <TopComponent @click="stop"></TopComponent>
+        <TopComponent @getCity="City" @click="stop"></TopComponent>
         <!-- 日期选择 -->
-        <BottomComponent style="margin-top:20px;"></BottomComponent>
+        <BottomComponent @getTime="Times" style="margin-top:20px;"></BottomComponent>
         <!-- 搜索按钮 -->
-        <el-button :color="color" style="width: 200px;height:60px;margin-left:225px;border-radius:20px;margin-top:20px">汽车票查询</el-button>
+        <el-button @click="searchBusTicket" :color="color" style="width: 200px;height:60px;margin-left:225px;border-radius:20px;margin-top:20px">汽车票查询</el-button>
       </el-card>
       <el-card class="poetry" @click="scene"  body-style=" width: 220px;height:220px;">
         <div class="right">
@@ -40,15 +40,43 @@ import TicketRecommon from '@/components/ticketRecommon.vue';
 import { useColorStore } from '@/store/modules/color';
 import { storeToRefs } from 'pinia';
 import TopComponent from '@/components/bus/topComponent.vue';
-
+import { ElMessage } from 'element-plus';
 let {color}=storeToRefs(useColorStore())
 //当前时间
 let time=ref(moment().format("YYYY.MM"))
 let time1=ref(moment().format("DD"))
 let timer=ref()
-
+//起始地点目的地与出发时间
+let start=ref('北京')
+let end=ref('')
+let Time=ref(moment().format("YYYY-MM-DD"))
+const City=(pos:string[])=>{
+start.value=pos[0]
+end.value=pos[1]
+}
+const Times=(time:string)=>{
+   Time.value=time
+}
 const scene=()=>{
     window.open('https://travelsearch.fliggy.com/index.htm?spm=181.11358650.beautiful.d0.32cb223e0te9xc&searchType=product&keyword=长白山天池')
+}
+
+const searchBusTicket=()=>{
+    if(start.value&&end.value&&Time.value){  
+    const starts=new Date(Time.value)
+    let year=starts.getFullYear()
+    let month=starts.getMonth()+1
+    let date=starts.getDate()
+    let startTime=`${year}-${month}-${date}`
+
+    window.open(`https://bus.ly.com/#/list?startname=${start.value}&arrivename=${end.value}&startdatetime=${startTime}&startStation=&arriveStation=&desCId=1398`)
+   }
+else{
+     ElMessage({
+    message: '缺少必填表单数据!',
+    type: 'warning',
+  })
+}
 }
 //取消事件委托防止点输入框时他也消失
 const stop=(e:any)=>{

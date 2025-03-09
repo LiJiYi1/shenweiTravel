@@ -34,8 +34,9 @@ const changeDate=()=>{
     const dayOfWeek=['周日','周一','周二','周三','周四','周五','周六']
     const dayl=dayOfWeek[dayNum]
     Day.value=dayl
+    $emit('getTime',date1.value)
 }
-
+const $emit=defineEmits(['getTime'])
 onMounted(()=>{
     const date=new Date(moment().format("YYYY.MM.DD"));
     const dayNum=date.getDay()

@@ -6,7 +6,7 @@
     </div>
     <!-- 城市选择 -->
     <div class="city">
-        <el-input v-model="city1"  style="width: 300px;height:40px;font-size:25px;" placeholder="出发城市" @focus="posSearch=true;posSearch1=false;"/>
+        <el-input v-model="city1" @input="City"  style="width: 300px;height:40px;font-size:25px;" placeholder="出发城市" @focus="posSearch=true;posSearch1=false;"/>
            <!-- 搜索提示 -->
         <div class="posSearch" v-show="posSearch">
         <div style="background: gray;padding:10px">热门港口（支持汉字/拼音/英文字母）</div>
@@ -233,7 +233,7 @@
                </el-tab-pane>
             </el-tabs>
         </div>
-         <div class="posSearch1" v-show="posSearch1">
+         <div class="posSearch1"  v-show="posSearch1">
         <div style="background: gray;padding:10px">热门港口（支持汉字/拼音/英文字母）</div>
             <el-tabs type="border-card">
                <el-tab-pane label="热门港口" class="hot">
@@ -459,7 +459,7 @@
             </el-tabs>
         </div>
         <el-icon style="font-size: 40px;" @click="change"><Switch /></el-icon>
-        <el-input v-model="city2" style="width: 300px; height:40px;font-size:25px;direction:rtl" placeholder="到达城市" @focus="posSearch1=true;posSearch=false;"/>
+        <el-input v-model="city2" @input="City" style="width: 300px; height:40px;font-size:25px;direction:rtl" placeholder="到达城市" @focus="posSearch1=true;posSearch=false;"/>
           <!-- 搜索提示 -->
        
     <div  v-show="posSearch" style="
@@ -483,9 +483,13 @@ import { onMounted, ref } from 'vue';
 import { useColorStore } from '@/store/modules/color';
 import { storeToRefs } from 'pinia';
 let {color}=storeToRefs(useColorStore())
+const $emit=defineEmits(['getCity'])
 //出发城市和返回城市
 let city1=ref('威海')
 let city2=ref('')
+const City=()=>{
+$emit('getCity',[city1.value,city2.value])
+}
 //搜索提示1搜索提示2
 let posSearch=ref()
 let posSearch1=ref()
@@ -494,11 +498,13 @@ let posSearch1=ref()
 function changeNames(name:string){
 city1.value=name
 posSearch.value=false;
+$emit('getCity',[city1.value,city2.value])
 }
 //点击搜索提示改名
 function changeNames1(name:string){
 city2.value=name
 posSearch1.value=false;
+$emit('getCity',[city1.value,city2.value])
 }
 //出发城市和返回城市互换
 const change=()=>{

@@ -37,6 +37,7 @@
 import { onMounted, ref } from 'vue';
 import { useColorStore } from '@/store/modules/color';
 import { storeToRefs } from 'pinia';
+const $emit=defineEmits(['getTime'])
 
 let {color}=storeToRefs(useColorStore())
 import moment from 'moment';
@@ -54,6 +55,7 @@ const changeDate=()=>{
     const dayOfWeek=['周日','周一','周二','周三','周四','周五','周六']
     const dayl=dayOfWeek[dayNum]
     Day.value=dayl
+    $emit('getTime',date1.value)
 }
 const changeDate1=()=>{
     const date=new Date(date2.value);
