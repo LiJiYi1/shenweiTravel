@@ -34,6 +34,8 @@ const groupTravel=()=>import('@/views/travel/GroupTravel/GroupTravel.vue')
 const PrivateTravel=()=>import('@/views/travel/PrivateTravel/PrivateTravel.vue')
 const FreeTravel=()=>import('@/views/travel/FreeTravel/FreeTravel.vue')
 const CustomizedTravel=()=>import('@/views/travel/customizedTravel/customizedTravel.vue')
+//旅行订票搜索页面
+const TravelSearch=()=>import('@/views/TravelSearch/TravelSearch.vue')
 //全球购
 const Global = () => import('@/views/global Shopping/globalShopping.vue')
 const exchange=()=>import('@/views/global Shopping/exchangeMoney/exchangeMoney.vue')
@@ -258,6 +260,7 @@ const route=[
         path: '/travel',
         name: "travel",
         component: travel,
+        redirect:"/travel/travelHome",
         meta: {
             Entitle: 'Travel',
             title: '旅游',
@@ -368,6 +371,15 @@ const route=[
         path: '/:pathMatch(.*)*',
         redirect: '/404',
         name: 'any'//其他路由
+    },
+    {
+        path: '/travelSearch/:include/:price/:img/:head',
+        name:"travelSearch",
+        component:TravelSearch,
+        meta: {
+            icon: 'Notebook',
+            title: '查询结果',
+        }
     }
 ]
 export {route}

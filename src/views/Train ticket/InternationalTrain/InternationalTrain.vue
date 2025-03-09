@@ -252,5 +252,13 @@ clearInterval(timer.value)
 :deep(.el-tabs__content) {
 overflow: visible;
 }
-
+:deep(.el-tabs__item.is-active) {
+  color:#ffe033; /* 修改激活标签文字颜色 */
+}
+:deep(.el-tabs__item:hover) {
+  color: #ffe033; /* 悬停颜色 */
+}
+:deep(.el-tabs__active-bar) {
+  background-color: #ffe033; /* 修改激活标签下划线颜色 */
+}
 </style>

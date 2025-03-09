@@ -1,8 +1,8 @@
 <template>
-        <div  class="container" :style="{backgroundColor:color,borderRadius:'6px',padding:'10px',paddingTop:'0',paddingBottom:'0'}">
-            <el-input @click="stop"  @input="start" @focus="Show" v-model="from" style="width: 280px;height:60px;font-size:25px;" placeholder="起始城市" />
+        <div @click="stop"   class="container" :style="{backgroundColor:color,borderRadius:'6px',padding:'10px',paddingTop:'0',paddingBottom:'0'}">
+            <el-input  @input="start" @focus="Show" v-model="from" style="width: 280px;height:60px;font-size:25px;" placeholder="起始城市" />
             <el-icon style="font-size: 40px;margin-top:10px" @click="change"><Switch /></el-icon>
-            <el-input @click="stop"  @input="end"  @focus="Show1"  v-model="to" style="width: 300px;height:60px;font-size:25px" placeholder="目的地" />
+            <el-input   @input="end"  @focus="Show1"  v-model="to" style="width: 300px;height:60px;font-size:25px" placeholder="目的地" />
             <!-- 搜索提示 -->
             <!-- 欧洲 -->
             <el-card class="posSearch"  v-show="isShow1">

@@ -9,7 +9,7 @@
             
                 </div>
                 <div style="margin-top: 10px;">
-                    <span v-for="(item,index) in data" :key="index">{{item}}</span>
+                    <span v-for="(item,index) in data" :key="index" @click="searchPos(item)">{{item}}</span>
                 </div>
             </div>
             <div class="Domestic">
@@ -18,7 +18,7 @@
                 <p>旅游主题</p>
                 </div>
                 <div style="margin-top: 10px;">
-                    <span style="width: 80px;" v-for="(item,index) in data1" :key="index">{{item}}</span>
+                    <span style="width: 80px;" v-for="(item,index) in data1" :key="index" @click="searchPos(item)">{{item}}</span>
                 </div>
             </div>
             <div class="overseas">
@@ -27,7 +27,7 @@
                 <p>热门景点</p>
                    </div>
                    <div style="margin-top: 10px;">
-                    <span style="width: 120px;"  v-for="(item,index) in data2" :key="index">{{item}}</span>
+                    <span style="width: 120px;"  v-for="(item,index) in data2" :key="index" @click="searchPos(item)">{{item}}</span>
                     </div>
             </div>
           </el-card>
@@ -71,6 +71,9 @@ const show=()=>{
 }
 const noShow=()=>{
     isShow.value=false
+}
+const searchPos=(city:string)=>{
+    window.open(`https://travelsearch.fliggy.com/index.htm?spm=181.61408.a1z7d.4.11dc5e9ew3Lfq9&searchType=product&keyword=${city}&category=SCENIC`)
 }
 </script>
 

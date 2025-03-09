@@ -3,7 +3,7 @@
   <el-tabs v-model="activeName" class="demo-tabs">
     <el-tab-pane label="浙江" name="first">
       <div>
-        <div v-for="(item,index) in zhejiang" :key="index" style="float: left;margin-right:20px;margin-top:10px">
+        <div @click="searchTicket(item.name)" v-for="(item,index) in zhejiang" :key="index" style="float: left;margin-right:20px;margin-top:10px">
             <img :src="item.img" style="width: 186px;height:122px;border-radius:20px">
             <p class="name">{{item.name}}</p>
             <p class="price">{{item.price}}</p>
@@ -12,7 +12,7 @@
     </el-tab-pane>
     <el-tab-pane label="江苏" name="second">
        <div>
-        <div v-for="(item,index) in jiangsu" :key="index" style="float: left;margin-right:20px;margin-top:10px">
+        <div @click="searchTicket(item.name)" v-for="(item,index) in jiangsu" :key="index" style="float: left;margin-right:20px;margin-top:10px">
             <img :src="item.img" style="width: 186px;height:122px;border-radius:20px">
             <p class="name">{{item.name}}</p>
             <p class="price">{{item.price}}</p>
@@ -21,7 +21,7 @@
     </el-tab-pane>
     <el-tab-pane label="广东" name="third">
        <div>
-        <div v-for="(item,index) in guangdong" :key="index" style="float: left;margin-right:20px;margin-top:10px">
+        <div @click="searchTicket(item.name)" v-for="(item,index) in guangdong" :key="index" style="float: left;margin-right:20px;margin-top:10px">
             <img :src="item.img" style="width: 186px;height:122px;border-radius:20px">
             <p class="name">{{item.name}}</p>
             <p class="price">{{item.price}}</p>
@@ -30,7 +30,7 @@
     </el-tab-pane>
     <el-tab-pane label="海南" name="fourth">
        <div>
-        <div v-for="(item,index) in hainan" :key="index" style="float: left;margin-right:20px;margin-top:10px">
+        <div @click="searchTicket(item.name)" v-for="(item,index) in hainan" :key="index" style="float: left;margin-right:20px;margin-top:10px">
             <img :src="item.img" style="width: 186px;height:122px;border-radius:20px">
             <p class="name">{{item.name}}</p>
             <p class="price">{{item.price}}</p>
@@ -39,7 +39,7 @@
     </el-tab-pane>
     <el-tab-pane label="北京" name="fifth">
        <div>
-        <div v-for="(item,index) in beijing" :key="index" style="float: left;margin-right:20px;margin-top:10px">
+        <div @click="searchTicket(item.name)" v-for="(item,index) in beijing" :key="index" style="float: left;margin-right:20px;margin-top:10px">
             <img :src="item.img" style="width: 186px;height:122px;border-radius:20px">
             <p class="name">{{item.name}}</p>
             <p class="price">{{item.price}}</p>
@@ -48,7 +48,7 @@
     </el-tab-pane>
     <el-tab-pane label="上海" name="sixth">
        <div>
-        <div v-for="(item,index) in shangahi" :key="index" style="float: left;margin-right:20px;margin-top:10px">
+        <div @click="searchTicket(item.name)" v-for="(item,index) in shangahi" :key="index" style="float: left;margin-right:20px;margin-top:10px">
             <img :src="item.img" style="width: 186px;height:122px;border-radius:20px">
             <p class="name">{{item.name}}</p>
             <p class="price">{{item.price}}</p>
@@ -129,17 +129,20 @@ let beijing=ref([
 ])
 //上海数据
 let shangahi=ref([
-{img:new URL("@/assets/ticket/Domestic/shanghai/image1.png",import.meta.url).href,name:'北京环球度假区',price:"¥458"},
-{img:new URL("@/assets/ticket/Domestic/shanghai/image2.png",import.meta.url).href,name:'恭王府',price:"¥164"},
-{img:new URL("@/assets/ticket/Domestic/shanghai/image3.png",import.meta.url).href,name:'颐和园',price:"¥323"},
-{img:new URL("@/assets/ticket/Domestic/shanghai/image4.png",import.meta.url).href,name:'八达岭长城',price:"¥195"},
-{img:new URL("@/assets/ticket/Domestic/shanghai/image5.png",import.meta.url).href,name:'天坛公园',price:"¥99"},
-{img:new URL("@/assets/ticket/Domestic/shanghai/image6.png",import.meta.url).href,name:'中国国家博物馆',price:"¥29"},
-{img:new URL("@/assets/ticket/Domestic/shanghai/image7.png",import.meta.url).href,name:'中国科学技术馆',price:"¥39"},
-{img:new URL("@/assets/ticket/Domestic/shanghai/image8.png",import.meta.url).href,name:'北京野生动物园',price:"¥79"},
+{img:new URL("@/assets/ticket/Domestic/shanghai/image1.png",import.meta.url).href,name:'上海迪士尼度假区',price:"¥461"},
+{img:new URL("@/assets/ticket/Domestic/shanghai/image2.png",import.meta.url).href,name:'上海野生动物园',price:"¥164"},
+{img:new URL("@/assets/ticket/Domestic/shanghai/image3.png",import.meta.url).href,name:'上海海昌海洋公园',price:"¥323"},
+{img:new URL("@/assets/ticket/Domestic/shanghai/image4.png",import.meta.url).href,name:'东方明珠广播电视塔',price:"¥195"},
+{img:new URL("@/assets/ticket/Domestic/shanghai/image5.png",import.meta.url).href,name:'豫园',price:"¥99"},
+{img:new URL("@/assets/ticket/Domestic/shanghai/image6.png",import.meta.url).href,name:'黄浦江游览',price:"¥29"},
+{img:new URL("@/assets/ticket/Domestic/shanghai/image7.png",import.meta.url).href,name:'上海动物园',price:"¥39"},
+{img:new URL("@/assets/ticket/Domestic/shanghai/image8.png",import.meta.url).href,name:'金茂大厦88层观光厅',price:"¥79"},
 
 
 ])
+const searchTicket=(name:string)=>{
+window.open(`https://travelsearch.fliggy.com/index.htm?searchType=product&keyword=${name}&category=SCENIC&pagenum=1`)
+}
 </script>
 
 <style lang="less" scoped>
@@ -161,5 +164,14 @@ let shangahi=ref([
       margin-top: 5px;
     color:rgb(224, 97, 33);
     }
+}
+:deep(.el-tabs__item.is-active) {
+  color:#ffe033; /* 修改激活标签文字颜色 */
+}
+:deep(.el-tabs__item:hover) {
+  color: #ffe033; /* 悬停颜色 */
+}
+:deep(.el-tabs__active-bar) {
+  background-color: #ffe033; /* 修改激活标签下划线颜色 */
 }
 </style>

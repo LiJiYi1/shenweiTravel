@@ -7,7 +7,7 @@
             
                 </div>
                 <div style="margin-top: 10px;">
-                    <span v-for="(item,index) in data" :key="index">{{item}}</span>
+                    <span @click="searchPos(item)" v-for="(item,index) in data" :key="index">{{item}}</span>
                 </div>
             </div>
             <div class="Domestic">
@@ -16,9 +16,9 @@
                 <h2>境内游</h2>
                 </div>
                 <div style="margin-top: 10px;">
-                     <div v-for="(item,index) in data1" :key="index" style="width:100%;display: flex;justify-content:space-between;margin-top:10px">
+                     <div  v-for="(item,index) in data1" :key="index" style="width:100%;display: flex;justify-content:space-between;margin-top:10px">
                         <div style="width: 80px;margin-top:6px;color:#ffe033">{{item.province}}</div>
-                        <div style="width: 99%;"><span style="display: inline-block;width:64px;line-height:30px" v-for="(item1,index) in item.pos" :key="index">{{item1}}</span></div>
+                        <div style="width: 99%;"><span @click="searchPos(item1)" style="display: inline-block;width:64px;line-height:30px" v-for="(item1,index) in item.pos" :key="index">{{item1}}</span></div>
                      </div>
                 </div>
             </div>
@@ -28,9 +28,9 @@
                 <h2>出境游</h2>
                    </div>
                     <div style="margin-top: 10px;">
-                     <div v-for="(item,index) in data2" :key="index" style="width:100%;display: flex;justify-content:space-between;margin-top:10px">
+                     <div   v-for="(item,index) in data2" :key="index" style="width:100%;display: flex;justify-content:space-between;margin-top:10px">
                         <div style="width: 80px;margin-top:6px;color:#ffe033">{{item.province}}</div>
-                        <div style="width: 99%;"><span style="display: inline-block;width:64px;line-height:30px" v-for="(item1,index) in item.pos" :key="index">{{item1}}</span></div>
+                        <div style="width: 99%;"><span @click="searchPos(item1)" style="display: inline-block;width:64px;line-height:30px" v-for="(item1,index) in item.pos" :key="index">{{item1}}</span></div>
                      </div>
                 </div>
             </div>
@@ -77,6 +77,9 @@ let data2=ref(
 
     ]
 )
+const searchPos=(name:string)=>{
+    window.open(`https://travelsearch.fliggy.com/index.htm?searchType=product&keyword=${name}&category=MULTI_SEARCH&pagenum=1`)
+}
 </script>
 
 <style lang="less" scoped>

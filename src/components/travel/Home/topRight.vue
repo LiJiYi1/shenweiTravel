@@ -1,9 +1,9 @@
 <template>
         <div style="display: flex;height:298px">
-      <el-card style="width: 220px;border-radius:16px;height:300px" body-style="padding:0px">
+      <el-card style="width: 220px;border-radius:16px;height:300px" body-style="padding:0px" @click="around">
         <img style="width: 220px;height:300px"  src="@/assets/ticket/recommon.png" alt="">
       </el-card>
-      <el-card class="poetry"  body-style="padding:0px; width:220px;height:250px;">
+      <el-card class="poetry" @click="scene"  body-style="padding:0px; width:220px;height:250px;">
         <div class="right">
         <div class="r-t"> 
             <h1 style="font-size:80px">{{time1}}</h1>
@@ -35,6 +35,12 @@ timer.value=setInterval(()=>{
     time1.value=moment().format("DD")
 },1000)
 })
+const scene=()=>{
+    window.open(`https://travelsearch.fliggy.com/index.htm?searchType=product&keyword=日月双塔&category=MULTI_SEARCH&pagenum=1`)
+}
+const around=()=>{
+    window.open(`https://page.fliggy.com/wow/z/pcraft/act/wupr?spm=181.61408.a1z7d.152.4f475e9eftPAmh&wh_biz=tm&wh_pid=act%2Flvxingfangzong`)
+}
 onBeforeUnmount(()=>{
 clearInterval(timer.value)
 })

@@ -1,7 +1,7 @@
 <template>
     <el-tabs v-model="activeName" class="demo-tabs">
     <el-tab-pane label="精选" name="first">
-        <div class="big">
+        <div class="big" @click="Search(jingxuanBig.include,jingxuanBig.price,jingxuanBig.img,jingxuanBig.head)">
             <div style="width: 438px;height:320px;overflow:hidden;"> 
                 <img :src="jingxuanBig.img" alt="">
             </div>
@@ -122,10 +122,11 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 const activeName = ref('first')
 //精选数据
 let jingxuanBig=ref(
-{img:new URL("@/assets/travel/Domestic/better/image1.png",import.meta.url).href,include:'威海+刘公岛景区+荣成+那香海钻石沙滩浴场+搁浅货轮布鲁维斯号+火炬八街3日2晚拼小团',price:"¥744起"},
+{img:new URL("@/assets/travel/Domestic/better/image1.png",import.meta.url).href,include:'威海+刘公岛景区+荣成+那香海钻石沙滩浴场+搁浅货轮布鲁维斯号+火炬八街3日2晚拼小团',price:"¥744起",head:"精选旅行"},
 )
 let jingxuanSmall=ref([
 {img:new URL("@/assets/travel/Domestic/better/image2.png",import.meta.url).href,include:'上海+苏州+杭州+乌镇5日4晚跟团游',price:"¥1211起"},
@@ -221,6 +222,17 @@ let chengduSmall=ref([
 {img:new URL("@/assets/travel/Domestic/chengdu/image8.png",import.meta.url).href,include:'成都+青城山+都江堰景区+成都大熊猫繁育研究基地+三星堆博物馆+杜甫草堂5日4晚跟团游·错峰爆品【赠成都火锅+非遗变脸+夜游锦里 】2+1保姆车&赏’花花‘熊猫+古蜀‘三星堆’父母安心游 24h接送机/站',price:"¥2379起"},
 {img:new URL("@/assets/travel/Domestic/chengdu/image9.png",import.meta.url).href,include:'成都+九寨沟+黄龙风景名胜区5日4晚跟团游·国旅官方直营纯玩',price:"¥1703起"},
 ])
+const $router=useRouter()
+const Search=(include:string,price:string,img:any,head:any)=>{
+$router.push({name:'travelSearch',
+    params:{
+        include,
+        price,
+        img,
+        head
+    }
+})
+}
 </script>
 
 <style lang="less" scoped>

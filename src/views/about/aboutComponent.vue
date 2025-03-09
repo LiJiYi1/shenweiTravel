@@ -3,7 +3,7 @@
     <div  ref="containerRef" style="height:100vh;overflow-y: auto;">
        <div class="top" id="神威旅行简介">
              <div style="display:flex" flex="1" >
-            <img src="@/assets/home/logo.webp" alt="" style="width: 60px;" >
+            <img src="@/assets/home/logo.png" alt="" style="width: 60px;" >
             <h1 style="font-size: 30px;margin-top:15px;color:burlywood">神威旅行</h1>
              </div>
               

@@ -2,7 +2,7 @@
     <div>
          <h5>热卖排行榜</h5>
          <ul>
-            <li v-for="(item,index) in data" :key="index" style="display: flex;justify-content:space-between;">
+            <li @click="searchTicket(item.name)" v-for="(item,index) in data" :key="index" style="display: flex;justify-content:space-between;">
                 <span class="Id" :class="{third:item.id===('1')||item.id==='2'||item.id==='3'?true:false}">{{item.id}}</span>                  
                 <div style="display: flex;justify-content:space-between">
                     <p class="name">{{item.name}}</p>
@@ -30,6 +30,9 @@ let data=ref([
     {id:'8',name:"黄山风景区",money:"¥65"},
 
     ])
+const searchTicket=(name:string)=>{
+window.open(`https://travelsearch.fliggy.com/index.htm?searchType=product&keyword=${name}&category=SCENIC&pagenum=1`)
+}
 </script>
 
 <style lang="less" scoped>

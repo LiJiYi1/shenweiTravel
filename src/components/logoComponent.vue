@@ -1,7 +1,7 @@
 <template>
     <div>
-        <img src="@/assets/home/logo.webp" alt="">
-        <h3>{{language.name}}</h3>
+        <img src="@/assets/home/logo.png" alt="">
+        <h1>{{language.name}}</h1>
     </div>
 </template>
 
@@ -32,12 +32,13 @@ align-items: start;
   img{   
         width: 40px;
         height:40px;
-        margin-left: 10px;
+        margin-left: 18px;
+        margin-top:2px
     }
-  h3{
-    margin-top: 10px;
+  h1{
+    margin-top: 5px;
     margin-right: 20px;
-    margin-left:20px;
+    margin-left:30px;
 
   }
 }

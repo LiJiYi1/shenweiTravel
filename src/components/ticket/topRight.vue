@@ -1,15 +1,15 @@
 <template>
         <div style="display: flex;height:298px">
             <div>
-                 <el-card style="width: 220px;border-radius:16px;height:200px" body-style="padding:0px">
+                 <el-card style="width: 220px;border-radius:16px;height:200px" body-style="padding:0px" @click="around">
         <img style="width: 220px;height:200px"  src="@/assets/ticket/recommon.png" alt="">
                  </el-card>
-                 <el-card style="width: 220px;border-radius:16px;height:190px;margin-top:8px" body-style="padding:0px">
+                 <el-card style="width: 220px;border-radius:16px;height:190px;margin-top:8px" body-style="padding:0px" @click="hot">
         <img style="width: 220px;height:190px"  src="@/assets/ticket/newChoose.png" alt="">
                  </el-card>
             </div>
      
-      <el-card class="poetry"  body-style="padding:0px; width:220px;">
+      <el-card class="poetry" @click="scene" body-style="padding:0px; width:220px;">
         <div class="right">
         <div class="r-t"> 
             <h1 style="font-size:80px">{{time1}}</h1>
@@ -34,6 +34,15 @@ import { onMounted,onBeforeUnmount,ref } from 'vue';
 let time=ref(moment().format("YYYY.MM"))
 let time1=ref(moment().format("DD"))
 let timer=ref()
+const around=()=>{
+    window.open('https://page.fliggy.com/wow/z/pcraft/act/wupr?spm=181.61408.a1z7d.152.58625e9ejSTFj7&wh_biz=tm&wh_pid=act%2Flvxingfangzong')
+}
+const hot=()=>{
+    window.open('https://page.fliggy.com/wow/z/pcraft/act/wanghongxinxuanpc?spm=181.61408.a1z7d.153.2c685e9eRBfF5k&wh_biz=tm&wh_weex=true')
+}
+const scene=()=>{
+    window.open('https://travelsearch.fliggy.com/index.htm?spm=181.11358650.beautiful.d0.32cb223e0te9xc&searchType=product&keyword=拙政园')
+}
 onMounted(()=>{
 //加载时调用一下日期
 timer.value=setInterval(()=>{

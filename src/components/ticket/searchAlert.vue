@@ -4,7 +4,7 @@
        <div v-for="(item,index) in data" :key="index" style="width: 280px;padding:20px;border-bottom:0.5px solid gray">
         <h3>{{item.title}}</h3>
         <ul style="margin-top:15px">
-            <li style="display:inline-block;font-size:14px;line-height:25px;padding-right:20px;" v-for="(item1,index) in item.cities" :key="index">{{item1}}&nbsp;|</li>
+            <li v-for="(item1,index) in item.cities" :key="index" @click="searchPos(item1)"><p>{{item1}}</p></li>
         </ul>
        </div>
     </el-card>
@@ -12,7 +12,7 @@
        <div v-for="(item,index) in data1" :key="index" style="width: 280px;padding:20px;border-bottom:0.5px solid gray">
         <h3>{{item.title}}</h3>
         <ul style="margin-top:15px">
-            <li style="display:inline-block;font-size:14px;line-height:25px;padding-right:9px" v-for="(item1,index) in item.cities" :key="index">{{item1}}&nbsp;|</li>
+            <li v-for="(item1,index) in item.cities" :key="index" @click="searchPos(item1)"><p>{{item1}}</p></li>
         </ul>
        </div>
     </el-card>
@@ -37,6 +37,9 @@ import { ref } from 'vue';
  
 
   ])
+  const searchPos=(city:string)=>{
+    window.open(`https://travelsearch.fliggy.com/index.htm?spm=181.61408.a1z7d.33.11dc5e9er4HyiA&searchType=product&keyword=${city}&category=SCENIC`)
+  }
 </script>
 
 <style lang="less" scoped>
@@ -47,5 +50,22 @@ border-radius:0px;
 }
 .search1{
   border-radius:0px
+}
+ul li{
+  display: inline-block;
+ 
+  height: 20px;
+  padding-right: 20px;
+  margin-bottom: 10px;
+  p{  
+  width: 36px;
+ 
+  font-size: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;}
+}
+ul :last-child{
+  border-right: none;
 }
 </style>
