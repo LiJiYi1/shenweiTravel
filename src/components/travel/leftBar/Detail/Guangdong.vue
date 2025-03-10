@@ -2,7 +2,7 @@
     <el-card class="container">
              <h3>广东</h3>
              <div class="hot">
-                <div class="box" v-for="(item,index) in data" :key="index">
+                <div class="box" v-for="(item,index) in data" :key="index" @click="search(item.name)">
                     <p>{{item.name}}</p>
                     <img :src="item.img" alt="">
                     <div class="cover"></div>
@@ -11,7 +11,7 @@
              <h3>广西</h3>
              <div class="out">
                 <ul>
-                    <li v-for="(item,index) in city" :key="index">{{item}}</li>
+                    <li v-for="(item,index) in city" :key="index" @click="search(item)">{{item}}</li>
                 </ul>
              </div>
         
@@ -41,6 +41,9 @@
     {img:new URL("@/assets/travel/Detail/Guangdong/image18.jpg",import.meta.url).href,name:"肇庆"},
  ])
  let city=ref(['桂林','阳朔','涠洲岛','南宁','北海','崇左','柳州','龙脊梯田','巴马','黄姚古镇','防城港','三江','梧州','钦州','宁明','南丹','贺州','凭祥'])
+const search=(pos:string)=>{
+    window.open(`https://travelsearch.fliggy.com/index.htm?searchType=product&keyword=${pos}&category=MULTI_SEARCH&pagenum=1`)
+}
 </script>
 
 <style lang="less" scoped>

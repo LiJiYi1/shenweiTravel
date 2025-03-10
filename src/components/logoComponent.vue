@@ -1,7 +1,7 @@
 <template>
     <div>
         <img src="@/assets/home/logo.png" alt="">
-        <h1>{{language.name}}</h1>
+        <p>{{language.name}}</p>
     </div>
 </template>
 
@@ -27,7 +27,7 @@ width:@left_bar_width;
 height:@left_logo_height;
 
 display: flex;
-justify-content: space-around;
+justify-content: space-between;
 align-items: start;
   img{   
         width: 40px;
@@ -35,11 +35,18 @@ align-items: start;
         margin-left: 18px;
         margin-top:2px
     }
-  h1{
-    margin-top: 5px;
+  p{
+    width: 200px;
+    text-align: center;
+    margin-top: 2px;
+    font-size: 25px;
+    height: 45px;
+    line-height: 45px;
     margin-right: 20px;
-    margin-left:30px;
-
+    margin-left: 10px;
+    
+    font-family: ZCOOL KuaiLe,cursive;
+    color: #FFD800;
   }
 }
   

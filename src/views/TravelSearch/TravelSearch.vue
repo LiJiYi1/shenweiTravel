@@ -1,13 +1,13 @@
 <template>
-    <div>
-        <!-- 顶部 -->
+  <div>
+        <!-- 最顶导航栏-->
         <div class="top" id="神威旅行简介">
             <div style="display:flex" flex="1" >
             <img src="@/assets/home/logo.png" alt="" style="width: 60px;" >
             <h1 style="font-size: 30px;margin-top:10px">神威旅行</h1>
              </div>
               
-            <div flex="1" style="display:flex;margin-top:16px">
+            <div flex="1" style="display:flex;margin-top:16px;">
                 <el-popover
                 placement="top-start"
                 title="访问客服中心"
@@ -29,47 +29,50 @@
                     <p style="line-height:20px;font-size:20px">首页</p>
                 </div>
             </div>
-       </div>
-       <div class="title">
-        <p>
-            <span>神威旅行</span> <el-icon><ArrowRight /></el-icon><span>{{$route.params['head']}}</span><el-icon><ArrowRight /></el-icon>
-            {{$route.params["include"]}}
-        </p>
-        <div style="display: flex;">
-            <h5>编号：47002065</h5>
-            <h5>出发地:威海</h5>
         </div>
-       </div>
-       <!-- 内容区 -->
-       <div class="center">
-       
-     <div class="cl">
-                   <h2>{{$route.params['head']}}</h2>
-                   <p>{{$route.params["include"]}}</p>
-                   <div class="box">
-                     <p>{{$route.params["price"]}}</p>/人
-                     
-                     <el-popover
-   
-    title="起价说明"
-    :width="400"
-    trigger="hover"
-    content="
 
-1、本起价为近24小时内，查询出发日为2025-04-14 2位成人出行，选择威海希尔维亚酒店[豪华商务大床房-地暖]1间入住2晚、丽景海岸酒店(烟台火车站汽车总站店)[双窗舒适大床房(干湿分离）]1间入住2晚、经济5座专车的情况下预估的单人价格。因酒店和机票等资源价格会实时变化，故查询日期、出发时间不同，选择的线路、入住酒店/房型、航班及附加服务不同，以及用户可参与的促销活动不同，价格都有可能变化，预订价格以下单时实际支付的价格为准。本起价为神威网【2025/03/11】到【2025/05/05】出发班期的最低价。"
-  >
+        <!-- 顶部标题区-->
+        <div class="title">
+            <p style="min-width: 140px;font-size:12px;width:140px">
+            <span>神威旅行</span>
+            <el-icon><ArrowRight /></el-icon>
+            <span>{{$route.params['head']}}</span>
+            <el-icon><ArrowRight /></el-icon>
+            </p>
+            <p style="color:#999;display: inline-block;width:600px;min-width:700px;font-size:12px;overflow:hidden; text-overflow: ellipsis;white-space:nowrap"> 
+            {{$route.params['title']}}{{$route.params['about']}}
+            </p>             
+            <div style="display: flex;">
+              <h5 style="width: 120px;margin-left:280px">编号：47002065</h5>
+              <h5 style="width: 100px;">出发地:威海</h5>
+              </div>
+         </div>
+         <!-- 中间内容区 -->
+         <div class="center">
+       
+        <div class="cl">
+                   <p style="font-size: 30px;">{{$route.params["title"]}}</p>
+                   <p   style="color:#999;font-size:14px;margin-top:10px">{{$route.params["about"]}}</p>
+                   <div class="box">
+                   <p>{{$route.params["price"]}}</p>/人起
+                   <el-popover 
+                   title="起价说明"
+                   :width="400"
+      trigger="hover"
+      content="1、本起价为近24小时内，查询出发日为2025-04-14 2位成人出行，选择威海希尔维亚酒店[豪华商务大床房-地暖]1间入住2晚、丽景海岸酒店(烟台火车站汽车总站店)[双窗舒适大床房(干湿分离）]1间入住2晚、经济5座专车的情况下预估的单人价格。因酒店和机票等资源价格会实时变化，故查询日期、出发时间不同，选择的线路、入住酒店/房型、航班及附加服务不同，以及用户可参与的促销活动不同，价格都有可能变化，预订价格以下单时实际支付的价格为准。本起价为神威网【2025/03/11】到【2025/05/05】出发班期的最低价。"
+      >
     <template #reference>
       <span style="border-bottom:1px dashed;">起价说明</span>
     </template>
-                     </el-popover>
-                     <span style="font-size:20px;color:#0086f6;display:inline-block;border-bottom:1px solid #0086f6">4.9分</span>
-                     <span style="font-size:12px;color:#0086f6;display:inline-block;border-bottom:1px solid #0086f6">15条点评</span>
-                     <span style="font-size:12px;">39人出游</span>
-                     <div style="margin-top: 10px;">
+                   </el-popover>
+                   <span style="font-size:20px;color:#0086f6;display:inline-block;border-bottom:1px solid #0086f6">4.9分</span>
+                   <span style="font-size:12px;color:#0086f6;display:inline-block;border-bottom:1px solid #0086f6">15条点评</span>
+                   <span style="font-size:12px;">39人出游</span>
+                   <div style="margin-top: 10px;">
                             <span style="font-size: 12px;color:#999;margin-left:0px">优惠活动</span>
                             <span style="font-size: 12px;color:rgb(255 85 0/var(--tw-text-opacity,1));padding:2px;border:1px solid rgb(255 85 0/var(--tw-text-opacity,1))">限时促销</span>
                             <span style="font-size: 12px;">每单减¥30</span>
-                                <el-popover
+                   <el-popover
    
     title="限时促销"
     :width="250"
@@ -84,7 +87,7 @@
 对于以不正当方式参与优惠活动的用户，包括但不限于恶意套现、恶意下单、恶意注册、利用程序漏洞等，携程旅行网有权在不事先通知的情况下取消其参与优惠活动的资格"
   >
     <template #reference>
-<span style="font-size: 12px;padding:2px;display:inline-block;border-bottom:1px dashed">查看详情</span>
+               <span style="font-size: 12px;padding:2px;display:inline-block;border-bottom:1px dashed">查看详情</span>
     </template>
                      </el-popover>
                             
@@ -92,7 +95,7 @@
                    </div>
                    
                    <img :src="$route.params['img'] as any" alt="">
-                   <footer style="display: flex;">
+                   <footer style="display:flex;margin-top:10px">
                     <p style="font-size: 12px;color:#999;margin-right:40px;;padding:2px">产品特色</p>
                    <p style="font-size: 12px;border:1px solid #999;margin-left:30px;padding:2px">亲子甄选</p>
                    <p style="font-size: 12px;border:1px solid #999;margin-left:30px;padding:2px">包车游</p>
@@ -132,11 +135,11 @@
                    </footer>
                    
                
-        </div>
+      </div>
 
       
         <div class="cr">
-            <el-calendar v-model="date" @click="changeDate">
+            <el-calendar v-model="date">
                    <template #date-cell="{ data }">
                    <p :class="data.isSelected ? 'is-selected' : ''" style="margin-top:10px;text-align:center">
                    {{ data.day.split('-').slice(2,3).join('') }}
@@ -149,21 +152,30 @@
             
        </div>
   
-    </div>
+  </div>
+  <!-- 对话框 -->
   <el-dialog v-model="dialogTableVisible"  width="1170" style="padding: 0;height:645px;margin-top:30px;overflow:auto">
           <DialogBox></DialogBox>
   </el-dialog>
-  <footer style="width:1200px;height:100px;margin-top:22px;padding:140px;padding-top:20px">
-        <div style="padding:50px;width: 1240px;background-color:#fffcf6;border: #ffd2b8 1px solid;height:80px;display:flex;justify-content:space-between">
-             <div style="display: flex;color:black">
+  <!-- 底部购票 -->
+  <footer style="width:1200px;margin-top:22px;padding:20px;padding-top:20px;margin-left:118px" body-style="padding:0">
+        <div style="padding:50px;width: 1240px;border: #ffd2b8 1px solid;height:80px;display:flex;justify-content:space-between">
+             <div style="display: flex;">
                 <div>
                     <p>出发</p>
-         
+        <el-date-picker
+        v-model="date"
+        type="date"
+        placeholder="Pick a day"
+        size="large"
+        style="margin-top:20px;width:140px"
+        :clearable="false"
+      />
                     
                 </div>
-                  <div style="margin-left:40px" width="20px">
+                <div style="margin-left:40px" width="20px">
                     <p style="display:inline-block">成人</p><span style="font-size: 12px;display:inline-block;margin-left:10px;border-bottom:1px dashed">12周岁及以上</span><br>
-                                 <el-select  v-model="adult" placeholder="成人" size="large" style="width: 130px;margin-top:20px">
+                      <el-select popper-class="custom-popper"  v-model="adult" placeholder="成人" size="large" style="width: 130px;margin-top:20px">
                               <el-option
       v-for="(item,index) in 8"
         :key="index"
@@ -177,9 +189,9 @@
                                 />
                           </el-select>
                 </div>
-                  <div style="margin-left:40px">
+                <div style="margin-left:40px">
                     <p style="display:inline-block">儿童</p><span style="font-size: 12px;display:inline-block;margin-left:10px;border-bottom:1px dashed">2-12周岁(不含)</span><br>
-                           <el-select  v-model="child" placeholder="儿童" size="large" style="width: 130px;margin-top:20px">
+                           <el-select  v-model="child" popper-class="custom-popper" placeholder="儿童" size="large" style="width: 130px;margin-top:20px">
                              <el-option
                               key="0"
                               label="0"
@@ -200,7 +212,19 @@
                 </div>
 
              </div>
-             <div>1111</div>
+             <div>
+              <p style="display: inline-block;margin-right:70px">总价:
+                <span style="margin-left:10px;color:red">{{sum}}</span>
+              </p>
+              <div style="display: inline-block;">
+                <p style="margin-left:20px">
+                 <el-icon><Warning /></el-icon>
+                 <span style="display:inline-block;border-bottom:1px dotted #999;color:#999;margin-bottom:6px;padding-bottom:4px">预订限制</span>
+                </p>
+              <el-button style="width: 120px;height:40px" color="red">加入购物车</el-button>
+              </div>
+          
+             </div>
 
         </div>
   </footer>
@@ -216,15 +240,13 @@ const $router=useRouter()
 const $route=useRoute()
 const dialogTableVisible=ref(false)
 //日期
-let date=ref()
+let date=ref(new Date())
 //成人数量
 let adult=ref('1')
 //儿童数量
 let child=ref('0')
-const changeDate=()=>{
-    console.log(date.value);
-    
-}
+//总价
+let sum=ref('—   —')
 const back=()=>{
 $router.push('/travel/travelHome')
 }
@@ -233,16 +255,15 @@ dialogTableVisible.value=true
 }
 
 onMounted(()=>{
-console.log(date.value);
-
-    
 })
 </script>
 
 <style lang="less" scoped>
 .top{
-    width: 1218px;
+    width: 1328px;
     padding: 140px;
+    
+    padding-right: 0px;
     padding-top:0px;
     padding-bottom:35px;
     display: flex;
@@ -264,7 +285,7 @@ console.log(date.value);
     
 }
 .center{
-    margin-top: 20px;
+   margin-top: 40px;
     width: 1500px;
     display: flex;
     .cl{
@@ -272,14 +293,11 @@ console.log(date.value);
         width: 1000px;
         overflow: auto;
         height:620px;
-        p{
-        margin-top:12px
-        }
         .box{
             color: black;
             padding: 20px;
-            padding-top: 0;
-            margin-top: 12px;
+            margin-top: 10px;
+            padding-top: 20px;
             width: 670px;
             height: 58px;
             background-color: #fef9ee;
@@ -319,5 +337,10 @@ background-repeat: no-repeat;
 }
 .is-selected {
   color: #ff9900;
+}
+.custom-popper {
+  background-color:red;
+  height: 80px; /* 设置下拉选项的高度 */
+  line-height: 40px; /* 设置下拉选项的文字垂直居中 */
 }
 </style>

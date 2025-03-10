@@ -2,7 +2,7 @@
     <el-card class="container">
              <h3>东南亚</h3>
              <div class="hot">
-                <div class="box" v-for="(item,index) in data" :key="index">
+                <div class="box" v-for="(item,index) in data" :key="index" @click="search(item.name)">
                     <p>{{item.name}}</p>
                     <img :src="item.img" alt="">
                     <div class="cover"></div>
@@ -11,13 +11,13 @@
              <h3>日本</h3>
              <div class="out">
                 <ul>
-                    <li v-for="(item,index) in city" :key="index">{{item}}</li>
+                    <li v-for="(item,index) in city" :key="index" @click="search(item)">{{item}}</li>
                 </ul>
              </div>
              <h3>韩国</h3>
              <div class="out">
                 <ul>
-                    <li v-for="(item,index) in city1" :key="index">{{item}}</li>
+                    <li v-for="(item,index) in city1" :key="index" @click="search(item)">{{item}}</li>
                 </ul>
              </div>
     </el-card>
@@ -47,6 +47,9 @@
  ])
  let city=ref(['日本','大阪','东京','京都','九州','福冈','熊本','札幌','奈良','富士山','镰仓市','箱根','富山','名古屋','小樽','伊豆半岛','青森','春日部市'])
  let city1=ref(['韩国','济州岛','首尔','仁川','釜山','龙仁市','庆州','坡州市','春川市','加平郡','利川市','水原','束草市','洪川郡'])
+const search=(pos:string)=>{
+    window.open(`https://travelsearch.fliggy.com/index.htm?searchType=product&keyword=${pos}&category=MULTI_SEARCH&pagenum=1`)
+}
 </script>
 
 <style lang="less" scoped>

@@ -1,6 +1,6 @@
 <template>
         <!-- 左侧 -->
-        <div class="left"> 
+    <div class="left"> 
         <el-icon size="40" style="margin-right:10px;" v-show="isFold" @click="toExpand()"><Fold/></el-icon>
         <el-icon size="40" style="margin-right:10px;" v-show="!isFold" @click="toFold()"><Expand/></el-icon>
         <el-breadcrumb :separator-icon="ArrowRight"  style="user-select: none;font-size:20px">
@@ -13,14 +13,19 @@
             <span v-show="lang==='en'">&nbsp;{{item.meta.Entitle}}</span>
         </el-breadcrumb-item>
         </el-breadcrumb>
-        </div>  
+     
+    </div> 
+  
+    
 </template>
 
 <script setup lang="ts"> 
 
-import { ArrowRight } from '@element-plus/icons-vue';
+import { ArrowRight} from '@element-plus/icons-vue';
 import { ref,inject, type Ref,watch} from 'vue';
 import {useRoute} from 'vue-router'
+
+
 //引入能切换语言的文字
 import { useI18n } from 'vue-i18n'
 const { locale } = useI18n();
@@ -52,6 +57,8 @@ const toFold=()=>{
  isCollapse.value=false
 
 }
+
+
 
 
 

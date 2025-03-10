@@ -5,7 +5,7 @@
     <div style="margin-bottom: 80px;">
         <h2>特殊原因退订保障</h2>
         <div ref="p6" style="height: 40px;overflow:hidden;">
-                         <p style="margin-top: 10px;color:black;line-height:20px;overflow:hidden;">
+                         <p style="margin-top: 10px;line-height:20px;overflow:hidden;">
 怀孕，骨折，生病住院；拒签，中止，延期出签；您的无法控制，我为您暖心保障。<br><br>
 为了分担携程旅游客户因为自身不能预期和控制的特殊原因退订产生的损失，携程率先在业内设立“特殊原因退订保障”。<br>
 若您的情况在下方特殊原因保障范围内的，请您最晚于出行日前联系我司申请，并在提出申请后七天内交齐下方要求的必备申请材料（如因特殊情况材料无法按期提供，请您予以告知），若您有购买保险需您第一时间联系保险公司先行申请保险理赔或通过携程协助您进行保险理赔，得到保理赔结果固定订单最终实际损失后才可进行特殊原因保障的申请操作，您的情况与材料经携程审核确认完全符合“特殊原因退订保障政策要求”后，携程将补贴给您：与订单最终实际损失等额的携程“任我游”礼品卡（订单最终实际损失=订单实际损失-保险可理赔金额；已生效的保险费用及已送签并已产生的签证可选项费用不算入订单实际损失）<br><br>
@@ -18,7 +18,7 @@
     <el-table-column prop="beneficiary" label="特殊原因退订受益人" width="220" />
     <el-table-column prop="materials" label="材料及说明" />
     <template #append>
-      <div style="padding: 20px; background-color: #f9f9f9;line-height:20px">
+      <div style="padding: 20px;line-height:20px">
         <p><strong>特别说明：</strong></p>
         <p>1. 旅游者购买、接受旅游服务前，需重点阅读旅游产品的预订须知全部内容，特别是《预订限制》、《出行指南及法规》，并自行结合自身身体状况做出是否预订，是否适合出行的评估。</p>
         <p>2. 逾期未联系携程提交申请并按要求递交保障所需材料的视为自行放弃，携程有权不予保障。</p>
@@ -36,7 +36,7 @@
     </div>
     <div style="margin-bottom: 80px;">
         <h2>重大灾害旅游体验保障金</h2>
-                       <p style="margin-top: 10px;color:black;line-height:20px;overflow:hidden;height:20px" ref="p5">
+                       <p style="margin-top: 10px;line-height:20px;overflow:hidden;height:20px" ref="p5">
 业内首创的灾害保障，灾害面前咱不慌，只因神威有担当。<br><br>
 2005年神威在业内首家设立重大灾害旅游体验保障金，神威旅游客人如果遇到不可预测的自然灾害（政府官方机构发布橙色或红色预警级别）、政治或社会卫生事件（政府官方机构发布暂勿或禁止前往预警）造成旅游体验受实质损害的，神威将视具体情况启动重大灾害旅游体验保障金，对行程受直接影响而取消所产生的订单最终损失予以承担.（订单最终实际损失=订单实际损失—保险可理赔金额），对游客滞留期间产生的必要新增费用进行相应补贴（旅行滞留住宿补贴金为300元/间/夜，若神威已额外承担或垫付的则不再额外赠予）。
 <br>特别说明：<br>
@@ -47,7 +47,7 @@
     </div>
       <div style="margin-bottom: 80px;">
         <h2>应急援助体系</h2>
-               <p style="margin-top: 10px;color:black;line-height:20px;overflow:hidden;height:20px" ref="p4">您的背后有一个强大的组织，他叫“神威重大灾害预警中心“。<br><br>
+               <p style="margin-top: 10px;line-height:20px;overflow:hidden;height:20px" ref="p4">您的背后有一个强大的组织，他叫“神威重大灾害预警中心“。<br><br>
 神威在业内率先建立旅游预警机制并设立行业首家“重大灾害预警中心”，在自然灾害、病疫灾害、政治变动、突发事件等情况下，及时向即将出行及行程中的神威旅游客人传递信息和发布旅游提示建议或预警，配合”重大灾害旅游体验保障金“，尽力保障神威旅游客人的安全和权益。
         </p>
                 <p style="color: #0086f6;font-size:16px;cursor:pointer;user-select:none" v-show="!expand4" @click="isExpand4">展开详情<el-icon><ArrowDownBold /></el-icon></p>
@@ -55,7 +55,7 @@
     </div>
     <div style="margin-bottom: 80px;">
         <h2>应急援助体系</h2>
-               <p style="margin-top: 10px;color:black;line-height:20px;overflow:hidden;height:20px" ref="p3">无论是旅行证件遗失误机误车，还是就诊协助急翻译服务，7*24小时为您待命！
+               <p style="margin-top: 10px;line-height:20px;overflow:hidden;height:20px" ref="p3">无论是旅行证件遗失误机误车，还是就诊协助急翻译服务，7*24小时为您待命！
             <br><br>
             在旅途中，无论遇到行李或证件遗失，还是误机、误车，抑或受伤或生病等紧急突发情况，致电神威或通过神威微领队全球SOS紧急支援服务联系神威，您第一时间均可得到我们神威工作人员的及时响应及积极协助，包括：行李遗失找回后的境内外带回服务、证件遗失后的“指导补办”服务、误机误车15分钟响应处置服务、送医就诊协助及翻译服务等。如遇到意外事故导致旅行难以为继，客人也将得到我们力所能及的必要援助。
         </p>
@@ -64,7 +64,7 @@
     </div>
     <div style="margin-bottom: 80px;">
         <h2>一站式旅游保险</h2>
-        <p style="margin-top: 10px;color:black;line-height:20px;overflow:hidden;height:20px" ref="p2">“量身定制“的保险推荐，丰富贴心的保障选择，优先专属的理赔通道，方便快捷的理赔服务。
+        <p style="margin-top: 10px;line-height:20px;overflow:hidden;height:20px" ref="p2">“量身定制“的保险推荐，丰富贴心的保障选择，优先专属的理赔通道，方便快捷的理赔服务。
             <br><br>
             神威根据客人的出行特征和目的地属性，携手知名救援公司和保险公司，为境内和出境旅行客人量身提供全面、优质的旅行保障，突破了传统旅行保险保障范围小、保障额度低的瓶颈。神威旅行保障计划包含基本的人身、医疗保障，还提供航班延误、旅行变更、行李丢失、高风险运动、境外医疗费用垫付等保障项目，同时还从救援时效、保障内容、游客受益等多方面、多层次提高保障水平。神威旅行保障计划的客人可通过保险公司的电话专线和网站进行保单实时验真；还可使用“在线自助理赔”享受方便快捷的理赔服务；并专享绿色理赔通道等服务，神威用户可优先享受理赔。
         </p>
@@ -86,7 +86,7 @@
     </div>
     <div style="margin-bottom: 80px;">
         <h2>航变无忧</h2>
-        <p style="line-height:20px;margin-top: 10px;color:black;height:20px;overflow:hidden" ref="p1">当自由行订单发生航班变动或取消，且航空公司或神威为您做出的补救出行措施，仍无法让您在原定出行时间后48小时内继续前往目的地，您自由行产品订单内最终未入住的酒店取消最终损失由神威为您承担。<br><br>
+        <p style="line-height:20px;margin-top: 10px;height:20px;overflow:hidden" ref="p1">当自由行订单发生航班变动或取消，且航空公司或神威为您做出的补救出行措施，仍无法让您在原定出行时间后48小时内继续前往目的地，您自由行产品订单内最终未入住的酒店取消最终损失由神威为您承担。<br><br>
 特别说明：<br>
 1. 此保障所指的自由行产品是在神威旅游自由行频道内预订的自由行产品。<br>
 2. 航空公司或神威为您做出的补救出行措施（包括但不限于：更改其他时间航班、直飞改转机、延期出行等）请您理解并配合。若此补救出行措施可以让您48小时内继续出行的但您因自身原因放弃出行的，所产生的未入住酒店取消最终损失神威不予承担。<br>

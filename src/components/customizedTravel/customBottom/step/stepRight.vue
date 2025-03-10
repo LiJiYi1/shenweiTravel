@@ -24,7 +24,7 @@
                         <p style="overflow: hidden;display:inline-block;width:160px;" v-show="props.Active!==0">{{Needs}}</p>
                     </li>
                     <li><span>姓名：</span><p style="display: inline-block;" v-show="props.Active===2">{{Name}}</p></li>
-                    <li><span style="vertical-align: top;">手机号：</span><p style="display: inline-block;width:192px">{{prePhoneNum}}-{{phoneNum}}</p></li>
+                    <li><span style="vertical-align: top;">手机号：</span><p style="display: inline-block;width:150px">{{prePhoneNum}}-{{phoneNum}}</p></li>
                     <li v-show="types==='公司定制'"><span>公司名称：</span><p style="display: inline-block;" v-show="props.Active===2">{{Company}}</p></li>
                     <li><span>邮箱：</span>
                      <p style="overflow: hidden;display:inline-block;width:160px;" v-show="props.Active===2">{{ Email }}</p> </li>

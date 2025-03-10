@@ -193,7 +193,7 @@
     </el-skeleton>
     
     <!-- 折叠后显示的隐藏部分 -->
-    <el-card body-style="padding:0px" style="position:absolute;top:234px;right:20px;width:180px;height:430px;z-index:-1;">
+    <el-card @click="scene" body-style="padding:0px" style="position:absolute;top:234px;right:20px;width:180px;height:430px;z-index:-1;">
     <template #header><h3 style="text-align: center;">旅游景点推荐</h3></template>
     <img
       src="@/assets/home/travel.png"
@@ -384,6 +384,11 @@ clearInterval(timer)
 return 
 }, 500);
 
+}
+const scene=()=>{
+    console.log(111);
+    
+    window.open(`https://travelsearch.fliggy.com/index.htm?searchType=product&keyword=崇圣寺`)
 }
 onBeforeUnmount(()=>{
 clearInterval(timer.value)

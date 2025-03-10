@@ -2,7 +2,7 @@
     <el-card class="container">
              <h3>澳大利亚/新西兰</h3>
              <div class="hot">
-                <div class="box" v-for="(item,index) in data" :key="index">
+                <div class="box" v-for="(item,index) in data" :key="index" @click="search(item.name)">
                     <p>{{item.name}}</p>
                     <img :src="item.img" alt="">
                     <div class="cover"></div>
@@ -11,13 +11,13 @@
              <h3>中东</h3>
              <div class="out">
                 <ul>
-                    <li v-for="(item,index) in city" :key="index">{{item}}</li>
+                    <li v-for="(item,index) in city" :key="index" @click="search(item)">{{item}}</li>
                 </ul>
              </div>
              <h3>非洲</h3>
              <div class="out">
                 <ul>
-                    <li v-for="(item,index) in city1" :key="index">{{item}}</li>
+                    <li v-for="(item,index) in city1" :key="index" @click="search(item)">{{item}}</li>
                 </ul>
              </div>
     </el-card>
@@ -47,6 +47,9 @@
  ])
  let city=ref(['埃及','迪拜','土耳其','格鲁吉亚','开罗','阿塞拜疆','亚美尼亚','阿联酋','沙特','阿拉伯','伊斯坦布尔','赫尔格达','阿布扎比'])
  let city1=ref(['埃及','毛里求斯','肯尼亚','坦桑尼亚','开罗','博茨瓦纳','塞舌尔','赫尔格达','阿鲁沙','马达加斯加','南非','卡萨布兰卡','摩洛哥','突尼斯','纳米比亚','阿斯旺','突尼斯','津巴布韦'])
+const search=(pos:string)=>{
+    window.open(`https://travelsearch.fliggy.com/index.htm?searchType=product&keyword=${pos}&category=MULTI_SEARCH&pagenum=1`)
+}
 </script>
 
 <style lang="less" scoped>

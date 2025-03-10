@@ -2,7 +2,7 @@
     <el-card class="container">
              <h3>黑龙江</h3>
              <div class="hot">
-                <div class="box" v-for="(item,index) in data" :key="index">
+                <div class="box" v-for="(item,index) in data" :key="index" @click="search(item.name)">
                     <p>{{item.name}}</p>
                     <img :src="item.img" alt="">
                     <div class="cover"></div>
@@ -11,13 +11,13 @@
              <h3>吉林</h3>
              <div class="out">
                 <ul>
-                    <li v-for="(item,index) in city" :key="index">{{item}}</li>
+                    <li v-for="(item,index) in city" :key="index" @click="search(item)">{{item}}</li>
                 </ul>
              </div>
              <h3>辽宁</h3>
              <div class="out">
                 <ul>
-                    <li v-for="(item,index) in city1" :key="index">{{item}}</li>
+                    <li v-for="(item,index) in city1" :key="index" @click="search(item)">{{item}}</li>
                 </ul>
              </div>
     </el-card>
@@ -47,6 +47,9 @@
  ])
  let city=ref(['延吉','长白山','长春','长白山北坡','吉林市','图们','白山','长白山','西坡','珲春','长白山南坡','通化','集安','龙井','和龙'])
  let city1=ref(['大连','沈阳','丹东','本溪','锦州','辽阳','盘锦','葫芦岛','营口','兴城','绥中','东戴河','义县','朝阳','宽甸','桓仁','凤城','东港'])
+const search=(pos:string)=>{
+    window.open(`https://travelsearch.fliggy.com/index.htm?searchType=product&keyword=${pos}&category=MULTI_SEARCH&pagenum=1`)
+}
 </script>
 
 <style lang="less" scoped>

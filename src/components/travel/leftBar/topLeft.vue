@@ -6,7 +6,7 @@
                 <h3>{{item.title}}</h3>
                     </div>
                     <ul>
-                        <li v-for="(item1,index) in item.city" :key="index">{{item1}}</li>
+                        <li v-for="(item1,index) in item.city" :key="index" @click="search(item1)">{{item1}}</li>
                     </ul>
                 </div>
                 
@@ -15,6 +15,7 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue';
+
 //数据
 let data=ref([
     {title:"热门推荐",city:['威海','北京','日本','青岛','韩国','南京','香港']},
@@ -81,6 +82,9 @@ show6.value=false
 show7.value=false
 show8.value=false
 emit('show',[show1,show2,show3,show4,show5,show6,show7,show8])
+}
+const search=(pos:string)=>{
+    window.open(`https://travelsearch.fliggy.com/index.htm?searchType=product&keyword=${pos}&category=MULTI_SEARCH&pagenum=1`)
 }
 </script>
 

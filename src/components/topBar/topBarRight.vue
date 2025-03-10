@@ -1,9 +1,42 @@
 <template>
         <!-- 右侧 -->
         <div class="right">
-            <el-button :color="color" :icon="Refresh" size="large" circle @click="refresh"/>
-            <el-button :color="color" :icon="FullScreen" size="large" circle  @click="fullScreen"/>
-            <el-button :color="color" :icon="Setting" size="large" @click="drawer=true" circle /> 
+      <el-tooltip content="购物车" placement="bottom">
+         <el-button :color="color" :icon="ShoppingCartFull" size="large"  circle /> 
+      </el-tooltip>
+      <el-tooltip content="无障碍阅读" placement="bottom">
+         <el-button :color="color" :icon="Help" size="large"  circle /> 
+      </el-tooltip>
+ <el-popover  placement="top" :width="280">
+    <h2>联系客服</h2>
+    <el-divider />
+    <p>境内:95010<br>
+或 400-830-6666<br>
+中国香港：+852-3008-3295<br>
+中国澳门：+86-21 3406-4888<br>
+中国台湾：+86-21 3406-4888<br>
+其他国家和地区：+86-21-3406-4888</p>
+    
+    <template #reference>
+        <el-button :color="color" :icon="Phone" size="large"  circle /> 
+    </template>
+  </el-popover>
+       
+
+
+
+
+      <el-tooltip content="局部刷新" placement="bottom">
+           <el-button :color="color" :icon="Refresh" size="large" circle @click="refresh"/>
+      </el-tooltip>
+       <el-tooltip content="全屏模式" placement="bottom">
+           <el-button :color="color" :icon="FullScreen" size="large" circle  @click="fullScreen"/>
+      </el-tooltip>    
+        <el-tooltip content="设置" placement="bottom">
+          <el-button :color="color" :icon="Setting" size="large" @click="drawer=true" circle /> 
+      </el-tooltip>    
+            
+            
             <!-- 头像 -->
            <img :src="useUserStore().avator" style=" margin-right: 10px;border-radius:40px;width:40px;height:40px;margin-left: 10px;"/>
            <!-- 下拉退出登录 -->
@@ -21,14 +54,11 @@
     </template>
   </el-dropdown>
         </div>
-
-
-      
 </template>
 
 <script setup lang="ts">
   import { useRefreshStore } from '@/store/modules/refresh';
-  import {Setting, FullScreen, Refresh,ArrowDown}from '@element-plus/icons-vue'
+  import {Setting, FullScreen, Refresh,ArrowDown, ShoppingCartFull, Phone, Help}from '@element-plus/icons-vue'
   import { useUserStore } from '@/store/modules/user';
   import { onMounted,ref,inject} from 'vue';
   import { useRouter,useRoute } from 'vue-router';

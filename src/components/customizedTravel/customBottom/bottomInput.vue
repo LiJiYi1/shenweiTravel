@@ -1,5 +1,4 @@
 <template>
-  
 <el-card style="margin-top: -4px;" body-style="padding:0px">
     <div class="container">
         <div class="left">
@@ -22,7 +21,7 @@
         <StepRight :Active="active"></StepRight>
     </div>
 </el-card>
- 
+
 
 </template>
 
@@ -36,6 +35,7 @@ import { useColorStore } from '@/store/modules/color';
 import { ElMessage,ElMessageBox } from 'element-plus';
 import bus from '@/bus/bus'
 import { storeToRefs } from 'pinia';
+import { ElLoading } from 'element-plus'
 //按钮颜色
 let {color}=storeToRefs(useColorStore())
 //表单目的地数据
@@ -124,7 +124,19 @@ const forme=()=>{
     
     if(types.value==='个人定制'){
        if(name.value&&phoneNum.value){
-
+          const loading = ElLoading.service({
+    lock: true,
+    text: '正在提交表单。。。',
+    background: 'rgba(0, 0, 0, 0.7)',
+                  })
+          setTimeout(() => {
+                loading.close()
+                ElMessageBox.alert('您的订单已提交,在24小时内会有定制师联系您!', '订单提交完成', {
+                // autofocus: false,
+                confirmButtonText: '确定',
+  })
+    
+          }, 2000)
       }
       else{
         ElMessage({
@@ -136,7 +148,19 @@ const forme=()=>{
     }
     else{
       if(name.value&&phoneNum.value&&company.value){
-
+ const loading = ElLoading.service({
+    lock: true,
+    text: '正在提交表单。。。',
+    background: 'rgba(0, 0, 0, 0.7)',
+                  })
+          setTimeout(() => {
+                loading.close()
+                ElMessageBox.alert('您的订单已提交,在24小时内会有定制师联系您!', '订单提交完成', {
+                // autofocus: false,
+                confirmButtonText: '确定',
+  })
+    
+          }, 2000)
        }
        else{
         ElMessage({
@@ -158,6 +182,11 @@ onMounted(()=>{
          types.value=type.type
        })
 })
+
+
+
+
+
 </script>
 
 <style lang="less" scoped>

@@ -9,7 +9,7 @@
     @select="handleSelect"
   >
     <template #suffix>
-      <el-icon class="el-input__icon" @click="handleIconClick">
+      <el-icon style="cursor: pointer;" class="el-input__icon" @click="handleIconClick" >
         <Search />
       </el-icon>
     </template>
@@ -64,19 +64,19 @@
          <el-tab-pane label="热门目的地" name="hot" :disabled=true></el-tab-pane>
          <el-tab-pane :label="item.label" :name="item.name"  class="v-f" v-for="(item,index) in length" :key="index">
          <div  class="total">
-         <div class="place_shoplist_one" v-for="(item1,index1) in item.inner" :key="index1">
+         <div class="place_shoplist_one" @click="hotSearch(item1.pos,item1.name)" v-for="(item1,index1) in item.inner" :key="index1">
                 <div class="place_one_img">
-                    <a href="/merchant/detail/8554?gsourcetype=6" target="_blank">
+                    
                           <img :src='item1.image' :alt="item1.name">                    
-                    </a>
+      
                 </div>
                 <div class="shop_one_word">
                 <div class="list_shop_name">
                     <p class="ellips ">
-                        <a href="/merchant/detail/8554?gsourcetype=6" target="_blank">{{item1.name}}</a>
+                        {{item1.name}}
                     </p>
                     <p class="ellips">
-                        <a href="/merchant/detail/8554?gsourcetype=6" target="_blank">{{item1.pos}}</a>
+                        {{item1.pos}}
                     </p>
                 </div>
                 <div class="list_shop_fan">
@@ -93,14 +93,8 @@
         <div class="footer">
             <div>
     <div class="footer_box clear_both">
-        <span>海淘攻略</span> <span>海购索引</span> <span>返礼码</span> <span>携程信用卡</span>
-        <span>雅典海淘</span> <span>米兰海淘</span> <span>巴黎海淘</span> <span>伦敦海淘</span>
-        <span>纽约海淘</span> <span>首尔海淘</span> <span>罗马海淘</span>
-        <span>DFS海淘</span> <span>Chic outlet海淘</span> <span>Zegna海淘</span> <span>Tiffany海淘</span>
-        <span>Micheal Kors海淘</span> <span>Coach海淘</span> <span>Tod's海淘</span> <span>De Beers海淘</span>
-        <span>Theory海淘</span> <span>Morgan海淘</span> <span>信用卡返礼</span> <span>万事达电子旅行支票</span>
-        <span>MasterCard电子旅行支票</span> <span>携程电子旅支</span> <span>境外消费返礼</span> <span>消费返礼</span>
-        <span>境外消费返现</span>
+        <span @click="searchBottom(item)" style="line-height: 20px;cursor:pointer" v-for="(item,index) in bottomData" :key="index">{{item}}</span>
+       
     </div>
 </div>
         </div>
@@ -194,6 +188,9 @@ const length=[
 },]
 const activeName = ref('first')
 
+const hotSearch=(pos:string,name:string)=>{
+window.open(`https://www.baidu.com/s?wd=${name}${pos}`)
+}
 
 interface LinkItem {
   value: string
@@ -228,12 +225,18 @@ const loadAll = () => {
     { value: '巴黎河谷购物村', link: 'https://github.com/babel/babel' },
   ]
 }
+let bottomData=['海淘攻略','海购索引','返礼码','携程信用卡','雅典海淘','米兰海淘','巴黎海淘','伦敦海淘纽约海淘','首尔海淘','罗马海淘','DFS海淘','Chic outlet海淘', 'Zegna海淘' ,'Tiffany海淘','Micheal Kors海淘' ,'Coach海淘' ,"Tod's海淘", 'De Beers海淘','Theory海淘' ,'Morgan海淘' ,'信用卡返礼' ,'万事达电子旅行支票','MasterCard电子旅行支票 ', '境外消费返礼' ,'消费返礼','境外消费返现']
+const searchBottom=(name:string)=>{
+  window.open(`https://www.baidu.com/s?wd=${name}`)
+}
 const handleSelect = (item: Record<string,number>) => {
   console.log(item)
+    window.open(`https://www.baidu.com/s?wd=${state.value}`)
 }
 
 const handleIconClick = (ev: Event) => {
-  console.log(ev)
+  window.open(`https://www.baidu.com/s?wd=${state.value}`)
+  
 }
 
 onMounted(() => {

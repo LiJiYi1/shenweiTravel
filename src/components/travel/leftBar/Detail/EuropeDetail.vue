@@ -2,7 +2,7 @@
     <el-card class="container">
              <h3>欧洲</h3>
              <div class="hot">
-                <div class="box" v-for="(item,index) in data" :key="index">
+                <div class="box" v-for="(item,index) in data" :key="index" @click="search(item.name)">
                     <p>{{item.name}}</p>
                     <img :src="item.img" alt="">
                     <div class="cover"></div>
@@ -11,7 +11,7 @@
              <h3>美洲</h3>
              <div class="out">
                 <ul>
-                    <li v-for="(item,index) in city" :key="index">{{item}}</li>
+                    <li v-for="(item,index) in city" :key="index" @click="search(item)">{{item}}</li>
                 </ul>
              </div>
         
@@ -41,7 +41,9 @@
     {img:new URL("@/assets/travel/Detail/Europe/image18.jpg",import.meta.url).href,name:"瑞典"},
  ])
  let city=ref(['美国','巴西','纽约','古巴','加拿大','塞班岛','洛杉矶','智利','墨西哥','黄石国家公园','旧金山','奥兰多'])
-
+const search=(pos:string)=>{
+    window.open(`https://travelsearch.fliggy.com/index.htm?searchType=product&keyword=${pos}&category=MULTI_SEARCH&pagenum=1`)
+}
 </script>
 
 <style lang="less" scoped>

@@ -373,7 +373,7 @@ const route=[
         name: 'any'//其他路由
     },
     {
-        path: '/travelSearch/:include/:price/:img/:head',
+        path: '/travelSearch/:title/:price/:img/:head/:about',
         name:"travelSearch",
         component:TravelSearch,
         meta: {
