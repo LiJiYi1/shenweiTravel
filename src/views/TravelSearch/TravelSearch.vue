@@ -42,11 +42,11 @@
        </div>
        <!-- 内容区 -->
        <div class="center">
-          
-        <div class="cl">
+       
+     <div class="cl">
                    <h2>{{$route.params['head']}}</h2>
                    <p>{{$route.params["include"]}}</p>
-                   <div>
+                   <div class="box">
                      <p>{{$route.params["price"]}}</p>/人
                      
                      <el-popover
@@ -62,8 +62,35 @@
       <span style="border-bottom:1px dashed;">起价说明</span>
     </template>
                      </el-popover>
-                     <span>两人出游</span>
+                     <span style="font-size:20px;color:#0086f6;display:inline-block;border-bottom:1px solid #0086f6">4.9分</span>
+                     <span style="font-size:12px;color:#0086f6;display:inline-block;border-bottom:1px solid #0086f6">15条点评</span>
+                     <span style="font-size:12px;">39人出游</span>
+                     <div style="margin-top: 10px;">
+                            <span style="font-size: 12px;color:#999;margin-left:0px">优惠活动</span>
+                            <span style="font-size: 12px;color:rgb(255 85 0/var(--tw-text-opacity,1));padding:2px;border:1px solid rgb(255 85 0/var(--tw-text-opacity,1))">限时促销</span>
+                            <span style="font-size: 12px;">每单减¥30</span>
+                                <el-popover
+   
+    title="限时促销"
+    :width="250"
+    trigger="hover"
+    content="
+系统将默认按最大可享优惠结算
+318大促
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+每单减¥30
+适用于2025-02-10至2025-05-10出发的班期;库存有限，先到先得&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+*
+对于以不正当方式参与优惠活动的用户，包括但不限于恶意套现、恶意下单、恶意注册、利用程序漏洞等，携程旅行网有权在不事先通知的情况下取消其参与优惠活动的资格"
+  >
+    <template #reference>
+<span style="font-size: 12px;padding:2px;display:inline-block;border-bottom:1px dashed">查看详情</span>
+    </template>
+                     </el-popover>
+                            
+                     </div>
                    </div>
+                   
                    <img :src="$route.params['img'] as any" alt="">
                    <footer style="display: flex;">
                     <p style="font-size: 12px;color:#999;margin-right:40px;;padding:2px">产品特色</p>
@@ -74,24 +101,49 @@
                    <p style="font-size: 12px;border:1px solid #999;margin-left:30px;padding:2px">自选酒店</p>
                    <p style="font-size: 12px;border:1px solid #999;margin-left:30px;padding:2px">车型可选</p>
                    </footer>
-                    <footer style="display: flex;cursor:pointer" @click="show">
+                    <footer style="display: flex;cursor:pointer;margin-top:4px" @click="show">
                     <p style="font-size: 12px;color:#999;margin-right:80px;;padding:2px">服务保障</p>
                     <p class="spirit"></p>
                     <p style="font-size: 12px;margin-right:10px">放心游</p>
                     <p style="font-size: 12px;color:#0086f6;">查看详情></p>
                     
                    </footer>
+                    <footer style="display: flex;cursor:pointer" @click="show">
+                    <p style="font-size: 12px;color:#999;margin-right:80px;;padding:2px;width:90px">产品特色</p>
+                    <p style="font-size: 12px;margin-right:10px;line-height:20px;margin-left:-10px">
+                        ★ 【服务保障】🔷2-6人精品轻奢小团，真纯玩0购物<br>
+🔷保证天天发（赠送24小时接站/送站）<br>
+🔷含5A级景区刘公岛【商家独宠：赠送刘公岛电瓶车+潜艇参观】<br>
+🔷幸福门登顶含门票【贴心赠送暖心咖啡】<br>
+🔷4钻华夏大酒店2晚连住<br>
+🔷赠送特色餐韩国料理<br>
+★ 【度假首选】🔷企业宗旨：高品质服务+物美价廉<br>
+🔷精心打磨产品+只为优化您的体验<br>
+🔷品质方面：我们有足够的自信横扫市场，让您享受不一样的旅行！<br>
+🔷车览山海画卷~步量浪漫诗筏~浪漫威海<br>
+★ 【缤纷景点】3天2晚威海+荣成：<br>
+🔷5A级景区+标志建筑+一站式打卡9大网红景点，威海之行不留遗憾~<br>
+🔷5A级景区刘公岛：【刘公岛博览园】+【甲午战争博物馆】+【甲午战争陈列馆】+【定远舰】+【赠送刘公岛电瓶车+潜艇参观】<br>
+🔷威海标志建筑：【幸福门登顶】<br>
+🔷9大网红景点：【火炬八街】【那香海钻石沙滩浴场】+【搁浅货轮布鲁维斯号】+【小五队抱海驿站海草房】+【天鹅湖景区】+【悦海公园】+【大相框】+【海源公园】+【环海路，猫头山二号观景台】<br>
+                    </p>
+                   
+                    
+                   </footer>
                    
                
         </div>
+
+      
         <div class="cr">
-            <el-calendar>
+            <el-calendar v-model="date" @click="changeDate">
                    <template #date-cell="{ data }">
-                   <p :class="data.isSelected ? 'is-selected' : ''">
-                   {{ data.day.split('-').slice(1).join('-') }}
-                            {{ data.isSelected ? '✔️' : '' }}
-      </p>
-    </template>
+                   <p :class="data.isSelected ? 'is-selected' : ''" style="margin-top:10px;text-align:center">
+                   {{ data.day.split('-').slice(2,3).join('') }}
+                   
+                    </p>
+                     <p style="color:red;font-size:14px;margin-top:10px;text-align:center">{{$route.params['price']}}</p>
+                    </template>
               </el-calendar>
         </div>
             
@@ -101,8 +153,56 @@
   <el-dialog v-model="dialogTableVisible"  width="1170" style="padding: 0;height:645px;margin-top:30px;overflow:auto">
           <DialogBox></DialogBox>
   </el-dialog>
-  <footer style="width:1520px;height:100px;margin-top:252px;padding:140px;padding-top:20px">
-        <div style="width: 1340px;height:20px;background-color:#fffcf6;border: #ffd2b8 1px solid;height:180px"></div>
+  <footer style="width:1200px;height:100px;margin-top:22px;padding:140px;padding-top:20px">
+        <div style="padding:50px;width: 1240px;background-color:#fffcf6;border: #ffd2b8 1px solid;height:80px;display:flex;justify-content:space-between">
+             <div style="display: flex;color:black">
+                <div>
+                    <p>出发</p>
+         
+                    
+                </div>
+                  <div style="margin-left:40px" width="20px">
+                    <p style="display:inline-block">成人</p><span style="font-size: 12px;display:inline-block;margin-left:10px;border-bottom:1px dashed">12周岁及以上</span><br>
+                                 <el-select  v-model="adult" placeholder="成人" size="large" style="width: 130px;margin-top:20px">
+                              <el-option
+      v-for="(item,index) in 8"
+        :key="index"
+        :label="item"
+        :value="item"
+                              />
+                              <el-option
+                              key="item"
+                              label=">9"
+                              value=">9"
+                                />
+                          </el-select>
+                </div>
+                  <div style="margin-left:40px">
+                    <p style="display:inline-block">儿童</p><span style="font-size: 12px;display:inline-block;margin-left:10px;border-bottom:1px dashed">2-12周岁(不含)</span><br>
+                           <el-select  v-model="child" placeholder="儿童" size="large" style="width: 130px;margin-top:20px">
+                             <el-option
+                              key="0"
+                              label="0"
+                              value="0"
+                                />
+                              <el-option
+      v-for="(item,index) in 8"
+        :key="index"
+        :label="item"
+        :value="item"
+                              />
+                              <el-option
+                              key="item"
+                              label=">9"
+                              value=">9"
+                                />
+                          </el-select>
+                </div>
+
+             </div>
+             <div>1111</div>
+
+        </div>
   </footer>
   <BottomComponent></BottomComponent>
 </template>
@@ -115,7 +215,16 @@ import { useRouter,useRoute } from 'vue-router';
 const $router=useRouter()
 const $route=useRoute()
 const dialogTableVisible=ref(false)
-
+//日期
+let date=ref()
+//成人数量
+let adult=ref('1')
+//儿童数量
+let child=ref('0')
+const changeDate=()=>{
+    console.log(date.value);
+    
+}
 const back=()=>{
 $router.push('/travel/travelHome')
 }
@@ -124,6 +233,7 @@ dialogTableVisible.value=true
 }
 
 onMounted(()=>{
+console.log(date.value);
 
     
 })
@@ -160,17 +270,18 @@ onMounted(()=>{
     .cl{
         padding-left: 140px;
         width: 1000px;
-        height: 400px;
+        overflow: auto;
+        height:620px;
         p{
         margin-top:12px
         }
-        div{
+        .box{
             color: black;
             padding: 20px;
             padding-top: 0;
             margin-top: 12px;
             width: 670px;
-            height: 28px;
+            height: 58px;
             background-color: #fef9ee;
             p{ 
                 display: inline-block;
@@ -191,7 +302,7 @@ onMounted(()=>{
     }
     .cr{
          width: 800px;
-        height: 400px;
+        height: 500px;
    
     }
 }
@@ -205,5 +316,8 @@ height:18px;
 background:url('@/assets/TravelSearch/spirit.png');
 background-position: 0 -58px;
 background-repeat: no-repeat;
+}
+.is-selected {
+  color: #ff9900;
 }
 </style>

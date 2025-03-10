@@ -212,6 +212,7 @@ import { onMounted, ref,onBeforeUnmount} from 'vue';
 import moment from 'moment';
 import data from '@/assets/home/china.json'
 import { citys } from '@/assets/home/name';
+import { ElMessage } from 'element-plus';
 //请求是否完毕
 let loading=ref(true)
 const city=data
@@ -282,6 +283,8 @@ let trafficDetail=ref()
 //旅游指数
 let sport=ref()
 let sportDetail=ref()
+//请求次数
+let number=ref(0)
 onMounted(()=>{
 //获取星期几
 const date=new Date(moment().format("YYYY.MM.DD"));
@@ -311,7 +314,7 @@ city.forEach((e)=>{
 //封装一个方法请求数据
 async function getData(name:string){
 loading.value=true
-let KEY;
+let KEY:string;
 for(let key in citys){
     let name1:string=citys[key]
     if(name===name1){
@@ -319,6 +322,17 @@ for(let key in citys){
         if (localStorage.getItem('city'))localStorage.removeItem('city')
         localStorage.setItem('city',citys[key])
     }
+}
+//设置每0.5秒请求一次
+let timer=setInterval(async () => {
+//每发一次请求,number的值自增
+number.value++
+//当第一次请求被驳回,执行第二次时说明请求次数超过限制,给一个提示
+if(number.value===12){
+ ElMessage({
+    message: '服务器端只支持每分钟请求5次,请稍后再试！',
+    type: 'warning',
+  })
 }
 //请求生活指数
 const date =await axios.get(`https://api.seniverse.com/v3/life/suggestion.json?key=S2iuEfpXM1ml93Gau&location=${KEY}&language=zh-Hans&days=5`)
@@ -363,8 +377,13 @@ lastUpdate.value=data.data.results[0].last_update.substr(11,8)
 location.value=data.data.results[0].location.name
 temputureNow.value=data.data.results[0].now.temperature
 weatherNow.value=data.data.results[0].now.text
-
+//请求到之后返回并清除计时器,请求次数归零
+number.value=0
 loading.value=false
+clearInterval(timer)
+return 
+}, 500);
+
 }
 onBeforeUnmount(()=>{
 clearInterval(timer.value)
