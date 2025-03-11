@@ -25,7 +25,8 @@ cursor: pointer;
 user-select: none;
 width:@left_bar_width;
 height:@left_logo_height;
-
+margin-top:12px;
+padding-bottom:12px;
 display: flex;
 justify-content: space-between;
 align-items: start;

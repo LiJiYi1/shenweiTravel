@@ -4,43 +4,46 @@
       <el-tooltip content="购物车" placement="bottom">
          <el-button :color="color" :icon="ShoppingCartFull" size="large"  circle /> 
       </el-tooltip>
-      <el-tooltip content="无障碍阅读" placement="bottom">
-         <el-button :color="color" :icon="Help" size="large"  circle /> 
+      <!-- 无障碍阅读 -->
+      <el-popover :visible="visible" placement="top" :width="280" :show-arrow="false">
+         <OldCare @close="close"></OldCare>
+      <template #reference>
+       <el-tooltip content="无障碍阅读" placement="bottom">
+         <el-button @click="visible = true" :color="color" :icon="Help" size="large"  circle /> 
       </el-tooltip>
- <el-popover  placement="top" :width="280">
+      </template>
+      </el-popover>
+      <!-- 联系客服 -->
+      <el-popover  placement="top" :width="280">
     <h2>联系客服</h2>
     <el-divider />
     <p>境内:95010<br>
-或 400-830-6666<br>
-中国香港：+852-3008-3295<br>
-中国澳门：+86-21 3406-4888<br>
-中国台湾：+86-21 3406-4888<br>
-其他国家和地区：+86-21-3406-4888</p>
+     或 400-830-6666<br>
+    中国香港：+852-3008-3295<br>
+     中国澳门：+86-21 3406-4888<br>
+    中国台湾：+86-21 3406-4888<br>
+     其他国家和地区：+86-21-3406-4888</p>
     
     <template #reference>
         <el-button :color="color" :icon="Phone" size="large"  circle /> 
     </template>
-  </el-popover>
-       
-
-
-
-
+      </el-popover>
+      <!-- 局部刷新 -->
       <el-tooltip content="局部刷新" placement="bottom">
            <el-button :color="color" :icon="Refresh" size="large" circle @click="refresh"/>
       </el-tooltip>
-       <el-tooltip content="全屏模式" placement="bottom">
+      <!-- 全屏模式 -->
+      <el-tooltip content="全屏模式" placement="bottom">
            <el-button :color="color" :icon="FullScreen" size="large" circle  @click="fullScreen"/>
-      </el-tooltip>    
-        <el-tooltip content="设置" placement="bottom">
+      </el-tooltip>
+      <!-- 设置 -->
+      <el-tooltip content="设置" placement="bottom">
           <el-button :color="color" :icon="Setting" size="large" @click="drawer=true" circle /> 
-      </el-tooltip>    
-            
-            
-            <!-- 头像 -->
-           <img :src="useUserStore().avator" style=" margin-right: 10px;border-radius:40px;width:40px;height:40px;margin-left: 10px;"/>
-           <!-- 下拉退出登录 -->
-   <el-dropdown>
+      </el-tooltip>
+      <!-- 头像 -->
+      <img :src="useUserStore().avator" style=" margin-right: 10px;border-radius:40px;width:40px;height:40px;margin-left: 10px;"/>
+      <!-- 下拉退出登录 -->
+      <el-dropdown>
     <span class="el-dropdown-link" style="  white-space: nowrap;">
       {{useUserStore().userName}}
     <el-icon class="el-icon--right"><arrow-down /></el-icon>
@@ -52,8 +55,8 @@
         </el-dropdown-item>
       </el-dropdown-menu>
     </template>
-  </el-dropdown>
-        </div>
+      </el-dropdown>
+    </div>
 </template>
 
 <script setup lang="ts">
@@ -67,8 +70,15 @@
   const { t } = useI18n()
   import { computed } from 'vue'
   import { useColorStore } from '@/store/modules/color';
-import { storeToRefs } from 'pinia';
-let {color}=storeToRefs(useColorStore())
+  import { storeToRefs } from 'pinia';
+  import OldCare from '../oldCare/oldCare.vue';
+  let {color}=storeToRefs(useColorStore())
+  //老年人模式选项是否出现
+  const visible = ref(false)
+  //关闭老年人模式
+  const close=()=>{
+    visible.value=false
+  }
   const language={
   logout:computed(() => t('logout')),
   }
@@ -120,7 +130,6 @@ useUserStore().userName=userName.value
 useUserStore().avator=userHead.value
 })
 
-
 </script>
 
 <style lang="less" scoped>
@@ -128,7 +137,6 @@ useUserStore().avator=userHead.value
         display: flex;
         align-items: center;
         margin-right: 15px;
-       
     }
 .example-showcase .el-dropdown-link {
   cursor: pointer;
@@ -136,4 +144,6 @@ useUserStore().avator=userHead.value
   display: flex;
   align-items: center;
 }
+
+
 </style>

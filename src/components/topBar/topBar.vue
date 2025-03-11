@@ -26,8 +26,8 @@ import topBarRight from './topBarRight.vue';
 <style lang="less" scoped>
 
 .topBar{
-  position: relative;
     width: 100%;
+    min-width: 1218px;
     height: 100%;
     display: flex;
     justify-content: space-between;

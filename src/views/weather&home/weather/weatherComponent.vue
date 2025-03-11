@@ -393,10 +393,8 @@ const scene=()=>{
 onBeforeUnmount(()=>{
 clearInterval(timer.value)
 })
-const webgl=ref(null)
+const webgl:any=ref(null)
 onMounted(()=>{
-
-
 const gl=webgl.value.getContext('webgl')
 //顶点着色器
 const vertexSource=`

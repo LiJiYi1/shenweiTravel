@@ -1,11 +1,12 @@
 <template>
+  <div style="position: relative;">
       <!-- 侧边栏 -->
       <div class="left_bar">
-           <!-- logo -->
+        <!-- logo -->
         <logoComponent class="logo" :class="{fold:isCollapse}"></logoComponent>
     
-          <el-row class="tac">
-         <el-menu
+      <el-row class="tac">
+        <el-menu
         class="el-menu-vertical-demo"
         :class="{fold:isCollapse}"
         :default-active="$route.path"
@@ -13,7 +14,7 @@
         :collapse="isCollapse"
         :active-text-color="color"
          >     <!-- 滚动条防止超出页面 -->
-        <el-scrollbar height="91vh">
+        <el-scrollbar height="calc(100vh - 72px)">
         <!-- 主页导航 -->
         <el-menu-item index="/home">
           <el-icon><HomeFilled /></el-icon>
@@ -108,14 +109,12 @@
      <div class="top_bar" :class="{fold:isCollapse}"> 
       <topBar></topBar>
       </div>
-
       <!-- 内容区加个动画效果,这是一个二级路由的路由出口-->
       <RouterView v-slot="{ Component }" class="main" :class="{fold:isCollapse}" v-if="flag">
          <transition>
              <component :is="Component" />
          </transition>
       </RouterView>
-      
      <!-- 主题设置抽屉 -->
      <el-drawer  v-model="drawer"  :with-header="false">
     <h4>{{language.themes}}</h4>
@@ -146,7 +145,7 @@
       
     </div>
      </el-drawer>
-   
+  </div> 
 </template>
 
 <script setup lang="ts">
@@ -219,6 +218,9 @@ html.className='dark'
 else{
   html.className=''
 }
+
+
+
 })
 //Switch开关切换黑暗模式
 const changeDark=()=>{
@@ -270,11 +272,14 @@ watch(()=>useRefreshStore().refresh,()=>{
 <style lang="less" scoped>
 
 div{
-
   .left_bar{
+    position: absolute;
+    left: 0;
     width:@left_bar_width;
+
     .logo{
       width:@left_bar_width;
+      height: 40px;
       transition: all 0.6s;
       white-space: nowrap;
       overflow: hidden;
@@ -285,17 +290,14 @@ div{
     }
     .tac{
       user-select: none;
-      position: absolute;
-      top:@left_logo_height;
       color: white;
-      height: calc(100vh - @left_logo_height);
+      height: calc(100vh - @left_logo_height - 40px);
       width:@left_bar_width ;
       z-index: 0;
       .el-menu-vertical-demo{
       border-right: none;
       width: @left_bar_width ;
       transition: all 0.6s;
-       
       &.fold{
         width: 49.1px;
       }
@@ -304,7 +306,7 @@ div{
   }
   .top_bar{
     justify-content: space-around;
-    position:fixed;
+    position:sticky;
     top:0px;
     left: @left_bar_width;
     width: calc(100% - @left_bar_width);
@@ -362,5 +364,6 @@ div{
 .v-leave-to {
   opacity: 0;
 }
+
 
 </style>
