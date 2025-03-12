@@ -6,7 +6,7 @@
     :fetch-suggestions="querySearch"
     popper-class="my-autocomplete"
     placeholder="搜索任何旅游相关"
-    style="width: 240px;min-width:240px;border-radius:0;margin-top:-5px"
+    style="width: 100%;min-width:20px;border-radius:0;margin-top:-5px"
     @select="handleSelect"
   >
  

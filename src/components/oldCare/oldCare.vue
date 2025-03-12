@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <!-- 按钮 -->
-        <div style="display: flex;justify-content:space-between">
+        <div style="display: flex;justify-content:space-around;width:300px">
         <el-button circle  icon="ZoomIn"  @click="ZoomIn" > 
         </el-button>
         <el-button circle  icon="ZoomOut" @click="ZoomOut" > 
@@ -10,18 +10,21 @@
          </el-button>
          <el-button circle :class="{active:MouseActive}"  icon="Mouse"  @click="bigMouse"   > 
          </el-button>
+         <el-button circle  icon="RefreshLeft"  @click="refresh"   > 
+         </el-button>
          <!-- 关闭 -->
          <el-button circle   icon="CloseBold" style="color: red;border-color:red"   @click="close">
            
          </el-button>
         </div>
         <!-- 按钮介绍 -->
-         <div style="display: flex;justify-content:space-between">
-            <p style="margin-left:2px">放大</p>
-            <p style="margin-left:-6px">缩小</p>
-            <p style="margin-left:-16px" :class="{textActive:LineActive}">辅助线</p>
-            <p style="margin-left:-10px" :class="{textActive:MouseActive}">大鼠标</p>
-            <p style="width:30px">关闭</p>
+         <div style="display: flex;justify-content:space-around;width:308px">
+            <p>放大</p>
+            <p>缩小</p>
+            <p style="margin-left: 0px;width:52px" :class="{textActive:LineActive}">辅助线</p>
+            <p style="margin-left: 0px;width:52px" :class="{textActive:MouseActive}">大鼠标</p>
+            <p>重置</p>
+            <p>关闭</p>
          </div>
     </div>
     <!-- 自定义鼠标 -->
@@ -62,13 +65,14 @@ const vertical = ref();
 const LineActive=ref(false)
 //放大
 const ZoomIn=()=>{   
-if(scale.value<1.3){
+if(scale.value<1.8){
 scale.value+=0.2
   }
-Main.value.style.zoom = `${scale.value}`;
 Main.value.style.transform=`scale(${scale.value})`
-Main.value.style.transformOrigin="50% 50% "
-Main.value.style.width=''
+Main.value.style.transformOrigin="left top"
+Main.value.style.width='99%'
+Main.value.style.minWidth='1218px'
+Main.value.scroll=111
 }
 //缩小
 const ZoomOut=()=>{   
@@ -76,8 +80,8 @@ const ZoomOut=()=>{
      scale.value-=0.2
   }
 Main.value.style.transform=`scale(${scale.value})`
-Main.value.style.transformOrigin="0 0 "
 Main.value.style.width=''
+
 }
 //辅助线
 const Plus=()=>{
@@ -104,6 +108,25 @@ Main.value.style.width=''
 scale.value=1
 indentLeft.value=0
 indentTop.value=0
+Main.value.style.transform=``
+Main.value.style.minWidth=''
+}
+
+const refresh=()=>{
+  //刷新时把所有参数都变回初始
+LineActive.value=false
+MouseActive.value=false
+cursorIsShow.value=false
+lineShow.value=false
+Main.value.style.zoom = `1`;
+Main.value.style.marginTop=`0px`
+Main.value.style.marginLeft=`0px`
+Main.value.style.width=''
+scale.value=1
+indentLeft.value=0
+indentTop.value=0
+Main.value.style.transform=``
+Main.value.style.minWidth=''
 }
 // //滑块滑动
 // const slide=()=>{
@@ -143,7 +166,7 @@ document.addEventListener('mousemove', (e) => {
    width: @left_bar_width;
    p{
       width: 42px;
-      
+      margin-left: 6px;
    }
 }
 .custom-cursor {

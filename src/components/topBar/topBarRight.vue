@@ -2,10 +2,12 @@
         <!-- 右侧 -->
         <div class="right">
       <el-tooltip content="购物车" placement="bottom">
-         <el-button :color="color" :icon="ShoppingCartFull" size="large"  circle /> 
+         <el-badge :value="12" class="item" style="margin-right: 15px;" >
+            <el-button :color="color" :icon="ShoppingCartFull" size="large"  circle /> 
+         </el-badge>
       </el-tooltip>
       <!-- 无障碍阅读 -->
-      <el-popover :visible="visible" placement="top" :width="280" :show-arrow="false">
+      <el-popover :visible="visible" placement="top" :width="320" :show-arrow="false">
          <OldCare @close="close"></OldCare>
       <template #reference>
        <el-tooltip content="无障碍阅读" placement="bottom">

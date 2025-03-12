@@ -323,9 +323,10 @@ div{
     top:@top_bar_height;
     left:@left_bar_width;
     width: calc(100% - @left_bar_width - 40px );
+    min-width: 1218px;
     height:calc(100vh - @top_bar_height - 40px) ;
     padding:20px;
-    overflow: auto;
+    overflow-y: auto;
     transition: all 0.6s;
     &.fold{
       left:@fold_length;
