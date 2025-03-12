@@ -6,9 +6,37 @@
             <img src="@/assets/home/logo.png" alt="" style="width: 60px;" >
             <h1 style="font-size: 30px;margin-top:15px;color:burlywood">神威旅行</h1>
              </div>
-              
             <div flex="1" style="margin-left: 20%;display:flex;">
-                <el-popover
+            <!-- 我的订单 -->
+            <div style="padding:5px;margin:14px;border-right:1px solid;padding-right:18px;height:26px" >
+              <el-tooltip content="购物车" placement="bottom" >
+               <el-popover :visible="visible1"  placement="bottom" :width="380">
+        <!-- 标头 -->
+         <div style="display: flex;margin-bottom:15px">
+          <h4 style="width: 150px;">商品名称</h4>
+          <h4 style="margin-left: 25px;">商品价格</h4>
+                  <!-- 关闭按钮 -->
+        <el-button :color="color" :icon="Close" style="margin-left: 80px;" size="small" type="primary" @click="visible1 = false" circle></el-button>
+         </div>
+        <!-- 内容 -->
+         <img src="@/assets/about/空状态_购物车是空的.svg" style="width: 150px;margin-left:110px" v-show="!shopData.length" alt="">
+        <div v-for="(item,index) in shopData" :key="index" style="display: flex;margin-top:10px">
+          <p style="width:150px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ item.name }}</p>
+          <p style="margin-left: 25px;width:50px;white-space:nowrap;overflow:hidden;">{{ item.price }}</p>
+          <el-button :color="color" style="margin-left:50px;margin-top:-6px" @click="remove(index)">移除</el-button>
+        </div>
+
+        <!-- 按钮 -->
+        <template #reference> 
+          <el-badge :value="shopData.length" class="item" style="padding-right:8px">
+            <p @click="visible1 = true" >我的订单</p>
+          </el-badge>
+        </template>
+              </el-popover>
+               </el-tooltip>
+             </div>
+             <!-- 联系客服 -->
+            <el-popover
                 placement="top-start"
                 title="访问客服中心"
                 :width="200"
@@ -21,13 +49,30 @@
                     其他国家和地区：+86-21-3406-4888"
                 >
                 <template #reference>
-                <div class="m-2" style="margin-top: 12px;padding-right:22px;line-height:38px;height:38px;margin-left: 120px;border-right:1px solid"><el-icon><PhoneFilled /></el-icon>联系客服</div>
+                <div style="margin-top: 12px;padding-right:22px;line-height:38px;height:38px;border-right:1px solid"><el-icon><PhoneFilled /></el-icon>联系客服</div>
                 </template>
-                </el-popover>
-                <div  @click="back" style="margin-top: 20px;height:40px;margin-left: 18px;display:flex;cursor:pointer">
-                    <el-icon size="20"><HomeFilled/></el-icon>
-                    <p style="line-height:20px;font-size:20px">返回首页</p>
-                </div>
+            </el-popover>
+            <!-- 返回首页 -->
+            <div  @click="back" style="display:flex;cursor:pointer;padding-right:20px;">
+                    <el-icon size="20" style="margin-top: 20px;margin-left:14px"><HomeFilled/></el-icon>
+                    <p style="line-height:40px;font-size:18px;border-right:1px solid;height:40px;padding-right:20px;margin-top:11px">返回首页</p>
+            </div>
+            <!-- 头像 -->
+            <img :src="useUserStore().avator" style=" margin-right: 10px;border-radius:4px;width:40px;height:40px;margin-left: 10px;margin-top:10px"/>
+            <!-- 下拉退出登录 -->
+             <el-dropdown style="margin-top: 20px;font-size:18px"> 
+    <span class="el-dropdown-link" style="  white-space: nowrap;">
+      {{useUserStore().userName}}
+    <el-icon class="el-icon--right"><arrow-down /></el-icon>
+    </span>
+    <template #dropdown>
+      <el-dropdown-menu>
+        <el-dropdown-item>
+          <div @click="logout">退出登录</div>
+        </el-dropdown-item>
+      </el-dropdown-menu>
+    </template>
+             </el-dropdown>
             </div>
        </div>
        <div class="header">
@@ -121,22 +166,62 @@
 </template>
 
 <script setup lang="ts">
-import { HomeFilled } from '@element-plus/icons-vue';
+import { Close, HomeFilled } from '@element-plus/icons-vue';
 import { useRouter } from 'vue-router';
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import BottomComponent from '@/components/bottomComponent.vue';
-
+import { storeToRefs } from 'pinia';
+import { useShoppingStore } from '@/store/modules/shoppingStore';
+import { useColorStore } from '@/store/modules/color';
+import { useUserStore } from '@/store/modules/user';
+import { useRoute } from 'vue-router';
+const $route=useRoute()
+const {shopData}=storeToRefs(useShoppingStore())
+let {color}=storeToRefs(useColorStore())
 const containerRef = ref<HTMLElement | null>(null)
-
+  //购物车模式是否出现
+  const visible1=ref(false)
 const handleClick = (e: MouseEvent) => {
   e.preventDefault()
 }
+const remove=(index:number)=>{
+useShoppingStore().remove(index)
 
+}
+
+
+
+//退出登录的回调
+const logout=()=>{
+  //第一步往服务器发请求,把token注销掉
+  //第二步把pina仓库里面的token与用户相关的数据通通删掉
+  //我们通过调用pina仓库里的layOut方法来实现这两步
+  useUserStore().logOut()
+  //清空token方便路由跳转
+  useUserStore().storeToken=''
+  //第三步路由跳转
+  $router.push({path:'/login',query:{
+    redirect:$route.path
+  }})
+}
 const $router=useRouter()
 const back=()=>{
 $router.push('/home')
 }
-  
+//根据token请求头像,用户名
+let userHead=ref()
+let userName=ref()
+onMounted(async ()=>{
+//黑暗模式
+let dark=JSON.parse(localStorage.getItem('dark') as string)
+if(dark)document.documentElement.className='dark'
+//页面加载完毕立刻拿到userData数据
+const userData=await useUserStore().getUserData()
+userHead.value=userData.data.checkUser.avatar
+userName.value=userData.data.checkUser.userName
+useUserStore().userName=userName.value
+useUserStore().avator=userHead.value
+})  
 </script>
 
 <style lang="less" scoped>
@@ -247,4 +332,12 @@ $router.push('/home')
     }
   
    }
+   .example-showcase .el-dropdown-link {
+  cursor: pointer;
+  color: var(--el-color-primary);
+  display: flex;
+  align-items: center;
+}
+
+
 </style>

@@ -1,10 +1,30 @@
 <template>
-        <!-- 右侧 -->
-        <div class="right">
+      <!-- 右侧 -->
+      <div class="right">
       <el-tooltip content="购物车" placement="bottom">
-         <el-badge :value="12" class="item" style="margin-right: 15px;" >
-            <el-button :color="color" :icon="ShoppingCartFull" size="large"  circle /> 
-         </el-badge>
+        <el-popover :visible="visible1"  placement="bottom" :width="380">
+        <!-- 标头 -->
+         <div style="display: flex;margin-bottom:15px">
+          <h4 style="width: 150px;">商品名称</h4>
+          <h4 style="margin-left: 25px;width:60px">商品价格</h4>
+           <!-- 关闭按钮 -->
+        <el-button :color="color" :icon="Close" style="margin-left: 80px;" size="small" type="primary" @click="visible1 = false" circle></el-button>
+         </div>
+         <img src="@/assets/about/空状态_购物车是空的.svg" style="width: 150px;margin-left:110px" v-show="!shopData.length" alt="">
+        <!-- 内容 -->
+        <div v-for="(item,index) in shopData" :key="index" style="display: flex;margin-top:10px">
+          <p style="width:150px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ item.name }}</p>
+          <p style="margin-left: 25px;width:50px;white-space:nowrap;overflow:hidden;">{{ item.price }}</p>
+          <el-button :color="color" style="margin-left:60px;margin-top:-6px" @click="remove(index)">移除</el-button>
+        </div>
+       
+        <!-- 按钮 -->
+        <template #reference> 
+          <el-badge :value="shopData.length" class="item" style="margin-right: 15px;" >
+            <el-button @click="visible1 = true" :color="color" :icon="ShoppingCartFull" size="large"  circle /> 
+          </el-badge>
+        </template>
+        </el-popover>
       </el-tooltip>
       <!-- 无障碍阅读 -->
       <el-popover :visible="visible" placement="top" :width="320" :show-arrow="false">
@@ -63,7 +83,7 @@
 
 <script setup lang="ts">
   import { useRefreshStore } from '@/store/modules/refresh';
-  import {Setting, FullScreen, Refresh,ArrowDown, ShoppingCartFull, Phone, Help}from '@element-plus/icons-vue'
+  import {Setting, FullScreen, Refresh,ArrowDown, ShoppingCartFull, Phone, Help, Close}from '@element-plus/icons-vue'
   import { useUserStore } from '@/store/modules/user';
   import { onMounted,ref,inject} from 'vue';
   import { useRouter,useRoute } from 'vue-router';
@@ -74,9 +94,13 @@
   import { useColorStore } from '@/store/modules/color';
   import { storeToRefs } from 'pinia';
   import OldCare from '../oldCare/oldCare.vue';
+  import { useShoppingStore } from '@/store/modules/shoppingStore';
+  const {shopData}=storeToRefs(useShoppingStore())
   let {color}=storeToRefs(useColorStore())
   //老年人模式选项是否出现
   const visible = ref(false)
+  //购物车模式是否出现
+  const visible1=ref(false)
   //关闭老年人模式
   const close=()=>{
     visible.value=false
@@ -131,7 +155,10 @@ userName.value=userData.data.checkUser.userName
 useUserStore().userName=userName.value
 useUserStore().avator=userHead.value
 })
+const remove=(index:number)=>{
+useShoppingStore().remove(index)
 
+}
 </script>
 
 <style lang="less" scoped>

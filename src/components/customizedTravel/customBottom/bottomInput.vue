@@ -14,8 +14,9 @@
             <Step1Left @getVal="val" v-show="active===0"></Step1Left>
             <Step2Left v-show="active===1"></Step2Left>
             <Step3Left @getVal1="val1" v-show="active===2"></Step3Left>
-            <el-button :color="color" style="width:140px;border-radius:18px;margin-left:120px" @click="pre" v-show="active!==0">上一步</el-button>
-            <el-button :color="color" style="width:140px;height:40px;border-radius:18px;margin-left:120px" @click="next" v-show="active!==2">下一步</el-button>
+            <FinishLeft v-show="active===3"></FinishLeft>
+            <el-button :color="color" style="width:140px;border-radius:18px;margin-left:120px" @click="pre" v-show="active!==0&&active!==3">上一步</el-button>
+            <el-button :color="color" style="width:140px;height:40px;border-radius:18px;margin-left:120px" @click="next" v-show="active!==2&&active!==3">下一步</el-button>
             <el-button :color="color" style="width:140px;border-radius:18px;margin-left:120px" @click="forme" v-show="active===2">马上为我定制</el-button>
          </div>
         <StepRight :Active="active"></StepRight>
@@ -36,6 +37,9 @@ import { ElMessage,ElMessageBox } from 'element-plus';
 import bus from '@/bus/bus'
 import { storeToRefs } from 'pinia';
 import { ElLoading } from 'element-plus'
+import { useShoppingStore } from '@/store/modules/shoppingStore';
+import FinishLeft from './step/FinishLeft.vue';
+const shoppingStore=useShoppingStore()
 //按钮颜色
 let {color}=storeToRefs(useColorStore())
 //表单目的地数据
@@ -120,7 +124,7 @@ const pre=()=>{
 }
 //为我定制
 const forme=()=>{
-    console.log(types.value);
+  
     
     if(types.value==='个人定制'){
        if(name.value&&phoneNum.value){
@@ -129,13 +133,17 @@ const forme=()=>{
     text: '正在提交表单。。。',
     background: 'rgba(0, 0, 0, 0.7)',
                   })
+      console.log(budget.value);
+      
           setTimeout(() => {
+                //订单数据放进购物车
+                shoppingStore.add({name:`${pos.value} — ${types.value}`,price:`¥${budget.value||'未定'}`})
                 loading.close()
                 ElMessageBox.alert('您的订单已提交,在24小时内会有定制师联系您!', '订单提交完成', {
                 // autofocus: false,
                 confirmButtonText: '确定',
   })
-    
+      active.value++
           }, 2000)
       }
       else{
@@ -154,12 +162,14 @@ const forme=()=>{
     background: 'rgba(0, 0, 0, 0.7)',
                   })
           setTimeout(() => {
+                //订单数据放进购物车
+                shoppingStore.add({name:`${pos.value} — ${types.value}`,price:`¥${budget.value||'未定'}`})
                 loading.close()
                 ElMessageBox.alert('您的订单已提交,在24小时内会有定制师联系您!', '订单提交完成', {
                 // autofocus: false,
                 confirmButtonText: '确定',
   })
-    
+     active.value++
           }, 2000)
        }
        else{
@@ -180,6 +190,9 @@ onMounted(()=>{
   bus.on('type',(type:any)=>{
     
          types.value=type.type
+       })
+  bus.on('budget',(Budget:any)=>{
+         budget.value=Budget.budget
        })
 })
 

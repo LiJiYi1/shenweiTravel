@@ -1,5 +1,6 @@
 <template>
-  <div>
+  <div style="width: 100vw;height:100vh;overflow:auto">
+      <div>
         <!-- 最顶导航栏-->
         <div class="top" id="神威旅行简介">
             <div style="display:flex" flex="1" >
@@ -8,6 +9,34 @@
              </div>
               
             <div flex="1" style="display:flex;margin-top:16px;">
+                <!-- 我的订单 -->
+            <div style="border-right:1px solid;padding-right:18px;height:20px;margin-right:10px;padding-bottom:4px" >
+              <el-tooltip content="购物车" placement="bottom" >
+               <el-popover :visible="visible1"  placement="bottom" :width="380">
+        <!-- 标头 -->
+         <div style="display: flex;margin-bottom:15px">
+          <h4 style="width: 150px;">商品名称</h4>
+          <h4 style="margin-left: 25px;">商品价格</h4>
+                  <!-- 关闭按钮 -->
+        <el-button :color="color" :icon="Close" style="margin-left: 80px;" size="small" type="primary" @click="visible1 = false" circle></el-button>
+         </div>
+        <!-- 内容 -->
+         <img src="@/assets/about/空状态_购物车是空的.svg" style="width: 150px;margin-left:110px" v-show="!shopData.length" alt="">
+        <div v-for="(item,index) in shopData" :key="index" style="display: flex;margin-top:10px">
+          <p style="width:150px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ item.name }}</p>
+          <p style="margin-left: 25px;width:50px;white-space:nowrap;overflow:hidden;">{{ item.price }}</p>
+          <el-button :color="color" style="margin-left:50px;margin-top:-6px" @click="remove(index)">移除</el-button>
+        </div>
+
+        <!-- 按钮 -->
+        <template #reference> 
+          <el-badge :value="shopData.length" class="item" style="padding-right:8px">
+            <p @click="visible1 = true" style="margin-top: -4px;">我的订单</p>
+          </el-badge>
+        </template>
+              </el-popover>
+               </el-tooltip>
+             </div>
                 <el-popover
                 placement="top-start"
                 title="访问客服中心"
@@ -43,7 +72,7 @@
             {{$route.params['title']}}{{$route.params['about']}}
             </p>             
             <div style="display: flex;">
-              <h5 style="width: 120px;margin-left:280px">编号：47002065</h5>
+              <h5 style="width: 120px;margin-left:260px">编号：47002065</h5>
               <h5 style="width: 100px;">出发地:威海</h5>
               </div>
          </div>
@@ -163,7 +192,7 @@
              <div style="display: flex;">
                 <div>
                     <p>出发</p>
-        <el-date-picker
+               <el-date-picker
         v-model="date"
         type="date"
         placeholder="Pick a day"
@@ -174,7 +203,16 @@
                     
                 </div>
                 <div style="margin-left:40px" width="20px">
-                    <p style="display:inline-block">成人</p><span style="font-size: 12px;display:inline-block;margin-left:10px;border-bottom:1px dashed">12周岁及以上</span><br>
+                    <p style="display:inline-block">成人</p>
+    <!-- 成人介绍 -->
+    <el-popover  placement="top" :width="200">
+    <ChildAdult></ChildAdult>
+
+    <template #reference>
+       <span style="font-size: 12px;display:inline-block;margin-left:10px;border-bottom:1px dashed">12周岁及以上</span>
+    </template>
+  </el-popover>
+       <br>
                       <el-select popper-class="custom-popper"  v-model="adult" placeholder="成人" size="large" style="width: 130px;margin-top:20px">
                               <el-option
       v-for="(item,index) in 8"
@@ -190,7 +228,16 @@
                           </el-select>
                 </div>
                 <div style="margin-left:40px">
-                    <p style="display:inline-block">儿童</p><span style="font-size: 12px;display:inline-block;margin-left:10px;border-bottom:1px dashed">2-12周岁(不含)</span><br>
+                    <p style="display:inline-block">儿童</p>
+    <!-- 儿童介绍 -->
+    <el-popover  placement="top" :width="200">
+    <ChildAdult></ChildAdult>
+
+    <template #reference>
+                          <span style="font-size: 12px;display:inline-block;margin-left:10px;border-bottom:1px dashed">2-12周岁(不含)</span><br>
+    </template>
+  </el-popover>
+       <br>
                            <el-select  v-model="child" popper-class="custom-popper" placeholder="儿童" size="large" style="width: 130px;margin-top:20px">
                              <el-option
                               key="0"
@@ -213,15 +260,34 @@
 
              </div>
              <div>
-              <p style="display: inline-block;margin-right:70px">总价:
-                <span style="margin-left:10px;color:red">{{sum}}</span>
+              <p style="display: inline-block;margin-right:70px;font-size:25px">总价:
+                <span style="margin-left:10px;color:red">¥{{sum}}</span>
               </p>
               <div style="display: inline-block;">
-                <p style="margin-left:20px">
+  <!-- 限购 -->
+  <el-popover  placement="top" :width="380">
+    <h3>预订限制</h3>
+    <ul>
+      <li>该产品最少1人起订，成人+儿童最多支持999人</li>
+      <li>此线路行程强度较大，请确保身体健康适宜旅游，如出行人中有70周岁(含)以上老人，须至少有1位18周岁—69周岁亲友陪同方可参团，敬请谅解</li>
+    <li>此线路因服务能力有限，不接受1周岁(含)以下客人预订，敬请谅解</li>
+    <li>出于安全考虑，18岁以下未成年人需要至少一名成年旅客陪同</li>
+    <li style="color:orange">综合考量目前常规团队出行人群结构并考虑实际入住体验等因素，本产品暂时无法提供拼房。报价是按照2成人入住1间房计算的价格，请在页面中选择所需房间数或单人房差选项</li>
+    <li>本产品可尝试申请3人间或加床服务，如您需3成人入住1间房，在预订时备注，后续是否可以安排及相关费用以员工回复为准（温馨提示：当地酒店面积小，加床可能会引起您的不便）</li>
+    <li>出于安全考虑，本产品不接受孕妇预订，敬请谅解</li>
+    <li style="color:orange">如产品确认单或补充条款中的约定与旅游合同主协议不一致的，以产品确认单或补充条款为准</li>
+    <li>以上价格均为人均价</li>
+    </ul>
+
+    <template #reference>
+      <p style="margin-left:20px;cursor:pointer">
                  <el-icon><Warning /></el-icon>
                  <span style="display:inline-block;border-bottom:1px dotted #999;color:#999;margin-bottom:6px;padding-bottom:4px">预订限制</span>
                 </p>
-              <el-button style="width: 120px;height:40px" color="red">加入购物车</el-button>
+    </template>
+  </el-popover>
+                
+              <el-button style="width: 120px;height:40px" color="red" @click="addShop">加入购物车</el-button>
               </div>
           
              </div>
@@ -229,32 +295,56 @@
         </div>
   </footer>
   <BottomComponent></BottomComponent>
+  </div>
+
 </template>
 
 <script lang="ts" setup>
 import BottomComponent from '@/components/bottomComponent.vue';
 import DialogBox from '@/components/travelSearch/dialogBox.vue';
-import { onMounted,ref } from 'vue';
+import { useColorStore } from '@/store/modules/color';
+import { useShoppingStore } from '@/store/modules/shoppingStore';
+import { onMounted,ref,computed } from 'vue';
 import { useRouter,useRoute } from 'vue-router';
+import { storeToRefs } from 'pinia';
+import { Close } from '@element-plus/icons-vue';
+import ChildAdult from '@/components/travelSearch/childAdult.vue';
 const $router=useRouter()
 const $route=useRoute()
 const dialogTableVisible=ref(false)
+//购物车模式是否出现
+const visible1=ref(false)
+const {shopData}=storeToRefs(useShoppingStore())
+let {color}=storeToRefs(useColorStore())
 //日期
 let date=ref(new Date())
 //成人数量
 let adult=ref('1')
 //儿童数量
 let child=ref('0')
+//单张票价
+let price=ref(Number.parseInt(($route.params['price'] as string).slice(1)))
 //总价
-let sum=ref('—   —')
+let sum = computed(() =>price.value  *(Number.parseInt(adult.value)+Number.parseInt(child.value)));
 const back=()=>{
 $router.push('/travel/travelHome')
 }
 const show=()=>{
 dialogTableVisible.value=true
 }
+const remove=(index:number)=>{
+useShoppingStore().remove(index)
 
+}
+
+const addShop=()=>{
+  useShoppingStore().add({name:$route.params['title'] as string,price:`¥${sum.value}`})
+}
 onMounted(()=>{
+
+  //黑暗模式
+let dark=JSON.parse(localStorage.getItem('dark') as string)
+if(dark)document.documentElement.className='dark'
 })
 </script>
 
@@ -342,5 +432,14 @@ background-repeat: no-repeat;
   background-color:red;
   height: 80px; /* 设置下拉选项的高度 */
   line-height: 40px; /* 设置下拉选项的文字垂直居中 */
+}
+li{
+  list-style: square;
+  margin-left: 18px;
+  margin-top: 20px;
+}
+h3{
+  margin-left: 18px;
+  margin-bottom: 10px;
 }
 </style>
