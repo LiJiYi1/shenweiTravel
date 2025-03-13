@@ -113,7 +113,7 @@
 每单减¥30
 适用于2025-02-10至2025-05-10出发的班期;库存有限，先到先得&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 *
-对于以不正当方式参与优惠活动的用户，包括但不限于恶意套现、恶意下单、恶意注册、利用程序漏洞等，携程旅行网有权在不事先通知的情况下取消其参与优惠活动的资格"
+对于以不正当方式参与优惠活动的用户，包括但不限于恶意套现、恶意下单、恶意注册、利用程序漏洞等，神威旅行网有权在不事先通知的情况下取消其参与优惠活动的资格"
   >
     <template #reference>
                <span style="font-size: 12px;padding:2px;display:inline-block;border-bottom:1px dashed">查看详情</span>
@@ -205,7 +205,7 @@
                 <div style="margin-left:40px" width="20px">
                     <p style="display:inline-block">成人</p>
     <!-- 成人介绍 -->
-    <el-popover  placement="top" :width="200">
+    <el-popover  placement="top" :width="280">
     <ChildAdult></ChildAdult>
 
     <template #reference>
@@ -230,7 +230,7 @@
                 <div style="margin-left:40px">
                     <p style="display:inline-block">儿童</p>
     <!-- 儿童介绍 -->
-    <el-popover  placement="top" :width="200">
+    <el-popover  placement="top" :width="280">
     <ChildAdult></ChildAdult>
 
     <template #reference>
@@ -309,6 +309,7 @@ import { useRouter,useRoute } from 'vue-router';
 import { storeToRefs } from 'pinia';
 import { Close } from '@element-plus/icons-vue';
 import ChildAdult from '@/components/travelSearch/childAdult.vue';
+import { ElMessage } from 'element-plus';
 const $router=useRouter()
 const $route=useRoute()
 const dialogTableVisible=ref(false)
@@ -339,6 +340,11 @@ useShoppingStore().remove(index)
 
 const addShop=()=>{
   useShoppingStore().add({name:$route.params['title'] as string,price:`¥${sum.value}`})
+
+   ElMessage({
+    message: '成功加入购物车',
+    type: 'success',
+  })
 }
 onMounted(()=>{
 

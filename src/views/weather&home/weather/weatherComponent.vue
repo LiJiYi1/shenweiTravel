@@ -797,7 +797,25 @@ background-size: cover;
 margin-left: 0px;
 }
 
+:deep(.el-select-dropdown__item.is-selected) {
+  color: #FFD800 !important; /* 修改为你想要的颜色 */
+}
+.el-select-dropdown__item.is-selected {
+  color: #FFD800 !important;
+}
 
+/* 全局修改输入框内显示的选中项颜色 */
+.el-select__tags-text {
+  color: #FFD800 !important;
+}
+
+/* 全局修改单选模式下的输入框文本颜色 */
+.el-select__input {
+  color: #FFD800 !important;
+}
+:deep(.el-select__wrapper.is-focused){
+box-shadow: 0 0 0 1px #FFD800;
+}
 </style>
 
 

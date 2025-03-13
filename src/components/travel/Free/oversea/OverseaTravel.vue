@@ -60,7 +60,7 @@ let jingxuan=ref([
 {img:new URL("@/assets/travel/Free/oversea/jingxuan/image2.jpg",import.meta.url).href,include:'澳门2-7日自由行·【口碑榜酒店随心选】酒店连住+机票任选； 好吃+好玩+好买+好拍，经典推荐：澳门teamlab|网红大三巴|巴黎铁塔|体验 一次游遍澳门的独特魅力与繁华',price:"¥2516起"},
 {img:new URL("@/assets/travel/Free/oversea/jingxuan/image3.jpg",import.meta.url).href,include:'日本东京5日自由行·【4晚连住，可选4钻/5钻酒店】可加选包车游|探寻潮流之都『推荐景点：富士山-东京塔-浅草寺-原宿-银座-歌舞伎町-六本木-秋叶原-镰仓高校』二次元爱好者·家庭亲子·朋友·情侣出游~',price:"¥4460起"},
 {img:new URL("@/assets/travel/Free/oversea/jingxuan/image4.jpg",import.meta.url).href,include:'马尔代夫芙拉薇利岛7日5晚自由行·含机票『五星价格六星品质』【赠2项出海赠海豚巡航+日落钓鱼+限时免费升级升一价全包+三餐全包＆酒水饮料畅饮＆2名15岁以下儿童免吃住】+【浮潜沙滩双A+海洋泳池水额外赠漂浮早餐】',price:"¥14576起"},
-{img:new URL("@/assets/travel/Free/oversea/jingxuan/image5.jpg",import.meta.url).href,include:'马尔代夫6日4晚自由行·波杜希蒂岛•专拍【携程自营·选岛不迷路】【马代资深销售1V1选岛·一站式服务】4晚岛上·海量岛可选|中央/伊露/莉莉/奥臻/丽笙等可选+可定制迪拜/新加坡/斯里兰卡等两国连游【不含国际机票】',price:"¥13039起"},
+{img:new URL("@/assets/travel/Free/oversea/jingxuan/image5.jpg",import.meta.url).href,include:'马尔代夫6日4晚自由行·波杜希蒂岛•专拍【神威自营·选岛不迷路】【马代资深销售1V1选岛·一站式服务】4晚岛上·海量岛可选|中央/伊露/莉莉/奥臻/丽笙等可选+可定制迪拜/新加坡/斯里兰卡等两国连游【不含国际机票】',price:"¥13039起"},
 {img:new URL("@/assets/travel/Free/oversea/jingxuan/image6.jpg",import.meta.url).href,include:'马尔代夫7日5晚自由行·六星特惠.【卡尼富士岛·白金一价全包＆赠送45分钟SPA】【免费三餐＆特色点餐＆酒水畅饮＆别墅迷你吧+赠出海垂钓和出游活动+每日2次出海浮潜+免费无动力项目+水飞专属候机+赠马累】',price:"¥14655起"},
 {img:new URL("@/assets/travel/Free/oversea/jingxuan/image7.jpg",import.meta.url).href,include:'香港2-7日自由行·〓错峰优选〓【双酒店任选&天数随心定】缤纷玩乐在香港：迪士尼乐园·海洋乐园·维多利亚港·太平山顶缆车/多元文化在香港：故宫文化博物馆·M+·K11 MUSEA·太空馆 ·科学馆·港风坚尼地城',price:"¥2271起"},
 {img:new URL("@/assets/travel/Free/oversea/jingxuan/image8.jpg",import.meta.url).href,include:'新加坡+圣淘沙岛6日5晚自由行·【3+2晚换住or连住 省心专车】自选双酒店+含接送机+三大动物园接驳+酒店专车换住|自由打卡环球影城/夜间动物园/滨海湾/哈芝巷/肉骨茶〓精选华人向导包车游，和你聊聊新加坡的那些事】',price:"¥4666起"},

@@ -225,7 +225,7 @@ const loadAll = () => {
     { value: '巴黎河谷购物村', link: 'https://github.com/babel/babel' },
   ]
 }
-let bottomData=['海淘攻略','海购索引','返礼码','携程信用卡','雅典海淘','米兰海淘','巴黎海淘','伦敦海淘纽约海淘','首尔海淘','罗马海淘','DFS海淘','Chic outlet海淘', 'Zegna海淘' ,'Tiffany海淘','Micheal Kors海淘' ,'Coach海淘' ,"Tod's海淘", 'De Beers海淘','Theory海淘' ,'Morgan海淘' ,'信用卡返礼' ,'万事达电子旅行支票','MasterCard电子旅行支票 ', '境外消费返礼' ,'消费返礼','境外消费返现']
+let bottomData=['海淘攻略','海购索引','返礼码','神威信用卡','雅典海淘','米兰海淘','巴黎海淘','伦敦海淘纽约海淘','首尔海淘','罗马海淘','DFS海淘','Chic outlet海淘', 'Zegna海淘' ,'Tiffany海淘','Micheal Kors海淘' ,'Coach海淘' ,"Tod's海淘", 'De Beers海淘','Theory海淘' ,'Morgan海淘' ,'信用卡返礼' ,'万事达电子旅行支票','MasterCard电子旅行支票 ', '境外消费返礼' ,'消费返礼','境外消费返现']
 const searchBottom=(name:string)=>{
   window.open(`https://www.baidu.com/s?wd=${name}`)
 }

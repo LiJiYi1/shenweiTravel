@@ -1,5 +1,5 @@
 <template>
-    <div >
+    <div  style="min-width:1218px">
     <div  ref="containerRef" style="height:100vh;overflow-y: auto;">
        <div class="top" id="神威旅行简介">
              <div style="display:flex" flex="1" >
@@ -139,7 +139,7 @@
         </div>
        </div>
        <img src="@/assets/about/env1.png" alt="" style="width: 100%;margin-top:80px">
-       <div style="display: flex;justify-content:center"><BottomComponent></BottomComponent></div>
+       <BottomComponent></BottomComponent>
        
     </div>
     
