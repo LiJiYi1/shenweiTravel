@@ -1,8 +1,13 @@
 <template>
+<video style="position: absolute;width:100%;min-width:1218px"  loop muted autoplay>
+  <source src="@/assets/login/index.mp4" type="video/webm" />
+</video>
  <div id="container">
 <!-- 用layout布局 -->
 <el-row>
-    <el-col :span="12" :xs=0>
+    <el-col :span="12" :xs=0 style="position: relative;top:25vh">
+      <h1 style="font-size: 80px;margin-left:100px;letter-spacing: 10px;width:400px" >神威旅行</h1>
+      <h2 style="font-size: 52px;margin-top:30px;margin-left:100px;letter-spacing: 10px;width:480px">下一站 海阔天空</h2>
     </el-col>
     <!-- 登录的模块 -->
     <el-col :span="12" :xs=24>
@@ -161,19 +166,23 @@ flag.value=Flag
     background-size: cover;
     h1{
       color: white;
+      letter-spacing: 6px;
     }
     h2{
         color: white;
         padding-bottom: 20px;
+        letter-spacing: 10px;
     }
     .login_form{
         position:relative;
         padding: 40px;
         width: 60%;
-        top:30vh;
+        min-width: 400px;
+        top:25vh;
         right:-5vw;
         border: 1px white solid;
-        background-color: rgba(255, 47, 6, 0.1);
+        background-color: rgba(132, 132, 132, 0.1);
+        backdrop-filter: blur(4px);
     }
     .login{
         width: 80vw;

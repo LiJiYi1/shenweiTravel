@@ -1,16 +1,16 @@
 <template>
         <!-- 左侧 -->
     <div class="left"> 
-        <el-icon size="40" style="margin-right:10px;" v-show="isFold" @click="toExpand()"><Fold/></el-icon>
-        <el-icon size="40" style="margin-right:10px;" v-show="!isFold" @click="toFold()"><Expand/></el-icon>
+        <el-icon :style="{color:color}" size="40" style="margin-right:10px;" v-show="isFold" @click="toExpand()"><Fold/></el-icon>
+        <el-icon :style="{color:color}" size="40" style="margin-right:10px;" v-show="!isFold" @click="toFold()"><Expand/></el-icon>
         <el-breadcrumb :separator-icon="ArrowRight"  style="user-select: none;font-size:20px">
-        <el-breadcrumb-item style="white-space:nowrap;" v-for="(item,index) in $route.matched" :key="index" :to="{path:item.path}" v-show="item.meta.title">  
-            <el-icon  style="vertical-align:bottom;">
+        <el-breadcrumb-item  style="white-space:nowrap;" v-for="(item,index) in $route.matched" :key="index" :to="{path:item.path}" v-show="item.meta.title">  
+            <el-icon :style="{color:color}"  style="vertical-align:bottom;">
                 <component :is="item.meta.icon" ></component>
             </el-icon>
             <!-- 语言不同用v-show处理 -->
-            <span v-show="lang==='zh-cn'">&nbsp;{{item.meta.title}}</span>
-            <span v-show="lang==='en'">&nbsp;{{item.meta.Entitle}}</span>
+            <span v-show="lang==='zh-cn'" :style="{color:color}">&nbsp;{{item.meta.title}}</span>
+            <span v-show="lang==='en'" :style="{color:color}">&nbsp;{{item.meta.Entitle}}</span>
         </el-breadcrumb-item>
         </el-breadcrumb>
      
@@ -24,10 +24,11 @@
 import { ArrowRight} from '@element-plus/icons-vue';
 import { ref,inject, type Ref,watch} from 'vue';
 import {useRoute} from 'vue-router'
-
-
+import { useColorStore } from '@/store/modules/color';
+const {color}=storeToRefs(useColorStore())
 //引入能切换语言的文字
 import { useI18n } from 'vue-i18n'
+import { storeToRefs } from 'pinia';
 const { locale } = useI18n();
 let lang=ref(locale.value)
 //用侦听器侦听这玩意value的变化,他一变化就把变量lang给变了,方便进行切换
