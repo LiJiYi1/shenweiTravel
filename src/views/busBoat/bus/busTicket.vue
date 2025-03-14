@@ -7,7 +7,7 @@
         <!-- 日期选择 -->
         <BottomComponent @getTime="Times" style="margin-top:20px;"></BottomComponent>
         <!-- 搜索按钮 -->
-        <el-button @click="searchBusTicket" :color="color" style="width: 200px;height:60px;margin-left:225px;border-radius:20px;margin-top:20px">汽车票查询</el-button>
+        <el-button @click="searchBusTicket" :color="color" style="width: 200px;height:60px;margin-left:calc(50% - 100px);border-radius:20px;margin-top:20px">汽车票查询</el-button>
       </el-card>
       <el-card class="poetry" @click="scene"  body-style=" width: 220px;height:220px;">
         <div class="right">

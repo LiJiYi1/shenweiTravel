@@ -8,13 +8,20 @@
     <el-col :span="12" :xs=24>
       <el-form class="login_form" :model="login" :rules="rules" ref="logins">
         <h1>Hellow!</h1>
-        <h2>{{language.sayHellow}}</h2>
+        <h2 style="margin-top:12px;">{{language.sayHellow}}</h2>
+        <!-- 账号 -->
         <el-form-item prop="username">
         <el-input :prefix-icon="User" v-model="login.username"/>
         </el-form-item>
+        <!-- 密码 -->
         <el-form-item prop="password">
       <el-input type="password" class="login_password" :prefix-icon="Lock" v-model="login.password" :show-password="true"/>
         </el-form-item>
+        <!-- 验证码 -->
+        <el-form-item prop="captcha">
+        <Captcha :language="language.refresh" @isEqual="equal"></Captcha>
+        </el-form-item>
+        <!-- 登录按钮 -->
         <el-form-item>
             <el-button :loading="loading" size="large" color="#ff9300" class="login" @click="userLogin">{{language.login}}</el-button>
         </el-form-item>
@@ -37,6 +44,8 @@ import { ref,computed } from 'vue';
 import { getTime } from '@/utils/time';
 //引入能切换语言的文字
 import { useI18n } from 'vue-i18n'
+import Captcha from './captcha.vue';
+import {ElMessage} from 'element-plus';
 //当前时间
 const time=getTime()
 //使用语言切换
@@ -48,12 +57,14 @@ messages:{
     en: {
         time:time.message1,
         login:'login',
-        sayHellow:'Welcome to the Shengwei Travel Platform!'
+        sayHellow:'Welcome to the Shengwei Travel Platform!',
+        refresh:"Refresh captcha"
     },
     'zh-cn': {
         time:time.message,
         login:'登录',
-        sayHellow:'欢迎来到神威旅行平台!'
+        sayHellow:'欢迎来到神威旅行平台!',
+        refresh:"刷新验证码"
     }
 }
 })
@@ -61,6 +72,7 @@ const language={
   time:computed(() => t('time')),
   login:computed(() => t('login')),
   sayHellow:computed(() => t('sayHellow')),
+  refresh:computed(() => t('refresh')),
 }
 //获取路由
 const $route:string=useRoute().query.redirect  as string
@@ -86,6 +98,11 @@ const store = useUserStore()
 const $router=useRouter()
 //点击事件,点击后往仓库里发请求
 const userLogin=async()=>{
+//在请求之前做一次验证码校验
+if(!flag.value){
+  ElMessage.error('验证码错误!')
+  return 
+}
 //校验表单里的账号密码符不符合规范
 await logins.value.validate()
 loading.value=true
@@ -93,7 +110,6 @@ loading.value=true
 const result=store.loginPost(login)
 result.then(()=>{
 $router.push({path:$route||'home'})
-
 //根据状态实现路由里面标题的语言切换
 const languageType=localStorage.getItem('language')||'zh-cn'
 const welcome=ref();
@@ -126,6 +142,15 @@ loading.value=false
 
 
 }
+
+//是否相等变量
+const flag=ref()
+const equal=(Flag:boolean)=>{
+flag.value=Flag
+}
+
+
+
 </script>
 
 <style scoped lang="less">
@@ -155,4 +180,7 @@ loading.value=false
     }
   
 }
+
+
+
 </style>
